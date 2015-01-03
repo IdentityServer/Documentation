@@ -12,6 +12,6 @@ markdown: redcarpet
 highlighter: pygments
 
 # Custom Settings
-github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3
-site_github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3
+github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Documentation
+site_github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Documentation
 edit_on_github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Documentation/gh-pages/%path%
