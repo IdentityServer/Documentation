@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Documentation
+title: Table of Contents
 permalink: /docs/
 ---
 
