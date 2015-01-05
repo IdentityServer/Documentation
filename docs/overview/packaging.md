@@ -8,7 +8,7 @@ IdentityServer consists of a number of nuget packages.
 
 ### Core
 
-[https://www.nuget.org/packages/Thinktecture.IdentityServer.v3/](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3/)
+[nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3)
 
 ### Configuration stores
 
