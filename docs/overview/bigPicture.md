@@ -24,18 +24,18 @@ Typically each and every layer (front-end, middle-tier and back-end) has to prot
 implement authentication and/or authorization – and quite typically against the same user store.
 
 This is why we don’t implement these fundamental security functions in the business applications/endpoints itself,
-but rather outsource that critical functionality to a security token service.
+but rather outsource that critical functionality to a service - the security token service.
 
 This leads to the following security architecture and usage of protocols:
 
 ![security protocols]({{ site.baseurl }}/assets/protocols.png)
 
-This divides the security world into two parts.
+This divides the security concerns into two parts.
 
 **Authentication**
 
 Authentication is needed when an application needs to know about the identity of the current user.
-Typically these applications manages data on behalf of that user and needs to make sure that the use can only
+Typically these applications manages data on behalf of that user and needs to make sure that this user can only
 access the data he is allowed to. The most common example for that are (classic) web applications –
 but also native and JS-based applications have need for authentication.
 
