@@ -8,20 +8,20 @@ Most modern applications look more or less like this:
 
 The typical interactions are:
 
--   Browsers communicate with web applications
+* Browsers communicate with web applications
 
--	Web applications communicate with web APIs (sometimes on their own, sometimes on behalf of a user)
+* Web applications communicate with web APIs (sometimes on their own, sometimes on behalf of a user)
 
--	Browser-based applications communicate with web APIs
+* Browser-based applications communicate with web APIs
 
--	Native applications communicate with web APIs
+* Native applications communicate with web APIs
 
--	Server-based applications communicate with web APIs
+* Server-based applications communicate with web APIs
 
--	Web APIs communicate with web APIs (sometimes on their own, sometimes on behalf of a user)
+* Web APIs communicate with web APIs (sometimes on their own, sometimes on behalf of a user)
 
-Typically each layer (front-end, middle-tier and back-end) has to protect some resources and
-implement authentication and authorization – and quite typically against the same user store.
+Typically each and every layer (front-end, middle-tier and back-end) has to protect resources and
+implement authentication and/or authorization – and quite typically against the same user store.
 
 This is why we don’t implement these fundamental security functions in the business applications/endpoints itself,
 but rather outsource that critical functionality to a security token service.
