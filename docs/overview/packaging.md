@@ -12,17 +12,17 @@ IdentityServer consists of a number of nuget packages.
 
 ### Configuration stores
 
-[nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.EntityFramework/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.EntityFramework)
+Entity Framework [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.EntityFramework/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.EntityFramework)
 
 ### User stores
 
-[nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.MembershipReboot/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.MembershipReboot)
+MembershipReboot [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.MembershipReboot/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.MembershipReboot)
 
-[nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.AspNetIdentity/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.AspNetIdentity)
+ASP.NET Identity [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.AspNetIdentity/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.AspNetIdentity)
 
 ### Plugins
 
-[nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.WsFederation/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.WsFederation)
+WS-Federation [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.WsFederation/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.WsFederation)
 
 ### Access token validation middleware
 
