@@ -66,5 +66,5 @@ An identity token represents a successful authentication.
 ## Access Token
 An access token can be validated by a resource.
 
-Clients request access tokens and forward them to an API. Access tokens contain information about the client and the use (if present).
+Clients request access tokens and forward them to an API. Access tokens contain information about the client and the user (if present).
 APIs use that information to authorize access to their data.
