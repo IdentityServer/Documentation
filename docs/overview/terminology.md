@@ -8,7 +8,7 @@ The specs, documentation and object model use a certain terminology that you sho
 
 ![modern application architecture]({{ site.baseurl }}/assets/images/terminology.png)
 
-## OpenID Connect Provider
+### OpenID Connect Provider
 IdentityServer is an OpenID Connect provider - it implements the OpenID Connect protocol (and OAuth2 as well).
 
 Different literature uses different terms for the same role - you probably also find security token service,
@@ -29,7 +29,7 @@ IdentityServer has a number of jobs and features - including:
 * validate tokens for clients
 
 
-## User
+### User
 A user is a human
 
 ## Client
