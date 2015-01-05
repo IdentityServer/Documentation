@@ -7,7 +7,7 @@ layout: docs-default
 IdentityServer consists of a number of nuget packages.
 
 ### Core
-Contains the core IdentityServer object model, services and server. Core is packaged as an OWIN module and can be hosted like this:
+Contains the core IdentityServer object model, services and server. Core is packaged as an OWIN component and can be hosted like this:
 
 ```csharp
 public class Startup
@@ -26,20 +26,24 @@ This is what the other repos and packages are about.
 [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3)
 
 ### Configuration stores
+Storage of configuration data (clients and scopes) as well as runtime data (consent, token handles, refresh tokens).
 
 Entity Framework [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.EntityFramework/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.EntityFramework)
 
 ### User stores
+Support for identity management libraries.
 
 MembershipReboot [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.MembershipReboot/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.MembershipReboot)
 
 ASP.NET Identity [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.AspNetIdentity/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.AspNetIdentity)
 
 ### Plugins
+Protocol plugins.
 
 WS-Federation [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.WsFederation/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.WsFederation)
 
 ### Access token validation middleware
+OWIN middleware for APIs. Provides an easy way to validate access tokens and enforce scope requirements.
 
 [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.AccessTokenValidation/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.AccessTokenValidation)
 
