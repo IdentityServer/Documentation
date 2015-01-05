@@ -30,16 +30,18 @@ IdentityServer has a number of jobs and features - including:
 
 ## Client
 A client is a piece of software that requests tokens from IdentityServer - either for authenticating a user or
-for accessing a resource.
+for accessing a resource. A client must be registered with the OP.
 
 Examples for clients are web applications, native mobile or desktop applications, SPAs, server processes etc.
 
 ## User
-A user is a human that is using a client.
+A user is a human that is using a registered client to access his or her data.
 
 ## Scope
 Scopes are identifiers for resources that a client wants to access. This identifier is sent to the OP during an
 authentication or token request.
+
+By default every client is allowed to request tokens for every scope, but you can restrict that.
 
 They come in two flavours.
 
@@ -49,11 +51,20 @@ Identity information (aka claims) about a user, e.g. his name or email address i
 There is e.g. a scope called `profile` that includes first name, last name, preferred username, gender, profile picture and more.
 You can read about the standard scopes [here](http://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and you can create your own scopes in IdentityServer to model your own requirements.
 
-
 ### Resource scopes
+Resource scopes in turn identify resources (aka web APIs) - you could have e.g. a scope name `calendar` that represents your calendar API.
 
 ## Authentication/Token Request
+Clients request token at the OP. Depending on the scopes requested, the OP will return an identity token, an access token or both.
 
 ## Identity Token
+An identity token can be validated by the client.
+
+It contains information about the user and details on how the user authenticated at the OP.
+An identity token represents a valid authentication event.
 
 ## Access Token
+An access token can be validated by a resource.
+
+Clients request access tokens and forward them to an API. Access tokens contain information about the client and the use (if present).
+APIs use that information to authorize access to their data.
