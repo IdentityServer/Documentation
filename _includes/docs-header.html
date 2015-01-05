@@ -14,14 +14,14 @@
       </a>
 
       <div class="trigger">
+
+        {% include edit-on-github-link.html %}
+
         {% for page in site.pages %}
           {% if page.title %}
           <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
           {% endif %}
         {% endfor %}
-
-        {% include edit-on-github-link.html %}
-
       </div>
     </nav>
 
