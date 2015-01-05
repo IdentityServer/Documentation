@@ -4,7 +4,7 @@ layout: docs-default
 
 Most modern applications look more or less like this:
 
-![modern application architecture](images/appArch.png)
+![modern application architecture]({{ site.baseurl }}/assets/appArch.png)
 
 The typical interactions are:
 -   Browsers communicate with web applications
@@ -20,6 +20,7 @@ This is why we don’t implement these fundamental security functions in the bus
 
 This leads to the following security architecture and usage of protocols:
 
+![security protocols]({{ site.baseurl }}/assets/protocols.png)
 
 This divides the security world into two parts.
 
