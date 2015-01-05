@@ -22,7 +22,7 @@ public class Startup
 }
 ```
 
-Core only contains support for in-memory configuration and user stores - but you can plug-in support for other store via the `options`.
+Core only contains support for in-memory configuration and user stores - but you can plug-in support for other stores via the `options`.
 
 This is what the other repos and packages are about.
 
@@ -30,6 +30,8 @@ This is what the other repos and packages are about.
 Storage of configuration data (clients and scopes) as well as runtime data (consent, token handles, refresh tokens).
 
 Entity Framework [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3.EntityFramework/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.EntityFramework)
+
+(Community contribution) MongoDb [github](https://github.com/jageall/IdentityServer.v3.MongoDb)
 
 ### User stores
 Support for identity management libraries.
