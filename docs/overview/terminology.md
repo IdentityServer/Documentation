@@ -30,7 +30,7 @@ IdentityServer has a number of jobs and features - including:
 
 ## Client
 A client is a piece of software that requests tokens from IdentityServer - either for authenticating a user or
-for accessing a resource. A client must be registered with the OP.
+for accessing a resource (also often called a relying party or RP). A client must be registered with the OP.
 
 Examples for clients are web applications, native mobile or desktop applications, SPAs, server processes etc.
 
@@ -46,13 +46,13 @@ By default every client is allowed to request tokens for every scope, but you ca
 They come in two flavours.
 
 ### Identity scopes
-Identity information (aka claims) about a user, e.g. his name or email address is modeled as a scope in OpenID Connect.
+Requesting identity information (aka claims) about a user, e.g. his name or email address is modeled as a scope in OpenID Connect.
 
 There is e.g. a scope called `profile` that includes first name, last name, preferred username, gender, profile picture and more.
 You can read about the standard scopes [here](http://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and you can create your own scopes in IdentityServer to model your own requirements.
 
 ### Resource scopes
-Resource scopes in turn identify resources (aka web APIs) - you could have e.g. a scope name `calendar` that represents your calendar API.
+Resource scopes identify web APIs (als called resource servers) - you could have e.g. a scope named `calendar` that represents your calendar API.
 
 ## Authentication/Token Request
 Clients request token at the OP. Depending on the scopes requested, the OP will return an identity token, an access token or both.
@@ -61,7 +61,7 @@ Clients request token at the OP. Depending on the scopes requested, the OP will 
 An identity token can be validated by the client.
 
 It contains information about the user and details on how the user authenticated at the OP.
-An identity token represents a valid authentication event.
+An identity token represents a successful authentication.
 
 ## Access Token
 An access token can be validated by a resource.
