@@ -7,9 +7,7 @@ permalink: /docs/
 ### Overview
 
 * [The big Picture](overview/bigPicture.html)
-    * [Users](overview/users.html)
-    * [Clients](overview/clients.html)
-    * [Scopes](overview/scopes.html)
+* [Terminology](overview/terminology.html)
 * [Packaging](overview/packaging.html)
 * [Getting Started: MVC Authentication & Web APIs](overview/mvcGettingStarted.html)
 
