@@ -2,6 +2,8 @@
 layout: docs-default
 ---
 
+#The big Picture
+
 Most modern applications look more or less like this:
 
 ![modern application architecture]({{ site.baseurl }}/assets/appArch.png)
