@@ -282,9 +282,13 @@ After successful authentication, you should now see the role claims in the user'
 ## Claims transformation
 When you inspect the claims on the about page, you will notice two things: some claims have odd long type names and there are more claims than you probably need in your application.
 
-The long claim names come from Microsoft's JWT handler trying to map some claim types to .NET's `ClaimTypes` class types. You can turn off this behavior with the following line of code (in `startup`)
+The long claim names come from Microsoft's JWT handler trying to map some claim types to .NET's `ClaimTypes` class types.
+You can turn off this behavior with the following line of code (in `startup`).
+
+This also means that you need to adjust the configuration for anti-CSRF protection to the new unique `sub` claim type:
 
 ```csharp
+AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
 JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 ```
 
@@ -903,7 +907,7 @@ Another option would be to reconfigure the scopes in IdentityServer and set the 
 Since the access token is now stored in the cookie, we can simply retrieve it from the claims principal and use it to call the service:
 
 ```csharp
-// GET: CallApi/ClientCredentials
+// GET: CallApi/UserCredentials
 public async Task<ActionResult> UserCredentials()
 {
     var user = User as ClaimsPrincipal;
