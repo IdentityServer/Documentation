@@ -83,7 +83,14 @@ public static class Users
 ```
 
 ## Adding Startup
-IdentityServer gets wired up in the startup class. Here we provide information about the clients, users, scopes, the signing certificate and some other configuration options. In production you should load the signing certificate from the Windows certificate store or some other secured source, here we simply added it to the project as a file. For info on how to load the certificate from Azure Websites see http://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/.
+IdentityServer gets wired up in the startup class. Here we provide information about the clients, users, scopes,
+the signing certificate and some other configuration options.
+In production you should load the signing certificate from the Windows certificate store or some other secured source,
+here we simply added it to the project as a file (you can download a test certificate from [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/Certificates).
+Add it to the project and set its build action to `Copy to output`.
+
+
+For info on how to load the certificate from Azure Websites see http://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/.
 
 ```csharp
 public class Startup
