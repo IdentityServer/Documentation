@@ -95,7 +95,6 @@ public class Startup
                 idsrvApp.UseIdentityServer(new IdentityServerOptions
                 {
                     SiteName = "Embedded IdentityServer",
-                    IssuerUri = "https://idsrv3/embedded",
                     SigningCertificate = LoadCertificate(),
 
                     Factory = InMemoryFactory.Create(
@@ -490,13 +489,13 @@ new Client
     ClientId = "mvc",
     Flow = Flows.Hybrid,
 
-    RedirectUris = new List<Uri>
+    RedirectUris = new List<string>
     {
-        new Uri("https://localhost:44319/")
+        "https://localhost:44319/"
     },
-    PostLogoutRedirectUris = new List<Uri>
+    PostLogoutRedirectUris = new List<string>
     {
-        new Uri("https://localhost:44319/")
+        "https://localhost:44319/"
     }
 }
 
@@ -589,7 +588,6 @@ Next we point our IdentityServer options class to this method:
 idsrvApp.UseIdentityServer(new IdentityServerOptions
 {
     SiteName = "Embedded IdentityServer",
-    IssuerUri = "https://idsrv3/embedded",
     SigningCertificate = LoadCertificate(),
 
     Factory = InMemoryFactory.Create(
@@ -758,9 +756,9 @@ public static class Clients
                 ClientId = "mvc",
                 Flow = Flows.Hybrid,
 
-                RedirectUris = new List<Uri>
+                RedirectUris = new List<string>
                 {
-                    new Uri("https://localhost:44319/")
+                    "https://localhost:44319/"
                 }
             },
             new Client
