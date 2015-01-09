@@ -90,7 +90,7 @@ here we simply added it to the project as a file (you can download a test certif
 Add it to the project and set its build action to `Copy to output`.
 
 
-For info on how to load the certificate from Azure Websites see http://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/.
+For info on how to load the certificate from Azure Websites see [here](http://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/).
 
 ```csharp
 public class Startup
