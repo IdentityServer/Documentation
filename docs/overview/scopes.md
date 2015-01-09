@@ -55,7 +55,6 @@ The 'AlwaysIncludeInIdentityToken' property specifies that a certain should alwa
 
 **Example of a scope for the `IdentityManager` API:**
 
-
 ```csharp
 var idMgrScope = new Scope
 {
