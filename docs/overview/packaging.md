@@ -10,21 +10,7 @@ IdentityServer consists of a number of nuget packages.
 
 [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer.v3/) | [github](https://github.com/thinktecture/Thinktecture.IdentityServer.v3)
 
-Contains the core IdentityServer object model, services and server. Core is packaged as an OWIN component and can be hosted like this:
-
-```csharp
-public class Startup
-{
-    public void Configuration(IAppBuilder app)
-    {
-        app.UseIdentityServer(options);
-    }
-}
-```
-
-Core only contains support for in-memory configuration and user stores - but you can plug-in support for other stores via the `options`.
-
-This is what the other repos and packages are about.
+Contains the core IdentityServer object model, services and server. Core only contains support for in-memory configuration and user stores - but you can plug-in support for other stores via the `options`. This is what the other repos and packages are about.
 
 ### Configuration stores
 Storage of configuration data (clients and scopes) as well as runtime data (consent, token handles, refresh tokens).
