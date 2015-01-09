@@ -4,7 +4,7 @@ layout: docs-default
 
 #The In-Memory Factory
 
-The in-memory factory is a easy way to get a test/dev version of IdentityServer up and running.
+The in-memory factory is an easy way to get a test/dev version of IdentityServer up and running.
 
 When you create the in-mem factory you can supply a static list of `Client`, `Scope` and `InMemoryUser`.
 All other data (e.g consent, refresh tokens, reference tokens, code etc.) will be kept in memory only.
