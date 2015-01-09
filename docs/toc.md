@@ -18,6 +18,7 @@ permalink: /docs/
 * [Token](endpoints/token.html)
 * [UserInfo](endpoints/userinfo.html)
 * [Discovery](endpoints/discovery.html)
+* [Logout](endpoints/endSession.html)
 * [Access Token Validation](endpoints/accessTokenValidation.html)
 * [Identity Token Validation](endpoints/identityTokenValidation.html)
 
