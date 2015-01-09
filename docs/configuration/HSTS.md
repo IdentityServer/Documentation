@@ -1,3 +1,9 @@
+---
+layout: docs-default
+---
+
+#HSTS
+
 [HTTP Strict Transport Security](http://www.html5rocks.com/en/tutorials/security/transport-layer-security/) (or HSTS) is an important aspect in web security. IdentityServer v3 provides a configuration option to include the HSTS headers in all of its HTTP responses. To enable, use the `UseHsts` extension method on the `IAppBuilder` in your OWIN configuration:
 
 ```

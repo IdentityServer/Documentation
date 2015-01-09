@@ -1,3 +1,9 @@
+---
+layout: docs-default
+---
+
+#Dependency Injection
+
 **The sample for this topic can be found [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/DependencyInjection)**
 
 IdentityServer v3 has extensibility points for various services. The default implementations of these services are designed to be decoupled from other moving parts of IdentityServer and as such we use dependency injection to get everything wired up. 

@@ -1,4 +1,10 @@
-Many endpoints in IdentityServer will be accessed via Ajax calls from JavaScript. Given that IdentityServer will most likely be hosted on a different origin than these clients, this implies that [Cross-Origin Resource Sharing](http://www.html5rocks.com/en/tutorials/cors/) (CORS) will be an issue. 
+---
+layout: docs-default
+---
+
+#CORS
+
+Many endpoints in IdentityServer will be accessed via Ajax calls from JavaScript. Given that IdentityServer will most likely be hosted on a different origin than these clients, this implies that [Cross-Origin Resource Sharing](http://www.html5rocks.com/en/tutorials/cors/) (CORS) will be an issue.
 
 ### CorsPolicy
 

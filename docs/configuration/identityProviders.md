@@ -1,3 +1,9 @@
+---
+layout: docs-default
+---
+
+#Identity Providers
+
 IdentityServer supports authentication using external identity providers. The external authentication mechanism must be encapsulated in a Katana authentication middleware.
 
 Katana itself ships with middleware for Google, Facebook, Twitter, Microsoft Accounts, WS-Federation and OpenID Connect - but there are also community developed middlewares.

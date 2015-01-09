@@ -1,3 +1,9 @@
+---
+layout: docs-default
+---
+
+#CSP
+
 IdentityServer incorporates the use of [Content Security Policy]((https://developer.mozilla.org/en-US/docs/Web/Security/CSP)) (CSP) for all HTML pages displayed.
 
 ### CspOptions

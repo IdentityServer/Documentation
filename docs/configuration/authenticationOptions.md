@@ -1,3 +1,9 @@
+---
+layout: docs-default
+---
+
+#Authentication Options
+
 **The sample for this topic can be found [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/CustomUserService)**
 
 The `AuthenticationOptions` is a property on the `IdentityServerOptions` to customize the login view.

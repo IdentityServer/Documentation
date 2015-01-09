@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: docs-default
 ---
 
 #Access token validation endpoint

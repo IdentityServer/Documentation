@@ -1,6 +1,11 @@
+---
+layout: docs-default
+---
+
+#Data Protection
+
 IdentityServer needs to protect (sign and encrypt) various data, e.g:
 
-* client secrets
 * cookies
 
 Katana provides data protection mechanisms out of the box: ASP.NET machine key based for IIS hosting, DPAPI based for self hosting. If you don't explicitly specify your own data protector on the configuration options, IdentityServer will fall back to the Katana implementations.
