@@ -1,3 +1,9 @@
+---
+layout: docs-default
+---
+
+#Authorization Endpoint
+
 The authorization endpoint can be used to request either access tokens or authorization codes (implicit and authorization code flow). You either use a web browser or a web view to start the process.
 
 ### Supported Parameters

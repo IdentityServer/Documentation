@@ -1,3 +1,9 @@
+---
+layout: docs-default
+---
+
+#Token Endpoint
+
 The token endpoint can be used to programmatically request or refresh tokens (resource owner password credential flow, authorization code flow, client credentials flow and custom grant types).
 
 ### Supported Parameters
