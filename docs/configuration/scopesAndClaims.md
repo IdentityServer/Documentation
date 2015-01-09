@@ -55,6 +55,7 @@ var roleScope = new Scope
 The 'AlwaysIncludeInIdentityToken' property specifies that a certain should always be part of the identity token, even when an access token for the userinfo endpoint is requested.
 
 **Example of a scope for the `IdentityManager` API:**
+
 ```csharp
 var idMgrScope = new Scope
 {
