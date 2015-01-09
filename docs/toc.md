@@ -23,14 +23,14 @@ permalink: /docs/
 
 ### Configuration
 
-* [Overview](confguration/overview.html)
-* [Options](confguration/identityServerOptions.html)
-* [Service Factory](confguration/serviceFactory.html)
-* [Authentication Options](confguration/authenticationOptions.html)
-* [Identity Providers](confguration/identityProviders.html)
-* [HSTS](confguration/hsts.html)
-* [CORS](confguration/cors.html)
-* [Logging](confguration/logging.html)
+* [Overview](configuration/overview.html)
+* [Options](configuration/identityServerOptions.html)
+* [Service Factory](configuration/serviceFactory.html)
+* [Authentication Options](configuration/authenticationOptions.html)
+* [Identity Providers](configuration/identityProviders.html)
+* [HSTS](configuration/hsts.html)
+* [CORS](configuration/cors.html)
+* [Logging](configuration/logging.html)
 
 ### Advanced
 
