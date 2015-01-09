@@ -16,6 +16,7 @@ permalink: /docs/
 * [Overview](configuration/overview.html)
 * [Options](configuration/identityServerOptions.html)
 * [Service Factory](configuration/serviceFactory.html)
+* [The In-Memory Factory](configuration/inMemoryFactory.html)
 * [Clients](configuration/clients.html)
 * [Scopes and Claims](configuration/scopesAndClaims.html)
 * [Authentication Options](configuration/authenticationOptions.html)
