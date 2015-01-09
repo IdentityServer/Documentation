@@ -19,7 +19,6 @@ layout: docs-default
 * [MongoDb Support](https://github.com/jageall/IdentityServer.v3.MongoDb)
 
 ### Videos
-* Overview Video: https://vimeo.com/91397084
-* Samples Walkthrough Video: https://vimeo.com/91405115
-* Introducing IdentityManager: https://vimeo.com/91470580 
-* IdentityServer 3 extensibility support for authentication and user profile: https://vimeo.com/91520314
+* Overview Video: [https://vimeo.com/91397084](https://vimeo.com/91397084)
+* Samples Walkthrough Video: [https://vimeo.com/91405115](https://vimeo.com/91405115)
+* Introducing IdentityManager: [https://vimeo.com/91470580](https://vimeo.com/91470580)
