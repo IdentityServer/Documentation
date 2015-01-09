@@ -10,8 +10,8 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
     * Specifies if client is enabled (defaults to `false`)
 * `ClientId`
     * Unique ID of the client
-* `ClientSecret`
-    * Client secret - only relevant for flows that require a secret
+* `ClientSecrets`
+    * List of Client secrets - only relevant for flows that require a secret
 * `ClientName`
     * Client display name (used for logging and consent screen)
 * `ClientUri`
@@ -36,13 +36,13 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
     * Lifetime of access token in seconds (defaults to 3600 seconds / 1 hour)
 * `AuthorizationCodeLifetime`
     * Lifetime of authorization code in seconds (defaults to 300 seconds / 5 minutes)
-* `IdentityTokenSigningKeyType`
-    * Specifies the key material used to sign the identity token. `Default` for the primary X.509 certificate, `ClientSecret` for using the client secret as a symmetric key (must be 256 bits in length). Defaults to `Default`.
 * `AccessTokenType`
     * Specifies whether the access token is a reference token or a self contained JWT token (defaults to `Jwt`).
 * `AllowLocalLogin`
     * Specifies if this client can use local accounts, or external IdPs only
 * `IdentityProviderRestrictions`
     * Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
+* `CustomGrantTypeRestrictions`
+    * Specifies which custom grant types the client can use (if the flow is set to `Custom`).
 
 In addition there are a number of settings controlling the behavior of refresh tokens - see [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/wiki/Refresh-Tokens)
