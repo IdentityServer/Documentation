@@ -17,10 +17,12 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#TokenRequest).
 - `authorization_code` (required for code grant)
 - `username` (required for password grant type)
 - `password` (required for password grant_type)
+- `login_hint` and `acr_values` (allowed for password grant type to pass additional information to user service)
 - `refresh_token` (required for refresh token grant)
 
 ### Authentication
-All requests to the token endpoint must be authenticated - either pass client id and secret via Basic Authentication or add `client_id` and `client_secret` fields to the POST body.
+All requests to the token endpoint must be authenticated - either pass client id and secret via Basic Authentication
+or add `client_id` and `client_secret` fields to the POST body.
 
 ### Example
 (Form-encoding removed for readability)
