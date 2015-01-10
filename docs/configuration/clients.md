@@ -97,6 +97,8 @@ var client = new Client
 
     Flow = Flows.ResourceOwner,
 
+    AbsoluteRefreshTokenLifetime = 86400,
+    SlidingRefreshTokenLifetime = 43200,
     RefreshTokenUsage = TokenUsage.OneTimeOnly,
     RefreshTokenExpiration = TokenExpiration.Sliding
 }
