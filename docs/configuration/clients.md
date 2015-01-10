@@ -43,6 +43,61 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `IdentityProviderRestrictions`
     * Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
 * `CustomGrantTypeRestrictions`
-    * Specifies which custom grant types the client can use (if the flow is set to `Custom`).
+    * Specifies which custom grant types the client can use (if the flow is set to `Custom`). Defaults to empty.
+* `IncludeJwtId`
+    * Specifies whether JWT access tokens should have an embedded unique ID (a `jti` claim).
+* `Claims`
+    * Allows settings claims for the client (will be included in the access token).
+* `AlwaysSendClientClaims`
+    * If set, the client claims will be send for every flow. If not, only for client credentials flow (default is `false`)
+* `PrefixClientClaims`
+    * If set, all client claims will be prefixed with `client_` to make sure they don't accidentally collide with user claims. Default is `true`.
 
-In addition there are a number of settings controlling the behavior of refresh tokens - see [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/wiki/Refresh-Tokens)
+In addition there are a number of settings controlling the behavior of refresh tokens - see [here](advanced/refreshTokens.html)
+
+##Example: Configure a client for implicit flow
+
+```csharp
+new Client
+{
+    ClientName = "JS Client",
+    Enabled = true,
+
+    ClientId = "implicitclient",
+    Flow = Flows.Implicit,
+
+    RequireConsent = true,
+    AllowRememberConsent = true,
+
+    RedirectUris = new List<string>
+    {
+        "https://myapp/callback.html",
+    },
+
+    PostLogoutRedirectUris = new List<string>
+    {
+        "http://localhost:23453/index.html",
+    }
+}
+```
+
+##Example: Configure a client for resource owner flow
+
+```csharp
+new Client
+{
+    ClientName = "Legacy Client",
+    Enabled = true,
+
+    ClientId = "legacy",
+    ClientSecrets = new List<ClientSecret>
+    {
+        new ClientSecret("4C701024-0770-4794-B93D-52B5EB6487A0".Sha256())
+    },
+
+    Flow = Flows.ResourceOwner,
+
+    RefreshTokenUsage = TokenUsage.OneTimeOnly,
+    RefreshTokenExpiration = TokenExpiration.Sliding
+}
+```
