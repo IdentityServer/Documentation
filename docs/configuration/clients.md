@@ -58,7 +58,7 @@ In addition there are a number of settings controlling the behavior of refresh t
 ##Example: Configure a client for implicit flow
 
 ```csharp
-new Client
+var client = new Client
 {
     ClientName = "JS Client",
     Enabled = true,
@@ -84,7 +84,7 @@ new Client
 ##Example: Configure a client for resource owner flow
 
 ```csharp
-new Client
+var client = new Client
 {
     ClientName = "Legacy Client",
     Enabled = true,
