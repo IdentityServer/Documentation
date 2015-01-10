@@ -9,7 +9,7 @@ permalink: /docs/
 * [The big Picture](overview/bigPicture.html)
 * [Terminology](overview/terminology.html)
 * [Packaging](overview/packaging.html)
-* [Getting Started: Writing the simplest OAuth2 Authorization Server, Client and API](overview/simplestOAuth.html)
+* [Getting Started: Creating the simplest OAuth2 Authorization Server, Client and API](overview/simplestOAuth.html)
 * [Getting Started: MVC Authentication & Web APIs](overview/mvcGettingStarted.html)
 
 ### Configuration

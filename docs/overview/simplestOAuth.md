@@ -2,21 +2,23 @@
 layout: docs-default
 ---
 
-#Creating a simple OAuth2 Authorization Server, Client and API
+#Creating the simplest OAuth2 Authorization Server, Client and API
 
 The intention of this walkthrough is to create the simplest possible IdentityServer installation acting as an OAuth2 authorization server.
 This is supposed to get you started with some of the basic features and configuration options.
-There are other more advanced views in the docs that you could do afterwards. This tutorial includes:
+There are other more advanced walk-throughs in the docs that you could do afterwards. This tutorial includes:
 
 * Creating a self-hosted IdentityServer
 
-* Setting up clients for both application to service communication both using an application account as well as on behalf of a user
+* Setting up clients for application to service communication both using an application account as well as on behalf of a user
 
 * Registering an API
 
 * Requesting access tokens
 
-* Validating access tokens
+* Calling an API
+
+* Validating an access token
 
 ##Setting up IdentityServer
 First we gonna create a console host and set up IdentityServer.
@@ -88,7 +90,8 @@ static class Clients
 ```
 
 ###Configuring IdentityServer
-IdentityServer gets configured as OWIN middleware. This happens in the `Startup` class using the `UseIdentityServer` extension method. The following snippets sets up a barebones server with our scopes and clients. We also set up an empty list of users (simply write a class that returns an empty `List<InMemoryUser>` - we gonna add users later).
+IdentityServer gets configured as OWIN middleware. This happens in the `Startup` class using the `UseIdentityServer` extension method.
+The following snippets sets up a barebones server with our scopes and clients. We also set up an empty list of users - we gonna add users later).
 
 ```csharp
 class Startup
@@ -98,7 +101,7 @@ class Startup
         var factory = InMemoryFactory.Create(
             scopes:  Scopes.Get(),
             clients: Clients.Get(),
-            users:   Users.Get());
+            users:   new List<InMemoryUser>());
 
         var options = new IdentityServerOptions
         {
