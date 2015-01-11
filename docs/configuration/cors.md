@@ -14,7 +14,7 @@ IdentityServer v3 allows the hosting application to configure a `CorsPolicy` on 
 
 The `CorsPolicy` has two ways to indicate which origins are allowed. The first is the `AllowedOrigins` collection of host names. This is useful if at application start time the list of origins is known (either hard coded or perhaps loaded from a database).
 
-```
+```csharp
 var idsvrOptions = new IdentityServerOptions();
 idsrvOptions.CorsPolicy.AllowedOrigins.Add("http://myclient.com");
 idsrvOptions.CorsPolicy.AllowedOrigins.Add("http://myotherclient.org
@@ -24,7 +24,7 @@ idsrvOptions.CorsPolicy.AllowedOrigins.Add("http://myotherclient.org
 
 The second way the `CorsPolicy` allows the hosting application to indicate which origins are allowed is the `PolicyCallback` delegate which is a `Func<string, Task<bool>>`. This delegate is invoked at runtime when a CORS request is being made to IdentityServer and passed the origin being requested. A return `bool` value of `true` indicates that the origin is allowed. This is useful if the list of allowed origins changes frequently or is sufficiently large such that a database lookup is preferred.
 
-```
+```csharp
 var idsvrOptions = new IdentityServerOptions();
 idsrvOptions.CorsPolicy.PolicyCallback = async origin =>
 {
@@ -36,7 +36,7 @@ idsrvOptions.CorsPolicy.PolicyCallback = async origin =>
 
 For convenience there is a static property `CorsOptions.AllowAll` that will allow all origins. This is useful for debugging or development.
 
-```
+```csharp
 var idsvrOptions = new IdentityServerOptions {
     CorsPolicy = CorsPolicy.AllowAll
 };
