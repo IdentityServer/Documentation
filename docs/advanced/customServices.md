@@ -4,9 +4,11 @@ layout: docs-default
 
 #Custom Services
 
-IdentityServer v3 provides many extensibility points for storage of data, validation logic and general functionality that are needed to support IdentityServer's operation as a token service. These various extensibility points are collectively referred to as "services".
+IdentityServer v3 provides many extensibility points for storage of data, validation logic and general functionality
+that are needed to support IdentityServer's operation as a token service.
+These various extensibility points are collectively referred to as "services".
 
-To see the full list of the services that are replaceable consult the `IdentityServerServiceFactory` class (https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source/Core/Configuration/IdentityServerServiceFactory.cs). The various properties allow for custom implementations to be registered.
+To see the full list of the services that are replaceable see [here](../configuration/serviceFactory.html).
 
 ### Required services
 
