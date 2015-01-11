@@ -26,4 +26,4 @@ layout: docs-default
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](http://www.ndcvideos.com/#/app/video/2651)
 * [Web API Authorization and Access Control - done right!?](https://vimeo.com/97337305)
 * [Identity Management with ASP.NET Part 1](http://www.ndcvideos.com/#/app/video/3121)
-* [Identity Management with ASP.NET Part 1](http://www.ndcvideos.com/#/app/video/2891)
+* [Identity Management with ASP.NET Part 2](http://www.ndcvideos.com/#/app/video/2891)
