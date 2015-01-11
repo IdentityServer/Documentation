@@ -9,6 +9,7 @@ IdentityServer supports authentication using external identity providers. The ex
 Katana itself ships with middleware for Google, Facebook, Twitter, Microsoft Accounts, WS-Federation and OpenID Connect - but there are also community developed middlewares.
 
 To configure the middleware for the external providers, add a method to your project that accepts an `IAppBuilder` and a `string` as parameters.
+
 ```csharp
 public static void ConfigureIdentityProviders(IAppBuilder app, string signInAsType)
 {

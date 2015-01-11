@@ -11,9 +11,6 @@ public void Configuration(IAppBuilder appBuilder)
 {
     var options = new IdentityServerOptions
     {
-        IssuerUri = "https://idsrv3.com",
-        SiteName = "Thinktecture IdentityServer v3"
-
         SigningCertificate = Certificate.Get(),
         Factory = factory,
     };
@@ -22,7 +19,9 @@ public void Configuration(IAppBuilder appBuilder)
 }
 ```
 
-The `IdentityServerOptions` class contains all configuration for IdentityServer. One part consists of simple properties like the issuer name or site title which you can source from wherever you see fit (static in code, configuration file or database). The other part is the so called service factory which implement certain aspects of IdentityServer's internal processing.
+The `IdentityServerOptions` class contains all configuration for IdentityServer.
+One part consists of simple properties like the issuer name or site title which you can source from wherever you see fit (static in code, configuration file or database).
+The other part is the so called service factory which acts as a registry for certain aspects of IdentityServer's internal processing.
 
 #### Hosting in IIS and RAMMFAR
 

@@ -65,4 +65,4 @@ The `InMemoryFactory` allows setting up a service factory by providing in-memory
 * `LocalizationService`
     * Implements localization of display strings
 
-See [here](../advanced/customService.html) for more information on registering your custom service and store implementations.
+See [here](../advanced/customServices.html) for more information on registering your custom service and store implementations.
