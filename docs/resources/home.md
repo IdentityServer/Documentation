@@ -20,6 +20,10 @@ layout: docs-default
 * [MongoDb Support](https://github.com/jageall/IdentityServer.v3.MongoDb)
 
 ### Videos
-* Overview Video: [https://vimeo.com/91397084](https://vimeo.com/91397084)
-* Samples Walkthrough Video: [https://vimeo.com/91405115](https://vimeo.com/91405115)
-* Introducing IdentityManager: [https://vimeo.com/91470580](https://vimeo.com/91470580)
+* [Overview Video (preview version)](https://vimeo.com/91397084)
+* [Samples Walkthrough Video (preview version)](https://vimeo.com/91405115)
+* [Introducing IdentityManager](https://vimeo.com/91470580)
+* [Introduction to OpenID Connect, OAuth2 and IdentityServer](http://www.ndcvideos.com/#/app/video/2651)
+* [Web API Authorization and Access Control - done right!?](https://vimeo.com/97337305)
+* [Identity Management with ASP.NET Part 1](http://www.ndcvideos.com/#/app/video/3121)
+* [Identity Management with ASP.NET Part 1](http://www.ndcvideos.com/#/app/video/2891)
