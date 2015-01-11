@@ -270,11 +270,13 @@ static class Users
 `Username` and `Password` are used to authenticate the user,
 the `Subject` is the unique identifier for that user that will be embedded into the access token.
 
+In `Startup` replace the empty user list with a call the `Get` method.
+
 ###Adding a Client
 Next we gonna add a client definition for the so called `resource owner password credential grant`.
-This flow allows a client to send username and password to the token service and get an access token back in return.
+This flow allows a client to send username and password to the token service and get to access token back in return.
 
-In total the `Clients` class looks like this now:
+In total the `Clients` class looks like this then:
 
 ```csharp
 static class Clients
