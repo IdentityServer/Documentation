@@ -40,7 +40,7 @@ That was registered as such:
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
-factory.TokenSigningService = new Registration<MyCustomTokenSigningService>();
+factory.TokenSigningService = new Registration<ITokenSigningService>(typeof(MyCustomTokenSigningService));
 ```
 ## Injecting custom services
 
@@ -85,6 +85,6 @@ Then it would be registered as such:
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
-factory.TokenSigningService = new Registration<MyCustomTokenSigningService>();
+factory.TokenSigningService = new Registration<ITokenSigningService>(typeof(MyCustomTokenSigningService));
 factory.Register(new Registration<ICustomLogger>(typeof(MyCustomDebugLogger)));
 ```
