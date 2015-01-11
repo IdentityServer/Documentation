@@ -8,30 +8,37 @@ IdentityServer v3 provides many extensibility points for storage of data, valida
 that are needed to support IdentityServer's operation as a token service.
 These various extensibility points are collectively referred to as "services".
 
-To see the full list of the services that are replaceable see [here](../configuration/serviceFactory.html).
+See [here](../configuration/serviceFactory.html) for the full list of the services.
 
-### Required services
+## Mandatory services
+Three of the services are mandatory and must be configured by the implementer, they are:
 
-Some services are required to be provided by the hosting application. These requested services are:
-* UserService
-* ScopeStore
-* ClientStore
+* the user service (`IUserService`)
 
-The `UserService` encapsulates the identity management piece, which involves validating credentials, associating an account from an external identity provider to a local account and providing claims that are issued in tokens. The `ScopeStore` acts as a means to access the configuration database that stores the OAuth2 and OpenID Connect scopes used by IdentityServer. The `ClientStore` provides access to load client information from a configuration database.
+* the client store (`IClientStore`)
 
-### Registering custom services
+* the scope store (`IScopeStore`)
 
-To register your own implementation for any of these services you must obtain an instance of a `Registration` object and assign it to the appropriate property on the `IdentityServerServiceFactory`.
+We provide a simple in-memory version of these three services. See [here](../configuration/inMemoryFactory.html) for more details.
 
-A `Registration` represents a way for IdentityServer to obtain an instance of your service. Depending upon the design of your service you might want to have a new instance on every request, use a singleton, or you might require special instantiation logic each time an instance is needed. To accommodate these different possibilities, the `Registration` class provides three different APIs to initialize your service:
+##Registering custom Services
 
-* Registration.RegisterType&lt;TService&gt;(Type implementationType)
-* Registration.RegisterSingleton&lt;TService&gt;(TService instance)
-* Registration.RegisterFactory&lt;TService&gt;(Func&lt;TService&gt; factoryFunc)
+You can replace every service and register additional custom ones. This is encapsulated by the `Registration` class.
+A `Registration` represents a way for IdentityServer to obtain an instance of your service.
+Depending upon the design of your service you might want to have a new instance on every request, use a singleton,
+or you might require special instantiation logic each time an instance is needed.
+To accommodate these different possibilities, the `Registration` class provides three different constructors to register your service:
 
-`RegisterType` will instantiate a new instance of the implementation type on every request. `RegisterSingleton` will simply re-use the instance provided. `RegisterFactory` allows you to provide a delegate to a function that produces the service to be used. Here’s an example of registering a custom user service:
+* `new Registration<T>()`
+    * registers a type
+* `new Registration<T>(someT)`
+    * registers an instance
+* `new Registration<T>(resolver => someT)`
+    * register a func that returns the instance
 
-```
+```csharp
 var factory = new IdentityServerServiceFactory();
-factory.UserService = Registration.RegisterType<IUserService>(typeof(MyCustomUserService));
+factory.UserService = new Registration<MyCustomUserService>();
 ```
+
+See the [DI](di.html) page for more details.
