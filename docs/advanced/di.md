@@ -6,26 +6,30 @@ layout: docs-default
 
 **The sample for this topic can be found [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/DependencyInjection)**
 
-IdentityServer v3 has extensibility points for various services. The default implementations of these services are designed to be decoupled from other moving parts of IdentityServer and as such we use dependency injection to get everything wired up. 
+IdentityServer v3 has extensibility points for various services.
+The default implementations of these services are designed to be decoupled from other moving parts of IdentityServer
+and as such we use dependency injection to get everything wired up.
 
 ### Injecting IdentityServer services
 
-The default services provided by IdentityServer can be replaced by the hosting application if desired. Custom implementations can also use dependency injection and have IdentityServer types or even custom types injected. This is only supported with custom services and stores that are registered with `Registration.RegisterType<T>`.
+The default services provided by IdentityServer can be replaced by the hosting application if desired.
+Custom implementations can also use dependency injection and have IdentityServer types or even custom types injected.
+This is only supported with custom services and stores that are registered using a `Registration`.
 
-For custom services to accept types defined by IdentityServer, simply indicate those dependencies as constructor arguments. When IdentityServer instantiates your registered type the constructor arguments will be resolved automatically. For example:
+For custom services to accept types defined by IdentityServer, simply indicate those dependencies as constructor arguments.
+When IdentityServer instantiates your registered type the constructor arguments will be resolved automatically. For example:
 
-```
+```csharp
 public class MyCustomTokenSigningService: ITokenSigningService
 {
-    Thinktecture.IdentityServer.Core.Configuration.IdentityServerOptions options;
+    private readonly IdentityServerOptions _options;
 
-    public MyCustomTokenSigningService(
-        Thinktecture.IdentityServer.Core.Configuration.IdentityServerOptions options)
+    public MyCustomTokenSigningService(IdentityServerOptions options)
     {
-        this.options = options;
+        _options = options;
     }
 
-    public System.Threading.Tasks.Task<string> SignTokenAsync(Thinktecture.IdentityServer.Core.Connect.Models.Token token)
+    public Task<string> SignTokenAsync(Token token)
     {
         // ...
     }
@@ -34,13 +38,16 @@ public class MyCustomTokenSigningService: ITokenSigningService
 
 That was registered as such:
 
-```
+```csharp
 var factory = new IdentityServerServiceFactory();
-factory.TokenSigningService = Registration.RegisterType<ITokenSigningService>(typeof(MyCustomTokenSigningService));
+factory.TokenSigningService = new Registration<MyCustomTokenSigningService>();
 ```
 ### Injecting custom services
 
-Your custom services might also have dependencies on your own types. Those can also be injected as long as they have been configured with IdentityServer’s dependency injection system. This is done via the `IdentityServerServiceFactory`’s `Register<TService>(Type implementationType)` method. For example, if you have a custom logger that is needed in your service:
+Your custom services might also have dependencies on your own types.
+Those can also be injected as long as they have been configured with IdentityServer’s dependency injection system.
+This is done by adding new registrations using the `IdentityServerServiceFactory`’s `Register()` method.
+For example, if you have a custom logger that is needed in your service:
 
 ```csharp
 public interface ICustomLogger
@@ -58,18 +65,16 @@ public class DebugLogger : ICustomLogger
 
 public class MyCustomTokenSigningService: ITokenSigningService
 {
-    Thinktecture.IdentityServer.Core.Configuration.IdentityServerOptions options;
-    ICustomLogger logger;
+    private readonly IdentityServerOptions _options;
+    private readonly ICustomLogger _logger;
 
-    public MyCustomTokenSigningService(
-        Thinktecture.IdentityServer.Core.Configuration.IdentityServerOptions options,
-        ICustomLogger logger)
+    public MyCustomTokenSigningService(IdentityServerOptions options, ICustomLogger logger)
     {
-        this.options = options;
-        this.logger = logger;
+        _options = options;
+        _logger = logger;
     }
 
-    public System.Threading.Tasks.Task<string> SignTokenAsync(Thinktecture.IdentityServer.Core.Connect.Models.Token token)
+    public Task<string> SignTokenAsync(Token token)
     {
         // ...
     }
@@ -80,6 +85,6 @@ Then it would be registered as such:
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
-factory.TokenSigningService = Registration.RegisterType<ITokenSigningService>(typeof(MyCustomTokenSigningService));
-factory.Register(Registration.RegisterType<ICustomLogger>(typeof(MyCustomDebugLogger)));
+factory.TokenSigningService = new Registration<MyCustomTokenSigningService>();
+factory.Register(new Registration<ICustomLogger>(typeof(MyCustomDebugLogger)));
 ```
