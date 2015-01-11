@@ -43,8 +43,6 @@ permalink: /docs/
 * [DI for Services](advanced/di.html)
 * [Customizing Views](advanced/customizingViews.html)
 * [CSP](advanced/csp.html)
-* [Protocol Plugins](advanced/plugins.html)
-* [Data Protection](advanced/dataProtection.html)
 * [User Service](advanced/userService.html)
 
 ### Resources
