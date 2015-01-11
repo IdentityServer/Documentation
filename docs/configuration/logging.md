@@ -53,6 +53,22 @@ We use [Baretail](https://www.baremetalsoft.com/baretail/) for viewing the log f
 </system.diagnostics>
 ```
 
+## Configuring the TraceSource Provider
+Add the following snippet to your config file. You can use the service trace viewer tool from the .NET SDK to inspect the trace files.
+
+```xml
+<sources>
+  <source name="Thinktecture.IdentityServer"
+          switchValue="Information, ActivityTracing">
+    <listeners>
+      <add name="xml"
+            type="System.Diagnostics.XmlWriterTraceListener"
+            initializeData= "trace.svclog" />
+    </listeners>
+  </source>
+</sources>
+```
+
 ## Instrumenting your own code
 You can also use the logging system in your own extensibility code.
 

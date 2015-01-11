@@ -25,6 +25,7 @@ permalink: /docs/
 * [HSTS](configuration/hsts.html)
 * [CORS](configuration/cors.html)
 * [Logging](configuration/logging.html)
+* [Events](configuration/events.html)
 
 ### Endpoints
 
