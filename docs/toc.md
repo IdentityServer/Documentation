@@ -28,7 +28,7 @@ permalink: /docs/
 
 ### Endpoints
 
-* [Authorization](endpoints/authorization.html)
+* [Authorization/Authentication](endpoints/authorization.html)
 * [Token](endpoints/token.html)
 * [UserInfo](endpoints/userinfo.html)
 * [Discovery](endpoints/discovery.html)
