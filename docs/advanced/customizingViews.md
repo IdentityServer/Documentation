@@ -16,14 +16,15 @@ The `EmbeddedAssetsViewService` allows for some minor customization. The hosting
 
 The `EmbeddedAssetsViewServiceConfiguration` class is used to indicate these CSS and/or JavaScript files via the `Stylesheets` and `Scripts` collections:
 
-```
+```csharp
 var embeddedViewServiceConfig = new EmbeddedAssetsViewServiceConfiguration();
 embeddedViewServiceConfig.Stylesheets.Add("~/Content/Site.css");
 ```
 The paths passed to `Add` can either be relative to IdentityServer’s base path by prefixing the path with a “~” (such as “~/path/file.css”), or the path can be host-relative by prefixing the path with a “/”(such as “/path/file.css”). Currently, absolute URLs are not supported given IdentityServer's use of CSP.
 
-To then register the ` EmbeddedAssetsViewServiceConfiguration` the dependency injection system can be used to register the instance configured by the hosting application:
-```
+To then register the `EmbeddedAssetsViewServiceConfiguration` the dependency injection system can be used to register the instance configured by the hosting application:
+
+```csharp
 var embeddedViewServiceConfig = new EmbeddedAssetsViewServiceConfiguration();
 embeddedViewServiceConfig.Stylesheets.Add("~/Content/Site.css");
 

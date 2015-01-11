@@ -42,7 +42,7 @@ factory.TokenSigningService = Registration.RegisterType<ITokenSigningService>(ty
 
 Your custom services might also have dependencies on your own types. Those can also be injected as long as they have been configured with IdentityServer’s dependency injection system. This is done via the `IdentityServerServiceFactory`’s `Register<TService>(Type implementationType)` method. For example, if you have a custom logger that is needed in your service:
 
-```
+```csharp
 public interface ICustomLogger
 {
     void Log(string message);
@@ -78,7 +78,7 @@ public class MyCustomTokenSigningService: ITokenSigningService
 
 Then it would be registered as such:
 
-```
+```csharp
 var factory = new IdentityServerServiceFactory();
 factory.TokenSigningService = Registration.RegisterType<ITokenSigningService>(typeof(MyCustomTokenSigningService));
 factory.Register(Registration.RegisterType<ICustomLogger>(typeof(MyCustomDebugLogger)));

@@ -160,10 +160,18 @@ public class TestController : ApiController
 {
     public IHttpActionResult Get()
     {
-        return Json(new { message = "OK" });
+        var caller = User as ClaimsPrincipal;
+
+        return Json(new
+        {
+            message = "OK computer",
+            client =  caller.FindFirst("client_id").Value
+        });
     }
 }
 ```
+
+The `User` property on the controller gives you access to the claims from the access token.
 
 ###Adding Startup
 Add the following `Startup` class for both setting up web api and configuring trust with IdentityServer
@@ -226,9 +234,147 @@ static void CallApi(TokenResponse response)
 }
 ```
 
-If you call both snippets, you should see `{ message: "OK" }` in your console.
+If you call both snippets, you should see `{"message":"OK computer","client":"silicon"}` in your console.
 
-Mission accomplished.
+##Adding a User
+So far, the client requests a token for itself and no user is involved. Let's introduce a human.
 
+###Adding a user service
+The user service manages users - for this sample we gonna use the simple in-memory user service.
+First we need to define some users:
 
+ ```csharp
+static class Users
+{
+    public static List<InMemoryUser> Get()
+    {
+        return new List<InMemoryUser>
+        {
+            new InMemoryUser
+            {
+                Username = "bob",
+                Password = "secret",
+                Subject = "1"
+            },
+            new InMemoryUser
+            {
+                Username = "alice",
+                Password = "secret",
+                Subject = "2"
+            }
+        };
+    }
+}
+ ```
 
+`Username` and `Password` are used to authenticate the user,
+the `Subject` is the unique identifier for that user that will be embedded into the access token.
+
+###Adding a Client
+Next we gonna add a client definition for the so called `resource owner password credential grant`.
+This flow allows a client to send username and password to the token service and get an access token back in return.
+
+In total the `Clients` class looks like this now:
+
+```csharp
+static class Clients
+{
+    public static List<Client> Get()
+    {
+        return new List<Client>
+        {
+            // no human involved
+            new Client
+            {
+                ClientName = "Silicon-only Client",
+                ClientId = "silicon",
+                Enabled = true,
+                AccessTokenType = AccessTokenType.Reference,
+
+                Flow = Flows.ClientCredentials,
+                ClientSecrets = new List<ClientSecret>
+                {
+                    new ClientSecret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                }
+            },
+
+            // human is involved
+            new Client
+            {
+                ClientName = "Silicon on behalf of Carbon Client",
+                ClientId = "carbon",
+                Enabled = true,
+                AccessTokenType = AccessTokenType.Reference,
+
+                Flow = Flows.ResourceOwner,
+                ClientSecrets = new List<ClientSecret>
+                {
+                    new ClientSecret("21B5F798-BE55-42BC-8AA8-0025B903DC3B".Sha256())
+                }
+            }
+        };
+    }
+}
+```
+
+###Updating the API
+When a human is involved, the access token will contain the `sub` claim to uniquely identify the user.
+Let's make this small modification to the API controller:
+
+```csharp
+[Route("test")]
+public class TestController : ApiController
+{
+    public IHttpActionResult Get()
+    {
+        var caller = User as ClaimsPrincipal;
+
+        var subjectClaim = caller.FindFirst("sub");
+        if (subjectClaim != null)
+        {
+            return Json(new
+            {
+                message = "OK user",
+                client = caller.FindFirst("client_id").Value,
+                subject = subjectClaim.Value
+            });
+        }
+        else
+        {
+            return Json(new
+            {
+                message = "OK computer",
+                client = caller.FindFirst("client_id").Value
+            });
+        }
+    }
+}
+```
+
+###Updating the Client
+Next add a new method to the client to request a token on behalf of a user:
+
+```csharp
+static TokenResponse GetUserToken()
+{
+    var client = new OAuth2Client(
+        new Uri("https://localhost:44333/connect/token"),
+        "carbon",
+        "21B5F798-BE55-42BC-8AA8-0025B903DC3B");
+
+    return client.RequestResourceOwnerPasswordAsync("bob", "secret", "api1").Result;
+}
+```
+
+Now try both methods of requesting a token and inspect the claims and the API response.
+
+##What to do next
+This walk-through covered a very simple OAuth2 scenario. Next you could try, e.g.
+
+* The other flows - e.g. implicit, code or hybrid. They are all enablers for advanced scenarios like federation and external identities
+
+* Connect to your user database - either by writing your own user service or by using our out of the box support form ASP.NET Identity and MembershipReboot
+
+* Store client and scope configuration in a data store. We have out of the box support for Entity Framework.
+
+* Add authentication and identity tokens using OpenID Connect and identity scopes
