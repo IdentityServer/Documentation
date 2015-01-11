@@ -10,7 +10,7 @@ IdentityServer v3 has extensibility points for various services.
 The default implementations of these services are designed to be decoupled from other moving parts of IdentityServer
 and as such we use dependency injection to get everything wired up.
 
-### Injecting IdentityServer services
+## Injecting IdentityServer services
 
 The default services provided by IdentityServer can be replaced by the hosting application if desired.
 Custom implementations can also use dependency injection and have IdentityServer types or even custom types injected.
@@ -42,7 +42,7 @@ That was registered as such:
 var factory = new IdentityServerServiceFactory();
 factory.TokenSigningService = new Registration<MyCustomTokenSigningService>();
 ```
-### Injecting custom services
+## Injecting custom services
 
 Your custom services might also have dependencies on your own types.
 Those can also be injected as long as they have been configured with IdentityServer’s dependency injection system.
