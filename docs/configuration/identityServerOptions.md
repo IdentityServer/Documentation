@@ -33,7 +33,7 @@ The `IdentityServerOptions` [class](https://github.com/thinktecture/Thinktecture
 * `CorsPolicy`
     * Configures [CORS](cors.html)
 * `CspOptions`
-    * Configures [CSP](csp.html)
+    * Configures [CSP](../advanced/csp.html)
 * `ProtocolLogoutUrls`
     * Configures callback URLs that should be called during logouts (mainly useful for protocol plugins).
 * `LoggingOptions`
