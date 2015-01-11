@@ -10,18 +10,20 @@ The `Thinktecture.IdentityServer.Core.Configuration.IdentityServerServiceFactory
 
 The extensibility points fall into three categories.
 
-#### Mandatory
+## Mandatory
 
 * `UserService`
-    * Implements user authentication against the local user store as well as association of external users. There are two standard implementations for [MembershipReboot](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.MembershipReboot) and [ASP.NET Identity](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.AspNetIdentity)
+    * Implements user authentication against the local user store, association of external users, claims retrieval and sign-out logic.
+    There are two standard implementations for [MembershipReboot](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.MembershipReboot)
+    and [ASP.NET Identity](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.AspNetIdentity)
 * `ScopeStore`
     * Implements retrieval of scopes configuration data
 * `ClientStore`
     * Implements retrieval of client configuration data
 
-The `InMemoryFactory` allows setting up a service factory by providing in-memory stores for users, clients and scopes (see [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FConfiguration%2FInMemoryFactory.cs)).
+The `InMemoryFactory` allows setting up a service factory by providing in-memory stores for users, clients and scopes (see [here](inMemoryFactory.html).
 
-#### Mandatory for production scenarios (but with default in-memory implementation)
+## Mandatory for production scenarios (but with default in-memory implementation)
 
 * `AuthorizationCodeStore`
     * Implements storage and retrieval of authorization codes ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FITransientDataRepository.cs))
@@ -34,7 +36,7 @@ The `InMemoryFactory` allows setting up a service factory by providing in-memory
 * `ViewService`
     * Implements retrieval of UI assets. Defaults to using the embedded assets. ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIViewService.cs))
 
-#### Optional
+## Optional (can be replace, but have a default implementation)
 
 * `TokenService`
     * Implements creation of identity and access tokens ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FITokenService.cs))
@@ -56,5 +58,11 @@ The `InMemoryFactory` allows setting up a service factory by providing in-memory
     * Implements logic of consent decisions ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source/Core/Services/IConsentService.cs))
 * `ClientPermissionsService`
     * Implements retrieval and revocation of consents, reference and refresh tokens ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIClientPermissionsService.cs))
+* `EventService`
+    * Implements forwarding events to some logging system (e.g. elastic search)
+* `RedirectUriValidator`
+    * Implements validation of redirect and post logout URIs
+* `LocalizationService`
+    * Implements localization of display strings
 
-See [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/wiki/Registering-Custom-Services) for more information on registering your custom service and store implementations.
+See [here](../advanced/customService.html) for more information on registering your custom service and store implementations.
