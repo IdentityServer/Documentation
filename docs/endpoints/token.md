@@ -18,11 +18,12 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#TokenRequest).
 - `username` (required for password grant type)
 - `password` (required for password grant_type)
 - `acr_values` (allowed for password grant type to pass additional information to user service)
-   there are values with special meaning:
-   
+    - there are values with special meaning:
         - `idp:name_of_idp` bypasses the login/home realm screen and forwards the user directly to the selected identity provider (if allowed per client configuration)
         - `tenant:name_of_tenant` can be used to pass extra information to the user service
 - `refresh_token` (required for refresh token grant)
+- `client_id` (either in the post body, or as a basic authentication header)
+- `client_secret` (either in the post body, or as a basic authentication header)
 
 ### Authentication
 All requests to the token endpoint must be authenticated - either pass client id and secret via Basic Authentication
