@@ -30,11 +30,13 @@ All requests to the token endpoint must be authenticated - either pass client id
 or add `client_id` and `client_secret` fields to the POST body.
 
 ### Example
-(Form-encoding removed for readability)
+(Form-encoding removed and line breaks added for readability)
 
 ```
 POST /connect/token
 Authorization: Basic abcxyz
 
-grant_type=authorization_code&authorization_code=hdh922&redirect_uri=https://myapp.com/callback
+grant_type=authorization_code&
+authorization_code=hdh922&
+redirect_uri=https://myapp.com/callback
 ```
