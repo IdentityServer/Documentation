@@ -36,7 +36,7 @@ public static void ConfigureIdentityProviders(IAppBuilder app, string signInAsTy
     var twitter = new TwitterAuthenticationOptions
     {
         AuthenticationType = "Twitter",
-        Caption = "Facebook",
+        Caption = "Twitter",
         SignInAsAuthenticationType = signInAsType,
         ConsumerKey = "...",
         ConsumerSecret = "..."
