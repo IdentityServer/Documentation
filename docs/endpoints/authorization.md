@@ -30,12 +30,13 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest).
     - `none` no UI will be shown during the request. If this is not possible (e.g. because the user has to sign in or consent) an error is returned
     - `login` the login UI will be shown, even if the user has a valid session
 - `login_hint` (optional)
-    - `idp:name_of_idp` bypasses the login/home realm screen and forwards the user directly to the selected identity provider (if allowed per client configuration)
-    - `tenant:name_of_tenant` can be used to pass extra information to the user service
+    - can be used to pre-fill the username field on the login page
 - `max_age` (optional)
     - if the user's logon session exceeds the max age (in seconds), the login UI will be shown
 - `acr_values` (optional)
-    - allows to pass additional authentication related information to the user service
+    - allows to pass additional authentication related information to the user service - there are also values with special meaning:
+        - `idp:name_of_idp` bypasses the login/home realm screen and forwards the user directly to the selected identity provider (if allowed per client configuration)
+        - `tenant:name_of_tenant` can be used to pass a tenant name to the user service
 
 ### Example
 (URL encoding removed for readability)
