@@ -4,7 +4,7 @@ layout: docs-default
 
 #Service Factory
 
-IdentityServer v3 contains many features for implementing OpenID Connect and OAuth2. Many of these features have been designed so they can replaced. This would be useful for the scenarios where the default logic doesn’t match the hosting application’s requirements, or simply the application wishes to provide an entirely different implementation. And in fact, there are some extensibility point within IdentityServer v3 that are required to be provided by the hosting application (such as the storage for configuration data or the identity management implementation for validating users’ credentials).
+IdentityServer v3 contains many features for implementing OpenID Connect and OAuth2. Many of these features have been designed so they can be replaced. This would be useful for the scenarios where the default logic doesn’t match the hosting application’s requirements, or simply the application wishes to provide an entirely different implementation. And in fact, there are some extensibility point within IdentityServer v3 that are required to be provided by the hosting application (such as the storage for configuration data or the identity management implementation for validating users’ credentials).
 
 The `Thinktecture.IdentityServer.Core.Configuration.IdentityServerServiceFactory` holds all these building blocks and must be supplied at startup time using the `IdentityServerOptions` class (see [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/wiki/Configuration-Options) for more information on configuration options).
 
