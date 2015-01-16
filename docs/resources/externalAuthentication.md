@@ -19,4 +19,4 @@ layout: docs-default
 
 ## Other community contributions
 
-* [OWIN OAuth Providers](https://github.com/owin-middleware/OwinOAuthProviders) (Google+, Yahoo, LinkedIn, GitHub, Instagram, StackExchange, Battle.net)
+* [OWIN OAuth Providers](https://github.com/owin-middleware/OwinOAuthProviders) (Google+, Yahoo, LinkedIn, GitHub, Instagram, StackExchange, Battle.net...)

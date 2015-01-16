@@ -49,4 +49,4 @@ permalink: /docs/
 ### Resources
 
 * [Overview](resources/home.html)
-* [External Authentication](resources/externalAuthentication.html)
+* [Middleware for external Authentication](resources/externalAuthentication.html)
