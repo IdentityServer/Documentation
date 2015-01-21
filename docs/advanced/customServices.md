@@ -34,7 +34,7 @@ To accommodate these different possibilities, the `Registration` class provides 
 * `new Registration<T>(Type yourImplementation)`
     * Registers `yourImplementation` as the class that implements the `T` interface.
 * `new Registration<T, Impl>()`
-    * Registers the `Impl` as the class that implements the `T` interface. This API is simply a convenience for the previous that accepts a `Type` parameter.
+    * Registers `Impl` as the class that implements the `T` interface. This API is simply a convenience for the previous that accepts a `Type` parameter.
 * `new Registration<T>(T singleton)`
     * Registers the `singleton` instance passed as a singleton implementation of the `T` interface.
 * `new Registration<T>(Func<IDependencyResolver, T> factory)`
