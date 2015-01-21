@@ -42,6 +42,14 @@ That was registered as such:
 var factory = new IdentityServerServiceFactory();
 factory.TokenSigningService = new Registration<ITokenSigningService>(typeof(MyCustomTokenSigningService));
 ```
+
+or alternatively with this syntax:
+
+```csharp
+var factory = new IdentityServerServiceFactory();
+factory.TokenSigningService = new Registration<ITokenSigningService, MyCustomTokenSigningService>();
+```
+
 ## Injecting custom services
 
 Your custom services might also have dependencies on your own types.
@@ -85,6 +93,84 @@ Then it would be registered as such:
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
-factory.TokenSigningService = new Registration<ITokenSigningService>(typeof(MyCustomTokenSigningService));
-factory.Register(new Registration<ICustomLogger>(typeof(MyCustomDebugLogger)));
+factory.TokenSigningService = new Registration<ITokenSigningService, MyCustomTokenSigningService>();
+factory.Register(new Registration<ICustomLogger, MyCustomDebugLogger>());
 ```
+
+### Custom services without an interface
+
+In the above example the injected type was the `ICustomLogger` and the impelemntation was the `MyCustomDebugLogger`. If your custom services is not designed with an interface to separate the contract from the implementation, then the concrete type itself can be registered to be injected.
+
+For example, if the `MyCustomTokenSigningService`'s constructor did not accept an interface for the logger, as such:
+
+```csharp
+public class MyCustomTokenSigningService: ITokenSigningService
+{
+    public MyCustomTokenSigningService(IdentityServerOptions options, MyCustomDebugLogger logger)
+    {
+        _options = options;
+        _logger = logger;
+    }
+
+    // ...
+}
+```
+
+Then the registraion could instead be configured like this:
+
+```csharp
+var factory = new IdentityServerServiceFactory();
+factory.TokenSigningService = new Registration<ITokenSigningService, MyCustomTokenSigningService>();
+factory.Register(new Registration<MyCustomDebugLogger>());
+```
+
+In short, this type of registration means that the `MyCustomDebugLogger` concrete type is the dependency type to be injected.
+
+## Customizing the creation
+
+If it's necessary for your service to be constructed manually (e.g.  you need to pass specific arguments to the constructor), then you can use the `Registration` class that allows a factory callback to be used. This `Registration` has this signature:
+
+```csharp
+new Registration<T>(Func<IDependencyResolver, T> factory) 
+```
+
+The return value must be an instance of the `T` interface and an example might look like this:
+
+```csharp
+var factory = new IdentityServerServiceFactory();
+factory.TokenSigningService = new Registration<ITokenSigningService>(resolver =>
+    new MyCustomTokenSigningService("SomeSigningKeyValue")
+);
+```
+
+### Obtaining other dependencies
+
+While this approach allows you the most flexibility to create your service, you still might require the use of other services. This is what the `IDependencyResolver` is used for. It allows you to obtain other services from within your callback function. For example, if your custom client store requires a dependency on another service from within IdentityServer, it can be obtain as such:
+
+```csharp
+var factory = new IdentityServerServiceFactory();
+factory.TokenSigningService = new Registration<ITokenSigningService>(resolver =>
+    new MyCustomTokenSigningService("SomeSigningKeyValue", resolver.Resolve<ICustomLogger>())
+);
+```
+
+### Named dependencies
+
+Finally, when registering custom dependencies via `IdentityServerServiceFactory`’s `Register()` method, the depdnedencies can be named. This name is indicated via the `name` constructor parameter on the `Registration` class. This is only used for custom registrations and the name can only used when resolving dependencies with the `IDependencyResolver` from within the custom factory callback.
+
+named dependencies can be useful to register multiple instances of the same `T` yet provide a mechanism to distinguish the implementation desired. For example:
+
+```csharp
+string mode = "debug"; // or "release", for example
+
+var factory = new IdentityServerServiceFactory();
+
+factory.Register(new Registration<ICustomLogger, MyFileSystemLogger>("debug"));
+factory.Register(new Registration<ICustomLogger, MyDatabaseLogger>("release"));
+
+factory.TokenSigningService = new Registration<ITokenSigningService>(resolver =>
+    new MyCustomTokenSigningService(resolver.Resolve<ICustomLogger>(mode))
+);
+```
+
+In this exmaple, the `mode` acts as a configuration flag to influence which impelmentation of the `ICustomLogger` will be used at runtime.
