@@ -38,7 +38,7 @@ To accommodate these different possibilities, the `Registration` class provides 
 * `new Registration<T>(T singleton)`
     * Registers the `singleton` instance passed as a singleton implementation of the `T` interface.
 * `new Registration<T>(Func<IDependencyResolver, T> factory)`
-    * Registers a callback function that will be invoked to returns an implementation of the `T` interface.
+    * Registers a callback function that will be invoked to return an implementation of the `T` interface.
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
