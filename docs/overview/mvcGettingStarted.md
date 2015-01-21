@@ -18,7 +18,8 @@ You can switch the project now to SSL using the properties window:
 
 ![set ssl](https://cloud.githubusercontent.com/assets/1454075/4604894/9f18b656-51bd-11e4-935c-e3ecdb3d1905.png)
 
-**Important** Don't forget to update the start URL in your project properties.
+**Important**
+Don't forget to update the start URL in your project properties.
 
 ## Adding IdentityServer
 IdentityServer is based on OWIN/Katana and distributed as a Nuget package. To add it to the newly created web host, install the following two packages:
@@ -56,7 +57,7 @@ public static class Clients
 ```
 
 ## Configuring IdentityServer - Users
-Next we gonna add some users to IdentityServer - again this can be accomplished by providing a simple C# class. You can retrieve user information from any data store and we provide out of the box support for ASP.NET Identity and MembershipReboot.
+Next we will add some users to IdentityServer - again this can be accomplished by providing a simple C# class. You can retrieve user information from any data store and we provide out of the box support for ASP.NET Identity and MembershipReboot.
 
 ```csharp
 public static class Users
@@ -83,10 +84,10 @@ public static class Users
 ```
 
 ## Adding Startup
-IdentityServer gets wired up in the startup class. Here we provide information about the clients, users, scopes,
+IdentityServer is configured in the startup class. Here we provide information about the clients, users, scopes,
 the signing certificate and some other configuration options.
-In production you should load the signing certificate from the Windows certificate store or some other secured source,
-here we simply added it to the project as a file (you can download a test certificate from [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/Certificates).
+In production you should load the signing certificate from the Windows certificate store or some other secured source.
+In this sample we simply added it to the project as a file (you can download a test certificate from [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/Certificates).
 Add it to the project and set its build action to `Copy to output`.
 
 
@@ -290,7 +291,7 @@ After successful authentication, you should now see the role claims in the user'
 When you inspect the claims on the about page, you will notice two things: some claims have odd long type names and there are more claims than you probably need in your application.
 
 The long claim names come from Microsoft's JWT handler trying to map some claim types to .NET's `ClaimTypes` class types.
-You can turn off this behavior with the following line of code (in `startup`).
+You can turn off this behavior with the following line of code (in `Startup`).
 
 This also means that you need to adjust the configuration for anti-CSRF protection to the new unique `sub` claim type:
 
@@ -709,7 +710,8 @@ public class Startup
 }
 ```
 
-**Note**: IdentityServer issues standard JSON Web Tokens (JWT), and you could use the plain Katana JWT middleware to validate them. Our middleware is just a convenience since it can auto-configure itself using the IdentityServer discovery document (metadata).
+**Note**
+IdentityServer issues standard JSON Web Tokens (JWT), and you could use the plain Katana JWT middleware to validate them. Our middleware is just a convenience since it can auto-configure itself using the IdentityServer discovery document (metadata).
 
 ## Registering the API in IdentityServer
 
@@ -749,7 +751,7 @@ public static class Scopes
 ```
 
 ## Registering a Web API Client
-Next we gonna call the API. You can do that either as using client credentials (think service account) or by delegating the users identity. We will start with the client credentials.
+Next we will call the API. You can do that either as using client credentials (think service account) or by delegating the users identity. We will start with the client credentials.
 
 First we need to register a new client for the MVC app. For security reasons, IdentityServer only allows one flow per client, and since our existing MVC client already uses hybrid flow, we need to create a new client for the service to service communication.
 
@@ -907,7 +909,7 @@ SecurityTokenValidated = async n =>
     }
 ```
 
-Another option would be to reconfigure the scopes in IdentityServer and set the `AlwaysIncludeInIdToken` flag on the scope claims to force inclusion of the claims in the identity token - I'll leave that as an exercise.
+Another option would be to reconfigure the scopes in IdentityServer and set the `AlwaysIncludeInIdToken` flag on the scope claims to force inclusion of the claims in the identity token - I'll leave that as an exercise for the reader.
 
 **Calling the API**
 
