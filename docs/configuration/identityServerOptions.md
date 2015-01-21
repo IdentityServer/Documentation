@@ -16,10 +16,10 @@ The `IdentityServerOptions` [class](https://github.com/thinktecture/Thinktecture
     * A secondary certificate that will appear in the discovery document. Can be used to prepare clients for certificate rollover.
 * `RequireSsl`
     * Indicates if SSL is required for IdentityServer. Defaults to `true`.
-* `PublicHostName`
-    * By default, IdentityServer uses the host name from the HTTP request when creating links.
+* `PublicOrigin`
+    * By default, IdentityServer uses the host, protocol, and port from the HTTP request when creating links.
     This might not be accurate in reverse proxy or load-balancing situations.
-    You can override the host name used for link generation using this property.
+    You can override the origin used for link generation using this property.
 * `Endpoints`
     * Allows enabling or disabling specific endpoints (by default all endpoints are enabled).
 * `Factory` (required)
@@ -40,3 +40,5 @@ The `IdentityServerOptions` [class](https://github.com/thinktecture/Thinktecture
     * Configures settings related to [logging](logging.html)
 * `EventsOptions`
     * Configures settings related to [events](events.html)
+* `EnableWelcomePage`
+    * Enables or disables the default welcome page. Defaults to `true`.
