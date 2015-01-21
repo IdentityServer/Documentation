@@ -6,26 +6,28 @@ layout: docs-default
 
 **The `Thinktecture.IdentityServer.Core.Models.Scope` class models an OpenID Connect or OAuth2 scope.**
 
+* `Enabled`
+    * Indicates if scope is enabled and can be requested. Defaults to `true`.
 * `Name`
-    * Unique name of the scope
+    * Name of the scope. This is the value a client will use to request the scope.
 * `DisplayName`
-    * Display name for consent screen
+    * Display name for consent screen.
 * `Description`
-    * Description
+    * Description for the consent screen.
 * `Required`
-    * Specifies whether the user can de-select the scope on the consent screen
+    * Specifies whether the user can de-select the scope on the consent screen. Defaults to `false`.
 * `Emphasize`
-    * Specifies whether the scope is emphasized on the consent screen
+    * Specifies whether the consent screen will emphasize this scope. Use this setting for sensitive or important scopes. Defaults to `false`.
 * `Type`
-    * Either `Identity` (OpenID Connect related) or `Resource` (OAuth2 resources).
+    * Either `Identity` (OpenID Connect related) or `Resource` (OAuth2 resources). Defaults to `Resource`.
 * `Claims`
-    * Specifies a static list of claims that should get emitted into the corresponding identity and access token.
+    * List of user claims that should be included in the identity (identity scope) or access token (resource scope). 
 * `IncludeAllClaimsForUser`
-    * If enabled, all claims for the user will be included in the token
+    * If enabled, all claims for the user will be included in the token. Defaults to `false`.
 * `ClaimsRule`
     * Rule for determining which claims should be included in the token (this is implementation specific)
 * `ShowInDiscoveryDocument`
-    * Specifies whether this scope is shown in the discovery document (defaults to true)
+    * Specifies whether this scope is shown in the discovery document. Defaults to `true`.
 
 **Scope can also specify claims that go into the corresponding token - the `ScopeClaim` class has the following properties:**
 
@@ -34,7 +36,7 @@ layout: docs-default
 * `Description`
     * Description of the claim
 * `AlwaysIncludeInIdToken`
-    * Specifies whether this claim should always be present in the identity token (even if an access token has been requested as well). Applies to identity scopes only.
+    * Specifies whether this claim should always be present in the identity token (even if an access token has been requested as well). Applies to identity scopes only. Defaults to `false`.
 
 **Example of a `role` identity scope:**
 
