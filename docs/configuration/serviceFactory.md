@@ -36,7 +36,7 @@ The `InMemoryFactory` allows setting up a service factory by providing in-memory
 * `ViewService`
     * Implements retrieval of UI assets. Defaults to using the embedded assets. ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIViewService.cs))
 
-## Optional (can be replace, but have a default implementation)
+## Optional (can be replaced, but have default implementations)
 
 * `TokenService`
     * Implements creation of identity and access tokens ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FITokenService.cs))
@@ -59,10 +59,13 @@ The `InMemoryFactory` allows setting up a service factory by providing in-memory
 * `ClientPermissionsService`
     * Implements retrieval and revocation of consents, reference and refresh tokens ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIClientPermissionsService.cs))
 * `EventService`
-    * Implements forwarding events to some logging system (e.g. elastic search)
+    * Implements forwarding events to some logging system (e.g. elastic search) ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIEventService.cs))
 * `RedirectUriValidator`
-    * Implements validation of redirect and post logout URIs
+    * Implements validation of redirect and post logout URIs ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIRedirectUriValidator.cs))
 * `LocalizationService`
-    * Implements localization of display strings
+    * Implements localization of display strings ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FILocalizationService.cs))
+* `ClientSecretValidator`
+    * Implements validation of client secrets ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIClientSecretValidator.cs))
+
 
 See [here](../advanced/customServices.html) for more information on registering your custom service and store implementations.
