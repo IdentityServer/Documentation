@@ -15,3 +15,5 @@ IdentityServer v3 allows the hosting application to configure a `CspOptions` on 
 * `StyleSrc` : allows for additional `style-src` values to be added to the default policy.
 * `FontSrc` : allows for additional `font-src` values to be added to the default policy.
 * `ConnectSrc` : allows for additional `connect-src` values to be added to the default policy.
+
+CSP allows for a reporting endpoint to be configured. IdentityServer provides a CSP report endpoint that is enabled by default. CSP errors will be raised as [events](../configuration/events.html) in the eventing system. The CSP reporting feature can disabled by setting the `EnableCspReportEndpoint` property to `false` on the `EndpointOptions` which is a property of the [`IdentityServerOptions`](../configuration/identityServerOptions.html).
