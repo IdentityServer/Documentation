@@ -21,7 +21,7 @@ There are other more advanced walk-throughs in the docs that you could do afterw
 * Validating an access token
 
 ##Setting up IdentityServer
-First we gonna create a console host and set up IdentityServer.
+First we will create a console host and set up IdentityServer.
 
 Start by creating a standard console application and add IdentityServer via nuget:
 
@@ -90,8 +90,8 @@ static class Clients
 ```
 
 ###Configuring IdentityServer
-IdentityServer gets configured as OWIN middleware. This happens in the `Startup` class using the `UseIdentityServer` extension method.
-The following snippets sets up a barebones server with our scopes and clients. We also set up an empty list of users - we gonna add users later).
+IdentityServer is implemented as OWIN middleware. It is configured in  in the `Startup` class using the `UseIdentityServer` extension method.
+The following snippets sets up a bare bones server with our scopes and clients. We also set up an empty list of users - we will add users later).
 
 ```csharp
 class Startup
@@ -138,7 +138,7 @@ static void Main(string[] args)
 When you run the console app, you should see some diagnostics output and `server running...`.
 
 ##Adding an API
-In this part we will add a simple web API that is configured to require token from the IdentityServer we just set up.
+In this part we will add a simple web API that is configured to require an access token from the IdentityServer we just set up.
 
 ###Creating the Web Host
 Add a new `ASP.NET Web Application` to the solution and choose the `Empty` option (no framework references).
@@ -200,7 +200,7 @@ public void Configuration(IAppBuilder app)
 Try opening the browser and access the test controller - you should see a 401 because the necessary access token is missing.
 
 ##Adding a Console Client
-In the next part we will add a simple console client that will request an access token and use that to communicate with the api.
+In the next part we will add a simple console client that will request an access token and use that to authenticate with the api.
 
 First add a new console project and install a nuget package for an OAuth2 client helper library:
 
@@ -237,10 +237,10 @@ static void CallApi(TokenResponse response)
 If you call both snippets, you should see `{"message":"OK computer","client":"silicon"}` in your console.
 
 ##Adding a User
-So far, the client requests a token for itself and no user is involved. Let's introduce a human.
+So far, the client requests an access token for itself and no user is involved. Let's introduce a human.
 
 ###Adding a user service
-The user service manages users - for this sample we gonna use the simple in-memory user service.
+The user service manages users - for this sample we will use the simple in-memory user service.
 First we need to define some users:
 
  ```csharp
@@ -273,8 +273,8 @@ the `Subject` is the unique identifier for that user that will be embedded into 
 In `Startup` replace the empty user list with a call the `Get` method.
 
 ###Adding a Client
-Next we gonna add a client definition for the so called `resource owner password credential grant`.
-This flow allows a client to send username and password to the token service and get to access token back in return.
+Next we will add a client definition that uses the flow called `resource owner password credential grant`.
+This flow allows a client to send the user's username and password to the token service and get an access token back in return.
 
 In total the `Clients` class looks like this then:
 
@@ -354,7 +354,7 @@ public class TestController : ApiController
 ```
 
 ###Updating the Client
-Next add a new method to the client to request a token on behalf of a user:
+Next add a new method to the client to request an access token on behalf of a user:
 
 ```csharp
 static TokenResponse GetUserToken()
@@ -371,11 +371,11 @@ static TokenResponse GetUserToken()
 Now try both methods of requesting a token and inspect the claims and the API response.
 
 ##What to do next
-This walk-through covered a very simple OAuth2 scenario. Next you could try, e.g.
+This walk-through covered a very simple OAuth2 scenario. Next you could try:
 
 * The other flows - e.g. implicit, code or hybrid. They are all enablers for advanced scenarios like federation and external identities
 
-* Connect to your user database - either by writing your own user service or by using our out of the box support form ASP.NET Identity and MembershipReboot
+* Connect to your user database - either by writing your own user service or by using our out of the box support for ASP.NET Identity and MembershipReboot
 
 * Store client and scope configuration in a data store. We have out of the box support for Entity Framework.
 
