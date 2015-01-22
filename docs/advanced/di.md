@@ -145,7 +145,7 @@ factory.TokenSigningService = new Registration<ITokenSigningService>(resolver =>
 
 ### Obtaining other dependencies
 
-While this approach allows you the most flexibility to create your service, you still might require the use of other services. This is what the `IDependencyResolver` is used for. It allows you to obtain other services from within your callback function. For example, if your custom client store requires a dependency on another service from within IdentityServer, it can be obtain as such:
+While this approach allows you the most flexibility to create your service, you still might require the use of other services. This is what the `IDependencyResolver` is used for. It allows you to get services from within your callback function. For example, if your custom client store requires a dependency on another service from within IdentityServer, it can be obtained as such:
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
@@ -156,9 +156,9 @@ factory.TokenSigningService = new Registration<ITokenSigningService>(resolver =>
 
 ### Named dependencies
 
-Finally, when registering custom dependencies via `IdentityServerServiceFactory`’s `Register()` method, the depdnedencies can be named. This name is indicated via the `name` constructor parameter on the `Registration` class. This is only used for custom registrations and the name can only used when resolving dependencies with the `IDependencyResolver` from within the custom factory callback.
+Finally, when registering custom dependencies via `IdentityServerServiceFactory`’s `Register()` method, the dependenciess can be named. This name is indicated via the `name` constructor parameter on the `Registration` class. This is only used for custom registrations and the name can only used when resolving dependencies with the `IDependencyResolver` from within the custom factory callback.
 
-named dependencies can be useful to register multiple instances of the same `T` yet provide a mechanism to distinguish the implementation desired. For example:
+Named dependencies can be useful to register multiple instances of the same `T` yet provide a mechanism to distinguish the implementation desired. For example:
 
 ```csharp
 string mode = "debug"; // or "release", for example
