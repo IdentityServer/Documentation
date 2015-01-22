@@ -24,7 +24,7 @@ The `DefaultViewServiceConfiguration` class is used to indicate these CSS and/or
 var defaultViewServiceConfiguration = new DefaultViewServiceConfiguration();
 defaultViewServiceConfiguration.Stylesheets.Add("~/Content/Site.css");
 ```
-The paths passed to `Add` can either be relative to IdentityServer’s base path by prefixing the path with a “~” (such as “~/path/file.css”), or the path can be host-relative by prefixing the path with a “/” (such as “/path/file.css”). Absolute URLs are  supported as long as they are listed in IdentityServer's [CSP options](csp.html).
+The paths passed to `Add` can either be relative to IdentityServer’s base path by prefixing the path with a “~” (such as “~/path/file.css”), or the path can be host-relative by prefixing the path with a “/” (such as “/path/file.css”). Absolute URLs are  supported as long as they are added to IdentityServer's [CSP options](csp.html).
 
 To then register the `DefaultViewServiceConfiguration` the dependency injection system can be used to register the instance configured by the hosting application:
 
