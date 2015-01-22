@@ -52,11 +52,11 @@ In addition to being able to replace the partial views, it's also possible to re
 
 ##### Caching
 
-The custom views will be cached in-memory by default, so if the files are changed then it will require an application restart to load any updated HTML. This can be configured via the `CacheViews` property on the `DefaultViewServiceOptions` described earlier.
+The custom views will be cached in-memory by default, so if the files are changed then it will require an application restart to load any updated HTML. This behavior can bedisabled by setting the `CacheViews` property to `false` on the `DefaultViewServiceOptions` described earlier.
 
 ##### Custom view loader
 
-Finally, if the `assets` folder on the file system is not desirable, then you can implement your own storage for the custom views by implmeneting the `IViewLoader` interface. This is configured as a `Registration<IViewLoader>` on the  `DefaultViewServiceOptions`. 
+Finally, if the `assets` folder on the file system is not desirable, then you can implement your own storage for the custom views by implmeneting the `IViewLoader` interface. This is configured as a `Registration<IViewLoader>` on the  `DefaultViewServiceOptions`.
 
 ### Custom View Service
 
