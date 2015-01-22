@@ -13,9 +13,9 @@ IdentityServer v3 defines the `IUserService` interface to abstract the underlyin
 There are two APIs on the `IUserService` that model authentication -- one for local authentication and one for authentication with external identity providers.
 
 * `Task<AuthenticateResult> AuthenticateLocalAsync(string username, string password, SignInMessage message)`
- * Invoked when the user provides a `username` and `password` to authenticate with a local account.
+ * This method gets called for local authentication (whenever the user uses the username and password dialog).
 * `Task<AuthenticateResult> AuthenticateExternalAsync(ExternalIdentity externalUser)`
- * Invoked when the user has authenticated with an external provider. The user's identity from the external provider is passed via the `externalUser` parameter which contains the provider identifier and the provider's identifier for the user.
+ * This method gets called when the user uses an external identity provider to authenticate. The user's identity from the external provider is passed via the `externalUser` parameter which contains the provider identifier, the provider's identifier for the user, and the claims from the provider for the external user.
 
 The returned `AuthenticateResult` indicates one of many possible outcomes. The constructor for the object returned from the authentication APIs indicate which of these outcomes is chosen. The outcomes are:
 
