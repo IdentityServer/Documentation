@@ -1,5 +1,5 @@
 # Site settings
-title: IdentityServer v3
+title: IdentityServer3
 email: identity@thinktecture.com
 description: IdentityServer
 baseurl: "/Documentation" # the subpath of your site, e.g. /blog/
