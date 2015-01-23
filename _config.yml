@@ -5,7 +5,7 @@ description: IdentityServer
 baseurl: "/Documentation" # the subpath of your site, e.g. /blog/
 url: "https://identityserver.github.io" # the base hostname & protocol for your site
 twitter_username: identityserver
-github_username:  thinktecture
+github_username: identityserver
 
 # Build settings
 markdown: redcarpet
