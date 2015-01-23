@@ -6,7 +6,7 @@ layout: docs-default
 
 IdentityServer supports authentication using external identity providers. The external authentication mechanism must be encapsulated in a Katana authentication middleware.
 
-Katana itself ships with middleware for Google, Facebook, Twitter, Microsoft Accounts, WS-Federation and OpenID Connect - but there are also community developed middlewares.
+Katana itself ships with middleware for Google, Facebook, Twitter, Microsoft Accounts, WS-Federation and OpenID Connect - but there are also community developed middlewares (including Yahoo, LinedIn, and SAML2p). See [here for a list of options](../resources/externalAuthentication.html).
 
 To configure the middleware for the external providers, add a method to your project that accepts an `IAppBuilder` and a `string` as parameters.
 
@@ -44,8 +44,9 @@ public static void ConfigureIdentityProviders(IAppBuilder app, string signInAsTy
     app.UseTwitterAuthentication(twitter);
 }
 ```
-**Remarks** 
-* `AuthenticationType` must be a unique value to identify the external identity provider. This value will also be used for the `idp` claim in the resulting tokens. Furthermore the same value can be used to pre-select identity providers during authorization/authentication requests using the `login_hint` parameters. This value is also used to restrict the allowed identity providers on the `Client` configuration.
+**Notes**
+
+* `AuthenticationType` must be a unique value to identify the external identity provider. This value will also be used for the `idp` claim in the resulting tokens. Furthermore the same value can be used to pre-select identity providers during authorization/authentication requests using the `acr_values` parameter (see (this)[../endpoints/authorization.html] for more information). This value is also used to restrict the allowed identity providers on the `Client` configuration.
 * `Caption` specifies the label of the button on the login page for the identity provider. If `Caption` is an empty string, the identity provider will not be shown on the login page. But can still be used via the login hint.
 * `SignInAsAuthenticationType` must be set to the value we pass in via the `signInAsType` parameter
 

@@ -13,6 +13,7 @@ IdentityServer raises a number of events at runtime, e.g:
 * Endpoint success/failures
 * Expired/invalid/no signing certificate
 * Unhandled exceptions and internal errors
+* CSP errors reported by the browser. See [CSP](../advanced/csp.html) for more information.
 
 By default these events are forwarded to the configured log provider -
 a custom event service can process or forward them in any way suitable for the environment.

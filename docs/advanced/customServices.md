@@ -31,12 +31,14 @@ Depending upon the design of your service you might want to have a new instance 
 or you might require special instantiation logic each time an instance is needed.
 To accommodate these different possibilities, the `Registration` class provides three different constructors to register your service:
 
-* `new Registration<T>()`
-    * registers a type
-* `new Registration<T>(someT)`
-    * registers an instance
-* `new Registration<T>(resolver => someT)`
-    * register a func that returns the instance
+* `new Registration<T>(Type yourImplementation)`
+    * Registers `yourImplementation` as the class that implements the `T` interface.
+* `new Registration<T, Impl>()`
+    * Registers `Impl` as the class that implements the `T` interface. This API is simply a convenience for the previous that accepts a `Type` parameter.
+* `new Registration<T>(T singleton)`
+    * Registers the `singleton` instance passed as a singleton implementation of the `T` interface.
+* `new Registration<T>(Func<IDependencyResolver, T> factory)`
+    * Registers a callback function that will be invoked to return an implementation of the `T` interface.
 
 ```csharp
 var factory = new IdentityServerServiceFactory();

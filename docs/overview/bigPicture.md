@@ -59,7 +59,7 @@ authentication and authorization can be centralized.
 
 **OpenID Connect and OAuth2 – better together**
 
-OpenID Connect and OAuth2 are very similar – in fact OpenID Connect is an extensions on top of OAuth2.
+OpenID Connect and OAuth2 are very similar – in fact OpenID Connect is an extension on top of OAuth2.
 This means that you can combine the two fundamental security concerns – authentication and API access into a single protocol –
 and often a single round trip to the security token service.
 

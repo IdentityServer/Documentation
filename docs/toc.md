@@ -36,6 +36,7 @@ permalink: /docs/
 * [Logout](endpoints/endSession.html)
 * [Access Token Validation](endpoints/accessTokenValidation.html)
 * [Identity Token Validation](endpoints/identityTokenValidation.html)
+* [CSP Error Report](endpoints/csp.html)
 
 ### Advanced
 

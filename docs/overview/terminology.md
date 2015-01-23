@@ -55,7 +55,7 @@ You can read about the standard scopes [here](http://openid.net/specs/openid-con
 Resource scopes identify web APIs (als called resource servers) - you could have e.g. a scope named `calendar` that represents your calendar API.
 
 ## Authentication/Token Request
-Clients request token at the OP. Depending on the scopes requested, the OP will return an identity token, an access token or both.
+Clients request tokens from the OP. Depending on the scopes requested, the OP will return an identity token, an access token, or both.
 
 ## Identity Token
 An identity token can be validated by the client.
