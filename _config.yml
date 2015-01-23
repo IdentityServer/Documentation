@@ -2,8 +2,8 @@
 title: IdentityServer v3
 email: identity@thinktecture.com
 description: IdentityServer
-baseurl: "/Thinktecture.IdentityServer.v3.Documentation" # the subpath of your site, e.g. /blog/
-url: "https://thinktecture.github.io" # the base hostname & protocol for your site
+baseurl: "/Documentation" # the subpath of your site, e.g. /blog/
+url: "https://identityserver.github.io" # the base hostname & protocol for your site
 twitter_username: identityserver
 github_username:  thinktecture
 
@@ -12,6 +12,6 @@ markdown: redcarpet
 highlighter: pygments
 
 # Custom Settings
-github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Documentation
-site_github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Documentation
-edit_on_github_url: https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Documentation/edit/gh-pages/%path%
+github_url: https://github.com/IdentityServer/Documentation
+site_github_url: https://github.com/IdentityServer/Documentation
+edit_on_github_url: https://github.com/IdentityServer/Documentation/edit/gh-pages/%path%
