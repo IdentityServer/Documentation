@@ -45,7 +45,7 @@ permalink: /docs/
 * [DI for Services](advanced/di.html)
 * [Caching for client, scope, and user stores](advanced/caching.html)
 * [Customizing Views](advanced/customizingViews.html)
-* [Localizing messages](advanced/localizing.html)
+* [Localizing messages](advanced/localization.html)
 * [CSP](advanced/csp.html)
 * [User Service](advanced/userService.html)
 
