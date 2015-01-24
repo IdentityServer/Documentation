@@ -26,7 +26,9 @@ The `IUserService` interface defines these methods:
 
 ## Authentication
 
-Three of the APIs on the `IUserService` model authentication: `AuthenticateLocalAsync`, `AuthenticateExternalAsync`, and `PreAuthenticateAsync`. All three of these APIs are passed a `SignInMessage` object which represents contextual information about the request to login. These contextual properties are typically passed from the client to the  [authorization endpoint](../endpoints/authorization.html). It contains these properties which might be of interest to the user service.
+Three of the APIs on the `IUserService` model authentication: `AuthenticateLocalAsync`, `AuthenticateExternalAsync`, and `PreAuthenticateAsync`. All three of these APIs are passed a `SignInMessage` object which represents contextual information about the request to login. These contextual properties are typically passed from the client to the  [authorization endpoint](../endpoints/authorization.html).
+
+The `SignInMessage` contains these properties which might be of interest to the user service.
 
 * `ClientId`: The identifier for the client requesting the login.
 * `IdP`: The external identity provider requested.
@@ -40,7 +42,9 @@ In addition to the `SignInMessage`, some of the authentication methods accept ad
 
 `AuthenticateLocalAsync` is invoked if the user enteres credentials into the local login page in IdentityServer. The username and password are parameters, as well as the `SignInMessage`.
 
-`AuthenticateExternalAsync` is invoked when an external [identity provider](../configuration/identityProviders.html) is used to authenticate. The `ExternalIdentity` is passed an `ExternalIdentity`, as well as the `SignInMessage`. The `ExternalIdentity` contains:
+`AuthenticateExternalAsync` is invoked when an external [identity provider](../configuration/identityProviders.html) is used to authenticate. The `ExternalIdentity` is passed an `ExternalIdentity`, as well as the `SignInMessage`. 
+
+The `ExternalIdentity` contains:
 
 * `Provider`: Identifier of the external identity provider.
 * `ProviderId`: User's unique identifier provided by the external identity provider.
@@ -54,12 +58,16 @@ The return value of all of the authentication methods is an `AuthenticateResult`
 
 #### Full login
 
-To fully log the user the authentication API must produce a `subject` and a `name` that represent the user. The `subject` is the user service's unique identifier for the user and the `name` is a display name for the 
+To fully log the user in the authentication API must produce a `subject` and a `name` that represent the user. The `subject` is the user service's unique identifier for the user and the `name` is a display name for the 
 user that will be displayed in the user interface.
 
-For external authentication, the `provider` must also be indicated which will be included as the `idp` claim in the identity token and the user info endpoint.
+Optionally a list of `Claim` can also be provided. These claims can be any additional values that might be needed by the user service inthe other APIs on the user service.
 
-This full login is performed by using the Katana cookie authentication middleware with an `AuthenticationType` indicated by the constant `Constants.PrimaryAuthenticationType`.
+If the user is being logged in and they used an external identity provider, then the `identityProvider` parameter should also be indicated. This will be included as the `idp` claim in the identity token and the user info endpoint. If the user is being authenticated with a local account, then this parameter should not be used (and let the default of `Constants.BuiltInIdentityProvider` be used instead).
+
+There is also an optional `authenticationMethod` parameter which populates the `amr` claim. This can be used to indicate how the user authenticated, such as two factor authentication, or client certificates. If it is not passed, then `password` is assumed for local logins. For external logins, then the value of `external` will automatically be used to indicate an external authentication. 
+
+The entirety of these claims (`subject`, `name`, `idp`, `amr` and the list of `Claim`) are used to populate the authentication cookie that is issued for the user for IdentityServer. This authentication cookie is issued and managed by using the Katana cookie authentication middleware with an `AuthenticationType` indicated by the constant `Constants.PrimaryAuthenticationType`.
 
 #### Partial login (with redirect)
 
