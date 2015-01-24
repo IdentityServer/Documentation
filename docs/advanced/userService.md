@@ -8,6 +8,22 @@ layout: docs-default
 
 IdentityServer v3 defines the `IUserService` interface to abstract the underlying identity management system being used for users. It provides semantics for users to authenticate with local accounts as well as external accounts. It also provides identity and claims to IdentityServer needed for tokens and the user info endpoint. Additionally, the user service can control the workflow a user will experience at login time. 
 
+The `IUserService` interface defines these methods:
+
+* `AuthenticateLocalAsync`
+ * This method gets called for local authentication (whenever the user uses the username and password dialog).
+* `AuthenticateExternalAsync`
+ * This method gets called when the user uses an external identity provider to authenticate.
+* `PreAuthenticateAsync`
+ * This method gets called before the login page is shown. This allows you to determine if the user should be authenticated by some out of band mechanism (e.g. client certificates or trusted headers).
+* `GetProfileDataAsync`
+ * This method is called whenever claims about the user are requested (e.g. during token creation or via the userinfo endpoint).
+* `IsActiveAsync`
+ * This method gets called whenever identity server needs to determine if the user is still considered valid or active (e.g. if the user's account has been deactivated since they logged in).
+* `SignOutAsync`
+ * This method gets called when the user signs out.
+
+
 ## Authentication
 
 There are two APIs on the `IUserService` that model authentication -- one for local authentication and one for authentication with external identity providers.
