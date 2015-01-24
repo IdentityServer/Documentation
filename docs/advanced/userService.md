@@ -26,16 +26,33 @@ The `IUserService` interface defines these methods:
 
 ## Authentication
 
-There are two APIs on the `IUserService` that model authentication -- one for local authentication and one for authentication with external identity providers.
+Three of the APIs on the `IUserService` model authentication: `AuthenticateLocalAsync`, `AuthenticateExternalAsync`, and `PreAuthenticateAsync`. All three of these APIs are passed a `SignInMessage` object which represents contextual information about the request to login. These contextual properties are typically passed from the client to the  [authorization endpoint](../endpoints/authorization.html). It contains these properties which might be of interest to the user service.
 
-* `Task<AuthenticateResult> AuthenticateLocalAsync(string username, string password, SignInMessage message)`
- * This method gets called for local authentication (whenever the user uses the username and password dialog).
-* `Task<AuthenticateResult> AuthenticateExternalAsync(ExternalIdentity externalUser)`
- * This method gets called when the user uses an external identity provider to authenticate. The user's identity from the external provider is passed via the `externalUser` parameter which contains the provider identifier, the provider's identifier for the user, and the claims from the provider for the external user.
+* `ClientId`: The identifier for the client requesting the login.
+* `IdP`: The external identity provider requested.
+* `Tenant`: The tenant the user is expected to come from.
+* `LoginHint`: The expected username the user will use to login.
+* `DisplayMode`: The display mode passed from the authorization request.
+* `UiLocales`: The UI locales passed from the authorization request.
+* `AcrValues`: The acr values passed from the authorization request.
 
-The returned `AuthenticateResult` indicates one of many possible outcomes. The constructor for the object returned from the authentication APIs indicate which of these outcomes is chosen. The outcomes are:
+In addition to the `SignInMessage`, some of the authentication methods accept additional parameters.
 
-### Full login
+`AuthenticateLocalAsync` is invoked if the user enteres credentials into the local login page in IdentityServer. The username and password are parameter, as well as the `SignInMessage`.
+
+`AuthenticateExternalAsync` is invoked when an external [identity provider](../configuration/identityProviders.html) is used to authenticate. The `ExternalIdentity` is passed an `ExternalIdentity`, as well as the `SignInMessage`. The `ExternalIdentity` contains:
+
+* `Provider`: Identifier of the external identity provider.
+* `ProviderId`: User's unique identifier provided by the external identity provider.
+* `Claims`: Claims supplied for the user from the external identity provider.
+
+`PreAuthenticateAsync` is invoked is invoked prior to showing the login page and allows a custom user service to prevent the login page from being displayed. This is typically due to some outside parameter that informs the user service that the user should already be logged in. It is only passed the `SignInMessage`.
+
+### Authentication outcomes
+
+The return value of all of the authentication methods is an `AuthenticateResult`. The returned `AuthenticateResult` indicates one of many possible outcomes. The constructor is overloaded and the one used indicates which of these outcomes is chosen. The outcomes are:
+
+#### Full login
 
 To fully log the user the authentication API must produce a `subject` and a `name` that represent the user. The `subject` is the user service's unique identifier for the user and the `name` is a display name for the 
 user that will be displayed in the user interface.
@@ -44,7 +61,7 @@ For external authentication, the `provider` must also be indicated which will be
 
 This full login is performed by using the Katana cookie authentication middleware with an `AuthenticationType` indicated by the constant `Constants.PrimaryAuthenticationType`.
 
-### Partial login (with redirect)
+#### Partial login (with redirect)
 
 In addition to a full login, the authentication APIs can perform a "partial login". A partial login indicates that the user has proven their identity, has a local account, but is not yet allowed to continue. They must first perform some other action or provide some other data before being allowed to login fully. This is useful to customize the user's workflow before allowing them to fully login. This could be useful to force a user to fill in a registration page, change a password, or accept a EULA before letting them continue.
 
@@ -54,13 +71,13 @@ The `redirectPath` represents a custom web page provided by the hosting applicat
 
 Once the user has completed their work on the custom web page, they can be redirected back to IdentityServer to continue with the full login process. The URL to redirect the user back to provided as a claim in the `Constants.PartialSignInAuthenticationType` authentication type and is identified by the claim type `Constants.ClaimTypes.PartialLoginReturnUrl`.
 
-### External login (with redirect)
+#### External login (with redirect)
 
 It's possible that the user has performed an external authentication, but there is no local account for the user. A custom user service can choose to redirect the user without a local account. This is performed by creating a `AuthenticateResult` with a redirect and the `ExternalIdentity` passed to the `AuthenticateExternalAsync` API. This performs a partial login (as above via the `PartialSignInAuthenticationType`) but there is no subject claim in the issued cookie. Instead there is a claim of type `external_provider_user_id` (or via `Constants.ClaimTypes.ExternalProviderUserId`) whose `Issuer` is the external provider identifier and whose value is the external provider's identifier for the user. These values can then be used to create a local account and associate the external account.
 
 Once the user has completed their registration on the custom web page, they can be redirected back to IdentityServer via the same `PartialLoginReturnUrl` as described above.
 
-### Login error
+#### Login error
 
 Finally, the authentication APIs can provide an error that will be displayed on the login view.
 
