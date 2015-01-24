@@ -38,7 +38,7 @@ Three of the APIs on the `IUserService` model authentication: `AuthenticateLocal
 
 In addition to the `SignInMessage`, some of the authentication methods accept additional parameters.
 
-`AuthenticateLocalAsync` is invoked if the user enteres credentials into the local login page in IdentityServer. The username and password are parameter, as well as the `SignInMessage`.
+`AuthenticateLocalAsync` is invoked if the user enteres credentials into the local login page in IdentityServer. The username and password are parameters, as well as the `SignInMessage`.
 
 `AuthenticateExternalAsync` is invoked when an external [identity provider](../configuration/identityProviders.html) is used to authenticate. The `ExternalIdentity` is passed an `ExternalIdentity`, as well as the `SignInMessage`. The `ExternalIdentity` contains:
 
