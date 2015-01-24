@@ -4,7 +4,7 @@ layout: docs-default
 
 #Caching results for client, scope, and user stores
 
-The various stores allow IdentityServer to load data from a database. Given the general decoupled design of IdentityServer, the APIs to load data might be invoked several times in the same HTTP request into IdentityServer. This might incur unnecessary round trips to a database. Given this possibility, IdentityServer defines a caching interface so that you can implement your own caching logic. Additionally, IdentityServer provides a default cache implementation. 
+There are various stores to allow IdentityServer to load data from a database. Given the general decoupled design of IdentityServer, the APIs to load data might be invoked several times in the same HTTP request into IdentityServer. This might incur unnecessary round trips to a database. Given this possibility, IdentityServer defines a caching interface so that you can implement your own caching logic. Additionally, IdentityServer provides a default cache implementation. 
 
 ## Default cache
 
@@ -14,7 +14,7 @@ The default cache provided by IdentityServer is an in-memory cache and is config
 * `ConfigureScopeStoreCache`
 * `ConfigureUserServiceCache`
 
-These are overloaded to either accept no parameters (which use a default expiration of 5 minutes), or a `TimeSpan` that indicates a custom value for the expiration. These APIs would be used something like this:
+These are overloaded to either accept no parameters (which use a default expiration of `5` minutes), or a `TimeSpan` that indicates a custom value for the expiration. These APIs would be used something like this:
 
 ```
 var factory = InMemoryFactory.Create(
