@@ -50,7 +50,7 @@ The `ExternalIdentity` contains:
 * `ProviderId`: User's unique identifier provided by the external identity provider.
 * `Claims`: Claims supplied for the user from the external identity provider.
 
-`PreAuthenticateAsync` is invoked is invoked prior to showing the login page and allows a custom user service to prevent the login page from being displayed. This is typically due to some outside parameter that informs the user service that the user should already be logged in. It is only passed the `SignInMessage`.
+`PreAuthenticateAsync` is invoked prior to showing the login page and allows a custom user service to prevent the login page from being displayed. This is typically due to some outside parameter that informs the user service that the user should already be logged in. It is only passed the `SignInMessage`.
 
 ### Authentication outcomes
 
@@ -73,9 +73,9 @@ The entirety of these claims (`subject`, `name`, `idp`, `amr` and the list of `C
 
 In addition to a full login, the authentication APIs can perform a "partial login". A partial login indicates that the user has proven their identity, has a local account, but is not yet allowed to continue. They must first perform some other action or provide some other data before being allowed to login fully. This is useful to customize the user's workflow before allowing them to fully login. This could be useful to force a user to fill in a registration page, change a password, or accept a EULA before letting them continue.
 
-The partial login will issue a `subject` and `name` for the user (which should be the same as the full login from above) as well as a `redirectPath`. This partial login is performed by using the Katana cookie authentication middleware with an `AuthenticationType` indicated by the constant `Constants.PartialSignInAuthenticationType`.
+This partial login is performed by issuing a "partial login" cookie using the Katana cookie authentication middleware with an `AuthenticationType` indicated by the constant `Constants.PartialSignInAuthenticationType`.
 
-The `redirectPath` represents a custom web page provided by the hosting application that the user will be redirected to. On that web page the user's `subject` and `name` claims can be used to identify the user. In order to obtain these claims, the page must use the Katana authentication middleware to authenticate against the `Constants.PartialSignInAuthenticationType` authentication type.
+The partial login is indicated with all of the same parameters as described above for a full login (i.e. `subject`, `name`, `claims`, `amr`, and `idp`) as well as a `redirectPath`. The `redirectPath` represents a custom web page provided by the hosting application that the user will be redirected to. On that web page the user's `subject` and `name` claims can be used to identify the user (in addition to all the other claims indicated). In order to obtain these claims, the page must use the Katana authentication middleware to authenticate against the `Constants.PartialSignInAuthenticationType` authentication type, or simply be executing within the same cookie path as IdentityServer on the web server.
 
 Once the user has completed their work on the custom web page, they can be redirected back to IdentityServer to continue with the full login process. The URL to redirect the user back to provided as a claim in the `Constants.PartialSignInAuthenticationType` authentication type and is identified by the claim type `Constants.ClaimTypes.PartialLoginReturnUrl`.
 
