@@ -69,6 +69,8 @@ There is also an optional `authenticationMethod` parameter which populates the `
 
 The entirety of these claims (`subject`, `name`, `idp`, `amr` and the list of `Claim`) are used to populate the authentication cookie that is issued for the user for IdentityServer. This authentication cookie is issued and managed by using the Katana cookie authentication middleware with an `AuthenticationType` indicated by the constant `Constants.PrimaryAuthenticationType`.
 
+The `ClaimsPrincipal` that is created from the full login is then used as the parameter for the other APIs on the `IUserService`. These APIs are `GetProfileDataAsync`, `IsActiveAsync`, and `SignOutAsync`.
+
 #### Partial login (with redirect)
 
 In addition to a full login, the authentication APIs can perform a "partial login". A partial login indicates that the user has proven their identity, has a local account, but is not yet allowed to continue. They must first perform some other action or provide some other data before being allowed to login fully. This is useful to customize the user's workflow before allowing them to fully login. This could be useful to force a user to fill in a registration page, change a password, or accept a EULA before letting them continue.
@@ -88,12 +90,3 @@ Once the user has completed their registration on the custom web page, they can 
 #### Login error
 
 Finally, the authentication APIs can provide an error that will be displayed on the login view. This is indicated by creating the `AuthenticateResult` using the constructor that accepts a `string` (the error) as its argument.
-
-### Profile
-
-Once the user has been authenticated, IdentityServer uses the other two APIs on the `IUserService` interface to obtain claims and profile information about the user. These APIs are:
-
-* `Task<IEnumerable<Claim>> GetProfileDataAsync(ClaimsPrincipal subject, IEnumerable<string> requestedClaimTypes = null)`
- * Returns the claims for a `subject`. The additional `requestedClaimTypes` parameter indicates which claims are requested and thus should act as a filter for the claims returned.
-* `Task<bool> IsActiveAsync(ClaimsPrincipal subject)`
- * Indicates if the `subject` is still active and is allowed to obtain tokens.
