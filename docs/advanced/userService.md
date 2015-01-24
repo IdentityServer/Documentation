@@ -87,9 +87,9 @@ Once the user has completed their registration on the custom web page, they can 
 
 #### Login error
 
-Finally, the authentication APIs can provide an error that will be displayed on the login view.
+Finally, the authentication APIs can provide an error that will be displayed on the login view. This is indicated by creating the `AuthenticateResult` using the constructor that accepts a `string` (the error) as its argument.
 
-## Profile
+### Profile
 
 Once the user has been authenticated, IdentityServer uses the other two APIs on the `IUserService` interface to obtain claims and profile information about the user. These APIs are:
 
