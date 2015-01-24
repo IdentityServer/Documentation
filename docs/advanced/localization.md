@@ -6,7 +6,7 @@ layout: docs-default
 
 Messages that IdentityServer creates can be localized (or simply replaced) by implementing the `ILocalizationService` interface. It defines a single API:
 
-* string GetString(string category, string id)
+* `string GetString(string category, string id)`
 
 This API is passed a `category` for the message. IdentityServer only defines three categories:
 
