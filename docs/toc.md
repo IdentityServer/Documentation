@@ -53,6 +53,7 @@ permalink: /docs/
 
 * [Adding support for WS-Federation](wsFederation/overview.html)
 * [Defining Relying Parties](wsFederation/relyingParties.html)
+* [Endpoints](wsFederation/endpoints.html)
 
 ### Resources
 
