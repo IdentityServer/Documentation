@@ -47,6 +47,11 @@ permalink: /docs/
 * [CSP](advanced/csp.html)
 * [User Service](advanced/userService.html)
 
+### WS-Federation
+
+* [Adding support for WS-Federation](wsFederation/overview.html)
+* [Defining Relying Parties](wsFederation/relyingParties.html)
+
 ### Resources
 
 * [Overview](resources/home.html)
