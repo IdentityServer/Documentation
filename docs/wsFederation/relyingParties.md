@@ -9,18 +9,18 @@ The `RelyingParty` class models a relying party:
 * `Name`
     * Display name
 * `Enabled`
-    * Enabled/disabled
+    * Enabled/disabled (defaults to `true`)
 * `Realm`
     * Unique identifier of the relying party
 * `ReplyUrl`
     * URL to send token back to
 * `TokenType`
-    * Type of the token, the following types are supported:
+    * Type of the token (defaults to SAML2), the following types are supported:
         * `urn:oasis:names:tc:SAML:1.0:assertion` (SAML 1.1)
         * `urn:oasis:names:tc:SAML:2.0:assertion` (SAML 2.0)
         * `urn:ietf:params:oauth:token-type:jwt` (JWT)
 * `TokenLifeTime`
-    * Token lifetime in minutes (defaults to 60)
+    * Token lifetime in minutes (defaults to 480)
 * `EncryptingCertificate`
     * Certificate for encrypting the token (SAML only)
 * `IncludeAllClaimsForUser`
