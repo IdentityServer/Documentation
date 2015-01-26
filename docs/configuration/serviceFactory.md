@@ -21,7 +21,7 @@ The extensibility points fall into three categories.
 * `ClientStore`
     * Implements retrieval of client configuration data
 
-The `InMemoryFactory` allows setting up a service factory by providing in-memory stores for users, clients and scopes (see [here](inMemoryFactory.html).
+The `InMemoryFactory` allows setting up a service factory by providing in-memory stores for users, clients and scopes (see [here](inMemoryFactory.html)).
 
 ## Mandatory for production scenarios (but with default in-memory implementation)
 
