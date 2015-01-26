@@ -15,7 +15,7 @@ layout: docs-default
 
 ## SAML2p
 
-* [KentorIT Authentication Services](https://github.com/KentorIT/authservices)
+* [KentorIT Authentication Services](https://github.com/KentorIT/authservices) - see also [this](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/) blogpost
 
 ## Other community contributions
 
