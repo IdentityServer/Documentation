@@ -15,6 +15,7 @@ layout: docs-default
 * [Automatic redirect after Logout](http://www.aaron-powell.com/posts/2015-01-11-auto-redirect-when-logging-out.html)
 * [IdentityServer on Mono](http://www.ryanmelena.com/2014/10/31/thinktecture-identityserver-v3-on-mono/)
 * [Testing Web APIs with Postman](http://www.timecockpit.com/blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman)
+* [Adding a SAML2p external Authentication Provider](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/)
 
 ### Community Add-ons
 * [MongoDb Support](https://github.com/jageall/IdentityServer.v3.MongoDb)
