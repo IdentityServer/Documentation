@@ -26,7 +26,7 @@ First we will create a console host and set up IdentityServer.
 Start by creating a standard console application and add IdentityServer via nuget:
 
 ```
-install-package Thinktecture.IdentityServer.v3 -pre
+install-package Thinktecture.IdentityServer3
 ```
 
 ###Registering the API
@@ -148,7 +148,7 @@ Add the necessary nuget packages:
 ```
 install-package Microsoft.Owin.Host.SystemWeb
 install-package Microsoft.AspNet.WebApi.Owin
-install-package Thinktecture.IdentityServer.v3.AccessTokenValidation -pre
+install-package Thinktecture.IdentityServer3.AccessTokenValidation
 ```
 
 ###Adding a Controller

@@ -4,7 +4,7 @@ layout: docs-default
 
 This tutorial walks you through the necessary steps to get a minimal IdentityServer up and running. For simplicity we will host IdentityServer and the client in the same web application - this is probably not a very realistic scenario, but let's you get started without making it too complicated.
 
-The full source code can be found [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/MVC%20Authentication).
+The full source code can be found [here](https://github.com/identityserver/Thinktecture.IdentityServer3.Samples/tree/master/source/MVC%20Authentication).
 
 # Part 1 - MVC Authentication & Authorization
 In the first part we will create a simple MVC application and add authentication via IdentityServer to it. Then we will have a closer look at claims, claims transformation and authorization
@@ -26,7 +26,7 @@ IdentityServer is based on OWIN/Katana and distributed as a Nuget package. To ad
 
 ````
 install-package Microsoft.Owin.Host.Systemweb
-install-package Thinktecture.IdentityServer.v3 -pre
+install-package Thinktecture.IdentityServer3
 ````
 
 ## Configuring IdentityServer - Clients
@@ -87,7 +87,7 @@ public static class Users
 IdentityServer is configured in the startup class. Here we provide information about the clients, users, scopes,
 the signing certificate and some other configuration options.
 In production you should load the signing certificate from the Windows certificate store or some other secured source.
-In this sample we simply added it to the project as a file (you can download a test certificate from [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/Certificates).
+In this sample we simply added it to the project as a file (you can download a test certificate from [here](https://github.com/identityserver/Thinktecture.IdentityServer3.Samples/tree/master/source/Certificates).
 Add it to the project and set its build action to `Copy to output`.
 
 
@@ -684,7 +684,7 @@ In addition we want to secure our API using IdentityServer - two things are need
 To accomplish that, we add a Nuget packages:
 
 ```
-install-package Thinktecture.IdentityServer.v3.AccessTokenValidation -pre
+install-package Thinktecture.IdentityServer3.AccessTokenValidation
 ```
 
 ..and use them in `Startup`:
