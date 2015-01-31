@@ -52,8 +52,6 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
     * Specifies if this client can use local accounts, or external IdPs only. Defaults to `true`.
 * `IdentityProviderRestrictions`
     * Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
-* `CustomGrantTypeRestrictions`
-    * Specifies which custom grant types the client can use (if the flow is set to `Custom`). Defaults to empty.
 * `IncludeJwtId`
     * Specifies whether JWT access tokens should have an embedded unique ID (via the `jti` claim).
 * `Claims`
