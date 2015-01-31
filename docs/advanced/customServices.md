@@ -46,3 +46,9 @@ factory.UserService = new Registration<MyCustomUserService>();
 ```
 
 See the [DI](di.html) page for more details.
+
+### Service cleanup
+
+In all cases except for the singleton, if your service implements `IDisposable`, then `Dispose` will be called at the end of the HTTP request.
+
+
