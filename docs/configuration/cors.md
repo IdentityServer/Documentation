@@ -32,9 +32,9 @@ idsrvOptions.CorsPolicy.PolicyCallback = async origin =>
 };
 ```
 
-#### CorsOptions.AllowAll
+#### CorsPolicy.AllowAll
 
-For convenience there is a static property `CorsOptions.AllowAll` that will allow all origins. This is useful for debugging or development.
+For convenience there is a static property `CorsPolicy.AllowAll` that will allow all origins. This is useful for debugging or development.
 
 ```csharp
 var idsvrOptions = new IdentityServerOptions {
