@@ -11,6 +11,7 @@ IdentityServer implements the following specifications:
 * OpenID Connect Discovery 1.0 [spec](http://openid.net/specs/openid-connect-discovery-1_0.html))
 * OpenID Connect Session Management 1.0 - draft 22 ([spec](http://openid.net/specs/openid-connect-session-1_0.html))
 
+
 * OAuth 2.0 ([RFC 6749](http://tools.ietf.org/html/rfc6749))
     * authorization code, implicit, resource owner password credentials and client credentials grant
 * OAuth 2.0 Bearer Token Usage ([RFC 6750](http://tools.ietf.org/html/rfc6750))
