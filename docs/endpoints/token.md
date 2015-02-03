@@ -14,7 +14,7 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#TokenRequest).
     - `authorization_code`, `client_credentials`, `password`, `refresh_token` or custom
 - `scope` (required for all grant types besides refresh_token and code)
 - `redirect_uri` (required for code grant type)
-- `authorization_code` (required for code grant)
+- `code` (required for code grant)
 - `username` (required for password grant type)
 - `password` (required for password grant_type)
 - `acr_values` (allowed for password grant type to pass additional information to user service)
@@ -37,6 +37,6 @@ POST /connect/token
 Authorization: Basic abcxyz
 
 grant_type=authorization_code&
-authorization_code=hdh922&
+code=hdh922&
 redirect_uri=https://myapp.com/callback
 ```
