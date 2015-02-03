@@ -155,6 +155,7 @@ install-package Thinktecture.IdentityServer3.AccessTokenValidation
 Add this simple test controller:
 
 ```csharp
+[Authorize]
 [Route("test")]
 public class TestController : ApiController
 {
