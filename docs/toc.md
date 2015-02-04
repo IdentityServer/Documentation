@@ -59,4 +59,5 @@ permalink: /docs/
 ### Resources
 
 * [Overview](resources/home.html)
+* [Community Add-ons](resources/community.html)
 * [Middleware for external Authentication](resources/externalAuthentication.html)

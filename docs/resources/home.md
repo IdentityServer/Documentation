@@ -17,11 +17,6 @@ layout: docs-default
 * [Testing Web APIs with Postman](http://www.timecockpit.com/blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman)
 * [Adding a SAML2p external Authentication Provider](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/)
 
-### Community Add-ons
-* [MongoDb Support](https://github.com/jageall/IdentityServer.v3.MongoDb)
-* [ElasticSearch/Kibana EventService](https://github.com/nrkno/IdentityServer3.Contrib)
-* [Localization Service for multiple Languages (including Pirates!)](https://johnkors.github.io/IdentityServer3.Contrib.Localization/#/)
-
 ### Videos
 * [Overview Video (preview version)](https://vimeo.com/91397084)
 * [Samples Walkthrough Video (preview version)](https://vimeo.com/91405115)
