@@ -21,7 +21,7 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest).
     - `token` requests an access token (only resource scopes are allowed)
     - `id_token token` requests an identity token and an access token (both resource and identity scopes are allowed)
 - `response_mode` (optional)
-    - `form_post` sends the token response as a form post instead of a fragment encoded redirect (implicit flow only)
+    - `form_post` sends the token response as a form post instead of a fragment encoded redirect 
 - `state` (recommended)
     - idsrv will echo back the state value on the token response, this is for correlating request and response
 - `nonce` (required for identity tokens using implicit flow)
