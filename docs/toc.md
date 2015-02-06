@@ -35,6 +35,7 @@ permalink: /docs/
 * [UserInfo](endpoints/userinfo.html)
 * [Discovery](endpoints/discovery.html)
 * [Logout](endpoints/endSession.html)
+* [Token Revocation](endpoints/revocation.html)
 * [Access Token Validation](endpoints/accessTokenValidation.html)
 * [Identity Token Validation](endpoints/identityTokenValidation.html)
 * [CSP Error Report](endpoints/csp.html)
