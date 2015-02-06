@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-This tutorial walks you through the necessary steps to get a minimal IdentityServer up and running. For simplicity we will host IdentityServer and the client in the same web application - this is probably not a very realistic scenario, but let's you get started without making it too complicated.
+This tutorial walks you through the necessary steps to get a minimal IdentityServer up and running. For simplicity we will host IdentityServer and the client in the same web application - this is probably not a very realistic scenario, but lets you get started without making it too complicated.
 
 The full source code can be found [here](https://github.com/identityserver/Thinktecture.IdentityServer3.Samples/tree/master/source/MVC%20Authentication).
 
@@ -267,7 +267,7 @@ public static class Users
 ```
 
 ## Changing the middleware configuration to ask for roles
-By default the OIDC middleware asks for a two scopes `openid` and `profile` - this is why IdentityServer includes the subject and name claims. Now we add a request to the `roles` scope:
+By default the OIDC middleware asks for two scopes: `openid` and `profile` - this is why IdentityServer includes the subject and name claims. Now we add a request to the `roles` scope:
 
 ```csharp
 app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
