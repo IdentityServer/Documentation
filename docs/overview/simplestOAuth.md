@@ -91,7 +91,7 @@ static class Clients
 
 ###Configuring IdentityServer
 IdentityServer is implemented as OWIN middleware. It is configured in  in the `Startup` class using the `UseIdentityServer` extension method.
-The following snippets sets up a bare bones server with our scopes and clients. We also set up an empty list of users - we will add users later).
+The following snippets sets up a bare bones server with our scopes and clients. We also set up an empty list of users - we will add users later.
 
 ```csharp
 class Startup

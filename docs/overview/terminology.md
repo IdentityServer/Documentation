@@ -52,7 +52,7 @@ There is e.g. a scope called `profile` that includes first name, last name, pref
 You can read about the standard scopes [here](http://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and you can create your own scopes in IdentityServer to model your own requirements.
 
 ### Resource scopes
-Resource scopes identify web APIs (als called resource servers) - you could have e.g. a scope named `calendar` that represents your calendar API.
+Resource scopes identify web APIs (also called resource servers) - you could have e.g. a scope named `calendar` that represents your calendar API.
 
 ## Authentication/Token Request
 Clients request tokens from the OP. Depending on the scopes requested, the OP will return an identity token, an access token, or both.
