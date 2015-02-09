@@ -19,7 +19,7 @@ Requests must me authenticated using one of the supported client authentication 
 Example:
 
 ```
-POST /connect/revoke HTTP/1.1
+POST /connect/revocation HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
