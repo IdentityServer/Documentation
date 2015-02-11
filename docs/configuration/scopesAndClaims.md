@@ -48,7 +48,7 @@ var roleScope = new Scope
     Description = "Your organizational roles",
     Type = ScopeType.Identity,
 
-    Claims = new[]
+    Claims = new List<ScopeClaim>
     {
         new ScopeClaim(Constants.ClaimTypes.Role, alwaysInclude: true)
     }
@@ -66,7 +66,7 @@ var idMgrScope = new Scope
     Type = ScopeType.Resource,
     Emphasize = true,
 
-    Claims = new[]
+    Claims = new List<ScopeClaim>
     {
         new ScopeClaim(Constants.ClaimTypes.Name),
         new ScopeClaim(Constants.ClaimTypes.Role)
