@@ -29,6 +29,21 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#TokenRequest).
 All requests to the token endpoint must be authenticated - either pass client id and secret via Basic Authentication
 or add `client_id` and `client_secret` fields to the POST body.
 
+When providing the `client_id` and `client_secret` in the `Authorization` header it is expected to be:
+
+* `client_id:client_secret`
+* Base64 encoded
+
+```csharp
+var clientId = "...";
+var clientSecret = "...";
+
+var encoding = Encoding.UTF8;
+var credentials = string.Format("{0}:{1}", clientId, clientSecret);
+
+var headerValue = Convert.ToBase64String(encoding.GetBytes(credentials));
+```
+
 ### Example
 (Form-encoding removed and line breaks added for readability)
 
