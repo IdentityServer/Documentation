@@ -143,7 +143,7 @@ install-package Microsoft.Owin.Security.Cookies
 install-package Microsoft.Owin.Security.OpenIdConnect
 ````
 
-The cookie middleware gets configured with its default values:
+Configure the cookie middleware in StartUp.cs with its default values:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -151,7 +151,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
         AuthenticationType = "Cookies"
     });
 ```
-The OpenID Connect middleware points to our embedded version of IdentityServer and uses the previously configured client configuration:
+Point the OpenID Connect middleware (also in StartUp.cs) to our embedded version of IdentityServer and uses the previously configured client configuration:
 
 ```csharp
 app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
