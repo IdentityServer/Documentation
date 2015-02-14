@@ -56,7 +56,7 @@ Assign the configuration method to the `IdentityProviders` property on the `Auth
 var idsrvOptions = new IdentityServerOptions
 {
     IssuerUri = "https://idsrv3.com",
-    SiteName = "Thinktecture IdentityServer v3",
+    SiteName = "Thinktecture IdentityServer3",
     Factory = factory,
     SigningCertificate = Cert.Load(),
 

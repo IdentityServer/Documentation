@@ -8,7 +8,7 @@ IdentityServer incorporates the use of [Content Security Policy](https://develop
 
 ### CspOptions
 
-IdentityServer v3 allows the hosting application to configure a `CspOptions` on the `IdentityServerOptions` to control the CSP behavior. Below are the settings that are configurable:
+IdentityServer3 allows the hosting application to configure a `CspOptions` on the `IdentityServerOptions` to control the CSP behavior. Below are the settings that are configurable:
 
 * `Enabled` : indicates if CSP is enabled or disabled. Defaults to `true`.
 * `ScriptSrc` : allows for additional `script-src` values to be added to the default policy.
