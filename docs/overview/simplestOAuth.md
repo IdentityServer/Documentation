@@ -5,7 +5,7 @@ layout: docs-default
 #Creating the simplest OAuth2 Authorization Server, Client and API
 
 The intention of this walkthrough is to create the simplest possible IdentityServer installation acting as an OAuth2 authorization server.
-This is supposed to get you started with some of the basic features and configuration options.
+This is supposed to get you started with some of the basic features and configuration options (the full source code can be found [here](https://github.com/IdentityServer/Thinktecture.IdentityServer3.Samples/tree/master/source/Simplest%20OAuth2%20Walkthrough)).
 There are other more advanced walk-throughs in the docs that you could do afterwards. This tutorial includes:
 
 * Creating a self-hosted IdentityServer
