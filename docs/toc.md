@@ -55,7 +55,7 @@ permalink: /docs/
 * [Overview](ef/overview.html)
 * [Clients and Scopes](ef/clients_scopes.html)
 * [Operational Data](ef/operational.html)
-* [Migrations](ef/migrations.html)
+* [Schema Changes and Migrations](ef/migrations.html)
 
 ### WS-Federation
 
