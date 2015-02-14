@@ -24,3 +24,17 @@ var efConfig = new EntityFrameworkServiceOptions {
 var factory = new IdentityServerServiceFactory();
 factory.RegisterOperationalServices(efConfig);
 ``` 
+
+## Data Cleanup
+
+Much of the operational data has an expiration. It is likely desirable to remove this stale data after. This can be done outside of the application that hosts IdentityServer or by the database itself (via various mechanisms). If it is desired that application code that you perform this cleanup, then the `TokenCleanup` class is provided to assist. It accepts a `EntityFrameworkServiceOptions` and an `Int32` interval (in seconds) to configure how frequently the stale data is cleared. It will asynchronously connect to the database and can be configured as such:
+
+```
+var efConfig = new EntityFrameworkServiceOptions {
+    ConnectionString = connString,
+    //Schema = "foo"
+};
+
+var cleanup = new TokenCleanup(efConfig, 10);
+cleanup.Start();
+``` 
