@@ -23,7 +23,7 @@ To use either of the stores, they need to be registered. There are extension met
 
 To configure the stores independently, this code could be used:
 
-```
+```csharp
 var efConfig = new EntityFrameworkServiceOptions {
    ConnectionString = "SomeConnectionName",
    //Schema = "someSchemaIfDesired"
@@ -36,7 +36,7 @@ factory.RegisterScopeStore(efConfig);
 
 If both stores will be used with the same `EntityFrameworkServiceOptions`, then a single convenience extension method is provided:
 
-```
+```csharp
 var efConfig = new EntityFrameworkServiceOptions {
    ConnectionString = "SomeConnectionName",
    //Schema = "someSchemaIfDesired"
