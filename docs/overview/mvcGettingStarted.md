@@ -461,7 +461,7 @@ Let's do a bit more authorization by adding a new action method to the `Home` co
 [ResourceAuthorize("Write", "ContactDetails")]
 public ActionResult UpdateContact()
 {
-    ViewBag.Message = "Upate your contact details!";
+    ViewBag.Message = "Update your contact details!";
 
     return View();
 }
@@ -480,7 +480,7 @@ You can handle the forbidden condition by checking for `403` status codes - we p
 [HandleForbidden]
 public ActionResult UpdateContact()
 {
-    ViewBag.Message = "Upate your contact details!";
+    ViewBag.Message = "Update your contact details!";
 
     return View();
 }
@@ -502,7 +502,7 @@ public ActionResult UpdateContact()
         return this.AccessDenied();
     }
 
-    ViewBag.Message = "Upate your contact details!";
+    ViewBag.Message = "Update your contact details!";
     return View();
 }
 ```
