@@ -177,23 +177,28 @@ The `User` property on the controller gives you access to the claims from the ac
 Add the following `Startup` class for both setting up web api and configuring trust with IdentityServer
 
 ```csharp
-public void Configuration(IAppBuilder app)
+public class Startup
 {
-    // accept access tokens from identityserver and require a scope of 'api1'
-    app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+    public void Configuration(IAppBuilder app)
+    {
+        ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+
+        // accept access tokens from identityserver and require a scope of 'api1'
+        app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
         {
             Authority = "https://localhost:44333",
-            RequiredScopes = new[] { "api1" }
+            RequiredScopes = new[] {"api1"}
         });
 
-    // configure web api
-    var config = new HttpConfiguration();
-    config.MapHttpAttributeRoutes();
+        // configure web api
+        var config = new HttpConfiguration();
+        config.MapHttpAttributeRoutes();
 
-    // require authentication for all controllers
-    config.Filters.Add(new AuthorizeAttribute());
+        // require authentication for all controllers
+        config.Filters.Add(new AuthorizeAttribute());
 
-    app.UseWebApi(config);
+        app.UseWebApi(config);
+    }
 }
 ```
 
@@ -211,30 +216,67 @@ install-package Thinktecture.IdentityModel.Client
 The first code snippet requests the access token using the client credentials:
 
 ```csharp
-static TokenResponse GetToken()
+class ConsoleClentTokenTests
 {
-    var client = new OAuth2Client(
-        new Uri("https://localhost:44333/connect/token"),
-        "silicon",
-        "F621F470-9731-4A25-80EF-67A6F7C5F4B8");
+    static TokenResponse GetToken()
+    {
+        var client = new OAuth2Client(
+            new Uri("https://localhost:44333/connect/token"),
+            "silicon",
+            "F621F470-9731-4A25-80EF-67A6F7C5F4B8");
 
-    return client.RequestClientCredentialsAsync("api1").Result;
+        return client.RequestClientCredentialsAsync("api1").Result;
+    }
 }
 ```
 
 The second code snippet calls the API using the access token:
 
 ```csharp
-static void CallApi(TokenResponse response)
+class ConsoleClentTokenTests
 {
-    var client = new HttpClient();
-    client.SetBearerToken(response.AccessToken);
+    // Requests the access token using the client credentials
+    public static TokenResponse GetToken()
+    {
+        ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
-    Console.WriteLine(client.GetStringAsync("http://localhost:14869/test").Result);
+        var client = new OAuth2Client(
+            new Uri("https://localhost:44333/connect/token"),
+            //new Uri("http://localhost:17343/connect/token"),
+            "silicon",
+            "F621F470-9731-4A25-80EF-67A6F7C5F4B8");
+
+        return client.RequestClientCredentialsAsync("api1").Result;
+    }
+
+    // Call the API given the access token
+    public static void CallApi(TokenResponse response)
+    {
+        var client = new HttpClient();
+        client.SetBearerToken(response.AccessToken);
+
+        Console.WriteLine(client.GetStringAsync("http://localhost:14869/test").Result);
+    }
 }
 ```
 
-If you call both snippets, you should see `{"message":"OK computer","client":"silicon"}` in your console.
+Update the Visual Studio generated code to below
+
+```
+class Program
+{
+    static void Main(string[] args)
+    {
+        var tokenResponse = ConsoleClentTokenTests.GetToken();
+
+        ConsoleClentTokenTests.CallApi(tokenResponse);
+
+        Console.ReadKey();
+    }
+}
+```
+
+If you run the console client, you should see `{"message":"OK computer", "client":"silicon"}` in your console.
 
 ##Adding a User
 So far, the client requests an access token for itself and no user is involved. Let's introduce a human.
@@ -270,7 +312,7 @@ static class Users
 `Username` and `Password` are used to authenticate the user,
 the `Subject` is the unique identifier for that user that will be embedded into the access token.
 
-In `Startup` replace the empty user list with a call the `Get` method.
+In `Startup` replace the empty user list with a call the `Get` method by changing `users: new List<InMemoryUser>());` to `users: Users.Get());`
 
 ###Adding a Client
 Next we will add a client definition that uses the flow called `resource owner password credential grant`.
@@ -357,18 +399,59 @@ public class TestController : ApiController
 Next add a new method to the client to request an access token on behalf of a user:
 
 ```csharp
-static TokenResponse GetUserToken()
+class ConsoleClentTokenTests
 {
-    var client = new OAuth2Client(
-        new Uri("https://localhost:44333/connect/token"),
-        "carbon",
-        "21B5F798-BE55-42BC-8AA8-0025B903DC3B");
+    // Requests the access token using the client credentials
+    public static TokenResponse GetToken()
+    {
+        // Omitted for brevity. Same as previous code snippet.
+    }
 
-    return client.RequestResourceOwnerPasswordAsync("bob", "secret", "api1").Result;
+    // Call the API given the access token
+    public static void CallApi(TokenResponse response)
+    {
+        // Omitted for brevity. Same as previous code snippet.
+    }
+
+    // Request the access token on behalf of user
+    static TokenResponse GetUserToken()
+    {
+        var client = new OAuth2Client(
+            new Uri("https://localhost:44333/connect/token"),
+            "carbon",
+            "21B5F798-BE55-42BC-8AA8-0025B903DC3B");
+
+        return client.RequestResourceOwnerPasswordAsync("bob", "secret", "api1").Result;
+    }
+}
+```
+
+Update the Program.Main to
+
+```
+class Program
+{
+    static void Main(string[] args)
+    {
+        var tokenResponse = ConsoleClentTokenTests.GetToken();
+
+        ConsoleClentTokenTests.CallApi(tokenResponse);
+
+        var userTokenResponse = ConsoleClentTokenTests.GetUserToken();
+
+        ConsoleClentTokenTests.CallApi(userTokenResponse);
+
+        Console.ReadKey();
+    }
 }
 ```
 
 Now try both methods of requesting a token and inspect the claims and the API response.
+
+```
+{"message":"OK computer","client":"silicon"}
+{"message":"OK user","client":"carbon","subject":"1"}
+```
 
 ##What to do next
 This walk-through covered a very simple OAuth2 scenario. Next you could try:
