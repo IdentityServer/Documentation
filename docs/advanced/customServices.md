@@ -42,7 +42,7 @@ To accommodate these different possibilities, the `Registration` class provides 
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
-factory.UserService = new Registration<MyCustomUserService>();
+factory.UserService = new Registration<IUserService, MyCustomUserService>();
 ```
 
 See the [DI](di.html) page for more details.
