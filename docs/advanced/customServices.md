@@ -29,7 +29,7 @@ A `Registration` represents a way for IdentityServer to obtain an instance of yo
 
 Depending upon the design of your service you might want to have a new instance on every request, use a singleton,
 or you might require special instantiation logic each time an instance is needed.
-To accommodate these different possibilities, the `Registration` class provides three different constructors to register your service:
+To accommodate these different possibilities, the `Registration` class provides many different constructors to register your service:
 
 * `new Registration<T>(Type yourImplementation)`
     * Registers `yourImplementation` as the class that implements the `T` interface.
