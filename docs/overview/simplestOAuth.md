@@ -134,6 +134,7 @@ static void Main(string[] args)
     }
 }
 ```
+If you want to change the port above, keep in mind requests are only processed if the port is either **443** or one between **44300:44399**.
 
 When you run the console app, you should see some diagnostics output and `server running...`.
 
@@ -179,6 +180,11 @@ Add the following `Startup` class for both setting up web api and configuring tr
 ```csharp
 public void Configuration(IAppBuilder app)
 {
+    // Disable SSL Validation -- DO NOT USE THIS ON PRODUCTION ENVIRONMENT!
+    ServicePointManager.ServerCertificateValidationCallback =
+        delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        { return true; };
+
     // accept access tokens from identityserver and require a scope of 'api1'
     app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
         {
@@ -221,6 +227,8 @@ static TokenResponse GetToken()
     return client.RequestClientCredentialsAsync("api1").Result;
 }
 ```
+
+**Note:** You probably will need to either setup SSL certs or ignore SSL certs here, as shown with the API client code above. At this point you might get an exception about certificates during `CallApi()` if this is the case.
 
 The second code snippet calls the API using the access token:
 
