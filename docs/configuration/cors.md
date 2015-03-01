@@ -8,7 +8,7 @@ Many endpoints in IdentityServer will be accessed via Ajax calls from JavaScript
 
 ### CorsPolicy
 
-IdentityServer v3 allows the hosting application to configure a `CorsPolicy` on the `IdentityServerOptions` to control which origins are allowed. 
+IdentityServer3 allows the hosting application to configure a `CorsPolicy` on the `IdentityServerOptions` to control which origins are allowed. 
 
 #### AllowedOrigins
 

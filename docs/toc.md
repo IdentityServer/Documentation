@@ -51,6 +51,12 @@ permalink: /docs/
 * [CSP](advanced/csp.html)
 * [User Service](advanced/userService.html)
 
+### Entity Framework support for Clients, Scopes, and Operational Data
+* [Overview](ef/overview.html)
+* [Clients and Scopes](ef/clients_scopes.html)
+* [Operational Data](ef/operational.html)
+* [Schema Changes and Migrations](ef/migrations.html)
+
 ### WS-Federation
 
 * [Adding support for WS-Federation](wsFederation/overview.html)

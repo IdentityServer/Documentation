@@ -4,7 +4,7 @@ layout: docs-default
 
 #Custom Services
 
-IdentityServer v3 provides many extensibility points for storage of data, validation logic and general functionality
+IdentityServer3 provides many extensibility points for storage of data, validation logic and general functionality
 that are needed to support IdentityServer's operation as a token service.
 These various extensibility points are collectively referred to as "services".
 
@@ -29,7 +29,7 @@ A `Registration` represents a way for IdentityServer to obtain an instance of yo
 
 Depending upon the design of your service you might want to have a new instance on every request, use a singleton,
 or you might require special instantiation logic each time an instance is needed.
-To accommodate these different possibilities, the `Registration` class provides three different constructors to register your service:
+To accommodate these different possibilities, the `Registration` class provides many different constructors to register your service:
 
 * `new Registration<T>(Type yourImplementation)`
     * Registers `yourImplementation` as the class that implements the `T` interface.
@@ -42,7 +42,7 @@ To accommodate these different possibilities, the `Registration` class provides 
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
-factory.UserService = new Registration<MyCustomUserService>();
+factory.UserService = new Registration<IUserService, MyCustomUserService>();
 ```
 
 See the [DI](di.html) page for more details.

@@ -4,7 +4,7 @@ layout: docs-default
 
 ## Customizing Views
 
-IdentityServer v3 displays various “views” to the user. IdentityServer requires views for login, logout prompt, logged out, consent, client permissions, and errors. These views are simply web pages displayed in the browser. To obtain the markup for these views, IdentityServer defines the `IViewService` interface. The view service is one of the optional extensibility points in IdentityServer.
+IdentityServer3 displays various “views” to the user. IdentityServer requires views for login, logout prompt, logged out, consent, client permissions, and errors. These views are simply web pages displayed in the browser. To obtain the markup for these views, IdentityServer defines the `IViewService` interface. The view service is one of the optional extensibility points in IdentityServer.
 
 ### Default View Service
 

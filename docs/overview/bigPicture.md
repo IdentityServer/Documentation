@@ -64,5 +64,5 @@ This means that you can combine the two fundamental security concerns – authen
 and often a single round trip to the security token service.
 
 This is why we believe that the combination of OpenID Connect and OAuth2 is the best approach to secure modern
-applications for the foreseeable future. IdentityServer v3 is an implementation of these two protocols and is
+applications for the foreseeable future. IdentityServer3 is an implementation of these two protocols and is
 highly optimized to solve the typical security problems of today’s mobile, native and web applications.

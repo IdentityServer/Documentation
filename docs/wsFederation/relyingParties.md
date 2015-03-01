@@ -30,4 +30,9 @@ The `RelyingParty` class models a relying party:
 * `ClaimMappings`
     * Allows setting up a mappings table from the internal claim types to outgoing claim types (for situation where you
     feel the urge to map e.g. from `name` to `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`)
-
+* `SamlNameIdentifierFormat`
+   * Allows setting the SAML name identifier format for SAML name ID claims
+* `SignatureAlgorithm`
+   * Allows setting the signature algorithm for the token (defaults to RSASHA256)
+* `DigestAlgorithm`
+   * Allows setting the digest algorithm (defaults to SHA256)

@@ -4,7 +4,7 @@ layout: docs-default
 
 #Overview
 
-IdentityServer v3 is packaged as middleware and uses the typical "Options" patterns for configuration:
+IdentityServer3 is packaged as middleware and uses the typical "Options" patterns for configuration:
 
 ```csharp
 public void Configuration(IAppBuilder appBuilder)
