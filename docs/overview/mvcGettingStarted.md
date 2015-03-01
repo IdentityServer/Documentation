@@ -499,7 +499,7 @@ new Client
     Enabled = true,
     ClientName = "MVC Client",
     ClientId = "mvc",
-    Flow = Flows.Hybrid,
+    Flow = Flows.Implicit,
 
     RedirectUris = new List<string>
     {
@@ -753,7 +753,7 @@ public static class Scopes
 ## Registering a Web API Client
 Next we will call the API. You can do that either as using client credentials (think service account) or by delegating the users identity. We will start with the client credentials.
 
-First we need to register a new client for the MVC app. For security reasons, IdentityServer only allows one flow per client, and since our existing MVC client already uses hybrid flow, we need to create a new client for the service to service communication.
+First we need to register a new client for the MVC app. For security reasons, IdentityServer only allows one flow per client, and since our existing MVC client already uses implicit flow, we need to create a new client for the service to service communication.
 
 ```csharp
 public static class Clients
@@ -767,7 +767,7 @@ public static class Clients
                 Enabled = true,
                 ClientName = "MVC Client",
                 ClientId = "mvc",
-                Flow = Flows.Hybrid,
+                Flow = Flows.Implicit,
 
                 RedirectUris = new List<string>
                 {
