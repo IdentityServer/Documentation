@@ -19,8 +19,6 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
       * `Href`: The URL for the `href` of the link.
    * The custom web page represented by the `LoginPageLink` would be provided by the hosting application. Once it has performed its task then it can resume the login workflow by redirecting the user back to the login view.
    * When a user follows one of the `LoginPageLink`s, a `signin` query string parameter is passed to the page. This parameter should be echoed back as a `signin` query string parameter to the login page when the user wishes to resume their login. The login view is located at the path "~/login" relative to IdentityServer's application base. 
-* `EnableSignOutPrompt`
-   * Indicates whether IdentityServer will show a confirmation page for sign-out. When a client initiates a sign-out, by default IdentityServer will ask the user for confirmation. This is a mitigation technique against "logout spam". Defaults to `true`.
 * `RememberLastUsername`
    * Indicates whether IdentityServer will remember the last username entered on the login page. Defaults to `false`.
 * `IdentityProviders`
@@ -36,3 +34,9 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
        * `AllowRememberMe`: Indicates whether the "remember me" option is presented to users on the login page. If selected this option will issue a persistent authentication cookie. Defaults to `true`.
           * If this setting is in use then the user's decision (either yes or no) will override the `IsPersistent` setting. In other words, if both `IsPersistent` and `AllowRememberMe` is enabled and the user decides to not remember their login, then no persistent cookie will be issued.
        * `RememberMeDuration`: Duration of the persistent cookie issued by the "remember me" option on the login page. Defaults to `30` days.
+* `EnableSignOutPrompt`
+   * Indicates whether IdentityServer will show a confirmation page for sign-out. When a client initiates a sign-out, by default IdentityServer will ask the user for confirmation. This is a mitigation technique against "logout spam". Defaults to `true`.
+* `EnablePostSignOutAutoRedirect`
+  * Gets or sets a value indicating whether IdentityServer automatically redirects back to a validated post_logout_redirect_uri passed to the signout endpoint. Defaults to `false`.
+* `PostSignOutAutoRedirectDelay`
+  * Gets or sets the delay (in seconds) before redirecting to a post_logout_redirect_uri. Defaults to `0`.
