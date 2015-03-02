@@ -37,6 +37,6 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
 * `EnableSignOutPrompt`
    * Indicates whether IdentityServer will show a confirmation page for sign-out. When a client initiates a sign-out, by default IdentityServer will ask the user for confirmation. This is a mitigation technique against "logout spam". Defaults to `true`.
 * `EnablePostSignOutAutoRedirect`
-  * Gets or sets a value indicating whether IdentityServer automatically redirects back to a validated post_logout_redirect_uri passed to the signout endpoint. Defaults to `false`.
+  * Gets or sets a value indicating whether IdentityServer automatically redirects back to a validated `post_logout_redirect_uri` passed to the signout endpoint. Defaults to `false`.
 * `PostSignOutAutoRedirectDelay`
-  * Gets or sets the delay (in seconds) before redirecting to a post_logout_redirect_uri. Defaults to `0`.
+  * Gets or sets the delay (in seconds) before redirecting to a `post_logout_redirect_uri`. Defaults to `0`.
