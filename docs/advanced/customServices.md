@@ -45,7 +45,7 @@ var factory = new IdentityServerServiceFactory();
 factory.UserService = new Registration<IUserService, MyCustomUserService>();
 ```
 
-See the [DI](di.html) page for more details.
+See the page on [Dependency Injection (DI)](di.html) page for more details.
 
 ### Service cleanup
 
