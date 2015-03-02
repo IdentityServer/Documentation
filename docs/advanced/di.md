@@ -174,3 +174,14 @@ factory.TokenSigningService = new Registration<ITokenSigningService>(resolver =>
 ```
 
 In this exmaple, the `mode` acts as a configuration flag to influence which impelmentation of the `ICustomLogger` will be used at runtime.
+
+## Instancing with the Registration Mode
+
+The `Registration` class allows a service to indicate how many instances of the service that will be created. The `Mode` propery is an enum with these possible values:
+
+* `InstancePerHttpRequest`
+ * One instance will be created per HTTP request. This means that if the service is requested twice in a single dependency chain then the same instance will be shared.
+* `InstancePerUse`
+ * One instance will be created per location the service is needed. This means that if the service is requested twice in a single dependency chain then two separate instances will be created.
+* `Singleton`
+ * Only one instance will ever be created. This mode is automatically assigned when using the `Registration` that accepts a singleton instance as the constructor parameter.
