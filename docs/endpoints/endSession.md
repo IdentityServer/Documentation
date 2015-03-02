@@ -18,3 +18,5 @@ You can pass the following optional parameters to the endpoint:
 ```
 /connect/endsession?id_token_hint=...&post_logout_redirect_uri=https://myapp.com
 ```
+
+See the [AuthenticationOptions](../configuration/authenticationOptions.html) for configuring the behavior of the logout endpoint and logout page.
