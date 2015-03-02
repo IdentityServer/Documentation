@@ -10,10 +10,14 @@ Many endpoints in IdentityServer will be accessed via Ajax calls from JavaScript
 
 IdentityServer3 allows the hosting application to implement a `ICorsPolicyService` to determine the CORS policy. This service is registered on the [`IdentityServerServiceFactory`](serviceFactory.html).
 
-The single method to implement is:
+The single method on the `ICorsPolicyService` is:
 
-* `Task<bool> IsOriginAllowedAsync(string origin)`. 
+* `Task<bool> IsOriginAllowedAsync(string origin)`
  * Returns `true` if the `origin` is allowed, `false` otherwise.
+
+You could implement a custom implementation to determine in any way you see fit if the calling origin is allowed.
+
+### Provided implementations
 
 There are two implementations that are provided from IdentityServer core:
 
@@ -25,6 +29,7 @@ There are two implementations that are provided from IdentityServer core:
   * This implementation accepts as a constructor argument a list of `Client` objects. The origins allowed for CORS  is configured via the `AllowedCorsOrigins` property of the `Client` objects. 
 
 There is one last implementation provided from IdentityServer3.EntityFramework:
+
 * `ClientConfigurationCorsPolicyService`
   * This implementation draws its list of allowed origins from the `AllowedCorsOrigins` property of the `Client` objects that are stored in the database.
 
