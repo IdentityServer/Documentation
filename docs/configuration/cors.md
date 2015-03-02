@@ -62,3 +62,4 @@ var idsvrOptions = new IdentityServerOptions {
     CorsPolicy = CorsPolicy.AllowAll
 };
 ```
+
