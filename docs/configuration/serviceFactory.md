@@ -66,6 +66,8 @@ The `InMemoryFactory` allows setting up a service factory by providing in-memory
     * Implements localization of display strings ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FILocalizationService.cs))
 * `ClientSecretValidator`
     * Implements validation of client secrets ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIClientSecretValidator.cs))
+* `CorsPolicyService`
+    * Implements CORS policy ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FICorsPolicyService.cs))
 
 
 See [here](../advanced/customServices.html) for more information on registering your custom service and store implementations.
