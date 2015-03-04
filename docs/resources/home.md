@@ -21,7 +21,7 @@ layout: docs-default
 * [Overview Video (preview version)](https://vimeo.com/91397084)
 * [Samples Walkthrough Video (preview version)](https://vimeo.com/91405115)
 * [Introducing IdentityManager](https://vimeo.com/91470580)
-* [Introduction to OpenID Connect, OAuth2 and IdentityServer](http://www.ndcvideos.com/#/app/video/2651)
+* [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
 * [Web API Authorization and Access Control - done right!?](https://vimeo.com/97337305)
 * [Identity Management with ASP.NET Part 1](http://www.ndcvideos.com/#/app/video/3121)
 * [Identity Management with ASP.NET Part 2](http://www.ndcvideos.com/#/app/video/2891)
