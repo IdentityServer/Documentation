@@ -1,6 +1,6 @@
 # Site settings
 title: IdentityServer3
-email: identity@thinktecture.com
+email: identity@leastprivilege.com
 description: IdentityServer
 baseurl: "/Documentation" # the subpath of your site, e.g. /blog/
 url: "https://identityserver.github.io" # the base hostname & protocol for your site
