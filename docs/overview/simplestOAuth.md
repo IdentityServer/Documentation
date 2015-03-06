@@ -202,10 +202,11 @@ Try opening the browser and access the test controller - you should see a 401 be
 ##Adding a Console Client
 In the next part we will add a simple console client that will request an access token and use that to authenticate with the api.
 
-First add a new console project and install a nuget package for an OAuth2 client helper library:
+First add a new console project and install nuget packages for an OAuth2 client helper library and HttpClient:
 
 ```
 install-package Thinktecture.IdentityModel.Client
+install-package Microsoft.Net.Http
 ```
 
 The first code snippet requests the access token using the client credentials:
