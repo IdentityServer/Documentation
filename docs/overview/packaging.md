@@ -41,4 +41,4 @@ OWIN middleware for APIs. Provides an easy way to validate access tokens and enf
 In addition we publish dev/interim builds to MyGet.
 Add the following feed to your Visual Studio if you want to give them a try:
 
-[https://www.myget.org/F/thinktecture/](https://www.myget.org/F/thinktecture/)
+[https://www.myget.org/F/identity/](https://www.myget.org/F/identity/)
