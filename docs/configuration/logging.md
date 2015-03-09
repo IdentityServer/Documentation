@@ -35,6 +35,8 @@ The `DiagnosticsOptions` class has the following settings:
 * `IncludeSensitiveDataInLogs`
    * If enabled, the standard logging might include sensitive data like PII data
 
+**Warning** `EnableHttpLogging` might conflict with other frameworks loaded into the same web application (it does for sure with MVC). You can't use HTTP logging in that situation.
+
 ## Configuring the System.Diagnostics Provider
 Add the following snippet to your configuration file to funnel all logging messages to a simple text file.
 We use [Baretail](https://www.baremetalsoft.com/baretail/) for viewing the log files.
