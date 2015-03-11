@@ -27,4 +27,4 @@ layout: docs-default
 * [Identity Management with ASP.NET Part 2](http://www.ndcvideos.com/#/app/video/2891)
 
 ### Training
-* [Building and Securing a RESTful API for Multiple Clients in ASP.NET on PluralSight](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
+* [Building and Securing a RESTful APIs for Multiple Clients in ASP.NET on PluralSight](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
