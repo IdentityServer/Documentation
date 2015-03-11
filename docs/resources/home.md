@@ -25,3 +25,6 @@ layout: docs-default
 * [Web API Authorization and Access Control - done right!?](https://vimeo.com/97337305)
 * [Identity Management with ASP.NET Part 1](http://www.ndcvideos.com/#/app/video/3121)
 * [Identity Management with ASP.NET Part 2](http://www.ndcvideos.com/#/app/video/2891)
+
+### Training
+* [Building and Securing a RESTful API for Multiple Clients in ASP.NET on PluralSight](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
