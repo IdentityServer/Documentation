@@ -14,7 +14,7 @@ Supported parameters:
 * `token_type_hint`
     * either `access_token` or `refresh_token`
 
-Requests must me authenticated using one of the supported client authentication methods.
+Requests must be authenticated using one of the supported client authentication methods.
 
 Example:
 
