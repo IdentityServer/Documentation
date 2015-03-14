@@ -50,7 +50,7 @@ permalink: /docs/
 * [Localizing messages](advanced/localization.html)
 * [CSP](advanced/csp.html)
 * [User Service](advanced/userService.html)
-* [Web Farms](advanced/webfarms.md)
+* [Web Farms](advanced/webfarm.md)
 
 ### Entity Framework support for Clients, Scopes, and Operational Data
 * [Overview](ef/overview.html)
