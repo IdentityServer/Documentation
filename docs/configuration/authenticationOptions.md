@@ -41,4 +41,4 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
 * `PostSignOutAutoRedirectDelay`
   * Gets or sets the delay (in seconds) before redirecting to a `post_logout_redirect_uri`. Defaults to `0`.
 * `SignInMessageThreshold`
-  * Gets or sets the limit after which old signin messages are purged. Defaults to `5`.
+  * Gets or sets the limit after which old signin messages (cookies) are purged. Defaults to `5`.
