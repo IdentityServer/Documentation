@@ -12,7 +12,7 @@ If you are running in IIS, you need to synchronize machine keys. If you are runn
 you need to use a web farm compatible data protector for Katana.
 
 Unfortunately, Katana does not ship with one out of the box. IdentityServer includes a data protector based on
-X.509 certificates (`X509DataProtector`) that you can set on the options class.
+X.509 certificates (`X509CertificateDataProtector`) that you can set on the options class.
 
 ## Terminating SSL
 
