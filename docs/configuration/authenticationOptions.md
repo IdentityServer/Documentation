@@ -40,3 +40,5 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
   * Gets or sets a value indicating whether IdentityServer automatically redirects back to a validated `post_logout_redirect_uri` passed to the signout endpoint. Defaults to `false`.
 * `PostSignOutAutoRedirectDelay`
   * Gets or sets the delay (in seconds) before redirecting to a `post_logout_redirect_uri`. Defaults to `0`.
+* `SignInMessageThreshold`
+  * Gets or sets the limit after which old signin messages are purged. Defaults to `5`.
