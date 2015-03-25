@@ -17,7 +17,7 @@ Storage of configuration data (clients and scopes) as well as runtime data (cons
 
 Entity Framework [nuget](https://www.nuget.org/packages/Thinktecture.IdentityServer3.EntityFramework/) | [github](https://github.com/identityserver/Thinktecture.IdentityServer3.EntityFramework)
 
-(Community contribution) MongoDb [github](https://github.com/jageall/IdentityServer.v3.MongoDb)
+**(Community contribution)** MongoDb [github](https://github.com/jageall/IdentityServer.v3.MongoDb)
 
 ### User stores
 Support for identity management libraries.
