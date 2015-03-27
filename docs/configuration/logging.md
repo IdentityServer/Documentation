@@ -24,7 +24,7 @@ The following providers are supported out of the box:
 You can create additional providers by deriving from `LogProvider`.
 
 ##Configuring Diagnostics
-The `DiagnosticsOptions` class has the following settings:
+The `LoggingOptions` class has the following settings:
 
 * `EnableWebApiDiagnostics`
    * If enabled, Web API internal diagnostic logging will be forwarded to the log provider
