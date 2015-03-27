@@ -25,7 +25,7 @@ The typical interactions are:
 Typically each and every layer (front-end, middle-tier and back-end) has to protect resources and
 implement authentication and/or authorization – and quite typically against the same user store.
 
-This is why we don’t implement these fundamental security functions in the business applications/endpoints itself,
+This is why we don’t implement these fundamental security functions in the business applications/endpoints themselves,
 but rather outsource that critical functionality to a service - the security token service.
 
 This leads to the following security architecture and usage of protocols:
@@ -37,20 +37,20 @@ This divides the security concerns into two parts.
 **Authentication**
 
 Authentication is needed when an application needs to know about the identity of the current user.
-Typically these applications manages data on behalf of that user and needs to make sure that this user can only
-access the data he is allowed to. The most common example for that are (classic) web applications –
-but also native and JS-based applications have need for authentication.
+Typically these applications manage data on behalf of that user and need to make sure that this user can only
+access the data he is allowed to. The most common example for that is (classic) web applications –
+but native and JS-based applications also have need for authentication.
 
 The most common authentication protocols are SAML2p, WS-Federation and OpenID Connect – SAML2p being the
-most popular and widely deployed one.
+most popular and the most widely deployed.
 
-OpenID Connect is the newest of the three, but is generally considered being the future because it has the
-most potential for modern applications. It was being built for mobile applications scenarios right from the start
+OpenID Connect is the newest of the three, but is generally considered to be the future because it has the
+most potential for modern applications. It was built for mobile application scenarios right from the start
 and is designed to be API friendly.
 
 **API Access**
 
-Applications have two fundamental ways how they communicate with APIs – using the application identity,
+Applications have two fundamental ways with which they communicate with APIs – using the application identity,
 or delegating the user’s identity. Sometimes both ways need to be combined.
 
 OAuth2 is a protocol that allows applications to request access tokens from a security token service and use them
