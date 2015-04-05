@@ -16,6 +16,7 @@ layout: docs-default
 * [IdentityServer on Mono](http://www.ryanmelena.com/2014/10/31/thinktecture-identityserver-v3-on-mono/)
 * [Testing Web APIs with Postman](http://www.timecockpit.com/blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman)
 * [Adding a SAML2p external Authentication Provider](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/)
+* [Scott Brady: IdentityServer3 stand-alone implementation pt. 1](https://www.scottbrady91.com/Thinktecture-Identity-Server/Identity-Server-3-Standalone-Implementation-Part-1)
 
 ### Videos
 * [Overview Video (preview version)](https://vimeo.com/91397084)
