@@ -33,6 +33,8 @@ install-package Thinktecture.IdentityServer3
 APIs are modeled as scopes - you need to register all APIs that you want to be able to request access tokens for. For that we create a class that returns a list of `Scope`:
 
 ```csharp
+using Thinktecture.IdentityServer.Core.Models;
+
 static class Scopes
 {
     public static List<Scope> Get()
@@ -64,6 +66,8 @@ For this client we configure the following things:
 * Usage of so called reference tokens. Reference tokens do not need a signing certificate.
 
 ```csharp
+using Thinktecture.IdentityServer.Core.Models;
+
 static class Clients
 {
     public static List<Client> Get()
@@ -94,6 +98,9 @@ IdentityServer is implemented as OWIN middleware. It is configured in  in the `S
 The following snippets sets up a bare bones server with our scopes and clients. We also set up an empty list of users - we will add users later.
 
 ```csharp
+using Thinktecture.IdentityServer.Core.Configuration;
+using Thinktecture.IdentityServer.Core.Services.InMemory;
+
 class Startup
 {
     public void Configuration(IAppBuilder app)
@@ -123,6 +130,8 @@ install-package Microsoft.Owin.SelfHost
 Add the following code `Program.cs`:
 
 ```csharp
+using Thinktecture.IdentityModel.Client;
+
 static void Main(string[] args)
 {
     LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
@@ -177,6 +186,8 @@ The `User` property on the controller gives you access to the claims from the ac
 Add the following `Startup` class for both setting up web api and configuring trust with IdentityServer
 
 ```csharp
+using Thinktecture.IdentityServer.AccessTokenValidation;
+
 public void Configuration(IAppBuilder app)
 {
     // accept access tokens from identityserver and require a scope of 'api1'
@@ -211,6 +222,8 @@ install-package Thinktecture.IdentityModel.Client
 The first code snippet requests the access token using the client credentials:
 
 ```csharp
+using Thinktecture.IdentityModel.Client;
+
 static TokenResponse GetToken()
 {
     var client = new OAuth2Client(
@@ -225,6 +238,8 @@ static TokenResponse GetToken()
 The second code snippet calls the API using the access token:
 
 ```csharp
+using Thinktecture.IdentityModel.Client;
+
 static void CallApi(TokenResponse response)
 {
     var client = new HttpClient();
@@ -244,6 +259,8 @@ The user service manages users - for this sample we will use the simple in-memor
 First we need to define some users:
 
  ```csharp
+using Thinktecture.IdentityServer.Core.Services.InMemory;
+ 
 static class Users
 {
     public static List<InMemoryUser> Get()
@@ -279,6 +296,8 @@ This flow allows a client to send the user's username and password to the token 
 In total the `Clients` class looks like this then:
 
 ```csharp
+using Thinktecture.IdentityServer.Core.Models;
+
 static class Clients
 {
     public static List<Client> Get()
