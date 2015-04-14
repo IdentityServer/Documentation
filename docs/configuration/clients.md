@@ -45,7 +45,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
     * `OneTime`: the refresh token handle will be updated when refreshing tokens
 * `RefreshTokenExpiration`
     * `Absolute`: the refresh token will expire on a fixed point in time (specified by the AbsoluteRefreshTokenLifetime)
-    * `Sliding`: when refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in SlidingRefreshTokenLifetime). The lifetime will not exceed 
+    * `Sliding`: when refreshing the token, the lifetime of the refresh token will be renewed (by the amount specified in SlidingRefreshTokenLifetime). The lifetime will not exceed `AbsoluteRefreshTokenLifetime`.
 * `AccessTokenType`
     * Specifies whether the access token is a reference token or a self contained JWT token (defaults to `Jwt`).
 * `EnableLocalLogin`
