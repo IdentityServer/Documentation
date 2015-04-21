@@ -18,4 +18,4 @@ public void Configuration(IAppBuilder app)
 ```
 
 If you wish to set the expiration (`max-age`), then `UseHsts` has overloads that accept an `int` for the number of days,
-or a `TimeSpan` for a custom duration. A value of `0` or `TimeSpan.Zero` can be used to purge the HSTS browser cache.
+or a `TimeSpan` for a custom duration. A value of `0` or `TimeSpan.Zero` can be used to purge the HSTS browser cache. The default expiration is `30` days.
