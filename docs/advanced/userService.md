@@ -4,7 +4,7 @@ layout: docs-default
 
 #User Service
 
-**The sample for this topic can be found [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/CustomUserService)**
+**The sample for this topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/CustomUserService)**
 
 IdentityServer3 defines the `IUserService` interface to abstract the underlying identity management system being used for users. It provides semantics for users to authenticate with local accounts as well as external accounts. It also provides identity and claims to IdentityServer needed for tokens and the user info endpoint. Additionally, the user service can control the workflow a user will experience at login time. 
 

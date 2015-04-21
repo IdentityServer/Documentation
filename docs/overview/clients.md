@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native application, a web application or a JS-based application ([link](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source/Core/Models/Client.cs)).
+The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native application, a web application or a JS-based application ([link](https://github.com/IdentityServer/IdentityServer3/blob/master/source/Core/Models/Client.cs)).
 
 * `Enabled`
     * Specifies if client is enabled (defaults to `false`)
@@ -43,4 +43,4 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `IdentityProviderRestrictions`
     * Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
 
-In addition there are a number of settings controlling the behavior of refresh tokens - see [here](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/wiki/Refresh-Tokens)
+In addition there are a number of settings controlling the behavior of refresh tokens - see [here](https://github.com/IdentityServer/IdentityServer3/wiki/Refresh-Tokens)

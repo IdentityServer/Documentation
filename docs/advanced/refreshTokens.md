@@ -27,4 +27,4 @@ layout: docs-default
 
 ### Samples
 
-- The Clients [sample](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/Clients) has both [resource owner](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/Clients/ConsoleResourceOwnerRefreshTokenClient) and [code flow](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples/tree/master/source/Clients/MvcCodeFlowClientManual) clients.
+- The Clients [sample](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/Clients) has both [resource owner](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/Clients/ConsoleResourceOwnerRefreshTokenClient) and [code flow](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/Clients/MvcCodeFlowClientManual) clients.
