@@ -42,3 +42,5 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
   * Gets or sets the delay (in seconds) before redirecting to a `post_logout_redirect_uri`. Defaults to `0`.
 * `SignInMessageThreshold`
   * Gets or sets the limit after which old signin messages (cookies) are purged. Defaults to `5`.
+* `InvalidSignInRedirectUrl`
+  * Gets or sets the invalid sign in redirect URL. If the user arrives at the login page without a valid sign-in request, then they will be redirected to this URL. The URL must be absolute or can relative URLs (starting with "~/").
