@@ -71,7 +71,7 @@ app.UseIdentityServer(idsrvOptions);
 ## Adding WS-Federation Identity Providers
 WS-Federation based identity providers can be added in the exact same way as shown above.
 
-For backwards compatibility reasons, the WS-Federation middleware listens to all incoming requests and inspects them for incoming token posts. This is not an issue if you only have one WS-Federation middleware configured, but if you have more than one, you need to set an explicit and unique `CallbackPath` property that matches the reply URL configuration on the IdP.
+For backwards compatibility reasons, the WS-Federation middleware listens to all incoming requests and inspects them for incoming token posts. This is not an issue if you only have one WS-Federation middleware configured, but if you have more than one, you need to set an explicit and unique `CallbackPath` property that matches the reply URL configuration on the IdP. Note that the `CallbackPath` must be relative to the root, and not relative to the Identity Server module path. For example if the external provider is configured to post auth tokens to `http://mydomain.com/SubFolder/IdSrv/MyExternalProvider` then the `CallbackPath` should be set to `/SubFolder/IdSrv/MyExternalProvider`.
 
 ```csharp
 var adfs = new WsFederationAuthenticationOptions
