@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Web Farms
+#Deployment
 
 **note** This document is work in progress. Feel free to add new content.
 
