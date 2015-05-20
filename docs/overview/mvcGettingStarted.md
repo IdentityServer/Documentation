@@ -365,6 +365,8 @@ MVC has a built-in attribute called `[Authorize]` to require authenticated users
 We don't recommend this approach because this typically leads to code that mixes concerns like business/controller logic and authorization policy.
 We rather recommend separating the authorization logic from the controller which leads to cleaner code and better testability (read more [here](http://leastprivilege.com/2014/06/24/resourceaction-based-authorization-for-owin-and-mvc-and-web-api/)).
 
+### Resource Authorization
+
 To add the new authorization infrastructure and the new attribute, we add a Nuget package:
 ```
 install-package Thinktecture.IdentityModel.Owin.ResourceAuthorization.Mvc
@@ -420,6 +422,37 @@ app.UseResourceAuthorization(new AuthorizationManager());
 ```
 
 Run the sample and step through the code to familiarize yourself with the flow.
+
+### Role Authorization
+
+However, if you do choose to use `[Authorize(Roles = "Foo,Bar")]` be aware that sites can be thrown into an infinite redirection loop when the current user is authenticated, but does not belong to one of the roles or users you pass into the `Authorize` attribute (verified in MVC 5.2). This undesirable outcome occurs because the `Authorize` attribute will set the action's result to 401 unauthorized when the user is authenticated, but not in one of the roles. That 401 result triggers a redirect to authenticate with IdentityServer, which authenticates and then redirects the user back, and then the redirect loop begins. This behavior can be overcome by overriding the `Authorize` attribute's `HandleUnauthorizedRequest` method as follows, and then use the customized authorization attribute instead of what comes with MVC.
+
+```csharp
+// Customized authorization attribute:
+public class AuthAttribute : AuthorizeAttribute
+{
+    protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+    {
+        if (filterContext.HttpContext.User.Identity.IsAuthenticated)
+        {
+            // 403 we know who you are, but you haven't been granted access
+            filterContext.Result = new HttpStatusCodeResult(System.Net.HttpStatusCode.Forbidden);
+        }
+        else
+        {
+            // 401 who are you? go login and then try again
+            filterContext.Result = new HttpUnauthorizedResult(); ;
+        }
+    }
+}
+
+// Usage:
+[Auth(Roles = "Geek")]
+public ActionResult About()
+{
+    // ...
+}
+```
 
 ## More authorization and dealing with access denied scenarios
 Let's do a bit more authorization by adding a new action method to the `Home` controller:

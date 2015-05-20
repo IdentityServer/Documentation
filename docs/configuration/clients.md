@@ -4,7 +4,7 @@ layout: docs-default
 
 #Clients
 
-The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native application, a web application or a JS-based application ([link](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source/Core/Models/Client.cs)).
+The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native application, a web application or a JS-based application ([link](https://github.com/IdentityServer/IdentityServer3/blob/master/source/Core/Models/Client.cs)).
 
 * `Enabled`
     * Specifies if client is enabled. Defaults to `true`.

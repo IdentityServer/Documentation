@@ -130,7 +130,8 @@ install-package Microsoft.Owin.SelfHost
 Add the following code `Program.cs`:
 
 ```csharp
-using Thinktecture.IdentityModel.Client;
+using Microsoft.Owin.Hosting;
+using Thinktecture.IdentityServer.Core.Logging;
 
 static void Main(string[] args)
 {

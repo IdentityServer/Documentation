@@ -19,10 +19,10 @@ public static class LocalizationCategories
 }
 ```
 
-The `id` parameter then indicates the specific message from that category. The various identifiers that would be used are defined by constants in the `Thinktecture.IdentityServer.Core.Resources` namespace. For example, here is a short snippet of those constants (consult the code for the full list):
+The `id` parameter then indicates the specific message from that category. The various identifiers that would be used are defined by constants in the `IdentityServer3.Core.Resources` namespace. For example, here is a short snippet of those constants (consult the code for the full list):
 
 ```
-namespace Thinktecture.IdentityServer.Core.Resources
+namespace IdentityServer3.Core.Resources
 {
 	public class MessageIds
 	{

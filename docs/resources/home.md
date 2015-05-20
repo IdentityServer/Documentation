@@ -18,6 +18,8 @@ layout: docs-default
 * [Adding a SAML2p external Authentication Provider](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/)
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 1](https://www.scottbrady91.com/Thinktecture-Identity-Server/Identity-Server-3-Standalone-Implementation-Part-1)
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 2](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-2)
+* [Scott Brady: IdentityServer3 stand-alone implementation pt. 3](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-3)
+* [Reece Williams: FIPS Compliance](http://anemptyreece.com/2015/05/16/identityserver3-fips/)
 
 ### Videos
 * [Overview Video (preview version)](https://vimeo.com/91397084)

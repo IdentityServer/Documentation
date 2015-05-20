@@ -34,4 +34,4 @@ The files for the web pages are served up as embedded assets within the Identity
 </system.webServer>
 ```
 
-See the [samples](https://github.com/thinktecture/Thinktecture.IdentityServer.v3.Samples) repo for various examples of IIS and self-hosting.
+See the [samples](https://github.com/IdentityServer/IdentityServer3.Samples) repo for various examples of IIS and self-hosting.
