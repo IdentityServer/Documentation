@@ -832,13 +832,13 @@ Calling the API consists of two parts:
 * Requesting a token for the API from IdentityServer using the client credentials
 * Calling the API using the access token
 
-To make the interaction with the OAuth2 token endpoint easier, we add a client package via Nuget:
+To make the interaction with the OAuth2 token endpoint easier, add the Client package to the MVC project via Nuget:
 
 ```
 install-package Thinktecture.IdentityModel.Client
 ```
 
-The following code snippet will request the token for *sampleApi* using the client credentials:
+Under Controller, add the new class CallApiController. The following code snippet requests the token for *sampleApi* using the client credentials:
 
 ```csharp
 private async Task<TokenResponse> GetTokenAsync()
