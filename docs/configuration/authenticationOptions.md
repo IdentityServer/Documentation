@@ -34,6 +34,7 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
        * `AllowRememberMe`: Indicates whether the "remember me" option is presented to users on the login page. If selected this option will issue a persistent authentication cookie. Defaults to `true`.
           * If this setting is in use then the user's decision (either yes or no) will override the `IsPersistent` setting. In other words, if both `IsPersistent` and `AllowRememberMe` is enabled and the user decides to not remember their login, then no persistent cookie will be issued.
        * `RememberMeDuration`: Duration of the persistent cookie issued by the "remember me" option on the login page. Defaults to `30` days.
+       * `SecureMode`: Gets or sets the mode for issuing the secure flag on the cookies issued. Defaults to SameAsRequest.
 * `EnableSignOutPrompt`
    * Indicates whether IdentityServer will show a confirmation page for sign-out. When a client initiates a sign-out, by default IdentityServer will ask the user for confirmation. This is a mitigation technique against "logout spam". Defaults to `true`.
 * `EnablePostSignOutAutoRedirect`
