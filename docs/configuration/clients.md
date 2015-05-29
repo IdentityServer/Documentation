@@ -24,6 +24,8 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
     * Specifies whether user can choose to store consent decisions. Defaults to `true`.
 * `Flow`
     * Specifies allowed flow for client (either `AuthorizationCode`, `Implicit`, `Hybrid`, `ResourceOwner`, `ClientCredentials` or `Custom`). Defaults to `Implicit`.
+* `AllowClientCredentialsOnly `
+    * Gets or sets a value indicating whether this client is allowed to request token using client credentials only. This is e.g. useful when you want a client to be able to use both a user-centric flow like implicit and additionally client credentials flow. Defaults to false.
 * `RedirectUris`
     * Specifies the allowed URIs to return tokens or authorization codes to
 * `PostLogoutRedirectUris`
