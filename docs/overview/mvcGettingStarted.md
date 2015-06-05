@@ -524,7 +524,7 @@ This will initiate a roundtrip to the so called _endsession_ endpoint on Identit
 
 Typically the most secure thing to do now would be to simply close the browser window to get rid of all session data. Some applications though would like to give the user a chance to return as an anonymous user.
 
-This is possible, but requires some steps - first you need to register a valid URL to return to after the logout procedure is complete. This is done in the client definition for the MVC application (note the new `PostLogoutRedirectUris` setting:
+This is possible, but requires some steps - first you need to register a valid URL to return to after the logout procedure is complete. This is done in the client definition for the MVC application (note the new `PostLogoutRedirectUris` setting):
 
 ```csharp
 new Client 
