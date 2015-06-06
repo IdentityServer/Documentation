@@ -46,7 +46,7 @@ public static void ConfigureIdentityProviders(IAppBuilder app, string signInAsTy
 ```
 **Notes**
 
-* `AuthenticationType` must be a unique value to identify the external identity provider. This value will also be used for the `idp` claim in the resulting tokens. Furthermore the same value can be used to pre-select identity providers during authorization/authentication requests using the `acr_values` parameter (see (this)[../endpoints/authorization.html] for more information). This value is also used to restrict the allowed identity providers on the `Client` configuration.
+* `AuthenticationType` must be a unique value to identify the external identity provider. This value will also be used for the `idp` claim in the resulting tokens. Furthermore the same value can be used to pre-select identity providers during authorization/authentication requests using the `acr_values` parameter (see [this](../endpoints/authorization.html) for more information). This value is also used to restrict the allowed identity providers on the `Client` configuration.
 * `Caption` specifies the label of the button on the login page for the identity provider. If `Caption` is an empty string, the identity provider will not be shown on the login page. But can still be used via the login hint.
 * `SignInAsAuthenticationType` must be set to the value we pass in via the `signInAsType` parameter
 
