@@ -41,6 +41,8 @@ The `LoggingOptions` class has the following settings:
 Add the following snippet to your configuration file to funnel all logging messages to a simple text file.
 We use [Baretail](https://www.baremetalsoft.com/baretail/) for viewing the log files.
 
+**Note:** If you use this method you need to ensure that the account running the application pool has write access to the directory containing the log file. If you don't specify a path, this will be the application directory, which is not recommended for production scenarios. For production log to a file **outside** the application directory.
+
 ```xml
 <system.diagnostics>
   <trace autoflush="true"
