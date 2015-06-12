@@ -51,6 +51,7 @@ permalink: /docs/
 * [CSP](advanced/csp.html)
 * [User Service](advanced/userService.html)
 * [Deployment](advanced/deployment.html)
+* [Authenticating Clients with X.509 Certificates](advanced/clientCerts.html)
 
 ### Entity Framework support for Clients, Scopes, and Operational Data
 * [Overview](ef/overview.html)
