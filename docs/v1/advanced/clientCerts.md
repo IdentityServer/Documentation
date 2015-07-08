@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-# Authenticating Cients using X.509 Certificates
+# Authenticating Clients using X.509 Certificates
 
 **Remark** This functionality is currently only available on the dev branch and the v2 preview packages.
 

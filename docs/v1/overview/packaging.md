@@ -34,7 +34,7 @@ WS-Federation [nuget](https://www.nuget.org/packages/IdentityServer3.WsFederatio
 ### Access token validation middleware
 OWIN middleware for APIs. Provides an easy way to validate access tokens and enforce scope requirements.
 
-[nuget](https://www.nuget.org/packages/IdentityServer3.AccessTokenValidation/) | [github](https://github.com/identityserver/IdentityServer.v3.AccessTokenValidation)
+[nuget](https://www.nuget.org/packages/IdentityServer3.AccessTokenValidation/) | [github](https://github.com/IdentityServer/IdentityServer3.AccessTokenValidation)
 
 ## Dev builds
 

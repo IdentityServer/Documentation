@@ -40,7 +40,7 @@ factory.ConfigureDefaultViewService(viewOptions);
 
 ##### Replacing entire views
 
-The `DefaultViewService` does allow for the HTML to be customized. The default views can be "overridden" by creating HTML files within an `assets` folder within the hosting applications base directory. The files contained inside are located by name matching the view being rendered (e.g. the login view will look for a file named `login.html`). If these files are present then they are responsible for rendeing the entirety of the HTML for that view.
+The `DefaultViewService` does allow for the HTML to be customized. The default views can be "overridden" by creating HTML files within an `assets` folder within the hosting applications base directory. The files contained inside are located by name matching the view being rendered (e.g. the login view will look for a file named `login.html`). If these files are present then they are responsible for rendering the entirety of the HTML for that view.
 
 ##### Replacing partial views
 
