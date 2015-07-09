@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Table of Contents (version 2.x)
-permalink: /docs/
+permalink: /docsv2/
 ---
 
 ### Overview
