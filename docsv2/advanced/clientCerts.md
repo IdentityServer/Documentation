@@ -8,8 +8,8 @@ Often client authentication is accomplished using shared keys (aka client secret
 client certificates.
 
 ## Registering the client
-You are in full control of how you want to map a client certificate to a client by implementing `IClientValidator`.
-By default we will offer to use the thumbprint of the certificate to map to the right client.
+You are in full control of how you want to map a client certificate to a corresponding client secret by implementing `ISecretValidator`.
+The default implementation uses the thumbprint of the certificate to map to the right client.
 
 The following snippet registers a client for client credentials flow:
 
@@ -62,7 +62,7 @@ To request a token, you need to supply the client certificate to the HTTP client
 The following example uses the IdentityModel OAuth2 client:
 
 ```csharp
-static TokenResponse RequestToken()
+async Task<TokenResponse> RequestTokenAsync()
 {
     var cert = new X509Certificate2("Client.pfx");
 
@@ -70,15 +70,10 @@ static TokenResponse RequestToken()
     handler.ClientCertificates.Add(cert);
 
     var client = new OAuth2Client(
-        new Uri("https://idsrv.local/core/connect/token"),
+        new Uri("https://identityserver.io/core/connect/token"),
+        "certclient",
         handler);
 
-
-    var additional = new Dictionary<string, string>
-    {
-        { "client_id", "certclient" }
-    };
-
-    return client.RequestClientCredentialsAsync("read write", additional).Result;
+    return await client.RequestClientCredentialsAsync("read write");
 }
 ```
