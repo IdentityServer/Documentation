@@ -4,8 +4,6 @@ layout: docs-default
 
 # Authenticating Clients using X.509 Certificates
 
-**Remark** This functionality is currently only available on the dev branch and the v2 preview packages.
-
 Often client authentication is accomplished using shared keys (aka client secrets). Another option is to use X.509
 client certificates.
 

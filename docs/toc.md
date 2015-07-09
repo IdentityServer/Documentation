@@ -51,14 +51,12 @@ permalink: /docs/
 * [CSP](advanced/csp.html)
 * [User Service](advanced/userService.html)
 * [Deployment](advanced/deployment.html)
-* [Authenticating Clients with X.509 Certificates](advanced/clientCerts.html)
 
 ### Entity Framework support for Clients, Scopes, and Operational Data
 * [Overview](ef/overview.html)
 * [Clients and Scopes](ef/clients_scopes.html)
 * [Operational Data](ef/operational.html)
 * [Schema Changes and Migrations](ef/migrations.html)
-	* [Migrating from 1.x to 2.0](ef/migrations_to_v2.html)
 
 ### WS-Federation
 
