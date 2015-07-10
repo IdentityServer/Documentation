@@ -18,7 +18,7 @@ permalink: /docsv2/
 * [Overview](configuration/overview.html)
 * [Options](configuration/identityServerOptions.html)
 * [Service Factory](configuration/serviceFactory.html)
-* [The In-Memory Factory](configuration/inMemoryFactory.html)
+* [In-Memory Services and Stores](configuration/inMemory.html)
 * [Clients](configuration/clients.html)
 * [Scopes and Claims](configuration/scopesAndClaims.html)
 * [Authentication Options](configuration/authenticationOptions.html)
