@@ -2,6 +2,6 @@
 layout: docs-default
 ---
 
-## Customizing Views
+# Secrets
 
 todo for v2

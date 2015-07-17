@@ -21,6 +21,7 @@ permalink: /docsv2/
 * [In-Memory Services and Stores](configuration/inMemory.html)
 * [Clients](configuration/clients.html)
 * [Scopes and Claims](configuration/scopesAndClaims.html)
+* [Secrets](configuration/secrets.html)
 * [Authentication Options](configuration/authenticationOptions.html)
 * [Identity Providers](configuration/identityProviders.html)
 * [HSTS](configuration/hsts.html)

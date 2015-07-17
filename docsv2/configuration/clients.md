@@ -11,7 +11,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `ClientId`
     * Unique ID of the client
 * `ClientSecrets`
-    * List of Client secrets - only relevant for flows that require a secret
+    * List of client secrets - only relevant for flows that require a secret
 * `ClientName`
     * Client display name (used for logging and consent screen)
 * `ClientUri`
@@ -30,8 +30,12 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
     * Specifies the allowed URIs to return tokens or authorization codes to
 * `PostLogoutRedirectUris`
     * Specifies allowed URIs to redirect to after logout
-* `ScopeRestrictions`
-    * Specifies the scopes that the client is allowed to request. If empty, the client can request all scopes. Defaults to an empty collection.
+* `AllowedScopes`
+    * By default a client has no access to any scopes - either specify the scopes explicitly here (recommended) - 
+      or set `AllowAccessToAllScopes` to true.
+  `AllowedCustomGrantTypes`
+      * When `Custom` flow is used, you also need to specify which custom grant types this client can use.
+        Explicitly specify the grant types here (recommended) or set `AllowAccessToAllCustomGrantTypes` to true.
 * `IdentityTokenLifetime`
     * Lifetime to identity token in seconds (defaults to 300 seconds / 5 minutes)
 * `AccessTokenLifetime`
@@ -56,14 +60,16 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
     * Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
 * `IncludeJwtId`
     * Specifies whether JWT access tokens should have an embedded unique ID (via the `jti` claim).
+* `AllowedCorsOrigins`
+    * If specified, will be used by the default CORS policy service implementations (In-Memory and EF) to build a CORS
+      policy for JavaScript clients.
+
 * `Claims`
     * Allows settings claims for the client (will be included in the access token).
 * `AlwaysSendClientClaims`
     * If set, the client claims will be send for every flow. If not, only for client credentials flow (default is `false`)
 * `PrefixClientClaims`
     * If set, all client claims will be prefixed with `client_` to make sure they don't accidentally collide with user claims. Default is `true`.
-* `CustomGrantTypeRestrictions`
-    * List of allowed custom grant types when Flow is set to `Custom`. If the list is empty, all custom grant types are allowed. Defaults to empty.
 
 In addition there are a number of settings controlling the behavior of refresh tokens - see [here](advanced/refreshTokens.html)
 
@@ -102,9 +108,9 @@ var client = new Client
     Enabled = true,
 
     ClientId = "legacy",
-    ClientSecrets = new List<ClientSecret>
+    ClientSecrets = new List<Secret>
     {
-        new ClientSecret("4C701024-0770-4794-B93D-52B5EB6487A0".Sha256())
+        new Secret("4C701024-0770-4794-B93D-52B5EB6487A0".Sha256())
     },
 
     Flow = Flows.ResourceOwner,
