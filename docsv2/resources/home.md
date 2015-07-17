@@ -21,14 +21,18 @@ layout: docs-default
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 3](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-3)
 * [Reece Williams: FIPS Compliance](http://anemptyreece.com/2015/05/16/identityserver3-fips/)
 
+### Conference Talks
+* [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
+* [Securing Web APIs - Patterns & Anti-Patterns](https://vimeo.com/131635255)
+* [Authentication and authorization in modern JavaScript web applications – how hard can it be?](https://vimeo.com/131636653)
+* [Identity Management with ASP.NET Part 1](https://vimeo.com/113708987)
+* [Identity Management with ASP.NET Part 2](https://vimeo.com/113688710)
+
 ### Videos
 * [Overview Video (preview version)](https://vimeo.com/91397084)
 * [Samples Walkthrough Video (preview version)](https://vimeo.com/91405115)
 * [Introducing IdentityManager](https://vimeo.com/91470580)
-* [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
-* [Web API Authorization and Access Control - done right!?](https://vimeo.com/97337305)
-* [Identity Management with ASP.NET Part 1](https://vimeo.com/113708987)
-* [Identity Management with ASP.NET Part 2](https://vimeo.com/113688710)
 
 ### Training
+* [Brock and Dominick's Identity & Access Control for modern Web Applications and APIs Workshop](http://leastprivilege.com/training/)
 * [Building and Securing a RESTful APIs for Multiple Clients in ASP.NET on PluralSight](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)

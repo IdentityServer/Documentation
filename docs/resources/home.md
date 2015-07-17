@@ -31,4 +31,5 @@ layout: docs-default
 * [Identity Management with ASP.NET Part 2](https://vimeo.com/113688710)
 
 ### Training
+* [Brock and Dominick's Identity & Access Control for modern Web Applications and APIs Workshop](http://leastprivilege.com/training/)
 * [Building and Securing a RESTful APIs for Multiple Clients in ASP.NET on PluralSight](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
