@@ -33,7 +33,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `AllowedScopes`
     * By default a client has no access to any scopes - either specify the scopes explicitly here (recommended) - 
       or set `AllowAccessToAllScopes` to true.
-  `AllowedCustomGrantTypes`
+* `AllowedCustomGrantTypes`
       * When `Custom` flow is used, you also need to specify which custom grant types this client can use.
         Explicitly specify the grant types here (recommended) or set `AllowAccessToAllCustomGrantTypes` to true.
 * `IdentityTokenLifetime`
