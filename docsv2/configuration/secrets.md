@@ -30,14 +30,14 @@ This is useful for key rotation.
 Let's have a look at the `Secret` class in more detail:
 
 * `Value` The value of the secret. This is being interpreted by the secret validator (e.g. a "password"-like share secret
-    or something that identifies a credential)
+    or something else that identifies a credential)
 * `Description` The description of the secret - useful for attaching some extra information to the secret
 * `Expiration` A point in time, where this secret will expire
 * `Type` Some string that gives the secret validator a hint what type of secret to expect (e.g. "SharedSecret" or "X509CertificateThumbprint")
 
 ## Secret parsers
 There are a number of ways how a client could transmit a secret - the OAuth2 specification mentions HTTP Basic Authentication
-or using POST body values. IdentityServer also supports X.509 client certificates (see [here](../advanced/clientCerts.html)).
+or using POST body values. IdentityServer additionally supports X.509 client certificates (see [here](../advanced/clientCerts.html)).
 
 Secret parsing is an extensibility point - if you need to support different means of transmitting a secret 
 besides the above mentioned mechanisms, you can implement the `ISecretParser` interface and add your
