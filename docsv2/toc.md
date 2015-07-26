@@ -53,6 +53,7 @@ permalink: /docsv2/
 * [User Service](advanced/userService.html)
 * [Deployment](advanced/deployment.html)
 * [Authenticating Clients with X.509 Certificates](advanced/clientCerts.html)
+* [Custom Grant Types](advanced/customGrantTypes.html)
 
 ### Entity Framework support for Clients, Scopes, and Operational Data
 * [Overview](ef/overview.html)
