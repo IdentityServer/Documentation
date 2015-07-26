@@ -10,7 +10,6 @@ The following is an example for a token request using a custom grant type:
 
 ```
 POST /connect/token
-
 Authorization: Basic xxx:yyy
 
 grant_type=my_custom_credential&
@@ -26,10 +25,10 @@ You start by implementing this interface:
 
 ```csharp
 public interface ICustomGrantValidator
-    {
-        Task<CustomGrantValidationResult> ValidateAsync(ValidatedTokenRequest request);
-        string GrantType { get; }
-    }
+{
+    Task<CustomGrantValidationResult> ValidateAsync(ValidatedTokenRequest request);
+    string GrantType { get; }
+}
 ```
 
 In the `GrantType` property you specify which custom grant type you want to handle with this validator. 
