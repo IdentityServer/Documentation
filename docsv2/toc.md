@@ -55,6 +55,10 @@ permalink: /docsv2/
 * [Authenticating Clients with X.509 Certificates](advanced/clientCerts.html)
 * [Custom Grant Types](advanced/customGrantTypes.html)
 
+### Consuming Tokens
+
+* [The Katana Access Token Validation Middleware](consuming/tokenValidationMiddleware.html)
+
 ### Entity Framework support for Clients, Scopes, and Operational Data
 * [Overview](ef/overview.html)
 * [Clients and Scopes](ef/clients_scopes.html)
