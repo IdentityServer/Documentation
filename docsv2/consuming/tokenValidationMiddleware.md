@@ -38,9 +38,9 @@ public class Startup
 }
 ```
 
-The middleware will first inspect the token - if it is a JWT, token validation will be done locally on the receiving
-server (using the issuer name and key material found in the discovery document).
-If the token is a reference token, the middleware will use the access token validation [endpoint](../endpoint/accessTokenValidation.html) on IdentityServer.
+The middleware will first inspect the token - if it is a JWT, token validation will be done locally
+(using the issuer name and key material found in the discovery document).
+If the token is a reference token, the middleware will use the access token validation [endpoint](../endpoints/accessTokenValidation.html) on IdentityServer.
 
 ## Enabling Caching
 
