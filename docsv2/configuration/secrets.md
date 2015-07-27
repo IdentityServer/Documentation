@@ -14,9 +14,9 @@ var client = new Client
     ClientName = "Client Credentials Flow Client",
     
     ClientId = "client",
-    ClientSecrets = new List<ClientSecret>
+    ClientSecrets = new List<Secret>
     { 
-        new ClientSecret("secret".Sha256())
+        new Secret("secret".Sha256())
     },
 
     Flow = Flows.ClientCredentials   
