@@ -112,6 +112,7 @@ class Startup
 
         var options = new IdentityServerOptions
         {
+            RequireSsl = false,
             Factory = factory
         };
 
