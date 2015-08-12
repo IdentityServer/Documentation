@@ -15,6 +15,7 @@ The `AuthenticationOptions` is a property on the `IdentityServerOptions` to cust
 * `LoginPageLinks`
    * List of `LoginPageLink` objects. These allow the login view to provide the user custom links to other web pages that they might need to visit before they can login (such as a registration page, or a password reset page). 
    * `LoginPageLink` contains:
+      * `Type`: An identifier for the type of link.
       * `Text`: The text to appear in the link.
       * `Href`: The URL for the `href` of the link.
    * The custom web page represented by the `LoginPageLink` would be provided by the hosting application. Once it has performed its task then it can resume the login workflow by redirecting the user back to the login view.
