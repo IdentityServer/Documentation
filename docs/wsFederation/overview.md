@@ -4,7 +4,7 @@ layout: docs-default
 
 # Adding WS-Federation Support
 
-IdentityServer has support for the WS-Federation support for both acting as an identity provider as well
+IdentityServer has support for WS-Federation acting as an identity provider as well
 as allowing external authentication over the WS-Federation protocol. For external authentication see [here](../configuration/identityProviders.html).
 
 This section is about adding WS-Federation identity provider capabilities to IdentityServer3.
@@ -52,7 +52,6 @@ You first need to install the plugin using Nuget:
  ```
 
 The equivalent to an OpenID Connect or OAuth2 client is called relying party in WS-Federation.
-Similar to the other in-memory factories (see [here](../configuration/inMemoryFactory.html)) the WS-Federation plugin has built-in
-support for retrieving relying parties from an in-memory service.
+Similar to the other in-memory factories (see [here](../configuration/inMemoryFactory.html)) the WS-Federation plugin has built-in support for retrieving relying parties from an in-memory service.
 
 See [here](relyingParties.html) for information on how to define a relying party.
