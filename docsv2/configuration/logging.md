@@ -69,10 +69,15 @@ You can also use the logging system in your own extensibility code.
 Add a static `ILog` instance to your class
 
 ```csharp
-private readonly static ILog Logger = LogProvider.GetCurrentClassLogger();
+private readonly static ILog Logger = LogProvider.For<MyClass>();
 ```
 Log your messages using the logger
 
 ```csharp
 Logger.Debug("Getting claims for identity token");
 ```
+
+## Using your own Logging Infrastructure
+You may have an existing logging infrastructure in place and want IdentityServer logging to use that.
+The recommended approach for this is to write a custom sink using one of the supported logging frameworks (our favourite is Serilog).
+You can find a sample [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/dev/source/Logging).
