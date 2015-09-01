@@ -31,7 +31,7 @@ The `LoggingOptions` class has the following settings:
    * If enabled, the Katana log output will be logged
 
 
-## Example: using Serilog to log to System.Diagnostics tracing
+## Example: Using Serilog to log to System.Diagnostics tracing
 The following example wires up [Serilog](http://serilog.net/) to log to the diagnostics trace:
 
 ```csharp
