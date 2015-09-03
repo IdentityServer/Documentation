@@ -288,8 +288,17 @@ static class Users
 `Username` and `Password` are used to authenticate the user,
 the `Subject` is the unique identifier for that user that will be embedded into the access token.
 
-In `Startup` replace the empty user list with a call the `Get` method.
+In `Startup` Configuration method replace the empty user list with a call the `Get` method.
 
+Replace:
+ ```csharp
+            users: new List<InMemoryUser>());
+ ```
+ With:
+  ```csharp
+            users: Users.Get());
+ ```
+ 
 ###Adding a Client
 Next we will add a client definition that uses the flow called `resource owner password credential grant`.
 This flow allows a client to send the user's username and password to the token service and get an access token back in return.
