@@ -61,5 +61,47 @@ The custom views will be cached in-memory by default, so if the files are change
 
 #### Custom view loader
 
-Finally, if the `templates` folder on the file system is not desirable, then you can implement your own storage for the custom views by implmeneting the `IViewLoader` interface. This is configured as a `Registration<IViewLoader>` on the  `DefaultViewServiceOptions`.
+Finally, if the `templates` folder on the file system is not desirable, then you can implement your own storage for the custom views by implmeneting the `IViewLoader` interface. This is configured as a `Registration<IViewLoader>
+    ` on the  `DefaultViewServiceOptions`.
 
+### Adding custom data to the rendered view
+
+It is possible that custom views need to render custom data. All of the view models used by the  `DefaultViewService` provide a `object` property called `Custom`. This is simply rendered into the client-side view model and is available for use in the AngularJS templates. 
+    
+To provide `Custom` data on the view models, it will be necessary to derive from the `DefaultViewService` and override the appropriate methods for the views where the custom data needs to be rendered. 
+
+For example, to add a custom message to the login page:
+
+```csharp
+public class CustomViewService : DefaultViewService
+{
+    public CustomViewService(DefaultViewServiceOptions config, IViewLoader viewLoader)
+        : base(config, viewLoader)
+    {
+    }
+
+    public override Task<Stream> Login(LoginViewModel model, SignInMessage message)
+    {
+        model.Custom = new {
+            customMessage = "Hello World!"
+        };
+
+        return base.Login(model, message);
+    }
+}
+```
+
+Then in the `_login.html` template, this custom markup can be added to access the `customMessage` property:
+
+```
+<div ng-show="model.customMessage">
+    <h2>{{model.customMessage}}</h2>
+</div>
+```
+
+Finally, the `CustomViewService` must be registered with IdentityServer:
+
+```csharp
+var factory = new IdentityServerServiceFactory();
+factory.ViewService = new DefaultViewServiceRegistration<CustomViewService>();
+```
