@@ -51,6 +51,7 @@ permalink: /docsv2/
 * [Localizing messages](advanced/localization.html)
 * [CSP](advanced/csp.html)
 * [User Service](advanced/userService.html)
+* [OWIN environment extension methods](advanced/owin.html)
 * [Deployment](advanced/deployment.html)
 * [Authenticating Clients with X.509 Certificates](advanced/clientCerts.html)
 * [Custom Grant Types](advanced/customGrantTypes.html)
