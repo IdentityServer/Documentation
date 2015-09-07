@@ -82,7 +82,7 @@ The authentication methods all receive a `SignInMessage` in their context which 
 
 The return value of all of the authentication methods is an `AuthenticateResult`. The returned `AuthenticateResult` indicates one of many possible outcomes. The constructor is overloaded and the one used indicates which of these outcomes is chosen. The list is:
 
-```
+```csharp
 // Full login
 AuthenticateResult(string subject, string name, IEnumerable<Claim> claims = null, string identityProvider = Constants.BuiltInIdentityProvider, string authenticationMethod = null)
 
