@@ -1,4 +1,4 @@
-﻿---
+---
 layout: docs-default
 ---
 
