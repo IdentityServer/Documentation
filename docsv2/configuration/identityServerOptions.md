@@ -30,8 +30,6 @@ The `IdentityServerOptions` [class](https://github.com/thinktecture/Thinktecture
     * Configures [AuthenticationOptions](authenticationOptions.html)
 * `PluginConfiguration`
     * Allows adding protocol plugins like the WS-Federation support.
-* `CorsPolicy`
-    * Configures [CORS](cors.html)
 * `CspOptions`
     * Configures [CSP](../advanced/csp.html)
 * `ProtocolLogoutUrls`
