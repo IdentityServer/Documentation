@@ -10,7 +10,7 @@ Messages that IdentityServer creates can be localized (or simply replaced) by im
 
 This API is passed a `category` for the message. IdentityServer only defines three categories:
 
-```
+```csharp
 public static class LocalizationCategories
 {
     public const string Messages = "Messages";
@@ -21,7 +21,7 @@ public static class LocalizationCategories
 
 The `id` parameter then indicates the specific message from that category. The various identifiers that would be used are defined by constants in the `IdentityServer3.Core.Resources` namespace. For example, here is a short snippet of those constants (consult the code for the full list):
 
-```
+```csharp
 namespace IdentityServer3.Core.Resources
 {
 	public class MessageIds
