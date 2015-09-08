@@ -16,7 +16,7 @@ The default cache provided by IdentityServer is an in-memory cache and is config
 
 These are overloaded to either accept no parameters (which use a default expiration of `5` minutes), or a `TimeSpan` that indicates a custom value for the expiration. These APIs would be used something like this:
 
-```
+```csharp
 var factory = InMemoryFactory.Create(
     users:   Users.Get(),
     clients: Clients.Get(),
