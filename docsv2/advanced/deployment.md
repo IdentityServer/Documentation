@@ -35,7 +35,7 @@ The configuration data for scopes, clients and users must be in-sync.
 Either they are static and you change configuration data via continuous deployment, or you use a persistence layer like
 the Entity Framework repo (or community contributions like the one for MongoDB).
 
-## Operation data
+## Operational data
 
 Some features require a shared database for operational data - namely authorization codes, reference tokens and refresh token.
 If you use any of those features you need a persistence layer for them. Again you could use our Entity Framework implemenation.

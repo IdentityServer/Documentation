@@ -4,7 +4,7 @@ layout: docs-default
 
 ## Default View Service
 
-**The sample for this sub-topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/EmbeddedAssetsViewService)**
+**The sample for this topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/EmbeddedAssetsViewService)**
 
 The default implementation of the view service used by IdentityServer is the `DefaultViewService`. The various assets (HTML, JavaScript, CSS, and fonts) that comprise the views are served up from embedded resources within the IdentityServer assembly.
 
@@ -35,13 +35,21 @@ factory.ConfigureDefaultViewService(viewOptions);
 
 ### HTML customization
 
+The views in the `DefaultViewService` use AngularJS to perform dynamic rendering client-side. The rendering is driven by a view model that is included in each view. Each view has a different view model with the pertinent data for the view.
+
+The `DefaultViewService` does allow for the HTML to be customized, but the assumption is that the same approach will be used for the dynamic rendering of the HTML. If this is not desirable, then consider [implementing a custom view service](customViewService.html).
+
+Also, many of the views have links or forms that make requests back into IdentityServer. Any customizations to the views must be able to recreate the same requests into IdentityServer. In other words, a custom view can not change how the server is expecteding to be invoked from the view.
+
+When rendering its views, the `DefaultViewService` uses a templating mechanism (similar to layout templates in MVC). There is a single shared "layout" view, and then there are separate "partial" views (one for each page that needs to be rendered) that conatin the contents to be rendered inside of the "layout". When a view is rendered these two are merged together on the server to emit a single HTML document.
+
+You can see the default layout and partial views [here](https://github.com/IdentityServer/IdentityServer3/tree/master/source/Core/Services/DefaultViewService/PageAssets).
+
 #### Replacing entire views
 
-The `DefaultViewService` does allow for the HTML to be customized. The default views can be "overridden" by creating HTML files within an `templates` folder within the hosting applications base directory. The files contained inside are located by name matching the view being rendered (e.g. the login view will look for a file named `login.html`). If these files are present then they are responsible for rendering the entirety of the HTML for that view.
+The default views can be replaced by creating HTML files within an `templates` folder within the hosting applications base directory. The files contained inside are located by name matching the view being rendered (e.g. the login view will look for a file named `login.html`). If these files are present then they are responsible for rendering the entirety of the HTML for that view.
 
 #### Replacing partial views
-
-When rendering the default views, the `DefaultViewService` uses a templating mechanism (similar to layout templates in MVC). There is a single shared "layout" view, and then there are separate "partial" views (one for each page that needs to be rendered) that conatin the contents to be rendered inside of the "layout". When a view is rendered these two are merged together on the server to emit a single HTML document.
 
 When customizing the HTML, rather than replacing the entire HTML document you can replace just the partial view. To replace just the partial view the file located in the `templates` folder simply needs to be distinguished by prefixing the name with an underscope (e.g. `_login.html`). This will then use the default layout template, but use the custom partial view. It will be merged into the layout template to render the combined HTML to the browser.
 
@@ -53,4 +61,47 @@ The custom views will be cached in-memory by default, so if the files are change
 
 #### Custom view loader
 
-Finally, if the `templates` folder on the file system is not desirable, then you can implement your own storage for the custom views by implmeneting the `IViewLoader` interface. This is configured as a `Registration<IViewLoader>` on the  `DefaultViewServiceOptions`.
+Finally, if the `templates` folder on the file system is not desirable, then you can implement your own storage for the custom views by implmeneting the `IViewLoader` interface. This is configured as a `Registration<IViewLoader>
+    ` on the  `DefaultViewServiceOptions`.
+
+### Adding custom data to the rendered view
+
+It is possible that custom views need to render custom data. All of the view models used by the  `DefaultViewService` provide a `object` property called `Custom`. This is simply rendered into the client-side view model and is available for use in the AngularJS templates. 
+    
+To provide `Custom` data on the view models, it will be necessary to derive from the `DefaultViewService` and override the appropriate methods for the views where the custom data needs to be rendered. 
+
+For example, to add a custom message to the login page:
+
+```csharp
+public class CustomViewService : DefaultViewService
+{
+    public CustomViewService(DefaultViewServiceOptions config, IViewLoader viewLoader)
+        : base(config, viewLoader)
+    {
+    }
+
+    public override Task<Stream> Login(LoginViewModel model, SignInMessage message)
+    {
+        model.Custom = new {
+            customMessage = "Hello World!"
+        };
+
+        return base.Login(model, message);
+    }
+}
+```
+
+Then in the `_login.html` template, this custom markup can be added to access the `customMessage` property:
+
+```html
+<div ng-show="model.customMessage">
+    <h2>{ { model.customMessage } }</h2>
+</div>
+```
+
+Finally, the `CustomViewService` must be registered with IdentityServer:
+
+```csharp
+var factory = new IdentityServerServiceFactory();
+factory.ViewService = new DefaultViewServiceRegistration<CustomViewService>();
+```
