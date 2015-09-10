@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Table of Contents (version 1.x)
+title: 1.x
 permalink: /docs/
 ---
 

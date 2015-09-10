@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Table of Contents (version 2.x)
+title: latest version (2.x)
 permalink: /docsv2/
 ---
 
