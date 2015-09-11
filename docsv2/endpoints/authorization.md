@@ -31,6 +31,8 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest).
     - `login` the login UI will be shown, even if the user has a valid session
 - `login_hint` (optional)
     - can be used to pre-fill the username field on the login page
+- `ui_locale` (optional)
+    - gives a hint about the desired language version of the login UI
 - `max_age` (optional)
     - if the user's logon session exceeds the max age (in seconds), the login UI will be shown
 - `acr_values` (optional)
