@@ -28,11 +28,11 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest).
     - idsrv will echo back the nonce value in the identity token, this is for correlating the token to the request)
 - `prompt` (optional)
     - `none` no UI will be shown during the request. If this is not possible (e.g. because the user has to sign in or consent) an error is returned
-    - `login` the login UI will be shown, even if the user has a valid session
+    - `login` the login UI will be shown, even if the user is already signed-in and has a valid session
 - `login_hint` (optional)
     - can be used to pre-fill the username field on the login page
 - `ui_locale` (optional)
-    - gives a hint about the desired language version of the login UI
+    - gives a hint about the desired display language of the login UI
 - `max_age` (optional)
     - if the user's logon session exceeds the max age (in seconds), the login UI will be shown
 - `acr_values` (optional)
