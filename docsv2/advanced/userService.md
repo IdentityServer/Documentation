@@ -16,6 +16,11 @@ The methods on the user service are broken down into methods that related to aut
 ## IUserService
 The `IUserService` interface defines these methods:
 
+* `PreAuthenticateAsync`
+ * This method is called before the login page is shown. This allows the user service to determine if the user is already authenticated by some out of band mechanism (e.g. client certificates or trusted headers) and prevent the login page from being shown.
+ * Passed a `PreAuthenticationContext` with these properties:
+        * `SignInMessage`: The contextual information passed to the authorize endpoint.
+        * `AuthenticateResult`: The user service should assign to indicate the authentication outcome (or `null` to indicate the normal login page should be displayed).
 * `AuthenticateLocalAsync`
  * This method is called for local authentication (whenever the user uses the username and password dialog). 
  * Passed a `LocalAuthenticationContext` with these properties:
@@ -32,11 +37,6 @@ The `IUserService` interface defines these methods:
             * `Claims`: Claims supplied for the user from the external identity provider.
         * `SignInMessage`: The contextual information passed to the authorize endpoint.
         * `AuthenticateResult`: The user service should assign to indicate the authentication outcome (or `null` to indicate an error that there is no user matching the information provided in the `ExternalIdentity`).
-* `PreAuthenticateAsync`
- * This method is called before the login page is shown. This allows the user service to determine if the user is already authenticated by some out of band mechanism (e.g. client certificates or trusted headers) and prevent the login page from being shown.
- * Passed a `PreAuthenticationContext` with these properties:
-        * `SignInMessage`: The contextual information passed to the authorize endpoint.
-        * `AuthenticateResult`: The user service should assign to indicate the authentication outcome (or `null` to indicate the normal login page should be displayed).
 * `PostAuthenticateAsync`
     * This method is called after the user has successfully authenticated but before they are returned to the client application. It allows a consolidated place to check for custom user workflows after all of the other authentication methods.
     * Passed a `PostAuthenticationContext` with these properties:

@@ -18,6 +18,8 @@ Liblog picks up any of the following logging libraries automatically:
 * Log4Net
 * Loupe
 
+There is no IdentityServer3 specific configuration required - you just need to configure one of the above logging frameworks in your host.
+
 ##Configuring Diagnostics
 The `LoggingOptions` class has the following settings:
 
