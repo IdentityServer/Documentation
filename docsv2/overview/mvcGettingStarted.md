@@ -110,10 +110,10 @@ public class Startup
                     SiteName = "Embedded IdentityServer",
                     SigningCertificate = LoadCertificate(),
 
-                    Factory = InMemoryFactory.Create(
-                        users  : Users.Get(),
-                        clients: Clients.Get(),
-                        scopes : StandardScopes.All)
+                    Factory = new IdentityServerServiceFactory()
+                                .UseInMemoryUsers(Users.Get())
+                                .UseInMemoryClients(Clients.Get())
+                                .UseInMemoryScopes(StandardScopes.All)
                 });
             });
     }
