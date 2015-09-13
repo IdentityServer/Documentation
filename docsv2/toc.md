@@ -1,6 +1,6 @@
 ---
 layout: page
-title: latest version (2.x)
+title: latest version
 permalink: /docsv2/
 ---
 
@@ -22,6 +22,7 @@ permalink: /docsv2/
 * [Clients](configuration/clients.html)
 * [Scopes and Claims](configuration/scopesAndClaims.html)
 * [Secrets](configuration/secrets.html)
+* [Keys, Signatures and Cryptography](configuration/crypto.html)
 * [Authentication Options](configuration/authenticationOptions.html)
 * [Identity Providers](configuration/identityProviders.html)
 * [HSTS](configuration/hsts.html)
