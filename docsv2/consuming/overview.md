@@ -41,20 +41,3 @@ public class Startup
 The middleware will first inspect the token - if it is a JWT, token validation will be done locally
 (using the issuer name and key material found in the discovery document).
 If the token is a reference token, the middleware will use the access token validation [endpoint](../endpoints/accessTokenValidation.html) on IdentityServer.
-
-## Enabling Caching
-
-When using reference tokens, you probably don't want to make a round-trip to IdentityServer for each incoming request.
-In this case you can cache the validation outcome locally.
-
-
-```csharp
-app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
-    {
-        Authority = "https://localhost:44333/core",
-        RequiredScopes = new[] { "write" },
-
-        EnableValidationResultCache = true,
-        ValidationResultCacheDuration = TimeSpan.FromMinutes(10)
-    });
-```
