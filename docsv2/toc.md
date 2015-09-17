@@ -59,7 +59,9 @@ permalink: /docsv2/
 
 ### Consuming Tokens
 
-* [The Katana Access Token Validation Middleware](consuming/tokenValidationMiddleware.html)
+* [The Katana Access Token Validation Middleware](consuming/overview.html)
+* [Options](consuming/options.html)
+* [Diagnostics](consuming/diagnostics.html)
 
 ### Entity Framework support for Clients, Scopes, and Operational Data
 * [Overview](ef/overview.html)

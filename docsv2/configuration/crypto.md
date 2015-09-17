@@ -20,6 +20,8 @@ Setting this property is mandatory for identity tokens and JWT access tokens.
 
 If you are using reference tokens only, you don't need to set the signing certificate.
 
+**Remark** The minimum supported key length is 2048 bytes. 
+
 ### Signing Key Rollover
 X.509 certificates have a finite lifetime. Renewing and rolling over the singing key without downtime of your application 
 can be a challenge.
