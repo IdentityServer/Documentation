@@ -20,6 +20,7 @@ layout: docs-default
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 2](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-2)
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 3](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-3)
 * [Reece Williams: FIPS Compliance](http://anemptyreece.com/2015/05/16/identityserver3-fips/)
+* [IdentityServer on Mono](http://softentropy.com/2015/09/20/identityserver-2-0-1-on-mono/)
 
 ### Conference Talks
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
