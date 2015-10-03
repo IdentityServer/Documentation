@@ -40,15 +40,15 @@ factory.ConfigureDefaultViewService(viewOptions);
 
 ##### Replacing entire views
 
-The `DefaultViewService` does allow for the HTML to be customized. The default views can be "overridden" by creating HTML files within an `assets` folder within the hosting applications base directory. The files contained inside are located by name matching the view being rendered (e.g. the login view will look for a file named `login.html`). If these files are present then they are responsible for rendering the entirety of the HTML for that view.
+The `DefaultViewService` does allow for the HTML to be customized. The default views can be "overridden" by creating HTML files within a `templates` folder within the hosting applications base directory. The files contained inside are located by name matching the view being rendered (e.g. the login view will look for a file named `login.html`). If these files are present then they are responsible for rendering the entirety of the HTML for that view.
 
 ##### Replacing partial views
 
 When rendering its default views, the `DefaultViewService` uses a templating mechanism (similar to layout templates in MVC). There is a single shared "layout" view, and then there are separate "partial" views (one for each page that needs to be rendered) that conatin the contents to be rendered inside of the "layout". When a view is rendered these two are merged together on the server to emit a single HTML document.
 
-This point of this discussion is that when customizing the HTML, rather than replacing the entire HTML document you can replace just the partial view. To replace just the partial view the file located in the `assets` folder simply needs to be distinguished by prefixing the name with an underscope (e.g. `_login.html`). This will then use the default layout template, but use the custom partial view. It will be merged into the layout template to render the combined HTML to the browser.
+This point of this discussion is that when customizing the HTML, rather than replacing the entire HTML document you can replace just the partial view. To replace just the partial view the file located in the `templates` folder simply needs to be distinguished by prefixing the name with an underscope (e.g. `_login.html`). This will then use the default layout template, but use the custom partial view. It will be merged into the layout template to render the combined HTML to the browser.
 
-In addition to being able to replace the partial views, it's also possible to replace the default layout template itself. This can be done by creating a file named `_layout.html` in the `assets` folder. The `DefaultViewService` will then use whatever combination of custom layout or partial views discovered on the file system to merge with the default embedded assets to render the requested view.
+In addition to being able to replace the partial views, it's also possible to replace the default layout template itself. This can be done by creating a file named `_layout.html` in the `templates` folder. The `DefaultViewService` will then use whatever combination of custom layout or partial views discovered on the file system to merge with the default embedded assets to render the requested view.
 
 ##### Caching
 
