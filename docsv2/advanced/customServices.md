@@ -20,7 +20,7 @@ Three of the services are mandatory and must be configured by the implementer, t
 * the scope store (`IScopeStore`)
 
 We provide a simple in-memory version of these three services as well as support for data stores via the related repos or community projects.
-See [here](../configuration/inMemoryFactory.html) for more details.
+See [here](../configuration/inMemory.html) for more details.
 
 ##Registering custom Services
 
