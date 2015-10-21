@@ -71,7 +71,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `PrefixClientClaims`
     * If set, all client claims will be prefixed with `client_` to make sure they don't accidentally collide with user claims. Default is `true`.
 
-In addition there are a number of settings controlling the behavior of refresh tokens - see [here](advanced/refreshTokens.html)
+In addition there are a number of settings controlling the behavior of refresh tokens - see [here](../advanced/refreshTokens.html)
 
 ##Example: Configure a client for implicit flow
 
