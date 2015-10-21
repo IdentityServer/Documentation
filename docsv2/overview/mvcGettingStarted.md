@@ -237,10 +237,10 @@ public static class Scopes
 Also change the factory in `Startup` to use the new Scopes:
 
 ```csharp
-Factory = InMemoryFactory.Create(
-    users: Users.Get(),
-    clients: Clients.Get(),
-    scopes: Scopes.Get())
+Factory = new IdentityServerServiceFactory()
+    .UseInMemoryUsers(Users.Get())
+    .UseInMemoryClients(Clients.Get())
+    .UseInMemoryScopes(Scopes.Get()),
 ```
 
 Next we add a couple of role claims to Bob:
@@ -648,12 +648,12 @@ idsrvApp.UseIdentityServer(new IdentityServerOptions
     SiteName = "Embedded IdentityServer",
     SigningCertificate = LoadCertificate(),
 
-    Factory = InMemoryFactory.Create(
-        users: Users.Get(),
-        clients: Clients.Get(),
-        scopes: Scopes.Get()),
+    Factory = new IdentityServerServiceFactory()
+        .UseInMemoryUsers(Users.Get())
+        .UseInMemoryClients(Clients.Get())
+        .UseInMemoryScopes(Scopes.Get()),
 
-    AuthenticationOptions = new Thinktecture.IdentityServer.Core.Configuration.AuthenticationOptions
+    AuthenticationOptions = new IdentityServer3.Core.Configuration.AuthenticationOptions
     {
         IdentityProviders = ConfigureIdentityProviders
     }
