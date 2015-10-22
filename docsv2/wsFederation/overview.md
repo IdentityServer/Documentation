@@ -52,7 +52,7 @@ You first need to install the plugin using Nuget:
  ```
 
 The equivalent to an OpenID Connect or OAuth2 client is called relying party in WS-Federation.
-Similar to the other in-memory factories (see [here](../configuration/inMemoryFactory.html)) the WS-Federation plugin has built-in
+Similar to the other in-memory factories (see [here](../configuration/inMemory.html)) the WS-Federation plugin has built-in
 support for retrieving relying parties from an in-memory service.
 
 See [here](relyingParties.html) for information on how to define a relying party.
