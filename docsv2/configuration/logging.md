@@ -83,3 +83,5 @@ Logger.Debug("Getting claims for identity token");
 You may have an existing logging infrastructure in place and want IdentityServer logging to use that.
 The recommended approach for this is to write a custom sink using one of the supported logging frameworks (our favourite is Serilog).
 You can find a sample [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/dev/source/Logging).
+
+See [here](http://leastprivilege.com/2015/10/22/identityserver3-logging-monitoring-using-serilog-and-seq/) for a post about logging and eventing.
