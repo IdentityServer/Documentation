@@ -38,6 +38,7 @@ permalink: /docsv2/
 * [Discovery](endpoints/discovery.html)
 * [Logout](endpoints/endSession.html)
 * [Token Revocation](endpoints/revocation.html)
+* [Token Introspection](endpoints/introspection.html)
 * [Access Token Validation](endpoints/accessTokenValidation.html)
 * [Identity Token Validation](endpoints/identityTokenValidation.html)
 * [CSP Error Report](endpoints/csp.html)
