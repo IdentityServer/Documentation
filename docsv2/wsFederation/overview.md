@@ -13,7 +13,7 @@ WS-Federation support is a plugin for IdentityServer3 and is implemented using t
 You first need to install the plugin using Nuget:
 
  ```
- install-package Thinktecture.IdentityServer3.WsFederation
+ install-package IdentityServer3.WsFederation
  ```
 
  You can then wire up the plugin by implementing the `PluginConfiguration` callback on the `IdentityServerOptions` class like this:
@@ -23,7 +23,7 @@ You first need to install the plugin using Nuget:
  {
      var options = new IdentityServerOptions
      {
-         SiteName = "Thinktecture IdentityServer3 with WsFed",
+         SiteName = "IdentityServer3 with WsFed",
 
          SigningCertificate = Certificate.Get(),
          Factory = factory,
@@ -52,7 +52,7 @@ You first need to install the plugin using Nuget:
  ```
 
 The equivalent to an OpenID Connect or OAuth2 client is called relying party in WS-Federation.
-Similar to the other in-memory factories (see [here](../configuration/inMemoryFactory.html)) the WS-Federation plugin has built-in
+Similar to the other in-memory factories (see [here](../configuration/inMemory.html)) the WS-Federation plugin has built-in
 support for retrieving relying parties from an in-memory service.
 
 See [here](relyingParties.html) for information on how to define a relying party.

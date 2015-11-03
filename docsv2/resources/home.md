@@ -12,6 +12,7 @@ layout: docs-default
 ### Articles
 * [Hybrid Flow] (http://leastprivilege.com/2014/10/10/openid-connect-hybrid-flow-and-identityserver-v3/)
 * [Post Logout Redirect](http://leastprivilege.com/2014/10/14/identityserver-v3-and-post-logout-redirect/)
+* [Logging and Eventing with Serilog & Seq](http://leastprivilege.com/2015/10/22/identityserver3-logging-monitoring-using-serilog-and-seq/)
 * [Automatic redirect after Logout](http://www.aaron-powell.com/posts/2015-01-11-auto-redirect-when-logging-out.html)
 * [IdentityServer on Mono](http://www.ryanmelena.com/2014/10/31/thinktecture-identityserver-v3-on-mono/)
 * [Testing Web APIs with Postman](http://www.timecockpit.com/blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman)
@@ -20,6 +21,7 @@ layout: docs-default
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 2](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-2)
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 3](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-3)
 * [Reece Williams: FIPS Compliance](http://anemptyreece.com/2015/05/16/identityserver3-fips/)
+* [IdentityServer on Mono](http://softentropy.com/2015/09/20/identityserver-2-0-1-on-mono/)
 
 ### Conference Talks
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)

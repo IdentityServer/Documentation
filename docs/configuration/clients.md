@@ -83,12 +83,12 @@ var client = new Client
 
     RedirectUris = new List<string>
     {
-        "https://myapp/callback.html",
+        "https://myapp/callback.html"
     },
 
     PostLogoutRedirectUris = new List<string>
     {
-        "http://localhost:23453/index.html",
+        "http://localhost:23453/index.html"
     }
 }
 ```

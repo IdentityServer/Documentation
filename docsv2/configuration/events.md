@@ -31,3 +31,4 @@ The `EventsOptions` class has the following settings (all default to `false`):
     * e.g. token issued or certificate valid
     * e.g. token issued or certificate valid
     
+See [here](http://leastprivilege.com/2015/10/22/identityserver3-logging-monitoring-using-serilog-and-seq/) for a post about logging and eventing.
