@@ -6,7 +6,7 @@ layout: docs-default
 
 *Added in v2.2*
 
-The introspection endpont is an implementation of [RFC 7662](https://tools.ietf.org/html/rfc7662).
+The introspection endpoint is an implementation of [RFC 7662](https://tools.ietf.org/html/rfc7662).
 
 It can be used to validate reference tokens (or JWTs if the consumer does not have support for appropriate JWT or cryptographic libraries).
 
@@ -16,7 +16,7 @@ The introspection endpoint requires authentication using a scope credential
 ### Example
 
 ```
-POST /connect/accesstokenvalidation
+POST /connect/introspect
 Authorization: Basic xxxyyy
 
 token=<token>
