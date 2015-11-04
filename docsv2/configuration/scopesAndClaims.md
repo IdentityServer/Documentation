@@ -4,7 +4,7 @@ layout: docs-default
 
 #Scopes and Claims
 
-**The `Thinktecture.IdentityServer.Core.Models.Scope` class models an OpenID Connect or OAuth2 scope.**
+**The `IdentityServer.Core.Models.Scope` class models an OpenID Connect or OAuth2 scope.**
 
 * `Enabled`
     * Indicates if scope is enabled and can be requested. Defaults to `true`.
@@ -63,7 +63,7 @@ even when an access token for the userinfo endpoint is requested.
 var idMgrScope = new Scope
 {
     Name = "idmgr",
-    DisplayName = "Thinktecture IdentityManager",
+    DisplayName = "IdentityManager",
     Type = ScopeType.Resource,
     Emphasize = true,
 
