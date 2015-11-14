@@ -22,6 +22,7 @@ layout: docs-default
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 3](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-3)
 * [Reece Williams: FIPS Compliance](http://anemptyreece.com/2015/05/16/identityserver3-fips/)
 * [IdentityServer on Mono](http://softentropy.com/2015/09/20/identityserver-2-0-1-on-mono/)
+* [OAuth 2.0 Implicit Flow with Angular and ASP.NET 5 IdentityServer](http://damienbod.com/2015/11/08/oauth2-implicit-flow-with-angular-and-asp-net-5-identity-server/)
 
 ### Conference Talks
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
