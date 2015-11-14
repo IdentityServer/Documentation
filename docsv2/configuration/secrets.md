@@ -20,7 +20,23 @@ var client = new Client
     },
 
     Flow = Flows.ClientCredentials   
-}
+};
+```
+
+Example of a secret definition for a scope:
+
+```csharp
+var scope = new Scope
+{
+    Name = "api1",
+    DisplayName = "Our API",
+    Type = ScopeType.Resource,
+
+    ScopeSecrets = new List<Secret>
+    {
+        new Secret("secret".Sha256())
+    }
+};
 ```
 
 The above snippets sets a shared secret of value `secret` - and hashes it with SHA256.
