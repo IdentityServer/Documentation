@@ -45,3 +45,5 @@ An invalid request will return a 400 or a 401 if the scope is not authorized.
 **Remark** The introspection endpoint replaces the older access token validation endpoint.
 Since the introspection endpoint requires authentication, it adds privacy features to reference tokens, that were
 not available previously.
+The access token validation endpoint still exists, but it is recommended to disable it on the `EndpointOptions` and
+use the introspection endpoint instead.
