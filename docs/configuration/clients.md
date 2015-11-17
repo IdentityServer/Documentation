@@ -63,7 +63,9 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `PrefixClientClaims`
     * If set, all client claims will be prefixed with `client_` to make sure they don't accidentally collide with user claims. Default is `true`.
 * `CustomGrantTypeRestrictions`
-    * List of allowed custom grant types when Flow is set to `Custom`. If the list is empty, all custom grant types are allowed. Defaults to empty.
+    * List of allowed custom grant types when Flow is set to `Custom`. This flag is skipped if `AllowAccessToAllCustomGrantTypes` is set. Defaults to empty.
+* `AllowAccessToAllCustomGrantTypes`
+    * If set, all custom grant types are allowed for client. Otherwise, only custom grant types allowed as specified by `CustomGrantTypeRestrictions`. Defaults to false.
 
 In addition there are a number of settings controlling the behavior of refresh tokens - see [here](advanced/refreshTokens.html)
 
