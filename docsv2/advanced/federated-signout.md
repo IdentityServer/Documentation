@@ -8,7 +8,7 @@ IdentityServer supports the ability to federate with external identity providers
 
 A common approach in both WS-Federation and OIDC providers is to use a HTTP-based front channel approach where an `<iframe>` is rendered in the user's browser as a mechanism to inform IdentityServer the user's session has ended (much like IdentityServer [supports](signout-http.html)).
 
-When federating with your upstream identity provider, if a HTTP-based signout is supported, then you can provide an signout endpoint that in turn will inform all of IdentityServer's clients that the user has signed out. This requires you to implement an endpoint and then invoke `ProcessFederatedSignoutAsync` (via the IdentityServer OWIN environment extensions) that will render the appropriate notification `<iframe>`. Note: this requires your signout endpoint to run in the same pipeline as IdentityServer (meaning after).
+To implement federated signout you can provide an signout endpoint to your upstream identity provider. When it's invoked it can inform all of IdentityServer's clients that the user has signed out. This is doen by invoking `ProcessFederatedSignoutAsync` (via the IdentityServer OWIN environment extensions) which will render the appropriate notification `<iframe>`. Note: this requires your signout endpoint to run in the same pipeline as IdentityServer (meaning after).
 
 The code below shows an example:
 
