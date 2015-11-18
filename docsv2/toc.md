@@ -57,6 +57,9 @@ permalink: /docsv2/
 * [Deployment](advanced/deployment.html)
 * [Authenticating Clients with X.509 Certificates](advanced/clientCerts.html)
 * [Custom Grant Types](advanced/customGrantTypes.html)
+* [Signout](advanced/signout.html)
+  * [Session Management](advanced/signout-session.html)
+  * [HTTP based logout](advanced/signout-http.html)
 
 ### Consuming Tokens
 
