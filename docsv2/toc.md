@@ -60,6 +60,7 @@ permalink: /docsv2/
 * [Signout](advanced/signout.html)
   * [Session Management](advanced/signout-session.html)
   * [HTTP based logout](advanced/signout-http.html)
+* [Federated Signout](advanced/federated-signout.html)
 
 ### Consuming Tokens
 
