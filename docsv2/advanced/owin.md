@@ -46,5 +46,13 @@ IdentityServer3 provides extension methods for the OWIN environment (`IDictionar
     * Removes the cookie for the current partial login.
 * `GetRequestId`
     * Returns the current request ID used for logging.
+* `ResolveDependency` (added in v2.2)
+    * Resolves dependency type from the IdentityServer DI system.
 * `ProcessFederatedSignoutAsync` (added in v2.2)
     * Revokes authentication cookies and renders HTML to trigger single signout of all clients. This is intended to be used within an iframe when an external, upstream IdP is providing a signout callback to IdentityServer for single signout.
+* `RenderLoggedOutViewAsync` (added in v2.2)
+    * Requests that the logged out view be rendered and the signout message cookie be removed.
+* `GetSignOutMessageId` (added in v2.2)
+    * Gets the sign out message id.
+* `GetSignOutMessage` (added in v2.2)
+    * Gets the sign out message.
