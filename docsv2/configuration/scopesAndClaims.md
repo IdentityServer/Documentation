@@ -16,6 +16,8 @@ layout: docs-default
     * Description for the consent screen.
 * `Required`
     * Specifies whether the user can de-select the scope on the consent screen. Defaults to `false`.
+*  `ScopeSecrets` (added in v2.2)
+    * Adds secret to scope (for the introspection endpoint) - see also [here](secrets.html).
 * `Emphasize`
     * Specifies whether the consent screen will emphasize this scope. Use this setting for sensitive or important scopes. Defaults to `false`.
 * `Type`
