@@ -11,7 +11,7 @@ To enable this for a client application, the `Client` configuration must have se
     
 A MVC client application would then need to handle the signout request with something like this:
 
-```[CSharp]
+```csharp
 public void SignoutCleanup(string sid)
 {
     var cp = (ClaimsPrincipal)User;
