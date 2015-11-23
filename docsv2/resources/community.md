@@ -10,3 +10,4 @@ layout: docs-default
 * [Redis Cache](https://github.com/imperugo/Thinktecture.IdentityServer3.Cache.Redis)
 * [Powershell Cmdlets for Entity Framework Persistence](https://github.com/ghys/IdentityServer3.Contrib.PowerShell)
 * [Razor View Service](https://github.com/vdaron/IdentityServer.RazorViewEngine)
+* [Entity Framework 7 support (from 20|20)](https://github.com/2020IP/TwentyTwenty.IdentityServer3.EntityFramework7)
