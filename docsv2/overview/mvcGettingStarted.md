@@ -309,7 +309,7 @@ The claims will now look like this:
 
 ![shorter claims](https://cloud.githubusercontent.com/assets/1454075/4606129/2fb799fa-5210-11e4-8b30-22a47e9cbeb1.png)
 
-This is an improvement, but there are still some low level protocol claims that are certainly not need by typical business logic. The process of turning raw incoming claims into application specific claims is called claims transformation. During this process you take the incoming claims, decide which claims you want to keep and maybe need to contact additional data stores to retrieve more claims that are required by the application.
+This is an improvement, but there are still some low level protocol claims that are certainly not needed by typical business logic. The process of turning raw incoming claims into application specific claims is called claims transformation. During this process you take the incoming claims, decide which claims you want to keep and maybe need to contact additional data stores to retrieve more claims that are required by the application.
 
 The OIDC middleware has a notification that you can use to do claims transformation - the resulting claims will be stored in the cookie:
 
