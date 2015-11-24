@@ -156,7 +156,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
         AuthenticationType = "Cookies"
     });
 ```
-Point the OpenID Connect middleware (also in Startup.cs) to our embedded version of IdentityServer and uses the previously configured client configuration:
+Point the OpenID Connect middleware (also in Startup.cs) to our embedded version of IdentityServer and use the previously configured client configuration:
 
 ```csharp
 app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
