@@ -683,7 +683,7 @@ install-package Microsoft.Aspnet.WebApi.Owin
 ```
 
 ## Adding a Test Controller
-The following controller will return all claims back to the caller - this will allow us to inspect the token that will get send to the API.
+The following controller will return all claims back to the caller - this will allow us to inspect the token that will get sent to the API.
 
 ```csharp
 [Route("identity")]
