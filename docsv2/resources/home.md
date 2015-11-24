@@ -23,6 +23,7 @@ layout: docs-default
 * [Reece Williams: FIPS Compliance](http://anemptyreece.com/2015/05/16/identityserver3-fips/)
 * [IdentityServer on Mono](http://softentropy.com/2015/09/20/identityserver-2-0-1-on-mono/)
 * [OAuth 2.0 Implicit Flow with Angular and ASP.NET 5 IdentityServer](http://damienbod.com/2015/11/08/oauth2-implicit-flow-with-angular-and-asp-net-5-identity-server/)
+* [Getting started with WS-Federation in IdentityServer](http://nzpcmad.blogspot.co.nz/2015/11/identityserver-identity-server-3-as-ws.html)
 
 ### Conference Talks
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
