@@ -491,7 +491,7 @@ public ActionResult UpdateContact()
 }
 ```
 
-The `HandleForbidden` filter (which can be also global of course) will redirect to a specified view whenever a 403 got emitted - by default we look for a view called `Forbidden`.
+The `HandleForbidden` filter (which can also be global of course) will redirect to a specified view whenever a 403 got emitted - by default we look for a view called `Forbidden`.
 
 ![forbidden](https://cloud.githubusercontent.com/assets/1454075/4611314/0fcaa7aa-52b9-11e4-8a1a-c158a3d89697.png)
 
