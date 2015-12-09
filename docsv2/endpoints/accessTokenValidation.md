@@ -4,7 +4,9 @@ layout: docs-default
 
 #Access token validation endpoint
 
-The access token validation endpoint can be used to validate reference tokens. 
+#####As of version 2.2, the access token validation endpoint has been deprecated and replaced with the [Token Introspection](https://identityserver.github.io/Documentation/docsv2/endpoints/introspection.html) endpoint.
+
+For versions 2.0 and 2.1, the access token validation endpoint can be used to validate reference tokens. 
 It can be also used to validate self-contained JWTs if the consumer does not have support for appropriate JWT or cryptographic libraries.
 
 You can either GET or POST to the validation endpoint. Due to query string size restrictions, POST is recommended.
