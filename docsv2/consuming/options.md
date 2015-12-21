@@ -32,7 +32,7 @@ IdentityServer and the client or API in the same web application.
 
 ## Using the Introspection Endpoint (added in v2.2)
 Version 2.2 of IdentityServer added support for the token introspection specification. This is the recommended
-technique when using reference tokens (see [here](../endpoints/introspection.html))).
+technique when using reference tokens (see [here](../endpoints/introspection.html)).
 
 In this case you need to specify the `ClientId` and `ClientSecret` to match the name and secret of the scope configuration
 in IdentityServer (see [scopes](../configuration/scopesAndClaims.html))
