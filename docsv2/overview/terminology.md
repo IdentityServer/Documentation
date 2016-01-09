@@ -58,13 +58,9 @@ Resource scopes identify web APIs (also called resource servers) - you could hav
 Clients request tokens from the OP. Depending on the scopes requested, the OP will return an identity token, an access token, or both.
 
 ## Identity Token
-An identity token can be validated by the client.
-
-It contains information about the user and details on how the user authenticated at the OP.
-An identity token represents a successful authentication.
+An identity token represents the outcome of an authentication process. It contains at a bare minimum an identifier for the user 
+(called the `sub` aka subject claim).  It can contain additional information about the user and details on how the user authenticated at the OP.
 
 ## Access Token
-An access token can be validated by a resource.
-
-Clients request access tokens and forward them to an API. Access tokens contain information about the client and the user (if present).
+An access token allows access to a resource. Clients request access tokens and forward them to an API. Access tokens contain information about the client and the user (if present).
 APIs use that information to authorize access to their data.
