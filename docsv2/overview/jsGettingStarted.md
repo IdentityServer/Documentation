@@ -23,7 +23,6 @@ Note the URL assigned to the project:
 
 ![js app url](https://cloud.githubusercontent.com/assets/6102639/12252652/4324b3b2-b92d-11e5-9641-772efe43c8e8.png)
 
-
 ## Create the IdentityServer project
 In Visual Studio, create an empty web application and set authentication to "No authentication".
 
@@ -355,3 +354,278 @@ We don't have to change anything in the client configuration because we specifie
 After this, we can see the `email` claim in the identity token:
 
 ![login-email](https://cloud.githubusercontent.com/assets/6102639/12251318/25d3ce20-b922-11e5-9867-efc6afb76aea.png)
+
+# Part 2 - API call
+In the second part, we'll see how you can call a protected API from the JS application.
+This will require us to obtain an access token from IdentityServer when we login and use it when calling the API.
+
+## Create the API project
+Create a new empty web application in Visual Studio, still selecting "No authentication".
+
+![create api](https://cloud.githubusercontent.com/assets/6102639/12252754/251cd1f0-b92e-11e5-8f8f-469cfc2a0103.png)
+
+## Configuring the API
+For this example, we'll create a very simple API based on ASP.NET Web API.
+To do so, install the following packages:
+
+```
+Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName Api
+Install-Package Microsoft.Owin.Cors -ProjectName Api
+Install-Package Microsoft.AspNet.WebApi.Owin -ProjectName Api
+Install-Package IdentityServer3.AccessTokenValidation -ProjectName Api
+
+Update-Package -ProjectName Api
+```
+
+Let's now create a `Startup` class and build our OWIN pipeline.
+
+```csharp
+public class Startup
+{
+    public void Configuration(IAppBuilder app)
+    {
+        // Allow all origins
+        app.UseCors(CorsOptions.AllowAll);
+
+        // Wire token validation
+        app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+        {
+            Authority = "https://localhost:44300",
+
+            // For access to the introspection endpoint
+            ClientId = "api",
+            ClientSecret = "api-secret",
+
+            RequiredScopes = new[] { "api" }
+        });
+
+        // Wire Web API
+        var httpConfiguration = new HttpConfiguration();
+        httpConfiguration.MapHttpAttributeRoutes();
+        httpConfiguration.Filters.Add(new AuthorizeAttribute());
+
+        app.UseWebApi(httpConfiguration);
+    }
+}
+```
+
+This is all straight-forward, but let's have a closer look at what we use in our pipeline:
+
+Since the JS application will make the call to the API, CORS must be enabled on the API. In our case, we allow all origins to access it
+
+We then use token validation provided by the `IdentityServer3.AccessTokenValidation` package. By setting the `Authority` property, the metadata document will be retrieved and used to configure the token validation settings.
+Since version 2.2, IdentityServer implements the [introspection endpoint](../endpoints/introspection.html) to validate tokens. This endpoint requires scope authentication which makes it more secured than the traditional access token validation endpoint.
+
+Finally, we add our Web API configuration. Note the use of a global `AuthorizeAttribute` which makes every endpoint of the API only accessible to authenticated requests.
+
+Let's now add a basic endpoint to our API:
+
+```csharp
+[Route("values")]
+public class ValuesController : ApiController
+{
+    public IEnumerable<string> Get()
+    {
+        var random = new Random();
+
+        return new[]
+        {
+            random.Next(0, 10).ToString(),
+            random.Next(0, 10).ToString()
+        };
+    }
+}
+```
+
+## Updating identityServer configuration
+We introduced a new `api` scope which we have to register in IdentityServer. This is done by editing the `Scopes` class of the `identityServer` project:
+
+```csharp
+public static class Scopes
+{
+    public static List<Scope> Get()
+    {
+        return new List<Scope>
+        {
+            StandardScopes.OpenId,
+            StandardScopes.Profile,
+            StandardScopes.Email,
+            new Scope
+            {
+                Name = "api",
+
+                DisplayName = "Access to API",
+                Description = "This will grant you access to the API",
+
+                ScopeSecrets = new List<Secret>
+                {
+                    new Secret("api-secret".Sha256())
+                },
+
+                Type = ScopeType.Resource
+            }
+        };
+    }
+}
+```
+
+The new scope is a resource scope which means it will end up in the access token. Once again, we don't need to allow the client to request this new scope in this example because of the special setting, but it will be a necessary step in a real scenario.
+
+## Updating the JS application
+We can now update the JS application settings so it will request the new `api` scope when logging in the user.  
+As we did for the identity token, let's have another section where we'll see what the access token contains:
+
+```html
+[...]
+<div class="container main-container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="list-inline list-unstyled requests">
+                <li><a href="index.html" class="btn btn-primary">Home</a></li>
+                <li><button type="button" class="btn btn-default js-login">Login</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">ID Token Contents</div>
+                <div class="panel-body">
+                    <pre class="js-id-token"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Access Token</div>
+                <div class="panel-body">
+                    <pre class="js-access-token"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+[...]
+<script>
+    var settings = {
+        authority: 'https://localhost:44300',
+        client_id: 'js',
+        popup_redirect_uri: 'http://localhost:56668/popup.html',
+
+        response_type: 'id_token token',
+        scope: 'openid profile email api',
+
+        // this will allow all the OIDC protocol claims to be visible in the window. normally a client app
+        // wouldn't care about them or want them taking up space
+        filter_protocol_claims: true
+    };
+
+    var manager = new OidcTokenManager(settings);
+
+    $('.js-login').click(function () {
+        manager.openPopupForTokenAsync()
+            .then(function () {
+                display('.js-id-token', manager.profile);
+                display('.js-access-token', manager.access_token && { access_token: manager.access_token, expires_in: manager.expires_in } || '');
+            }, function (error) {
+                console.error(error);
+            });
+    });
+</script>
+```
+
+The modifications include:
+
+ - a new panel to show the access token
+ - an updated `response_type` to specify we want an access token back along with the identity token
+ - the new `api` scope to be requested as part of the login request
+
+After logging in, here's what the get:
+
+![access token](https://cloud.githubusercontent.com/assets/6102639/12253628/1bc4e550-b935-11e5-95e9-fca21057cd08.png)
+
+## Calling the API
+
+We can modify the JS application to call the API:
+
+```html
+[...]
+<div class="container main-container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="list-inline list-unstyled requests">
+                <li><a href="index.html" class="btn btn-primary">Home</a></li>
+                <li><button type="button" class="btn btn-default js-login">Login</button></li>
+                <li><button type="button" class="btn btn-default js-call-api">Call API</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">ID Token Contents</div>
+                <div class="panel-body">
+                    <pre class="js-id-token"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Access Token</div>
+                <div class="panel-body">
+                    <pre class="js-access-token"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">API call result</div>
+                <div class="panel-body">
+                    <pre class="js-api-result"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+[...]
+$('.js-call-api').click(function () {
+    var headers = {};
+    if (manager.access_token) {
+        headers['Authorization'] = 'Bearer ' + manager.access_token;
+    }
+
+    $.ajax({
+        url: 'http://localhost:60136/values',
+        method: 'GET',
+        dataType: 'json',
+        headers: headers
+    }).then(function (data) {
+        display('.js-api-result', data);
+    }).fail(function (error) {
+        display('.js-api-result', {
+            status: error.status,
+            statusText: error.statusText,
+            response: error.responseJSON
+        });
+    });
+});
+```
+
+We now have a button which will trigger the API call along with another panel to show the call response.
+It's worth noting that the access token is passed in the `Authorization` header of the request.
+
+Here's what we see if we call the API prior to login:
+
+![api without access token](https://cloud.githubusercontent.com/assets/6102639/12254749/48aab0c6-b940-11e5-8842-83a526a5e316.png)
+
+And after login:
+
+![api with access token](https://cloud.githubusercontent.com/assets/6102639/12254750/497df5f8-b940-11e5-9cca-7ee1184605e5.png)
+
+In the first case, there was no token, so the access token validation middleware did nothing. The request flowed through the API as unauthenticated, and the global `AuthorizeAttribute` rejected it and responded with a `401 Unauthorized` error.
+In the second case, the token validation middleware found the token in the `Authorization` header, passed it along to the introspection endpoint which flagged it as valid, and created an identity with the claims it contained. The request, this time authenticated, flowed to Web API, the `AuthorizeAttribute` contrainsts were staisfied, and the endpoint was invoked. 
