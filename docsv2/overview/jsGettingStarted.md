@@ -21,7 +21,7 @@ In Visual Studio, create an empty web application and set authentication to "No 
 
 Note the URL assigned to the project:
 
-![js app url](https://cloud.githubusercontent.com/assets/6102639/12247822/d8345594-b909-11e5-81bd-ff548288280b.png)
+![js app url](https://cloud.githubusercontent.com/assets/6102639/12252652/4324b3b2-b92d-11e5-9641-772efe43c8e8.png)
 
 
 ## Create the IdentityServer project
@@ -31,7 +31,7 @@ In Visual Studio, create an empty web application and set authentication to "No 
 
 You can switch the project now to SSL using the properties window:
 
-![02-set ssl](https://cloud.githubusercontent.com/assets/6102639/12247633/fcf5a9f6-b908-11e5-9fd8-ecdcab7450d2.png)
+![set ssl](https://cloud.githubusercontent.com/assets/6102639/12252653/43288fc8-b92d-11e5-93eb-25821a64ceb2.png)
 
 **Important**
 Don't forget to update the start URL in your project properties so that it reflects the HTTPS url of the project.
@@ -163,7 +163,7 @@ public class Startup
 At this point you have a fully functional IdentityServer and you can browse to the discovery endpoint to inspect the configuration:
 
 
-![disco](https://cloud.githubusercontent.com/assets/6102639/12248608/a3f8281e-b90e-11e5-88a0-bb267e5d253a.png)
+![disco](https://cloud.githubusercontent.com/assets/6102639/12252651/431f61f0-b92d-11e5-9ca8-a49c3db5ea52.png)
 
 ## RAMMFAR
 One last thing, please don't forget to add RAMMFAR to your web.config, otherwise some of our embedded assets will not be loaded correctly by IIS:
