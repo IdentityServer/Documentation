@@ -628,7 +628,7 @@ And after login:
 In the first case, there was no token, so the access token validation middleware did nothing. The request flowed through the API as unauthenticated, and the global `AuthorizeAttribute` rejected it and responded with a `401 Unauthorized` error.
 In the second case, the token validation middleware found the token in the `Authorization` header, passed it along to the introspection endpoint which flagged it as valid, and created an identity with the claims it contained. The request, this time authenticated, flowed to Web API, the `AuthorizeAttribute` contrainsts were staisfied, and the endpoint was invoked.
 
-# Part 3 - Renewing tokens, checking session and logging out
+# Part 3 - Renewing tokens and logging out
 
 We now have a working JS application which logs in against IdentityServer and make successful calls to a protected API.
 Users will encounter issues when their access token expires and is rejected by the access token validation middleware on the API.
@@ -758,8 +758,8 @@ public static class Clients
 }
 ```
 
-The third and final step will allow to see the updated access token in the associated panel every time it's renrewed.  
-The `OidcTokenManager` exposes a `addOnTokenObtained` method which takes a callback as a parameter. This callback will be invoked every time an access token is obtained. This includes the first time th euser logs in as well as the next times when the token is silently renewed.
+The third and final step will allow to see the updated access token in the associated panel every time it's renewed.  
+The `OidcTokenManager` exposes a `addOnTokenObtained` method which takes a callback as a parameter. This callback will be invoked every time an access token is obtained. This includes the first time the user logs in as well as whenever the token is silently renewed.
 
 ```js
 var manager = new OidcTokenManager(settings);
@@ -782,3 +782,88 @@ $('.js-login').click(function () {
 ```
 
 You can now see that the access token is renewed every 10 seconds.
+
+## Logging out
+
+Logging out of a JS application has a different meaning than from another, server-side application, because if you refresh the main page, you will lose the tokens and will have to login again. But when the login popup opens, it could be that you still have a valid session cookie for IdentityServer. It could be possible that the popup doesn't prompt the user for his credentials and close itself. This is similar to when the token manager silently renews the token.
+
+Logging out here means logging out of IdentityServer so that, next time a user tries to login from an IdentityServer-protected application, he will have to enter his credentials again.
+
+The process here is simple, we just need a logout button that calls the `redirectForLogout` method of the `OidcTokenManager` instance. We also need to let IdentityServer know that the specified post-logout redirect URL is valid:
+
+```csharp
+public static class Clients
+{
+    public static IEnumerable<Client> Get()
+    {
+        return new[]
+        {
+            new Client
+            {
+                Enabled = true,
+                ClientName = "JS Client",
+                ClientId = "js",
+                Flow = Flows.Implicit,
+
+                RedirectUris = new List<string>
+                {
+                    "http://localhost:56668/popup.html",
+                    "http://localhost:56668/silent-renew.html"
+                },
+
+                PostLogoutRedirectUris = new List<string>
+                {
+                    "http://localhost:56668/index.html"
+                },
+
+                AllowedCorsOrigins = new List<string>
+                {
+                    "http://localhost:56668"
+                },
+
+                AllowAccessToAllScopes = true,
+                AccessTokenLifetime = 70
+            }
+        };
+    }
+```
+
+```html
+[...]
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="list-inline list-unstyled requests">
+            <li><a href="index.html" class="btn btn-primary">Home</a></li>
+            <li><button type="button" class="btn btn-default js-login">Login</button></li>
+            <li><button type="button" class="btn btn-default js-call-api">Call API</button></li>
+            <li><button type="button" class="btn btn-danger js-logout">Logout</button></li>
+        </ul>
+    </div>
+</div>
+[...]
+var settings = {
+    authority: 'https://localhost:44300',
+    client_id: 'js',
+    popup_redirect_uri: 'http://localhost:56668/popup.html',
+
+    silent_renew: true,
+    silent_redirect_uri: 'http://localhost:56668/silent-renew.html',
+
+    response_type: 'id_token token',
+    scope: 'openid profile email api',
+
+    post_logout_redirect_uri: 'http://localhost:56668/index.html',
+
+    filter_protocol_claims: true
+};
+[...]
+$('.js-logout').click(function () {
+    manager.redirectForLogout();
+});
+```
+
+When clicking the `Logout` button, the user will be redirected to IdentityServer so that the session cookie is cleared.
+
+[logout](https://cloud.githubusercontent.com/assets/6102639/12256384/d9de8df0-b950-11e5-91b2-650a0a749a7f.png)
+
+_Please note the screenshot above shows a page served by IdentityServer, not the JS application_
