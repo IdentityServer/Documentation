@@ -9,7 +9,7 @@ We'll split the walkthrough in 3 parts:
 
  - Authenticate against IdentityServer in the JS application
  - Make API calls from the JS application
- - Have a look at how to renew tokens and check sessions
+ - Have a look at how to renew tokens, check sessions and log out
 
 # Part 1 - Authentication against IdentityServer
 This first part will focus on allowing us to authenticate in the JS application.
@@ -283,8 +283,6 @@ var settings = {
     response_type: 'id_token',
     scope: 'openid profile',
 
-    // this will allow all the OIDC protocol claims to be visible in the window. normally a client app
-    // wouldn't care about them or want them taking up space
     filter_protocol_claims: true
 };
 
@@ -628,4 +626,159 @@ And after login:
 ![api with access token](https://cloud.githubusercontent.com/assets/6102639/12254750/497df5f8-b940-11e5-9cca-7ee1184605e5.png)
 
 In the first case, there was no token, so the access token validation middleware did nothing. The request flowed through the API as unauthenticated, and the global `AuthorizeAttribute` rejected it and responded with a `401 Unauthorized` error.
-In the second case, the token validation middleware found the token in the `Authorization` header, passed it along to the introspection endpoint which flagged it as valid, and created an identity with the claims it contained. The request, this time authenticated, flowed to Web API, the `AuthorizeAttribute` contrainsts were staisfied, and the endpoint was invoked. 
+In the second case, the token validation middleware found the token in the `Authorization` header, passed it along to the introspection endpoint which flagged it as valid, and created an identity with the claims it contained. The request, this time authenticated, flowed to Web API, the `AuthorizeAttribute` contrainsts were staisfied, and the endpoint was invoked.
+
+# Part 3 - Renewing tokens, checking session and logging out
+
+We now have a working JS application which logs in against IdentityServer and make successful calls to a protected API.
+Users will encounter issues when their access token expires and is rejected by the access token validation middleware on the API.
+To work around that, we can setup oidc-token-manager to automatically renew the access token when it's about to expire, without any steps required for the user.
+
+## Expired tokens
+
+Let's first see how we can have a token expire on purpose. We have to reduce the lifetime of the access token.
+This is a per-client setting, so we'll have to edit our `Clients` class in the IdentityServer project:
+
+```csharp
+public static class Clients
+{
+    public static IEnumerable<Client> Get()
+    {
+        return new[]
+        {
+            new Client
+            {
+                Enabled = true,
+                ClientName = "JS Client",
+                ClientId = "js",
+                Flow = Flows.Implicit,
+
+                RedirectUris = new List<string>
+                {
+                    "http://localhost:56668/popup.html"
+                },
+
+                AllowedCorsOrigins = new List<string>
+                {
+                    "http://localhost:56668"
+                },
+
+                AllowAccessToAllScopes = true,
+                AccessTokenLifetime = 70
+            }
+        };
+    }
+}
+```
+
+The access token lifetime, which is 1 hour by default, has been changed to 70 seconds.  
+What you'll experience if you login the JS application again is that you'll get the same `401 Unauthorized` error when you call the API 10 seconds after logging in.
+
+## Renewing tokens
+
+We are going to rely on a feature oidc-token-manager gives us to renew the tokens. The idea is to have a hidden `iframe` on our page, which oidc-token-manager will use to issue a new authorization request while the user is still logged in. The [`prompt`](../endpoints/authorization.html) setting is used to prevent the user from having to log in or give his consent while he has a valid session.  
+IdentityServer will return a new access token which will replace the one stored in the `OidcTokenManager` instance.
+
+To achieve this, we have several steps to take.
+
+First, we have to create a new file, `silent-renew.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script src="content/js/oidc.js"></script>
+    <script>
+        var manager = new OidcTokenManager();
+        manager.processTokenCallbackSilent();
+    </script>
+</body>
+</html>
+```
+
+and modify the token manager settings:
+
+```js
+var settings = {
+    authority: 'https://localhost:44300',
+    client_id: 'js',
+    popup_redirect_uri: 'http://localhost:56668/popup.html',
+
+    silent_renew: true,
+    silent_redirect_uri: 'http://localhost:56668/silent-renew.html',
+
+    response_type: 'id_token token',
+    scope: 'openid profile email api',
+
+    // this will allow all the OIDC protocol claims to be visible in the window. normally a client app
+    // wouldn't care about them or want them taking up space
+    filter_protocol_claims: true
+};
+```
+
+The HTML file will be used in a dynamically created `iframe` to renew the token. The URL of that page is passed to the token manager settings to instruct it to automatically renew the token when it expires.  
+The token manager will renew the token 60 seconds before it expires, which explains why we chose to change to access token lifetime to 70 seconds.  
+This means the token will be renewed every 10 seconds.
+
+The second step is to let IdentityServer know that it is OK to redirect the user to it after the authentication is successful:
+
+```csharp
+public static class Clients
+{
+    public static IEnumerable<Client> Get()
+    {
+        return new[]
+        {
+            new Client
+            {
+                Enabled = true,
+                ClientName = "JS Client",
+                ClientId = "js",
+                Flow = Flows.Implicit,
+
+                RedirectUris = new List<string>
+                {
+                    "http://localhost:56668/popup.html",
+                    "http://localhost:56668/silent-renew.html"
+                },
+
+                AllowedCorsOrigins = new List<string>
+                {
+                    "http://localhost:56668"
+                },
+
+                AllowAccessToAllScopes = true,
+                AccessTokenLifetime = 70
+            }
+        };
+    }
+}
+```
+
+The third and final step will allow to see the updated access token in the associated panel every time it's renrewed.  
+The `OidcTokenManager` exposes a `addOnTokenObtained` method which takes a callback as a parameter. This callback will be invoked every time an access token is obtained. This includes the first time th euser logs in as well as the next times when the token is silently renewed.
+
+```js
+var manager = new OidcTokenManager(settings);
+
+manager.addOnTokenObtained(function () {
+    display('.js-access-token', manager.access_token && { access_token: manager.access_token, expires_in: manager.expires_in } || '');
+});
+
+$('.js-login').click(function () {
+    manager.openPopupForTokenAsync()
+        .then(function () {
+            display('.js-id-token', manager.profile);
+
+            // Removed
+            // display('.js-access-token', manager.access_token && { access_token: manager.access_token, expires_in: manager.expires_in } || '');
+        }, function (error) {
+            console.error(error);
+        });
+});
+```
+
+You can now see that the access token is renewed every 10 seconds.
