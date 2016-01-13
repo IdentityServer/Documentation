@@ -14,7 +14,7 @@ The walkthrough is split in 3 parts:
  - Have a look at how to renew tokens, check sessions and log out
 
 # Part 1 - Authentication against IdentityServer
-This first part will focus on allowing us to authenticate in the JS application.
+This first part will focus on allowing us to authenticate in the JS application. To do so, we will create 2 projects; one for the JS application and one for IdentityServer.
 
 ## Create the JS application project
 In Visual Studio, create an empty web application.
@@ -26,7 +26,7 @@ Note the URL assigned to the project:
 ![js app url](https://cloud.githubusercontent.com/assets/6102639/12252652/4324b3b2-b92d-11e5-9641-772efe43c8e8.png)
 
 ## Create the IdentityServer project
-In Visual Studio, create an empty web application and set authentication to "No authentication".
+In Visual Studio, create another empty web application for IdentityServer.
 
 ![create web app](https://cloud.githubusercontent.com/assets/6102639/12247585/bd0e33e4-b908-11e5-90bb-b6f3e9b2c060.png)
 
@@ -179,13 +179,23 @@ One last thing, please don't forget to add RAMMFAR to your web.config, otherwise
 
 We use several third-party libraries to support our application:
 
- - [jQuery](http://jquery.com/download/)
- - [Bootstrap](http://getbootstrap.com/getting-started/#download)
+ - [jQuery](http://jquery.com)
+ - [Bootstrap](http://getbootstrap.com)
  - [oidc-token-manager](https://github.com/IdentityModel/oidc-token-manager)
 
-Put them in the `content` folder so it looks like this:
+We are going to install them with [Bower](http://bower.io/), a front-end package manager. If you don't have Bower installed, you can follow [these instructions on the Bower website](http://bower.io/#install-bower).
+Once Bower is installed, open a command-line prompt in the `JsApplication` folder:
 
-![content folder](https://cloud.githubusercontent.com/assets/6102639/12249132/e180dee4-b911-11e5-8f0b-41072202768c.png)
+```sh
+$ bower install --save-dev jquery
+$ bower install --save-dev bootstrap
+$ bower install --save-dev oidc-token-manager
+```
+
+By default, Bower installs packages in the `bower_components` folder.
+
+**Important** Bower packages are usually not committed to source control. If you cloned the repository containing the final source code and wat to restore the Bower packages, open a
+command-line prompt in the `JsApplication` folder and run `bower install`. Without these steps, you'll be missing all the dependencies.
 
 We also create a basic `index.html` file:
 
@@ -195,7 +205,7 @@ We also create a basic `index.html` file:
 <head>
     <title>JS Application</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="content/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <style>
         .main-container {
             padding-top: 70px;
@@ -237,9 +247,9 @@ We also create a basic `index.html` file:
         </div>
     </div>
 
-    <script src="content/js/jquery-2.1.4.js"></script>
-    <script src="content/js/bootstrap.js"></script>
-    <script src="content/js/oidc.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
 </body>
 </html>
 ```
@@ -254,7 +264,7 @@ and a `popup.html` file:
     <meta charset="utf-8" />
 </head>
 <body>
-    <script src="content/js/oidc.js"></script>
+    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
 </body>
 </html>
 ```
@@ -266,6 +276,7 @@ We have two HTML files because `oidc-token-manager` can open a popup to show the
 Now that we have everything we need, we can configure our login settings in `index.html` thanks to the `OidcTokenManager` JS class.
 
 ```js
+// helper function to show data to the user
 function display(selector, data) {
     if (data && typeof data === 'string') {
         data = JSON.parse(data);
@@ -711,7 +722,7 @@ First, we have to create a new file, `silent-renew.html`:
     <title></title>
 </head>
 <body>
-    <script src="content/js/oidc.js"></script>
+    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
     <script>
         var manager = new OidcTokenManager();
         manager.processTokenCallbackSilent();
