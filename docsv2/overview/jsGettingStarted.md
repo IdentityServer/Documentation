@@ -11,7 +11,7 @@ The walkthrough is split in 3 parts:
 
  - Authenticate against IdentityServer in the JS application
  - Make API calls from the JS application
- - Have a look at how to renew tokens, check sessions and log out
+ - Have a look at how to renew tokens, log out and check sessions
 
 # Part 1 - Authentication against IdentityServer
 This first part will focus on allowing us to authenticate in the JS application. To do so, we will create 2 projects; one for the JS application and one for IdentityServer.
@@ -194,8 +194,8 @@ $ bower install --save-dev oidc-token-manager
 
 By default, Bower installs packages in the `bower_components` folder.
 
-**Important** Bower packages are usually not committed to source control. If you cloned the repository containing the final source code and wat to restore the Bower packages, open a
-command-line prompt in the `JsApplication` folder and run `bower install`. Without these steps, you'll be missing all the dependencies.
+**Important** Bower packages are usually not committed to source control. If you cloned the repository containing the final source code and want to restore the Bower packages, open a
+command-line prompt in the `JsApplication` folder and run `bower install` to restore packages.
 
 We also create a basic `index.html` file:
 
@@ -659,7 +659,7 @@ And after login:
 In the first case, there was no access token, hence no `Authorization` header in the request, so the access token validation middleware did nothing. The request flowed through the API as unauthenticated, the global `AuthorizeAttribute` rejected it and responded with a `401 Unauthorized` error.
 In the second case, the token validation middleware found the token in the `Authorization` header, passed it along to the introspection endpoint which flagged it as valid, and an identity was created with the claims it contained. The request, this time authenticated, flowed to Web API, the `AuthorizeAttribute` contrainsts were satisfied, and the endpoint was invoked.
 
-# Part 3 - Renewing tokens and logging out
+# Part 3 - Renewing tokens, logging out and checking sessions
 
 We now have a working JS application which logs in against IdentityServer and makes successful calls to a protected API.
 But users will soon encounter issues when their access token expires and is rejected by the access token validation middleware on the API.
@@ -906,3 +906,4 @@ When clicking the `Logout` button, the user will be redirected to IdentityServer
 [logout](https://cloud.githubusercontent.com/assets/6102639/12256384/d9de8df0-b950-11e5-91b2-650a0a749a7f.png)
 
 _Please note the screenshot above shows a page served by IdentityServer, not the JS application_
+
