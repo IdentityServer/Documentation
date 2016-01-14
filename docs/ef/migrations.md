@@ -29,6 +29,8 @@ Enable-Migrations -MigrationsDirectory Migrations\ScopeConfiguration -ContextTyp
 
 Enable-Migrations -MigrationsDirectory Migrations\OperationalConfiguration -ContextTypeName OperationalDbContext -ContextAssemblyName IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
 ```
+**Be sure to replace *Host* below with the namespace of the migrations that were created in the above steps!**
+
 
 The the initial schema must then be defined (again one for each migration), as such:
 
@@ -40,8 +42,9 @@ Add-Migration -Name InitialCreate -ConfigurationTypeName Host.Migrations.ClientC
 Add-Migration -Name InitialCreate -ConfigurationTypeName Host.Migrations.OperationalConfiguration.Configuration -ConnectionStringName IdSvr3Config
 ```
 
-And then the database can be created:
+**Be sure to replace *Host* below with the namespace of the migrations that were created in the above steps!**
 
+And then the database can be created:
 ```
 Update-Database -ConfigurationTypeName Host.Migrations.ClientConfiguration.Configuration -ConnectionStringName IdSvr3Config
 
