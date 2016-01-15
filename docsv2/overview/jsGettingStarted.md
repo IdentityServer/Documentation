@@ -907,3 +907,279 @@ When clicking the `Logout` button, the user will be redirected to IdentityServer
 
 _Please note the screenshot above shows a page served by IdentityServer, not the JS application_
 
+## Check session
+
+The session in our JS application starts when the identity token we get back from IdentityServer is validated.
+IdentityServer itself supports session management so it returns, in the authorization response, a value named `session_state`.
+
+In some cases, we might be interested to know if the user ended his session on IdentityServer, for example by logging out of another application which in turned logged him out of IdentityServer.
+The idea is to compute again the `session_state` value. If it's equal to the one IdentityServer sent, this means the session state is unchanged, so the user is still logged in. It it's different, something changed, possibly the user logged out. In this case it's advised to issue a silent authorization request, with `prompt=none`. If it succeeds, we get a new identity token, and it means the session on the IdentityServer side is still valid. If it fails, the user has logged out, and we have to ask him to log in again.
+
+Unfortunately, the JS application on its own cannot compute the `session_state` value because it depends on the IdentityServer session cookie value which it doesn't have access to.
+The workaround is to load, in a hidden `iframe`, the checksession endpoint from IdentityServer. The JS application and this `iframe` can then communicate with the [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) function.
+
+### The checksession endpoint
+
+This endpoint serves a simple page which listens to messages sent with `postMessage`. The data passed in the message is used to compute the session state hash. If it matches the one sent by IdentityServer, the page sends a message back to the calling window with the value `unchanged`. It it doesn't, it sends back `changed`. If something goes wrong, it sends `error`.
+
+### Prerequisites
+
+Before going further, we have to make a slight modification.
+If the checksession `iframe` - loaded from IdentityServer, thus over HTTPS - is loaded from a page served over HTTP, we will run into issues.
+The solution is to serve our JS application over HTTPS, too.
+
+Here are the several steps to take:
+
+First, enable SSL for the `JsApplication` project, and change the URL in the project properties, as we did for the `IdentityServer` project:
+
+![idsrv app url](https://cloud.githubusercontent.com/assets/6102639/12341948/a1c58718-bb79-11e5-9b8d-701e20d029b7.png)
+
+Then, in the `Clients` class of the `IdentityServer` project, replace all the URLs with the new ones:
+
+```csharp
+public static class Clients
+{
+    public static IEnumerable<Client> Get()
+    {
+        return new[]
+        {
+            new Client
+            {
+                Enabled = true,
+                ClientName = "JS Client",
+                ClientId = "js",
+                Flow = Flows.Implicit,
+
+                RedirectUris = new List<string>
+                {
+                    "https://localhost:44301/popup.html",
+                    "https://localhost:44301/silent-renew.html"
+                },
+
+                PostLogoutRedirectUris = new List<string>
+                {
+                    "https://localhost:44301/index.html"
+                },
+
+                AllowedCorsOrigins = new List<string>
+                {
+                    "https://localhost:44301"
+                },
+
+                AllowAccessToAllScopes = true,
+                AccessTokenLifetime = 70
+            }
+        };
+    }
+}
+```
+
+Also replace the URLs in the token manager settings in the `index.html` file of the JS application:
+
+```js
+[...]
+var settings = {
+    authority: 'https://localhost:44300',
+    client_id: 'js',
+    popup_redirect_uri: 'https://localhost:44301/popup.html',
+
+    silent_renew: true,
+    silent_redirect_uri: 'https://localhost:44301/silent-renew.html',
+
+    response_type: 'id_token token',
+    scope: 'openid profile email api',
+
+    post_logout_redirect_uri: 'https://localhost:44301/index.html',
+
+    filter_protocol_claims: true
+};
+```
+
+Since you cannot access an HTTP resource from an HTTPS resource, we have to make the API available over HTTPS, too. Enable SSL as we did for the other projects, and update the URL in `index.html`:
+
+```js
+$('.js-call-api').click(function () {
+    var headers = {};
+    if (manager.access_token) {
+        headers['Authorization'] = 'Bearer ' + manager.access_token;
+    }
+
+    $.ajax({
+        url: 'https://localhost:44302/values',
+        method: 'GET',
+        dataType: 'json',
+        headers: headers
+    }).then(function (data) {
+        display('.js-api-result', data);
+    }).fail(function (error) {
+        display('.js-api-result', {
+            status: error.status,
+            statusText: error.statusText,
+            response: error.responseJSON
+        });
+    });
+});
+```
+
+### Building the session check feature
+
+Now, create a `check-session.html` file with the following contents:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RP Check Session IFrame</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
+    <iframe id="op"></iframe>
+    <script>
+        if (window.location.hash) {
+            // 1 - getting parameters
+            var hash = window.location.hash.substr(1);
+            var params = hash.split('&').reduce(function (curr, item) {
+                var parts = item.split('=');
+                curr[parts[0].trim()] = parts[1].trim();
+                return curr;
+            }, {});
+
+            // 2 - parameters check
+            if (!params.session_state) {
+                console.error('No session_state passed to RP session frame');
+            }
+            else if (!params.check_session_iframe) {
+                console.error('No check_session_iframe passed to RP session frame');
+            }
+            else if (!params.client_id) {
+                console.error('No client_id passed to RP session frame');
+            }
+            else {
+                var idSrvOrigin = 'https://localhost:44300';
+
+                var frame = document.getElementById('op');
+                frame.onload = function () {
+                    // 3 - posting messages
+                    var op = frame.contentWindow;
+                    var timer = window.setInterval(function () {
+                        op.postMessage(params.client_id + ' ' + params.session_state, idSrvOrigin);
+                    }, 2000);
+
+                    // 4 - receiving messages
+                    window.addEventListener('message', function (e) {
+                        if (e.origin === idSrvOrigin) {
+                            console.log('session state', e.data);
+                            if (e.data === 'changed' || e.data === 'error') {
+                                window.clearInterval(timer);
+                            }
+
+                            if (e.data === 'changed') {
+                                window.parent.postMessage('changed', 'https://localhost:44301');
+                            }
+                        }
+                    });
+                };
+
+                // 5 - loading the iframe
+                frame.src = params.check_session_iframe;
+            }
+        }
+    </script>
+</body>
+</html>
+```
+
+An important notion is to get that this page will be loaded by `index.html` in an `iframe`.
+As you can see, it itself contains an `iframe`, in which we'll load the checksession page from IdentityServer.
+In this section, we'll differentiate them by calling them JS application iframe and IdentityServer iframe.
+
+Now, let's go through the different parts:
+
+The first code block parses the parameters passed in the URL after the hash sign. They are structured as in a query string, that is `key=value`.
+The result is stored in the `params` variable.
+
+The second part makes sure all the expected parameters were provided. We need 3 of them:
+
+ - The `session_state` returned by IdentityServer
+ - The URL of the checksession endpoint so we know where to load the `iframe` from
+ - The client id, which is needed by the checksession endpoint to compute the session state hash
+
+Part #3 will be executed when the checkssion `iframe` is loaded. The idea here is to poll the checksession `iframe` by regularly sending messages with the `postMessage` function.
+
+For each sent message, a response message will be received which is what the fourth part takes care of.
+As a security measure, we make sure the message comes from the IdentityServer iframe since potentially any window could send a message.
+If the value we get back from IdentityServer is `changed`, we pass the message through by sending a message to the `index.html` file.
+
+The fifth and final part loads the IdentityServer iframe.
+
+### Wiring it in `index.html`
+
+The only missing piece is now to integrate what we built in the main page:
+
+```html
+[...]
+<!-- Will be used to load check-session.html -->
+<iframe id="rp" style="display:none"></iframe>
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
+```
+
+```js
+[...]
+function checkSessionState() {
+    manager.oidcClient.loadMetadataAsync().then(function (meta) {
+        if (meta.check_session_iframe && manager.session_state) {
+            document.getElementById('rp').src = 'check-session.html#' +
+                'session_state=' + manager.session_state +
+                '&check_session_iframe=' + meta.check_session_iframe +
+                '&client_id=' + settings.client_id;
+        }
+        else {
+            document.getElementById('rp').src = 'about:blank';
+        }
+    });
+
+    window.onmessage = function (e) {
+        if (e.origin === 'https://localhost:44301' && e.data === 'changed') {
+            manager.removeToken();
+            manager.renewTokenSilentAsync().then(function () {
+                // Session state changed but we managed to silently get a new identity token, everything's fine
+                console.log('renewTokenSilentAsync success');
+            }, function () {
+                // Here we couldn't get a new identity token, we have to ask the user to log in again
+                console.log('renewTokenSilentAsync failed');
+            });
+        }
+    }
+}
+[...]
+$('.js-login').click(function () {
+    manager.openPopupForTokenAsync()
+        .then(function () {
+            display('.js-id-token', manager.profile);
+
+            // Load the iframe and start listening to messages
+            checkSessionState();
+
+            // Removed
+            // display('.js-access-token', { access_token: manager.access_token, expires_in: manager.expires_in });
+        }, function (error) {
+            console.error(error);
+        });
+});
+```
+
+When we initially get a token back from IdentityServer, we now call the `checkSessionState` function.
+It requests IdentityServer metadata endpoint to make sure the checksession endpoint is available since it could have been disabled.
+If it is, the `check-session.html` is loaded in a hidden `iframe`, passing along the parameters it needs.
+A listener for messages is then created. Here again, we want to make sure they come from the `check-session.html` page.
+
+As discussed earlier, in the case where the session state has changed, a silent authorization request is sent.
+If it succeeds, it means the session on IdentityServer is still valid and we got a new identity token.
+If it fails, the user must have logged out, so we have to ask him to log in again.
+
+We can simulate that by opening two tabs to the `index.html` file, logging in both of them. Inspecting `manager.session_state` in the console will give the same value.
+If we log out from one tab, we are redirected to IdentityServer where the session cookie will be cleared. Next time the session state is computed in the IdentityServer iframe of the other tab,
+it will detect that it has changed.
