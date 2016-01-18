@@ -94,7 +94,7 @@ public class CustomViewService : DefaultViewService
 Then in the `_login.html` template, this custom markup can be added to access the `customMessage` property:
 
 ```html
-<div ng-show="model.customMessage">
+<div ng-show="model.custom.customMessage">
     <h2>{ { model.custom.customMessage } }</h2>
 </div>
 ```
