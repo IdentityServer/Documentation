@@ -55,6 +55,20 @@ When customizing the HTML, rather than replacing the entire HTML document you ca
 
 In addition to being able to replace the partial views, it's also possible to replace the default layout template itself. This can be done by creating a file named `_layout.html` in the `templates` folder. The `DefaultViewService` will then use whatever combination of custom layout or partial views discovered on the file system to merge with the default embedded assets to render the requested view.
 
+#### Custom views location (Added in v2.4)
+
+By default, the custom views are located in a directory named `templates` within the hosting applications base directory. This can be customized by specifying the `CustomViewDirectory` property on the `DefaultViewServiceOptions`. This must be the full filesystem path to the directory.
+
+For example:
+
+```csharp
+var viewOptions = new DefaultViewServiceOptions();
+viewOptions.CustomViewDirectory = @"C:\IdentityServerTemplates";
+
+var factory = new IdentityServerServiceFactory();
+factory.ConfigureDefaultViewService(viewOptions);
+```
+
 #### Caching
 
 The custom views will be cached in-memory by default, so if the files are changed then it will require an application restart to load any updated HTML. This behavior can be disabled by setting the `CacheViews` property to `false` on the `DefaultViewServiceOptions` described earlier.
