@@ -62,6 +62,7 @@ permalink: /docsv2/
   * [HTTP based logout](advanced/signout-http.html)
 * [Federated Signout](advanced/federated-signout.html)
 * [Federated post-logout redirects](advanced/federated-post-logout-redirect.html)
+* [Invalidating existing login sessions](advanced/session-invalidation.html)
 
 ### Consuming Tokens
 
