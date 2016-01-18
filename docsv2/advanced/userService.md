@@ -21,6 +21,7 @@ The `IUserService` interface defines these methods:
  * Passed a `PreAuthenticationContext` with these properties:
         * `SignInMessage`: The contextual information passed to the authorize endpoint.
         * `AuthenticateResult`: The user service should assign to indicate the authentication outcome (or `null` to indicate the normal login page should be displayed).
+        * `ShowLoginPageOnErrorResult` (added in v2.4): Set if the `AuthenticateResult` represents an error and you wish that the error is displayed on the login page (as opposed to the general error page).
 * `AuthenticateLocalAsync`
  * This method is called for local authentication (whenever the user uses the username and password dialog). 
  * Passed a `LocalAuthenticationContext` with these properties:
