@@ -22,7 +22,7 @@ You could implement a custom implementation to determine in any way you see fit 
 There are two implementations that are provided from IdentityServer core:
 
 * `DefaultCorsPolicyService`
-  * This implementation can be used if the list of allowed origins to allow is fixed and known at application start. The `AllowedOrigins` propery is the collection that can be confgured with the list of origins that should be allowed.
+  * This implementation can be used if the list of allowed origins to allow is fixed and known at application start. The `AllowedOrigins` property is the collection that can be confgured with the list of origins that should be allowed.
   * There is also a `AllowAll` property which can be set to `true` to allow all origins.
 * `InMemoryCorsPolicyService`
   * This implementation accepts as a constructor argument a list of `Client` objects. The origins allowed for CORS  is configured via the `AllowedCorsOrigins` property of the `Client` objects. 
