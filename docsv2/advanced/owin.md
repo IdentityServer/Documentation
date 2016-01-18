@@ -46,6 +46,8 @@ IdentityServer3 provides extension methods for the OWIN environment (`IDictionar
     * Removes the cookie for the current partial login.
 * `GetRequestId`
     * Returns the current request ID used for logging.
+* `SetIdentityServerOrigin` (added in v2.1)
+    * Sets the origin for the current request.
 * `ResolveDependency` (added in v2.2)
     * Resolves dependency type from the IdentityServer DI system.
 * `ProcessFederatedSignoutAsync` (added in v2.2)
@@ -56,3 +58,5 @@ IdentityServer3 provides extension methods for the OWIN environment (`IDictionar
     * Gets the sign out message id.
 * `GetSignOutMessage` (added in v2.2)
     * Gets the sign out message.
+* `GetIdentityServerIssuerUri` (added in v2.4)
+    * Returns the IssuerUri from either the IdentityServerOptions or calculated from the incoming request URL.
