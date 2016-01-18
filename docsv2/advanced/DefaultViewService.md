@@ -95,7 +95,7 @@ Then in the `_login.html` template, this custom markup can be added to access th
 
 ```html
 <div ng-show="model.customMessage">
-    <h2>{ { model.customMessage } }</h2>
+    <h2>{ { model.custom.customMessage } }</h2>
 </div>
 ```
 
