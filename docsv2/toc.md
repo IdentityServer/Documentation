@@ -12,6 +12,7 @@ permalink: /docsv2/
 * [Packaging](overview/packaging.html)
 * [Getting Started: Creating the simplest OAuth2 Authorization Server, Client and API](overview/simplestOAuth.html)
 * [Getting Started: MVC Authentication & Web APIs](overview/mvcGettingStarted.html)
+* [Getting Started: JS Authentication & Web APIs](overview/jsGettingStarted.html)
 
 ### Configuration
 
