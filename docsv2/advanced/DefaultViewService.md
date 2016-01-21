@@ -41,7 +41,7 @@ The `DefaultViewService` does allow for the HTML to be customized, but the assum
 
 Also, many of the views have links or forms that make requests back into IdentityServer. Any customizations to the views must be able to recreate the same requests into IdentityServer. In other words, a custom view can not change how the server is expecteding to be invoked from the view.
 
-When rendering its views, the `DefaultViewService` uses a templating mechanism (similar to layout templates in MVC). There is a single shared "layout" view, and then there are separate "partial" views (one for each page that needs to be rendered) that conatin the contents to be rendered inside of the "layout". When a view is rendered these two are merged together on the server to emit a single HTML document.
+When rendering its views, the `DefaultViewService` uses a templating mechanism (similar to layout templates in MVC). There is a single shared "layout" view, and then there are separate "partial" views (one for each page that needs to be rendered) that contain the contents to be rendered inside of the "layout". When a view is rendered these two are merged together on the server to emit a single HTML document.
 
 You can see the default layout and partial views [here](https://github.com/IdentityServer/IdentityServer3/tree/master/source/Core/Services/DefaultViewService/PageAssets).
 
