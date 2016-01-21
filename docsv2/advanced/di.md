@@ -173,7 +173,7 @@ factory.TokenSigningService = new Registration<ITokenSigningService>(resolver =>
 );
 ```
 
-In this exmaple, the `mode` acts as a configuration flag to influence which impelmentation of the `ICustomLogger` will be used at runtime.
+In this example, the `mode` acts as a configuration flag to influence which impelmentation of the `ICustomLogger` will be used at runtime.
 
 ## Instancing with the Registration Mode
 
