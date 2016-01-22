@@ -6,7 +6,7 @@ layout: docs-default
 
 As IdentityServer3 is enhanced, it is likely that database schema changes will occur. In anticipation of schema changes, it is recommended (and expected) that the hosting application will be responsible for handling these schema changes over time.
 
-Entity Framework provides [migrations](https://msdn.microsoft.com/en-us/data/jj591621.aspx) as an approach to deal with schema changes and updating your database with those changes.
+Entity Framework provides migrations (more info [here](https://msdn.microsoft.com/en-us/data/jj591621.aspx) and [here](https://msdn.microsoft.com/en-us/data/dn481501)) as an approach to deal with schema changes and updating your database with those changes.
 
 ## DbContexts
 
