@@ -54,7 +54,7 @@ The `IdentityServerServiceFactory` allows setting up a service factory by provid
     * Implements filtering and transformation of claims for external identity providers ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FIExternalClaimsFilter.cs))
 * `CustomTokenValidator`
     * Implements custom additional validation of tokens for the token validation endpoints ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FServices%2FICustomTokenValidator.cs))
-* CustomTokenResponseGenerator
+* `CustomTokenResponseGenerator`
     * Allows adding additional data to a token response [interface](https://github.com/IdentityServer/IdentityServer3/blob/dev/source/Core/Services/ICustomTokenResponseGenerator.cs)
 * `ConsentService` 
     * Implements logic of consent decisions ([interface](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source/Core/Services/IConsentService.cs))
