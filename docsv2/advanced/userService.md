@@ -11,7 +11,7 @@ IdentityServer3 defines the `IUserService` interface to abstract the underlying 
 The methods on the user service are broken down into methods that related to authentication and methods that relate to the user's profile and issuing claims for tokens.
 
 * The authentication methods are called by IdentityServer when the user is attempting to authenticate. The outcome of these methods can either be a successful login, an error, or a partial login (see below for more information on partial logins).
-* The profile related methods are invoked when IdentityServer needs claims or needs to ensure the user is still allowed to recieve tokens.
+* The profile related methods are invoked when IdentityServer needs claims or needs to ensure the user is still allowed to receive tokens.
 
 ## IUserService
 The `IUserService` interface defines these methods:
