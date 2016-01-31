@@ -25,6 +25,7 @@ layout: docs-default
 * [OAuth 2.0 Implicit Flow with Angular and ASP.NET 5 IdentityServer](http://damienbod.com/2015/11/08/oauth2-implicit-flow-with-angular-and-asp-net-5-identity-server/)
 * [Getting started with WS-Federation in IdentityServer](http://nzpcmad.blogspot.co.nz/2015/11/identityserver-identity-server-3-as-ws.html)
 * [Federation with ADFS](http://nzpcmad.blogspot.co.nz/2015/11/identityserver-federation-with-adfs.html)
+* [IdentityServer and WS-Federation](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-using-WS-Federation)
 
 ### Conference Talks
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
