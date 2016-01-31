@@ -156,7 +156,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 // hosting identityserver
-using (WebApp.Start<Startup>("https://localhost:44333"))
+using (WebApp.Start<Startup>("http://localhost:5000"))
 {
     Console.WriteLine("server running...");
     Console.ReadLine();
@@ -212,7 +212,7 @@ public void Configuration(IAppBuilder app)
     // accept access tokens from identityserver and require a scope of 'api1'
     app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
         {
-            Authority = "https://localhost:44333",
+            Authority = "http://localhost:5000",
             ValidationMode = ValidationMode.ValidationEndpoint,
             
             RequiredScopes = new[] { "api1" }
@@ -251,7 +251,7 @@ using IdentityModel.Client;
 static TokenResponse GetClientToken()
 {
     var client = new TokenClient(
-        "https://localhost:44333/connect/token",
+        "http://localhost:5000/connect/token",
         "silicon",
         "F621F470-9731-4A25-80EF-67A6F7C5F4B8");
 
@@ -417,7 +417,7 @@ Next add a new method to the client to request an access token on behalf of a us
 static TokenResponse GetUserToken()
 {
     var client = new TokenClient(
-        "https://localhost:44333/connect/token",
+        "http://localhost:5000/connect/token",
         "carbon",
         "21B5F798-BE55-42BC-8AA8-0025B903DC3B");
 
