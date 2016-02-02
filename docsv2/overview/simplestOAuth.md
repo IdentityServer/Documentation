@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Creating the simplest OAuth2 Authorization Server, Client and API
+# Creating the simplest OAuth2 Authorization Server, Client and API
 
 The intention of this walkthrough is to create the simplest possible IdentityServer installation acting as an OAuth2 authorization server.
 This is supposed to get you started with some of the basic features and configuration options (the full source code can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/Simplest%20OAuth2%20Walkthrough)).
@@ -20,7 +20,7 @@ There are other more advanced walk-throughs in the docs that you could do afterw
 
 * Validating an access token
 
-##Setting up IdentityServer
+## Setting up IdentityServer
 First we will create a console host and set up IdentityServer.
 
 Start by creating a standard console application and add IdentityServer via nuget:
@@ -29,7 +29,7 @@ Start by creating a standard console application and add IdentityServer via nuge
 install-package identityserver3
 ```
 
-###Registering the API
+### Registering the API
 APIs are modeled as scopes - you need to register all APIs that you want to be able to request access tokens for. For that we create a class that returns a list of `Scope`:
 
 ```csharp
@@ -50,7 +50,7 @@ static class Scopes
 }
 ```
 
-###Registering the Client
+### Registering the Client
 For now we want to register a single client. This client will be able to request a token for the `api1` scope.
 For our first iteration, there will be no human involved and the client will simply request the token
 on behalf of itself (think machine to machine communication). Later we will add a user to the picture.
@@ -85,12 +85,12 @@ static class Clients
                 AccessTokenType = AccessTokenType.Reference,
 
                 Flow = Flows.ClientCredentials,
-                    
+
                 ClientSecrets = new List<Secret>
                 {
                     new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
                 },
-                    
+
                 AllowedScopes = new List<string>
                 {
                     "api1"
@@ -101,7 +101,7 @@ static class Clients
 }
 ```
 
-###Configuring IdentityServer
+### Configuring IdentityServer
 IdentityServer is implemented as OWIN middleware. It is configured in  in the `Startup` class using the `UseIdentityServer` extension method.
 The following snippets sets up a bare bones server with our scopes and clients. We also set up an empty list of users - we will add users later.
 
@@ -130,7 +130,7 @@ namespace IdSrv
     }
 }
 ```
-###Adding Logging
+### Adding Logging
 Since we are running in a console, it is very handy to have logging output straight to the console window.
 Serilog is a nice logging library for that:
 
@@ -139,7 +139,7 @@ install-package serilog
 install-package serilog.sinks.literate
 ```
 
-###Hosting IdentityServer
+### Hosting IdentityServer
 The very last step is to host IdentityServer. For this we add the Katana self-hosting package to our console application:
 
 ```
@@ -165,10 +165,10 @@ using (WebApp.Start<Startup>("http://localhost:5000"))
 
 When you run the console app, you should see some diagnostics output and `server running...`.
 
-##Adding an API
+## Adding an API
 In this part we will add a simple web API that is configured to require an access token from the IdentityServer we just set up.
 
-###Creating the Web Host
+### Creating the Web Host
 Add a new `ASP.NET Web Application` to the solution and choose the `Empty` option (no framework references).
 
 Add the necessary nuget packages:
@@ -179,7 +179,7 @@ install-package Microsoft.AspNet.WebApi.Owin
 install-package IdentityServer3.AccessTokenValidation
 ```
 
-###Adding a Controller
+### Adding a Controller
 Add this simple test controller:
 
 ```csharp
@@ -201,7 +201,7 @@ public class TestController : ApiController
 
 The `User` property on the controller gives you access to the claims from the access token.
 
-###Adding Startup
+### Adding Startup
 Add the following `Startup` class for both setting up web api and configuring trust with IdentityServer
 
 ```csharp
@@ -214,7 +214,7 @@ public void Configuration(IAppBuilder app)
         {
             Authority = "http://localhost:5000",
             ValidationMode = ValidationMode.ValidationEndpoint,
-            
+
             RequiredScopes = new[] { "api1" }
         });
 
@@ -231,10 +231,10 @@ public void Configuration(IAppBuilder app)
 
 Try opening the browser and access the test controller - you should see a 401 because the necessary access token is missing.
 
-##Setting up SSL
-In order for the sample to work, Visual Studio must be configured to use SSL.  Click on the Apis project. Press F4 to open the properties for the project. Make sure that "SSL Enabled" is set to true. If this is the first time you have enabled SSL for a project, it may give you a prompt about creating and installing a self signed SSL certificate. Choose yes to create and install the certificate. 
+## Setting up SSL
+In order for the sample to work, Visual Studio must be configured to use SSL.  Click on the Apis project. Press F4 to open the properties for the project. Make sure that "SSL Enabled" is set to true. If this is the first time you have enabled SSL for a project, it may give you a prompt about creating and installing a self signed SSL certificate. Choose yes to create and install the certificate.
 
-##Adding a Console Client
+## Adding a Console Client
 In the next part we will add a simple console client that will request an access token and use that to authenticate with the api.
 
 First add a new console project and install a nuget package for an OAuth2 client helper library:
@@ -273,16 +273,16 @@ static void CallApi(TokenResponse response)
 
 If you call both snippets, you should see `{"message":"OK computer","client":"silicon"}` in your console.
 
-##Adding a User
+## Adding a User
 So far, the client requests an access token for itself and no user is involved. Let's introduce a human.
 
-###Adding a user service
+### Adding a user service
 The user service manages users - for this sample we will use the simple in-memory user service.
 First we need to define some users:
 
  ```csharp
 using IdentityServer3.Core.Services.InMemory;
- 
+
 static class Users
 {
     public static List<InMemoryUser> Get()
@@ -311,7 +311,7 @@ the `Subject` is the unique identifier for that user that will be embedded into 
 
 In `Startup` replace the empty user list with a call the `Get` method.
 
-###Adding a Client
+### Adding a Client
 Next we will add a client definition that uses the flow called `resource owner password credential grant`.
 This flow allows a client to send the user's username and password to the token service and get an access token back in return.
 
@@ -338,12 +338,12 @@ namespace IdSrv
                     AccessTokenType = AccessTokenType.Reference,
 
                     Flow = Flows.ClientCredentials,
-                    
+
                     ClientSecrets = new List<Secret>
                     {
                         new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
                     },
-                    
+
                     AllowedScopes = new List<string>
                     {
                         "api1"
@@ -359,7 +359,7 @@ namespace IdSrv
                     AccessTokenType = AccessTokenType.Reference,
 
                     Flow = Flows.ResourceOwner,
-                    
+
                     ClientSecrets = new List<Secret>
                     {
                         new Secret("21B5F798-BE55-42BC-8AA8-0025B903DC3B".Sha256())
@@ -376,7 +376,7 @@ namespace IdSrv
 }
 ```
 
-###Updating the API
+### Updating the API
 When a human is involved, the access token will contain the `sub` claim to uniquely identify the user.
 Let's make this small modification to the API controller:
 
@@ -410,7 +410,7 @@ public class TestController : ApiController
 }
 ```
 
-###Updating the Client
+### Updating the Client
 Next add a new method to the client to request an access token on behalf of a user:
 
 ```csharp
@@ -427,7 +427,7 @@ static TokenResponse GetUserToken()
 
 Now try both methods of requesting a token and inspect the claims and the API response.
 
-##What to do next
+## What to do next
 This walk-through covered a very simple OAuth2 scenario. Next you could try:
 
 * The other flows - e.g. implicit, code or hybrid. They are all enablers for advanced scenarios like federation and external identities
@@ -438,4 +438,4 @@ This walk-through covered a very simple OAuth2 scenario. Next you could try:
 
 * Add authentication and identity tokens using OpenID Connect and identity scopes
 
-**Many of these techniques are used in the [MVC walkthrough](mvcGettingStarted.html) which you should do next** 
+**Many of these techniques are used in the [MVC walkthrough](mvcGettingStarted.html) which you should do next**
