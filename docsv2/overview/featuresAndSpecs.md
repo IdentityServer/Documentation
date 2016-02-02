@@ -18,3 +18,4 @@ IdentityServer implements the following specifications:
 * OAuth 2.0 Form Post Response Mode ([spec](http://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html))
 * OAuth 2.0 Token Revocation ([RFC 7009](https://tools.ietf.org/html/rfc7009))
 * OAuth 2.0 Token Introspection([RFC 7662](https://tools.ietf.org/html/rfc7662)) (added in v2.2)
+* Proof Key for Code Exchange by OAuth Public Clients([RFC 7636](https://tools.ietf.org/html/rfc7636)) (added in v2.5)
