@@ -10,7 +10,7 @@ layout: docs-default
 * [OAuth2 threat model](http://tools.ietf.org/html/rfc6819)
 
 ### Articles
-* [Hybrid Flow] (http://leastprivilege.com/2014/10/10/openid-connect-hybrid-flow-and-identityserver-v3/)
+* [Hybrid Flow](http://leastprivilege.com/2014/10/10/openid-connect-hybrid-flow-and-identityserver-v3/)
 * [Post Logout Redirect](http://leastprivilege.com/2014/10/14/identityserver-v3-and-post-logout-redirect/)
 * [Logging and Eventing with Serilog & Seq](http://leastprivilege.com/2015/10/22/identityserver3-logging-monitoring-using-serilog-and-seq/)
 * [Automatic redirect after Logout](http://www.aaron-powell.com/posts/2015-01-11-auto-redirect-when-logging-out.html)
