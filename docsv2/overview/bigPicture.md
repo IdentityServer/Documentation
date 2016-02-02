@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#The big Picture
+# The big Picture
 
 Most modern applications look more or less like this:
 
