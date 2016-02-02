@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#In-Memory Services and Stores
+# In-Memory Services and Stores
 
 The in-memory services and stores are an easy way to get a test/dev version of IdentityServer up and running.
 
