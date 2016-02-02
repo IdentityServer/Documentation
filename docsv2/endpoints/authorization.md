@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Authorization/Authentication Endpoint
+# Authorization/Authentication Endpoint
 
 The authorization endpoint can be used to request either access tokens or authorization codes (implicit and authorization code flow). You either use a web browser or a web view to start the process.
 
@@ -29,6 +29,11 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest).
 - `prompt` (optional)
     - `none` no UI will be shown during the request. If this is not possible (e.g. because the user has to sign in or consent) an error is returned
     - `login` the login UI will be shown, even if the user is already signed-in and has a valid session
+- `code_challenge` (required when using proof keys - added in v2.5)
+    - send the code challenge for proof key flows)
+- `code_challenge_method` (optional - default to plain when using proof keys - added in v2.5)
+    - `plain` indicates that the challenge is using plain text (not recommended)
+    - `S256` indicates the the challenge is hashed with SHA256
 - `login_hint` (optional)
     - can be used to pre-fill the username field on the login page
 - `ui_locales` (optional)
