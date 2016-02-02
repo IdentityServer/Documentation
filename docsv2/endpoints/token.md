@@ -15,6 +15,7 @@ See [spec](http://openid.net/specs/openid-connect-core-1_0.html#TokenRequest).
 - `scope` (required for all grant types besides refresh_token and code)
 - `redirect_uri` (required for code grant type)
 - `code` (required for code grant)
+- `code_verifier` (required when using proof keys - added in v2.5)
 - `username` (required for password grant type)
 - `password` (required for password grant_type)
 - `acr_values` (allowed for password grant type to pass additional information to user service)
