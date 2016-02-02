@@ -8,7 +8,7 @@ twitter_username: identityserver
 github_username: identityserver
 
 # Build settings
-highlighter: pygments
+highlighter: rouge
 
 # Custom Settings
 github_url: https://github.com/IdentityServer/Documentation
