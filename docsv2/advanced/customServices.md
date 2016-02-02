@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Custom Services
+# Custom Services
 
 IdentityServer3 provides many extensibility points for storage of data, validation logic and general functionality
 that are needed to support IdentityServer's operation as a token service.
