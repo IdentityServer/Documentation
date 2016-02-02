@@ -8,7 +8,6 @@ twitter_username: identityserver
 github_username: identityserver
 
 # Build settings
-markdown: redcarpet
 highlighter: pygments
 
 # Custom Settings
