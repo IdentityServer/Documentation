@@ -280,7 +280,7 @@ So far, the client requests an access token for itself and no user is involved. 
 The user service manages users - for this sample we will use the simple in-memory user service.
 First we need to define some users:
 
- ```csharp
+```csharp
 using IdentityServer3.Core.Services.InMemory;
 
 static class Users
@@ -304,7 +304,7 @@ static class Users
         };
     }
 }
- ```
+```
 
 `Username` and `Password` are used to authenticate the user,
 the `Subject` is the unique identifier for that user that will be embedded into the access token.
