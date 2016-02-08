@@ -27,6 +27,7 @@ layout: docs-default
 * [Federation with ADFS](http://nzpcmad.blogspot.co.nz/2015/11/identityserver-federation-with-adfs.html)
 * [IdentityServer and WS-Federation](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-using-WS-Federation)
 * [Using Xamarin](https://www.kevindockx.com/working-with-oauth2-and-openid-connect-from-a-xamarin-forms-application-using-identityserver3/)
+* [Using IdentityServer4 with Angular and ServiceStack](http://estynedwards.com/blog/2016/01/30/ServiceStack-IdentityServer-Angular/)
 
 ### Conference Talks
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
