@@ -2,9 +2,7 @@
 layout: docs-default
 ---
 
-#Deployment
-
-**note** This document is work in progress. Feel free to add new content.
+# Deployment
 
 ## Data Protection
 
