@@ -30,6 +30,7 @@ layout: docs-default
 * [Using IdentityServer4 with Angular and ServiceStack](http://estynedwards.com/blog/2016/01/30/ServiceStack-IdentityServer-Angular/)
 
 ### Conference Talks
+* [Introduction to IdentityServer](https://vimeo.com/154172925)
 * [Introduction to OpenID Connect, OAuth2 and IdentityServer](https://vimeo.com/113604459)
 * [Securing Web APIs - Patterns & Anti-Patterns](https://vimeo.com/131635255)
 * [Authentication and authorization in modern JavaScript web applications – how hard can it be?](https://vimeo.com/131636653)
