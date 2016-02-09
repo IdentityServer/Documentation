@@ -122,7 +122,9 @@ namespace IdSrv
                 Factory = new IdentityServerServiceFactory()
                             .UseInMemoryClients(Clients.Get())
                             .UseInMemoryScopes(Scopes.Get())
-                            .UseInMemoryUsers(new List<InMemoryUser>())
+                            .UseInMemoryUsers(new List<InMemoryUser>()),
+                            
+                RequireSsl = false
             };
 
             app.UseIdentityServer(options);
