@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Signout support for server-side web applications
+# Signout support for server-side web applications
 
 The [HTTP-based logout](https://openid.net/specs/openid-connect-logout-1_0.html) specification defines a mechanism for an OpenID Connect provider to inform client applications that a user has signed out. This is performed by creating an `<iframe>` to a well-known "logout URI" in each client application that the user has signed into. These `<iframe>`s are rendered on the "signed out" page at the OpenID Connect provider. This allows the `<iframe>
     `s to be executed in the context of the user's browser, thus allowing each client application to clear the user's session (whatever that means for the application).
@@ -23,3 +23,5 @@ public void SignoutCleanup(string sid)
 }
 
 ```
+
+To use this technique for signout notification, consult the sample MVC application [here](https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/Clients/MVC%20OWIN%20Client/Controllers/HomeController.cs#L36).
