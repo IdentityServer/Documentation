@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Session management for client-side JavaScript-based applications
+# Session management for client-side JavaScript-based applications
 
 The [Session management](https://openid.net/specs/openid-connect-session-1_0.html) specification defines a mechanism for an OpenID Connect provider to inform client-side JavaScript-based applications that a user has signed out. 
 
