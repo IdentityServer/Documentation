@@ -132,6 +132,7 @@ namespace IdSrv
     }
 }
 ```
+
 ### Adding Logging
 Since we are running in a console, it is very handy to have logging output straight to the console window.
 Serilog is a nice logging library for that:
