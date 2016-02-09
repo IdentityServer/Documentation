@@ -11,4 +11,4 @@ The mechanism defined in the specification involves the JavaScript application o
 The JavaScript client application can perodically use `postMessage` to the `<iframe>` to ask if there have been any changes to the user's session. The `<iframe>` will reply with either `"changed"` or `"unchanged"`. If "changed" is the response, the JavaScript application then knows that the user's session has ended (or changed in some way) and can then perform any cleanup necessary.
 
 
-To use this technique for signout notification, consult the sample JavaScript application [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/Clients/JavaScriptImplicitClient).
+**To use this technique for signout notification, consult the sample JavaScript application [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/Clients/JavaScriptImplicitClient).**
