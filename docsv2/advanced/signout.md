@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Signout Support
+# Signout Support
 
 When a user signs out of IdentityServer it is possible that client applications that the user has signed into want to be notified that the user is no longer logged in.
 
