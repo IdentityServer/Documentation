@@ -24,4 +24,4 @@ public void SignoutCleanup(string sid)
 
 ```
 
-To use this technique for signout notification, consult the sample MVC application [here](https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/Clients/MVC%20OWIN%20Client/Controllers/HomeController.cs#L36).
+**To use this technique for signout notification, consult the sample MVC application [here](https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/Clients/MVC%20OWIN%20Client/Controllers/HomeController.cs#L36).**
