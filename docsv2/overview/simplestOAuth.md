@@ -233,9 +233,6 @@ public void Configuration(IAppBuilder app)
 
 Try opening the browser and access the test controller - you should see a 401 because the necessary access token is missing.
 
-## Setting up SSL
-In order for the sample to work, Visual Studio must be configured to use SSL.  Click on the Apis project. Press F4 to open the properties for the project. Make sure that "SSL Enabled" is set to true. If this is the first time you have enabled SSL for a project, it may give you a prompt about creating and installing a self signed SSL certificate. Choose yes to create and install the certificate.
-
 ## Adding a Console Client
 In the next part we will add a simple console client that will request an access token and use that to authenticate with the api.
 
