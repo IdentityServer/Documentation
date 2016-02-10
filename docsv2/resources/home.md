@@ -9,14 +9,22 @@ layout: docs-default
 * [OAuth2 spec](http://tools.ietf.org/html/rfc6749)
 * [OAuth2 threat model](http://tools.ietf.org/html/rfc6819)
 
-### Articles
+### Articles from the Team
+
 * [Hybrid Flow](http://leastprivilege.com/2014/10/10/openid-connect-hybrid-flow-and-identityserver-v3/)
 * [Post Logout Redirect](http://leastprivilege.com/2014/10/14/identityserver-v3-and-post-logout-redirect/)
 * [Logging and Eventing with Serilog & Seq](http://leastprivilege.com/2015/10/22/identityserver3-logging-monitoring-using-serilog-and-seq/)
+* [Single Sign-out](http://brockallen.com/2016/02/08/single-sign-out-and-identityserver3/)
+* [Federated Sign-out](http://brockallen.com/2016/02/09/federated-sign-out-and-identityserver3/)
+* [PKCE Support](http://leastprivilege.com/2016/02/02/pkce-support-in-identityserver-and-identitymodel/)
+* [Reference Tokens and Introspection](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)
+* [Adding a SAML2p external Authentication Provider](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/)
+* [Using Xamarin](https://www.kevindockx.com/working-with-oauth2-and-openid-connect-from-a-xamarin-forms-application-using-identityserver3/)
+
+### Articles
 * [Automatic redirect after Logout](http://www.aaron-powell.com/posts/2015-01-11-auto-redirect-when-logging-out.html)
 * [IdentityServer on Mono](http://www.ryanmelena.com/2014/10/31/thinktecture-identityserver-v3-on-mono/)
 * [Testing Web APIs with Postman](http://www.timecockpit.com/blog/2014/11/05/Testing-Time-Cockpits-OData-Web-API-with-Postman)
-* [Adding a SAML2p external Authentication Provider](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/)
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 1](https://www.scottbrady91.com/Thinktecture-Identity-Server/Identity-Server-3-Standalone-Implementation-Part-1)
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 2](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-2)
 * [Scott Brady: IdentityServer3 stand-alone implementation pt. 3](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-Standalone-Implementation-Part-3)
@@ -26,7 +34,6 @@ layout: docs-default
 * [Getting started with WS-Federation in IdentityServer](http://nzpcmad.blogspot.co.nz/2015/11/identityserver-identity-server-3-as-ws.html)
 * [Federation with ADFS](http://nzpcmad.blogspot.co.nz/2015/11/identityserver-federation-with-adfs.html)
 * [IdentityServer and WS-Federation](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-using-WS-Federation)
-* [Using Xamarin](https://www.kevindockx.com/working-with-oauth2-and-openid-connect-from-a-xamarin-forms-application-using-identityserver3/)
 * [Using IdentityServer4 with Angular and ServiceStack](http://estynedwards.com/blog/2016/01/30/ServiceStack-IdentityServer-Angular/)
 
 ### Conference Talks
