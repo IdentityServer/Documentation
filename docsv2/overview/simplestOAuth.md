@@ -102,7 +102,7 @@ static class Clients
 ```
 
 ### Configuring IdentityServer
-IdentityServer is implemented as OWIN middleware. It is configured in  in the `Startup` class using the `UseIdentityServer` extension method.
+IdentityServer is implemented as OWIN middleware. It is configured in the `Startup` class using the `UseIdentityServer` extension method.
 The following snippets sets up a bare bones server with our scopes and clients. We also set up an empty list of users - we will add users later.
 
 ```csharp
@@ -309,7 +309,7 @@ static class Users
 `Username` and `Password` are used to authenticate the user,
 the `Subject` is the unique identifier for that user that will be embedded into the access token.
 
-In `Startup` replace the empty user list with a call the `Get` method.
+In `Startup` replace the empty user list with a call to the `Get` method.
 
 ### Adding a Client
 Next we will add a client definition that uses the flow called `resource owner password credential grant`.
