@@ -309,7 +309,7 @@ static class Users
 `Username` and `Password` are used to authenticate the user,
 the `Subject` is the unique identifier for that user that will be embedded into the access token.
 
-In `Startup` replace the empty user list with a call the `Get` method.
+In `Startup` replace the empty user list with a call to the `Get` method.
 
 ### Adding a Client
 Next we will add a client definition that uses the flow called `resource owner password credential grant`.
