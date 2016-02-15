@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Federated post logout redirects
+# Federated post logout redirects
 
 When a client application is signing out of IdentityServer, a "post-logout redirect uri" can be passed to request that the user is redirected back to the client application once they have fully signed out. This information is maintained in a "sign out message" cookie, which is identified by a unique "sign out message id". This "sign out message id" is passed as a query paramater to the "logged out" page so that the cookie can be accessed in order to provide the user a link to navigate back to the client application.
 
