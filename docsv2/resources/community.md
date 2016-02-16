@@ -12,4 +12,4 @@ layout: docs-default
 * [Razor View Service](https://github.com/vdaron/IdentityServer.RazorViewEngine)
 * [Entity Framework 7 support (from 20 20)](https://github.com/2020IP/TwentyTwenty.IdentityServer3.EntityFramework7)
 * [Support for SAML2Bearer Assertions](https://www.nuget.org/packages/IdentityServer3.Contrib.Saml2Bearer/)
-* [Neo4j Support](http://blog.edgecastle.com/2016/02/10/announcing-the-release-of-identityserver3-neo4j-v0-1-2-31064/)
+* [Neo4j Support](https://github.com/edgecastle/IdentityServer3Neo4j/)
