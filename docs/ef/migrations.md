@@ -23,11 +23,11 @@ These will be needed since the database context classes are in a different assem
 A migration must be created for each database context class. To enable migrations for all of the database context classes, the command below can be used from the the package manager console:
 
 ```
-Enable-Migrations -MigrationsDirectory Migrations\ClientConfiguration -ContextTypeName ClientConfigurationDbContext -ContextAssemblyName Thinktecture.IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
+Enable-Migrations -MigrationsDirectory Migrations\ClientConfiguration -ContextTypeName ClientConfigurationDbContext -ContextAssemblyName IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
 
-Enable-Migrations -MigrationsDirectory Migrations\ScopeConfiguration -ContextTypeName ScopeConfigurationDbContext -ContextAssemblyName Thinktecture.IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
+Enable-Migrations -MigrationsDirectory Migrations\ScopeConfiguration -ContextTypeName ScopeConfigurationDbContext -ContextAssemblyName IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
 
-Enable-Migrations -MigrationsDirectory Migrations\OperationalConfiguration -ContextTypeName OperationalDbContext -ContextAssemblyName Thinktecture.IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
+Enable-Migrations -MigrationsDirectory Migrations\OperationalConfiguration -ContextTypeName OperationalDbContext -ContextAssemblyName IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
 ```
 
 The the initial schema must then be defined (again one for each migration), as such:
