@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Logging
+# Logging
 
 IdentityServer has two logging related features. Development-time logging and production-time events ([see here](events.html)).
 
