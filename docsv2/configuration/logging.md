@@ -65,6 +65,17 @@ to the directory containing the log file.
 If you don't specify a path, this will be the application directory, which is not recommended for production scenarios. 
 For production log to a file **outside** the application directory.
 
+## Example: Log to the console
+Logging to the console gives you a friction free and immediate insight into the internals of IdentityServer. Serilog has a nice colored
+console logging sink called `Serilog.Sinks.Literate`. Wire it up like this:
+
+```csharp
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.LiterateConsole()
+    .CreateLogger();
+```
+
 ## Instrumenting your own code
 You can also use the logging system in your own extensibility code.
 
