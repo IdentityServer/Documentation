@@ -96,3 +96,10 @@ The recommended approach for this is to write a custom sink using one of the sup
 You can find a sample [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/dev/source/Logging).
 
 See [here](http://leastprivilege.com/2015/10/22/identityserver3-logging-monitoring-using-serilog-and-seq/) for a post about logging and eventing.
+
+## Suppressing all logging output (added in v2.5)
+For certain scenarios (e.g. production) you want to make sure that no logging output is produced. For this you can configure a no-op logger (typically done in `Startup` or in the hosting code):
+
+```
+LogProvider.SetCurrentLogProvider(new NoopLogProvider());
+```
