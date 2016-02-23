@@ -30,7 +30,7 @@ The `LoggingOptions` class has the following settings:
 * `EnableHttpLogging`
    * If enabled, HTTP requests and responses will be logged
 * `EnableKatanaLogging`
-   * If enabled, the Katana log output will be logged
+   * If enabled, the Katana log output will be logged (this is often useful to troubleshoot problems with external identity providers)
 
 
 ## Example: Using Serilog to log to System.Diagnostics tracing
