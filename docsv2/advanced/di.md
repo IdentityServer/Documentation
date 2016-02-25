@@ -116,7 +116,7 @@ public class MyCustomTokenSigningService: ITokenSigningService
 }
 ```
 
-Then the registraion could instead be configured like this:
+Then the registration could instead be configured like this:
 
 ```csharp
 var factory = new IdentityServerServiceFactory();
