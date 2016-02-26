@@ -35,6 +35,7 @@ layout: docs-default
 * [Federation with ADFS](http://nzpcmad.blogspot.co.nz/2015/11/identityserver-federation-with-adfs.html)
 * [IdentityServer and WS-Federation](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-using-WS-Federation)
 * [Using IdentityServer4 with Angular and ServiceStack](http://estynedwards.com/blog/2016/01/30/ServiceStack-IdentityServer-Angular/)
+* [Android Samples](https://github.com/leo9223/IdentityServer4.Samples)
 
 ### Conference Talks
 * [Introduction to IdentityServer](https://vimeo.com/154172925)
