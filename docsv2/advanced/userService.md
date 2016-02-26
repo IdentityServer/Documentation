@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#User Service
+# User Service
 
 **The sample for this topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/CustomUserService)**
 
@@ -17,21 +17,21 @@ The methods on the user service are broken down into methods that related to aut
 The `IUserService` interface defines these methods:
 
 * `PreAuthenticateAsync`
- * This method is called before the login page is shown. This allows the user service to determine if the user is already authenticated by some out of band mechanism (e.g. client certificates or trusted headers) and prevent the login page from being shown.
- * Passed a `PreAuthenticationContext` with these properties:
+    * This method is called before the login page is shown. This allows the user service to determine if the user is already authenticated by some out of band mechanism (e.g. client certificates or trusted headers) and prevent the login page from being shown.
+    * Passed a `PreAuthenticationContext` with these properties:
         * `SignInMessage`: The contextual information passed to the authorize endpoint.
         * `AuthenticateResult`: The user service should assign to indicate the authentication outcome (or `null` to indicate the normal login page should be displayed).
         * `ShowLoginPageOnErrorResult` (added in v2.4): Set if the `AuthenticateResult` represents an error and you wish that the error is displayed on the login page (as opposed to the general error page).
 * `AuthenticateLocalAsync`
- * This method is called for local authentication (whenever the user uses the username and password dialog). 
- * Passed a `LocalAuthenticationContext` with these properties:
+    * This method is called for local authentication (whenever the user uses the username and password dialog). 
+    * Passed a `LocalAuthenticationContext` with these properties:
         * `Username`: The username.
         * `Password`: The password.
         * `SignInMessage`: The contextual information passed to the authorize endpoint.
         * `AuthenticateResult`: The user service should assign to indicate the authentication outcome (or `null` to indicate invalid `Username` or `Password`).
 * `AuthenticateExternalAsync`
- * This method is called when the user uses an external identity provider to authenticate. Allows the user service to map an external user to a local user. 
- * Passed a `ExternalAuthenticationContext` with these properties:
+    * This method is called when the user uses an external identity provider to authenticate. Allows the user service to map an external user to a local user. 
+    * Passed a `ExternalAuthenticationContext` with these properties:
         * `ExternalIdentity`: Information from the external provider about the user. It contains:
             * `Provider`: Identifier of the external identity provider.
             * `ProviderId`: User's unique identifier provided by the external identity provider.
@@ -44,12 +44,12 @@ The `IUserService` interface defines these methods:
         * `SignInMessage`: The contextual information passed to the authorize endpoint.
         * `AuthenticateResult`: The current `AuthenticateResult`. The user service can re-assign to a non-`null` value to change the authentication outcome.
 * `SignOutAsync`
- * This method is called when the user signs out.
- * Passed a `SignOutContext` with these properties:
+    * This method is called when the user signs out.
+    * Passed a `SignOutContext` with these properties:
         * `Subject`: The user that is signing out.
 * `GetProfileDataAsync`
- * This method is called whenever claims about the user are requested (e.g. during token creation or via the userinfo endpoint).
- * Passed a `ProfileDataRequestContext` with these properties:
+    * This method is called whenever claims about the user are requested (e.g. during token creation or via the userinfo endpoint).
+    * Passed a `ProfileDataRequestContext` with these properties:
         * `Subject`: The user for which the profile is being requested.
         * `IssuedClaims`: The user service should assign to indicate the claims to be issued.
         * `RequestedClaimTypes`: The list of claim types requested. The user service should only return claim types as indicated by this property.
@@ -60,8 +60,8 @@ The `IUserService` interface defines these methods:
             * `"ClaimsProviderAccessToken"`
             * `"UserInfoEndpoint"`
 * `IsActiveAsync`
- * This method is called whenever identity server needs to determine if the user is still considered valid or active (e.g. if the user's account has been deactivated since they logged in).
- * Passed a `IsActiveContext` with these properties:
+    * This method is called whenever identity server needs to determine if the user is still considered valid or active (e.g. if the user's account has been deactivated since they logged in).
+    * Passed a `IsActiveContext` with these properties:
         * `Subject`: The user that is signing out.
         * `Client`: The client making the request.
         * `IsActive`: The user service should set to `false` if the user is no longer allowed to receive tokens.
