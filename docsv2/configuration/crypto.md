@@ -42,7 +42,7 @@ certificates in the discovery document and the access token validation middlewar
 ## Cookie Protection
 Cookies must be protected as well. IdentityServer uses the Katana data protection infrastructure for that.
 
-If you application is hosted in IIS, Katana wil use the ASP.NET machine key to protect all cookies. If deployed in a 
+If you application is hosted in IIS, Katana will use the ASP.NET machine key to protect all cookies. If deployed in a 
 web farm you need to manually synchronize those keys over all nodes.
 
 If self hosted, you can either plug in any custom Katana data protection provider in your host, or use the built-in 
