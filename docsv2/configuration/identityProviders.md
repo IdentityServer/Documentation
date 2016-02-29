@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Identity Providers
+# Identity Providers
 
 IdentityServer supports authentication using external identity providers. The external authentication mechanism must be encapsulated in a Katana authentication middleware.
 

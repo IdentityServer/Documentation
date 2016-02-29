@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Dependency Injection
+# Dependency Injection
 
 **The sample for this topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/DependencyInjection)**
 

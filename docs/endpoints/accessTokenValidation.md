@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Access token validation endpoint
+# Access token validation endpoint
 
 The access token validation endpoint can be used to validate reference tokens. It can be also used to validate self-contained JWTs if the consumer does not have support for appropriate JWT or cryptographic libraries.
 

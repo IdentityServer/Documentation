@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Schema Changes and Migrations
+# Schema Changes and Migrations
 
 As IdentityServer3 is enhanced, it is likely that database schema changes will occur. In anticipation of schema changes, it is recommended (and expected) that the hosting application will be responsible for handling these schema changes over time.
 

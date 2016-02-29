@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Logging
+# Logging
 
 IdentityServer produces extensive logging output.
 The logging mechanism and sink is determined by the hosting application via setting a `LogProvider` (e.g. in your `startup` class):
@@ -23,7 +23,7 @@ The following providers are supported out of the box:
 
 You can create additional providers by deriving from `LogProvider`.
 
-##Configuring Diagnostics
+## Configuring Diagnostics
 The `LoggingOptions` class has the following settings:
 
 * `EnableWebApiDiagnostics`

@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Discovery Endpoint
+# Discovery Endpoint
 
 The discovery endpoint can be used to retrieve metadata about IdentityServer - it returns information like the issuer name, key material, supported scopes etc.
 

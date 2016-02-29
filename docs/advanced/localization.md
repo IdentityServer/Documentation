@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Localization of messages
+# Localization of messages
 
 Messages that IdentityServer creates can be localized (or simply replaced) by implementing the `ILocalizationService` interface. It defines a single API:
 

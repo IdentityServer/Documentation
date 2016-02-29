@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#IdentityServer Options
+# IdentityServer Options
 
 The `IdentityServerOptions` [class](https://github.com/thinktecture/Thinktecture.IdentityServer.v3/blob/master/source%2FCore%2FConfiguration%2FIdentityServerOptions.cs) is the top level container for all configuration settings of IdentityServer.
 

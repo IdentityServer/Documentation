@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Refresh Tokens
+# Refresh Tokens
 
 - Refresh tokens are supported for the following flows: authorization code, hybrid and resource owner password credential flow.
 - The clients needs to be allowed to request the `offline_access` scope to get a refresh token.

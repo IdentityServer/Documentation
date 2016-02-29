@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#UserInfo Endpoint
+# UserInfo Endpoint
 
 The UserInfo endpoint can be used to retrieve identity information about a subject. It requires a valid access token with at least the 'openid' scope.
 

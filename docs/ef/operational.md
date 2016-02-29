@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Operational Data
+# Operational Data
 
 For many of IdentityServer3's features a database is required to persist various operational data. This includes authorization codes, refresh tokens, reference tokens, and user consent. 
 

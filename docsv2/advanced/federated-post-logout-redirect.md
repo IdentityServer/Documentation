@@ -38,8 +38,7 @@ public void Configuration(this IAppBuilder app)
    });
 }
 
-
- public static void ConfigureIdentityProviders(IAppBuilder app, string signInAsType)
+public static void ConfigureIdentityProviders(IAppBuilder app, string signInAsType)
 {
     var oidc = new OpenIdConnectAuthenticationOptions
     {

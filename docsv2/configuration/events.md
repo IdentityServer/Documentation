@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Events
+# Events
 
 IdentityServer raises a number of events at runtime, e.g:
 
@@ -18,7 +18,7 @@ IdentityServer raises a number of events at runtime, e.g:
 By default these events are forwarded to the configured log provider -
 a custom event service can process or forward them in any way suitable for the environment.
 
-##Configuring events
+## Configuring events
 The `EventsOptions` class has the following settings (all default to `false`):
 
 * `RaiseSuccessEvents`

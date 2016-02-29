@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Custom Services
+# Custom Services
 
 IdentityServer3 provides many extensibility points for storage of data, validation logic and general functionality
 that are needed to support IdentityServer's operation as a token service.
@@ -22,7 +22,7 @@ Three of the services are mandatory and must be configured by the implementer, t
 We provide a simple in-memory version of these three services as well as support for data stores via the related repos or community projects.
 See [here](../configuration/inMemoryFactory.html) for more details.
 
-##Registering custom Services
+## Registering custom Services
 
 You can replace every service and register additional custom ones. This is encapsulated by the `Registration` class.
 A `Registration` represents a way for IdentityServer to obtain an instance of your service.

@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#The In-Memory Factory
+# The In-Memory Factory
 
 The in-memory factory is an easy way to get a test/dev version of IdentityServer up and running.
 
