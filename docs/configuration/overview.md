@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Overview
+# Overview
 
 IdentityServer3 is packaged as middleware and uses the typical "Options" patterns for configuration:
 

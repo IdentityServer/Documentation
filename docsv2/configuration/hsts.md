@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#HSTS
+# HSTS
 
 [HTTP Strict Transport Security](http://www.html5rocks.com/en/tutorials/security/transport-layer-security/) (or HSTS) is an important aspect in web security.
 IdentityServer3 provides a configuration option to include the HSTS headers in all of its HTTP responses.

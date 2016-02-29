@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Clients and Scopes
+# Clients and Scopes
 
 ## Stores
 

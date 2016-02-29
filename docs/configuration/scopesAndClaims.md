@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Scopes and Claims
+# Scopes and Claims
 
 **The `Thinktecture.IdentityServer.Core.Models.Scope` class models an OpenID Connect or OAuth2 scope.**
 

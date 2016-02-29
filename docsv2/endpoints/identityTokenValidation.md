@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Identity Token Validation Endpoint
+# Identity Token Validation Endpoint
 
 The identity token validation endpoint can be used to validate identity tokens. 
 This is useful for clients that don't have access to the appropriate JWT or crypto libraries (e.g. JavaScript).

@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#CSP Endpoint
+# CSP Endpoint
 
 [CSP](../advanced/csp.html) allows for a reporting endpoint to be configured. IdentityServer provides an endpoint to record CSP errors that the browser reports. These CSP errors will be raised as [events](../configuration/events.html) in the eventing system.
 

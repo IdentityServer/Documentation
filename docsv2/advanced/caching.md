@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Caching results for client, scope, and user stores
+# Caching results for client, scope, and user stores
 
 There are various stores to allow IdentityServer to load data from a database. Given the general decoupled design of IdentityServer, the APIs to load data might be invoked several times in the same HTTP request into IdentityServer. This might incur unnecessary round trips to a database. Given this possibility, IdentityServer defines a caching interface so that you can implement your own caching logic. Additionally, IdentityServer provides a default cache implementation. 
 
@@ -34,13 +34,12 @@ These methods should be called after you have assigned the appropriate store int
 If a custom cache impelmentation is desired (e.g. using reddis), then you can implement the `ICache<T>` for the data that needs to be cached. The cache interface defines this API:
 
 * `Task SetAsync(string key, T item)`
- * The `key` and the `item` to cache.
+    * The `key` and the `item` to cache.
 * `Task<T> GetAsync(string key)`
- * The `key` indicates the item to access from the cache. A `null` returned item indicates there is no entry in the cache.
+    * The `key` indicates the item to access from the cache. A `null` returned item indicates there is no entry in the cache.
 
 The `IdentityServerServiceFactory` extension methods described above are also overloaded to also accept a `Registration` for the custom cache:
 
 * `ConfigureClientStoreCache(Registration<ICache<Client>> cacheRegistration)`
 * `ConfigureScopeStoreCache(Registration<ICache<IEnumerable<Scope>>> cacheRegistration)`
 * `ConfigureUserServiceCache(Registration<ICache<IEnumerable<Claim>>> cacheRegistration)`
-

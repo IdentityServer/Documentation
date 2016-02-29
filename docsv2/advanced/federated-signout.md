@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Federated Signout
+# Federated Signout
 
 IdentityServer supports the ability to federate with external identity providers. When a user signs out of an upstream identity provider, depending upon the protocol used, it might be possible to receive a notification when the user has signed out. This would then allow IdentityServer to notify its clients so they can also sign the user out.
 

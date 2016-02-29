@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Clients
+# Clients
 
 The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native application, a web application or a JS-based application ([link](https://github.com/IdentityServer/IdentityServer3/blob/master/source/Core/Models/Client.cs)).
 
@@ -67,7 +67,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 
 In addition there are a number of settings controlling the behavior of refresh tokens - see [here](advanced/refreshTokens.html)
 
-##Example: Configure a client for implicit flow
+## Example: Configure a client for implicit flow
 
 ```csharp
 var client = new Client
@@ -93,7 +93,7 @@ var client = new Client
 }
 ```
 
-##Example: Configure a client for resource owner flow
+## Example: Configure a client for resource owner flow
 
 ```csharp
 var client = new Client

@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Entity Framework support for Clients, Scopes, and Operational Data
+# Entity Framework support for Clients, Scopes, and Operational Data
 
 Support for Entity Framework for IdentityServer comes from [this](https://github.com/IdentityServer/IdentityServer3.EntityFramework) repo.
 

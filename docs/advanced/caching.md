@@ -34,9 +34,9 @@ These methods should be called after you have assigned the appropriate store int
 If a custom cache implementation is desired (e.g. using [Redis](http://redis.io/)), then you can implement the `ICache<T>` for the data that needs to be cached. The cache interface defines this API:
 
 * `Task SetAsync(string key, T item)`
- * The `key` and the `item` to cache.
+    * The `key` and the `item` to cache.
 * `Task<T> GetAsync(string key)`
- * The `key` indicates the item to access from the cache. A `null` returned item indicates there is no entry in the cache.
+    * The `key` indicates the item to access from the cache. A `null` returned item indicates there is no entry in the cache.
 
 The `IdentityServerServiceFactory` extension methods described above are also overloaded to also accept a `Registration` for the custom cache:
 

@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#User Service
+# User Service
 
 **The sample for this topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/CustomUserService)**
 

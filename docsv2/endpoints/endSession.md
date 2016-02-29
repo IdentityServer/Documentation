@@ -2,7 +2,7 @@
 layout: docs-default
 ---
 
-#Logout Endpoint
+# Logout Endpoint
 
 Redirecting to the logout endpoint clears the authentication session and cookie.
 
