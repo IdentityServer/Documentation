@@ -18,6 +18,7 @@ You first need to install the plugin using Nuget:
 
  You can then wire up the plugin by implementing the `PluginConfiguration` callback on the `IdentityServerOptions` class like this:
 
+
  ```csharp
  public void Configuration(IAppBuilder appBuilder)
  {

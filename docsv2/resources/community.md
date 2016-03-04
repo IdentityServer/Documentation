@@ -14,3 +14,4 @@ layout: docs-default
 * [Entity Framework 7 support (from 20 20)](https://github.com/2020IP/TwentyTwenty.IdentityServer3.EntityFramework7)
 * [Support for SAML2Bearer Assertions](https://www.nuget.org/packages/IdentityServer3.Contrib.Saml2Bearer/)
 * [Neo4j Support](https://github.com/edgecastle/IdentityServer3Neo4j/)
+* [Azure Table Storage Support](http://kylesonaty.com/identity-server-3-azure-table-storage-stores/)
