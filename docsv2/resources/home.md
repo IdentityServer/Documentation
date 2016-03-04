@@ -36,6 +36,7 @@ layout: docs-default
 * [IdentityServer and WS-Federation](https://www.scottbrady91.com/Identity-Server/Identity-Server-3-using-WS-Federation)
 * [Using IdentityServer4 with Angular and ServiceStack](http://estynedwards.com/blog/2016/01/30/ServiceStack-IdentityServer-Angular/)
 * [Android Samples](https://github.com/leo9223/IdentityServer4.Samples)
+* [IdentityServer4 and Angular2](http://damienbod.com/2016/03/02/angular2-openid-connect-implicit-flow-with-identityserver4/)
 
 ### Conference Talks
 * [Introduction to IdentityServer](https://vimeo.com/154172925)
