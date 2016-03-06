@@ -85,6 +85,12 @@ permalink: /docsv2/
 * [Defining Relying Parties](wsFederation/relyingParties.html)
 * [Endpoints](wsFederation/endpoints.html)
 
+### Proof of Possession
+
+* [Overview](pop/overview.html)
+* [Requesting PoP Tokens](pop/requesting.html)
+* [Using PoP Tokens](pop/using.html)
+
 ### Resources
 
 * [Overview](resources/home.html)
