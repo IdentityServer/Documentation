@@ -155,7 +155,7 @@ Add the following code `Program.cs`:
 // logging
 Log.Logger = new LoggerConfiguration()
     .WriteTo
-    .LiterateConsole(outputTemplate: "{Timestamp:HH:MM} [{Level}] ({Name:l}){NewLine} {Message}{NewLine}{Exception}")
+    .LiterateConsole(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({Name:l}){NewLine} {Message}{NewLine}{Exception}")
     .CreateLogger();
 
 // hosting identityserver
