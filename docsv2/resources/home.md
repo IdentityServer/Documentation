@@ -37,6 +37,7 @@ layout: docs-default
 * [Using IdentityServer4 with Angular and ServiceStack](http://estynedwards.com/blog/2016/01/30/ServiceStack-IdentityServer-Angular/)
 * [Android Samples](https://github.com/leo9223/IdentityServer4.Samples)
 * [IdentityServer4 and Angular2](http://damienbod.com/2016/03/02/angular2-openid-connect-implicit-flow-with-identityserver4/)
+* [Implementing Impersonation](http://djsharepoint.com/blog/2016/03/impersonation-in-identity-server-3/)
 
 ### Conference Talks
 * [Introduction to IdentityServer](https://vimeo.com/154172925)
