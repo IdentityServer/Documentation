@@ -45,6 +45,7 @@ factory.CustomGrantValidators.Add(
 ```
 
 To use this grant type, you need to create a client with the following configuration:
+
 * The `Flow` must be set to `Custom`
 * The `AllowedCustomGrantTypes` must include the custom grant type
 
