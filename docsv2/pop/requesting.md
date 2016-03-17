@@ -36,7 +36,10 @@ var jwk64 = RsaPublicKeyJwk.CreateJwkString(jwk);
 First request a token via authorization code flow - then when exchanging the token, send the public key along.
 
 ```csharp
-var tokenClient = new TokenClient(IdentityServerPipeline.TokenEndpoint, ClientId, ClientSecret, _idSvrPipeline.Handler);
+var tokenClient = new TokenClient(
+  IdentityServerPipeline.TokenEndpoint, 
+  ClientId, 
+  ClientSecret);
 
 var tokenResponse = await tokenClient.RequestAuthorizationCodePopAsync(
   authResponse.Code,
@@ -53,7 +56,7 @@ Our PoP client library takes care of signing the outgoing HTTP requests
 // configure signing details
 var signature = new RS256Signature(p);
 var signingOptions = new RequestSigningOptions();
-var signingHandler = new HttpSigningMessageHandler(signature, signingOptions, _webApiPipeline.Handler);
+var signingHandler = new HttpSigningMessageHandler(signature, signingOptions);
 
 // set pop token
 var client = new HttpClient(signingHandler);
