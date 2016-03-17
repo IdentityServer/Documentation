@@ -17,7 +17,7 @@ accessing a protected resource.
 Proof of possesion (PoP from now on) provides a mechanism to bind key material to access tokens. This key material can then
 be used by the client to add signatures to outgoing HTTP requests to the resource server. The resource server in turn can use the
 key material to make sure that the sender is the same entity that requested the token in the first place
-(as opposed to someone who stole the token on transit or at rest).
+(as opposed to someone who stole the token in transit or at rest).
 
 You can find the details of the PoP mechanism as well as the corresponding protocol messages
 [here](https://tools.ietf.org/wg/oauth/draft-ietf-oauth-pop-architecture/) and

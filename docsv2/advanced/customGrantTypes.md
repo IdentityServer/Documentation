@@ -44,6 +44,11 @@ factory.CustomGrantValidators.Add(
     new Registration<ICustomGrantValidator, MyCustomGrantValidator>());
 ```
 
+To use this grant type, you need to create a client with the following configuration:
+
+* The `Flow` must be set to `Custom`
+* The `AllowedCustomGrantTypes` must include the custom grant type
+
 One typical use case for custom grants is to translate between token types (e.g. SAML to JWT or Facebook to JWT) thus
 bridging the gap between two identity management systems.
 
