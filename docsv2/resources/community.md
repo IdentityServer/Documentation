@@ -15,3 +15,4 @@ layout: docs-default
 * [Support for SAML2Bearer Assertions](https://www.nuget.org/packages/IdentityServer3.Contrib.Saml2Bearer/)
 * [Neo4j Support](https://github.com/edgecastle/IdentityServer3Neo4j/)
 * [Azure Table Storage Support](http://kylesonaty.com/identity-server-3-azure-table-storage-stores/)
+* [XML-backed configuration for IdentityServer3, IdentityManager, and ASP.Net Identity](https://github.com/LinqBeast/IdentityServer3.Contrib.Configuration/)
