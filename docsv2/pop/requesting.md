@@ -67,3 +67,4 @@ var apiResponse = await client.GetAsync(WebApiPipeline.Endpoint);
 ```
 
 The full source code can be found [here](https://github.com/IdentityModel/IdentityModel.Owin.PopAuthentication/blob/dev/src/IdentityModel.Owin.PopAuthentication.Tests/IntegrationTests/IdSvr_Client_And_WebApi_Integration/PopTests.cs).
+Also a sample can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/dev/source/Clients/WpfOidcClientPop).
