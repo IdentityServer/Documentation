@@ -89,7 +89,7 @@ permalink: /docsv2/
 
 * [Overview](pop/overview.html)
 * [Requesting PoP Tokens](pop/requesting.html)
-* [Using PoP Tokens](pop/using.html)
+* [Consuming PoP Tokens](pop/consuming.html)
 
 ### Resources
 
