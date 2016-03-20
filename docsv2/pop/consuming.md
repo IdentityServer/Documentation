@@ -6,7 +6,7 @@ layout: docs-default
 
 Consuming PoP tokens in a web api is a two-part configuration.
 The first part is configuring your token validation middleware normally, except with some slight modifications to accommodate how PoP tokens are passed.
-The second part is configuring middleware to validate the current HTTP request's signature against the proof of possession key.
+The second part is configuring middleware to confirm the proof of possession key by validating the signature in the PoP token against the current HTTP request.
 
 The _IdentityModel.Owin.PopAuthentication_ NuGet package provides the necessary code to accomplish this configuration.
 
@@ -15,7 +15,7 @@ The _IdentityModel.Owin.PopAuthentication_ NuGet package provides the necessary 
 The two main changes that need to be done to accommodate PoP tokens is to change the middleware's authentication scheme to `"PoP"` and
 to configure a token provider to locate the access token within the PoP token.
 
-To configure the authentication middleware to use the `"PoP"` scheme is simple -- it just involves setting the `AuthenticationType` property to `"PoP"` (notice both instances of the letter `P` must be uppercase).
+It is simple to configure the authentication middleware to use the `"PoP"` scheme -- just set the `AuthenticationType` property to `"PoP"` (notice both instances of the letter `P` must be uppercase).
 
 To configure a token provider to locate the access token within the PoP token, you will need to set the `Provider` property and handle the `OnRequestToken` event.
 There is a helper method `DefaultPopTokenProvider.GetAccessTokenFromPopTokenAsync` that can perform this work for you.
@@ -74,7 +74,7 @@ public void Configuration(IAppBuilder app)
  
 ## Middleware to validate HTTP request against proof of possession key
 
-Once the above code is able to locate and validate the access token from within the PoP token, the HTTP request must be validated.
+Once the above code is able to locate and validate the access token from within the PoP token, the signature in the PoP token must be validated against the current HTTP request.
 To perform this validation, simply register the `HttpSignatureValidationMiddleware` in the Katana pipeline after the access token validation middleware.
 
 It will look like this:
@@ -103,9 +103,9 @@ public void Configuration(IAppBuilder app)
     
     app.UseHttpSignatureValidation();
 }
-``` 
+```
 
-The default validation will validate the incoming access token and the timestamp contained in the PoP token. 
+The default signature validation will use the incoming access token and the timestamp contained in the PoP token. 
 If you require signature validation on other aspects of the HTTP request, then a `HttpSignatureValidationOptions` can be passed to the `UseHttpSignatureValidation` API.
 
  The `HttpSignatureValidationOptions` contains these properties for configuring the request validation:
