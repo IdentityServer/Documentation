@@ -8,7 +8,7 @@ layout: docs-default
 
 IdentityServer3 defines the `IUserService` interface to abstract the underlying identity management system being used for users. It provides semantics for users to authenticate with local accounts as well as external accounts. It also provides identity and claims to IdentityServer needed for tokens and the user info endpoint. Additionally, the user service can control the workflow a user will experience at login time before being allowed to return to the client application (e.g. for things such as additional login requirements such as 2fa or other custom requirements such as accepting a EULA).
 
-The methods on the user service are broken down into methods that related to authentication and methods that relate to the user's profile and issuing claims for tokens.
+The methods on the user service are broken down into methods that relate to authentication and methods that relate to the user's profile and issuing claims for tokens.
 
 * The authentication methods are called by IdentityServer when the user is attempting to authenticate. The outcome of these methods can either be a successful login, an error, or a partial login (see below for more information on partial logins).
 * The profile related methods are invoked when IdentityServer needs claims or needs to ensure the user is still allowed to receive tokens.
