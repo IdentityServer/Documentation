@@ -109,6 +109,7 @@ The default signature validation will use the incoming access token and the time
 If you require signature validation on other aspects of the HTTP request, then a `HttpSignatureValidationOptions` can be passed to the `UseHttpSignatureValidation` API.
 
  The `HttpSignatureValidationOptions` contains these properties for configuring the request validation:
+ 
  * `TimespanValidityWindow`: `TimeSpan` for which the PoP token's `Timespan` will be valid;
  * `ValidateMethod`: Validate the HTTP request's method.
  * `ValidateHost`: Validate the HTTP request's host.
