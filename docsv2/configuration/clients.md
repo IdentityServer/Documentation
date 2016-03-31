@@ -39,6 +39,10 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `AllowedScopes`
     * By default a client has no access to any scopes - either specify the scopes explicitly here (recommended) - 
       or set `AllowAccessToAllScopes` to true.
+* `AllowAccessTokensViaBrowser` (added in v2.5)
+    * Specifies whether this client is allowed to request access tokens via the browser.
+      This is useful to harden flows that allow multiple response types 
+      (e.g. by disallowing a hybrid flow client that is supposed to use `code id_token` to add the `token` response type and thus leaking       the token to the browser.
 * `AllowedCustomGrantTypes`
     * When `Custom` flow is used, you also need to specify which custom grant types this client can use.
       Explicitly specify the grant types here (recommended) or set `AllowAccessToAllCustomGrantTypes` to true.
