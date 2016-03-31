@@ -60,3 +60,5 @@ IdentityServer3 provides extension methods for the OWIN environment (`IDictionar
     * Gets the sign out message.
 * `GetIdentityServerIssuerUri` (added in v2.4)
     * Returns the IssuerUri from either the IdentityServerOptions or calculated from the incoming request URL.
+* `IssueClientToken` (added in v2.5)
+    * Creates a JWT access token for situations where identityserver extensibility code needs to act as a client to a token protected service
