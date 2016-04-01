@@ -177,7 +177,7 @@ In this example, the `mode` acts as a configuration flag to influence which impe
 
 ## Instancing with the Registration Mode
 
-The `Registration` class allows a service to indicate how many instances of the service that will be created. The `Mode` propery is an enum with these possible values:
+The `Registration` class allows a service to indicate how many instances of the service that will be created. The `Mode` property is an enum with these possible values:
 
 * `InstancePerHttpRequest`
  * One instance will be created per HTTP request. This means that if the service is requested twice in a single dependency chain then the same instance will be shared.
