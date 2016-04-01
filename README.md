@@ -11,4 +11,4 @@ This assumes you already have Ruby and [Bundler](http://bundler.io/) installed.
 * Modify the _config.yml file to change the URL to `url: http://localhost:4000`
  * This will allow the relative links to work as expected.
  * **NOTE:** Do not commit this change.
-* Run `budle exec jekyll serve` to serve the web site.
+* Run `bundle exec jekyll serve` to serve the web site.
