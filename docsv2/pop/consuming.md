@@ -29,7 +29,7 @@ public void Configuration(IAppBuilder app)
 
     app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
     {
-        // we're looking for the PoP scheme, not Bearer
+        // The HttpSignatureValidation middleware looks for another middleware called PoP
         AuthenticationType = "PoP",
         
         // locate the access token from within  the PoP token
@@ -55,7 +55,7 @@ public void Configuration(IAppBuilder app)
 
     app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
     {
-        // we're looking for the PoP scheme, not Bearer
+        // The HttpSignatureValidation middleware looks for another middleware called PoP
         AuthenticationType = "PoP",
         
         // locate the access token from within  the PoP token
@@ -86,7 +86,7 @@ public void Configuration(IAppBuilder app)
 
     app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
     {
-        // we're looking for the PoP scheme, not Bearer
+        // The HttpSignatureValidation middleware looks for another middleware called PoP
         AuthenticationType = "PoP",
         
         // locate the access token from within  the PoP token
