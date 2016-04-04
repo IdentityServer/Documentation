@@ -18,38 +18,38 @@ You first need to install the plugin using Nuget:
 
  You can then wire up the plugin by implementing the `PluginConfiguration` callback on the `IdentityServerOptions` class like this:
 
- ```csharp 
- public void Configuration(IAppBuilder appBuilder)
- {
-     var options = new IdentityServerOptions
-     {
-         SiteName = "IdentityServer3 with WsFed",
+```csharp
+public void Configuration(IAppBuilder appBuilder)
+{
+    var options = new IdentityServerOptions
+    {
+        SiteName = "IdentityServer3 with WsFed",
 
-         SigningCertificate = Certificate.Get(),
-         Factory = factory,
-         PluginConfiguration = ConfigureWsFederation
-     };
+        SigningCertificate = Certificate.Get(),
+        Factory = factory,
+        PluginConfiguration = ConfigureWsFederation
+    };
 
-     appBuilder.UseIdentityServer(options);
+    appBuilder.UseIdentityServer(options);
  }
 
- private void ConfigureWsFederation(IAppBuilder pluginApp, IdentityServerOptions options)
- {
-     var factory = new WsFederationServiceFactory(options.Factory);
+private void ConfigureWsFederation(IAppBuilder pluginApp, IdentityServerOptions options)
+{
+    var factory = new WsFederationServiceFactory(options.Factory);
 
-     // data sources for in-memory services
-     factory.Register(new Registration<IEnumerable<RelyingParty>>(RelyingParties.Get()));
-     factory.RelyingPartyService = new Registration<IRelyingPartyService>(typeof(InMemoryRelyingPartyService));
+    // data sources for in-memory services
+    factory.Register(new Registration<IEnumerable<RelyingParty>>(RelyingParties.Get()));
+    factory.RelyingPartyService = new Registration<IRelyingPartyService>(typeof(InMemoryRelyingPartyService));
 
-     var wsFedOptions = new WsFederationPluginOptions
-     {
-         IdentityServerOptions = options,
-         Factory = factory
-     };
+    var wsFedOptions = new WsFederationPluginOptions
+    {
+        IdentityServerOptions = options,
+        Factory = factory
+    };
 
-     pluginApp.UseWsFederationPlugin(wsFedOptions);
- }
- ```
+    pluginApp.UseWsFederationPlugin(wsFedOptions);
+}
+```
 
 The equivalent to an OpenID Connect or OAuth2 client is called relying party in WS-Federation.
 Similar to the other in-memory factories (see [here](../configuration/inMemory.html)) the WS-Federation plugin has built-in
