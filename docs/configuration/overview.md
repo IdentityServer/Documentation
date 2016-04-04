@@ -23,7 +23,7 @@ The `IdentityServerOptions` class contains all configuration for IdentityServer.
 One part consists of simple properties like the issuer name or site title which you can source from wherever you see fit (static in code, configuration file or database).
 The other part is the so called service factory which acts as a registry for certain aspects of IdentityServer's internal processing.
 
-#### Hosting in IIS and RAMMFAR
+## Hosting in IIS and RAMMFAR
 
 The files for the web pages are served up as embedded assets within the IdentityServer assembly itself. When hosting in IIS or IIS Express to allow these files to be served RAMMFAR (_runAllManagedModulesForAllRequests_) needs to be enabled in web.config:
 
