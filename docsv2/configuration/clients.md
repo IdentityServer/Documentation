@@ -79,7 +79,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `Claims`
     * Allows settings claims for the client (will be included in the access token).
 * `AlwaysSendClientClaims`
-    * If set, the client claims will be send for every flow. If not, only for client credentials flow (default is `false`)
+    * If set, the client claims will be sent for every flow. If not, only for client credentials flow (default is `false`)
 * `PrefixClientClaims`
     * If set, all client claims will be prefixed with `client_` to make sure they don't accidentally collide with user claims. Default is `true`.
 
