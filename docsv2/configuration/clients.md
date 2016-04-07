@@ -25,7 +25,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `Flow`
     * Specifies allowed flow for client (either `AuthorizationCode`, `Implicit`, `Hybrid`, `ResourceOwner`, `ClientCredentials` or `Custom`). Defaults to `Implicit`.
 * `AllowClientCredentialsOnly `
-    * Gets or sets a value indicating whether this client is allowed to request token using client credentials only. This is e.g. useful when you want a client to be able to use both a user-centric flow like implicit and additionally client credentials flow. Defaults to false. Should only be used for confidential clients (e.g. not Implicit).
+    * Gets or sets a value indicating whether this client is allowed to request token using client credentials only. This is useful when you want a client to be able to use both a user-centric flow like implicit and additionally client credentials flow. Defaults to false. Should only be used for confidential clients (e.g. not Implicit).
 * `RedirectUris`
     * Specifies the allowed URIs to return tokens or authorization codes to
 * `PostLogoutRedirectUris`
@@ -79,7 +79,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `Claims`
     * Allows settings claims for the client (will be included in the access token).
 * `AlwaysSendClientClaims`
-    * If set, the client claims will be send for every flow. If not, only for client credentials flow (default is `false`)
+    * If set, the client claims will be sent for every flow. If not, only for client credentials flow (default is `false`)
 * `PrefixClientClaims`
     * If set, all client claims will be prefixed with `client_` to make sure they don't accidentally collide with user claims. Default is `true`.
 
