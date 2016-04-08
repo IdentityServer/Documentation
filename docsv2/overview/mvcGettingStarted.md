@@ -328,7 +328,7 @@ app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
 
         Notifications = new OpenIdConnectAuthenticationNotifications
         {
-            SecurityTokenValidated = async n =>
+            SecurityTokenValidated = n =>
                 {
                     var id = n.AuthenticationTicket.Identity;
 
@@ -355,6 +355,8 @@ app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
                     n.AuthenticationTicket = new AuthenticationTicket(
                         nid,
                         n.AuthenticationTicket.Properties);
+                    
+                    return Task.FromResult(0);    
                 }
         }
     });
