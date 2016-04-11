@@ -81,8 +81,10 @@ permalink: /docsv2/
 
 ### WS-Federation
 
-* [Adding support for WS-Federation](wsFederation/overview.html)
-* [Defining Relying Parties](wsFederation/relyingParties.html)
+* [Overview](wsFederation/overview.html)
+* [Options](wsFederation/options.html)
+* [Service Factory](wsFederation/serviceFactory.html)
+* [Relying Parties](wsFederation/relyingParties.html)
 * [Endpoints](wsFederation/endpoints.html)
 
 ### Proof of Possession

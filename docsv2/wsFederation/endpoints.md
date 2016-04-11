@@ -4,11 +4,11 @@ layout: docs-default
 
 # Endpoints
 
-The WS-Federation plugin consists of two endpoint
+The WS-Federation plugin uses the `/wsfed` URL within IdentityServer. This root site should then be used as the authority in any relying parties if you are not using the metadata endpoint and can be changed using the `MapPath` property in the `WsFederationPluginOptions`.
 
 ## Sign-in/out
 
-That's the main WS-Federation endpoint of signing in and out.
+Signing in and out is then built on top of this URL.
 
 Supported parameters:
 
