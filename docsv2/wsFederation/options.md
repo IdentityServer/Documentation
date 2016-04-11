@@ -12,5 +12,5 @@ The `WsFederationPluginOptions` class contains the public configuration settings
 	* Sets the `WsFederationServiceFactory`
 * `EnableMetadataEndpoint`
 	* Enables the WS-Federation metadata endpoint. Defaults to `true`
-* MapPath
+* `MapPath`
 	* The URL within IdentityServer reserved for WS-Federation. Defaults to `/wsfed`
