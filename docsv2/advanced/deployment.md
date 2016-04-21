@@ -24,7 +24,10 @@ If you want to terminate SSL on the load balancer, there are two relevant settin
 
 ## Signing Keys
 
-Make sure the signing certificates are deployed to all nodes.
+Depending on your security requirements you have a couple of choices here
+
+* Deploy the signing certificates to all nodes. Preferably into the Windows certificate store
+* Use a separate machine or a commercial service (like Azure KeyVault) for signing and/or key storage (by implementing the `ITokenSigningService` interface)
 
 ## Configuration data
 
