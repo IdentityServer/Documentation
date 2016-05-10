@@ -56,3 +56,4 @@ layout: docs-default
 * [Brock and Dominick's Identity & Access Control for modern Web Applications and APIs Workshop](http://leastprivilege.com/training/)
 * [Building and Securing a RESTful APIs for Multiple Clients in ASP.NET on PluralSight](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
 * [OAuth2 and OpenID Connect Strategies for Angular and ASP.NET](https://app.pluralsight.com/library/courses/oauth2-openid-connect-angular-aspdotnet), author: Kevin Dockx.
+* [Using OAuth to Secure Your ASP.NET API](https://app.pluralsight.com/library/courses/oauth-secure-asp-dot-net-api), author: Filip Ekberg.
