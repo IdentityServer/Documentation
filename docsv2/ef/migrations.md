@@ -30,7 +30,7 @@ Enable-Migrations -MigrationsDirectory Migrations\ScopeConfiguration -ContextTyp
 Enable-Migrations -MigrationsDirectory Migrations\OperationalConfiguration -ContextTypeName OperationalDbContext -ContextAssemblyName IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
 ```
 
-The the initial schema must then be defined (again one for each migration). Replace the tokens $ProjectRootNamespace$ by the actual root namespace of your project and create initial schema migrations like this:
+The the initial schema must then be defined (again one for each migration). Replace the tokens `$ProjectRootNamespace$` by the actual root namespace of your project and create initial schema migrations like this:
 
 ```
 Add-Migration -Name InitialCreate -ConfigurationTypeName $ProjectRootNamespace$.Migrations.ScopeConfiguration.Configuration -ConnectionStringName IdSvr3Config
@@ -40,7 +40,7 @@ Add-Migration -Name InitialCreate -ConfigurationTypeName $ProjectRootNamespace$.
 Add-Migration -Name InitialCreate -ConfigurationTypeName $ProjectRootNamespace$.Migrations.OperationalConfiguration.Configuration -ConnectionStringName IdSvr3Config
 ```
 
-And then the database can be created, again replace $ProjectRootNamespace$ with your root namespace:
+And then the database can be created, again replace `$ProjectRootNamespace$` with your root namespace:
 
 ```
 Update-Database -ConfigurationTypeName $ProjectRootNamespace$.Migrations.ClientConfiguration.Configuration -ConnectionStringName IdSvr3Config
