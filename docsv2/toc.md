@@ -78,6 +78,8 @@ permalink: /docsv2/
 * [Operational Data](ef/operational.html)
 * [Schema Changes and Migrations](ef/migrations.html)
 	* [Migrating from 1.x to 2.0](ef/migrations_to_v2.html)
+    * [Using Entity Framework migrations with SQL Azure](ef/sql_azure.html)
+
 
 ### WS-Federation
 
