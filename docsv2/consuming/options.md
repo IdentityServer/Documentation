@@ -20,6 +20,7 @@ The `IdentityServerBearerTokenAuthenticationOptions` class has a number of optio
 * `BackChannelHttpHandler` allows specifying a custom handler for all back-channel communication 
     (e.g. to the discovery endpoint or the token validation endpoint).
 * `BackchannelCertificateValidator` allows specifying a custom certificate validator for the back-channel communication.
+* `DelayLoadMetadata` tells the middleware to not load the metadata at application startup time, but on the first incoming request (defaults to `false`)
 
 ## Static Configuration for JWTs
 Instead of automatically obtaining the configuration from the discovery endpoint, you can also statically configure the middleware
