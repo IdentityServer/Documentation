@@ -20,6 +20,8 @@ Supported parameters:
     * context to be round tripped back to the relying party (similar to `state` in OAuth2)
 * `whr`
     * name of the external identity provider to use (skips the selection screen)
+* `wreply` (`"wsignout1.0"` requests only)
+    * The URL to redirect back to once signout is complete
 
 Example (encoding removed for readability):
 
