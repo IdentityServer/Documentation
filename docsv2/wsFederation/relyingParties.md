@@ -13,7 +13,7 @@ The `RelyingParty` class models a WS-Federation relying party:
 * `Realm`
     * Unique identifier of the relying party
 * `ReplyUrl`
-    * URL to send the token back to (maps to wreply parameter for signin requests)
+    * URL to send the token back to after signin requests. Also used for signout cleanup.
 * `PostLogoutRedirectUris` (added in v2.5.0)
     * Specifies allowed URIs to redirect to after logout (maps to the wreply parameter for signout requests)
 * `TokenType`
