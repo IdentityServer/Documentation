@@ -13,7 +13,9 @@ The `RelyingParty` class models a WS-Federation relying party:
 * `Realm`
     * Unique identifier of the relying party
 * `ReplyUrl`
-    * URL to send the token back to (maps to wreply parameter)
+    * URL to send the token back to (maps to wreply parameter for signin requests)
+* `PostLogoutRedirectUris` (added in v2.5.0)
+    * Specifies allowed URIs to redirect to after logout (maps to the wreply parameter for signout requests)
 * `TokenType`
     * Type of the token to return. Default to SAML 2.0. The following types are supported:
         * `urn:oasis:names:tc:SAML:1.0:assertion` (SAML 1.1)
