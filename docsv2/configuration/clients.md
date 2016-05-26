@@ -33,7 +33,7 @@ The `Client` class models an OpenID Connect or OAuth2 client - e.g. a native app
 * `LogoutUri` (added in v2.2)
     * Specifies logout URI at client for HTTP based logout
 * `LogoutSessionRequired` (added in v2.2)
-    * Specifies is the user's session id should be sent to the LogoutUri. Defaults to true.
+    * Specifies if the user's session id should be sent to the LogoutUri. Defaults to true.
 * `RequireSignOutPrompt` (added in v2.4)
     * Specifies if the client will always show a confirmation page for sign-out. Defaults to false.
 * `AllowedScopes`
