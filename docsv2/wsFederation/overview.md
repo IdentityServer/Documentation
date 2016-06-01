@@ -38,10 +38,7 @@ public void Configuration(IAppBuilder appBuilder)
 private void ConfigureWsFederation(IAppBuilder pluginApp, IdentityServerOptions options)
 {
     var factory = new WsFederationServiceFactory(options.Factory);
-
-    // data sources for in-memory services
-    factory.Register(new Registration<IEnumerable<RelyingParty>>(RelyingParties.Get()));
-    factory.RelyingPartyService = new Registration<IRelyingPartyService>(typeof(InMemoryRelyingPartyService));
+	factory.UseInMemoryRelyingParties(RelyingParties.Get());
 
     var wsFedOptions = new WsFederationPluginOptions
     {
