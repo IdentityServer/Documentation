@@ -88,6 +88,7 @@ permalink: /docsv2/
 * [Service Factory](wsFederation/serviceFactory.html)
 * [Relying Parties](wsFederation/relyingParties.html)
 * [Endpoints](wsFederation/endpoints.html)
+* [Entity Framework](wsFederation/entityFramework.html)
 
 ### Proof of Possession
 
