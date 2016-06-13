@@ -258,6 +258,7 @@ So far, the client requests an access token for itself and no user is involved. 
 ### Adding a user service
 The user service manages users - for this sample we will use the simple in-memory user service.
 First we need to define some users:
+
 ```csharp
 using Thinktecture.IdentityServer.Core.Services.InMemory;
  
