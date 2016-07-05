@@ -20,7 +20,7 @@ If you want to terminate SSL on the load balancer, there are two relevant settin
      * Set this to false to allow non-SSL connections between the load balancer and IdentityServer.
  * `PublicOrigin`
     * Since your internal farm nodes have different names than the public reachable address, IdentityServer can't use it
-      for link generation. Sett this property to the public name.
+      for link generation. Set this property to the public name.
 
 ## Signing Keys
 
