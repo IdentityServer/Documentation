@@ -8,7 +8,7 @@ IdentityServer3 displays various “views” to the user. IdentityServer require
 
 ### Default View Service
 
-**The sample for this sub-topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/EmbeddedAssetsViewService)**
+**The sample for this sub-topic can be found [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/DefaultViewService)**
 
 The default implementation of the view service used by IdentityServer is the `DefaultViewService`. The various assets (HTML, JavaScript, CSS, and fonts) that comprise the views are served up from embedded resources within the IdentityServer assembly.
 
