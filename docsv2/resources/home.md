@@ -20,6 +20,7 @@ layout: docs-default
 * [Reference Tokens and Introspection](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)
 * [Adding a SAML2p external Authentication Provider](http://coding.abel.nu/2015/01/saml2-for-thinktecture-identityserver-3-with-kentor-authservices/)
 * [Using Xamarin](https://www.kevindockx.com/working-with-oauth2-and-openid-connect-from-a-xamarin-forms-application-using-identityserver3/)
+* [Requesting tokens from Powershell](https://gist.github.com/johnkors/454c829aa63e7663745da5ebeb38dd86)
 
 ### Articles
 * [Automatic redirect after Logout](http://www.aaron-powell.com/posts/2015-01-11-auto-redirect-when-logging-out.html)
@@ -46,6 +47,8 @@ layout: docs-default
 * [Authentication and authorization in modern JavaScript web applications – how hard can it be?](https://vimeo.com/131636653)
 * [Identity Management with ASP.NET Part 1](https://vimeo.com/113708987)
 * [Identity Management with ASP.NET Part 2](https://vimeo.com/113688710)
+* [Native and mobile Applications](https://vimeo.com/171942749)
+* [ASP.NET Identity 3](https://vimeo.com/172009501)
 
 ### Videos
 * [Overview Video (preview version)](https://vimeo.com/91397084)
