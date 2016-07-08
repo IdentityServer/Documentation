@@ -915,6 +915,14 @@ public class CallApiController : Controller
 }
 ```
 
+Create `ShowApiResult.cshtml` file, simple view to see results:
+
+````html
+<h2>Result</h2>
+
+<pre>@ViewBag.Json</pre>
+````
+
 The result will look like this:
 
 ![callapiclientcreds](https://cloud.githubusercontent.com/assets/1454075/4625853/2ba6d94a-537b-11e4-9ad0-3be144a913f0.png)
