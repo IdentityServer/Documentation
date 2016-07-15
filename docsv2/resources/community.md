@@ -6,6 +6,7 @@ layout: docs-default
 
 * [MongoDb Support](https://github.com/jageall/IdentityServer.v3.MongoDb)
 * [RavenDB Support](https://github.com/Agrando/IdentityServer.Contrib.RavenDB)
+* [NHibernate Support](https://github.com/rms81/IdentityServer3.Contrib.Nhibernate)
 * [ElasticSearch/Kibana EventService](https://github.com/nrkno/IdentityServer3.Contrib)
 * [Localization Service for multiple Languages (including Pirates!)](https://johnkors.github.io/IdentityServer3.Contrib.Localization/#/)
 * [Redis Cache](https://github.com/imperugo/Thinktecture.IdentityServer3.Cache.Redis)
