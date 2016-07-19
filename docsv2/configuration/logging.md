@@ -34,7 +34,8 @@ The `LoggingOptions` class has the following settings:
 
 
 ## Example: Using Serilog to log to System.Diagnostics tracing
-The following example wires up [Serilog](http://serilog.net/) to log to the diagnostics trace (put that e.g. in Startup or in your hosting code):
+The following example wires up [Serilog](http://serilog.net/) to log to the diagnostics trace (put that e.g. in Startup or in your hosting code). 
+**Note:** Serilog provides various logging sinks as separate packages, so you may need to install the Serilog.Sinks.Trace package to get `WriteTo.Trace()` to work as expected. 
 
 ```csharp
 Log.Logger = new LoggerConfiguration()
