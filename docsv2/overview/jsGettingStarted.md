@@ -210,6 +210,10 @@ We also create a basic `index.html` file:
         .main-container {
             padding-top: 70px;
         }
+        
+        pre {
+            white-space: pre-wrap;
+        }
 
         pre:empty {
             display: none;
@@ -903,7 +907,7 @@ $('.js-logout').click(function () {
 
 When clicking the `Logout` button, the user will be redirected to IdentityServer so that the session cookie is cleared.
 
-[logout](https://cloud.githubusercontent.com/assets/6102639/12256384/d9de8df0-b950-11e5-91b2-650a0a749a7f.png)
+![logout](https://cloud.githubusercontent.com/assets/6102639/12256384/d9de8df0-b950-11e5-91b2-650a0a749a7f.png)
 
 _Please note the screenshot above shows a page served by IdentityServer, not the JS application_
 
