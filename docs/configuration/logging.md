@@ -32,8 +32,8 @@ The `LoggingOptions` class has the following settings:
    * If enabled, the Web API diagnostics logging will be set to verbose
 * `EnableHttpLogging`
    * If enabled, HTTP requests and response will be logged
-* `IncludeSensitiveDataInLogs`
-   * If enabled, the standard logging might include sensitive data like PII data
+* `EnableKatanaLogging`
+   * If enabled, Katana logging would be forwarded to the logging output
 
 **Warning** `EnableHttpLogging` might conflict with other frameworks loaded into the same web application (it does for sure with MVC). You can't use HTTP logging in that situation.
 
