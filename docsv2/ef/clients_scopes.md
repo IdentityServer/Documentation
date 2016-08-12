@@ -34,7 +34,7 @@ factory.RegisterClientStore(efConfig);
 factory.RegisterScopeStore(efConfig);
 ``` 
 
-If both stores will be used with the same `EntityFrameworkServiceOptions`, then a single convenience extension method is provided:
+If both stores will be used with the same `EntityFrameworkServiceOptions`, then a single convenient extension method is provided:
 
 ```csharp
 var efConfig = new EntityFrameworkServiceOptions {
