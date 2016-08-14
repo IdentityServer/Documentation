@@ -134,7 +134,7 @@ IdentityServer is configured in the startup class. Here we provide information a
 the signing certificate and some other configuration options.
 In production you should load the signing certificate from the Windows certificate store or some other secured source.
 In this sample we simply added it to the project as a file (you can download a test certificate from [here](https://github.com/identityserver/Thinktecture.IdentityServer3.Samples/tree/master/source/Certificates).
-Add it to the project and set its build action to `Copy to output`.
+Add it to the project and set its `Copy to Output Directory` property to `Copy always`.
 
 
 For info on how to load the certificate from Azure WebSites see [here](http://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/).
