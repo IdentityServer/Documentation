@@ -184,21 +184,21 @@ We use several third-party libraries to support our application:
 
  - [jQuery](http://jquery.com)
  - [Bootstrap](http://getbootstrap.com)
- - [oidc-token-manager](https://github.com/IdentityModel/oidc-token-manager)
+ - [oidc-client-js](https://github.com/IdentityModel/oidc-client-js)
 
-We are going to install them with [Bower](http://bower.io/), a front-end package manager. If you don't have Bower installed, you can follow [these instructions on the Bower website](http://bower.io/#install-bower).
-Once Bower is installed, open a command-line prompt in the `JsApplication` folder:
+We are going to install them with [npm](https://www.npmjs.com/), the Node.js front-end package manager. If you don't have npm installed, you can follow [these instructions on the npm website](https://docs.npmjs.com/getting-started/installing-node).
+Once npm is installed, open a command-line prompt in the `JsApplication` folder:
 
 ```sh
-$ bower install --save-dev jquery
-$ bower install --save-dev bootstrap
-$ bower install --save-dev oidc-token-manager
+$ npm install jquery
+$ npm install bootstrap
+$ npm install oidc-client
 ```
 
-By default, Bower installs packages in the `bower_components` folder.
+By default, npm installs packages in the `node_modules` folder.
 
-**Important** Bower packages are usually not committed to source control. If you cloned the repository containing the final source code and want to restore the Bower packages, open a
-command-line prompt in the `JsApplication` folder and run `bower install` to restore packages.
+**Important** npm packages are usually not committed to source control. If you cloned the repository containing the final source code and want to restore the npm packages, open a
+command-line prompt in the `JsApplication` folder and run `npm install` to restore packages.
 
 We also create a basic `index.html` file:
 
