@@ -46,33 +46,36 @@ Install-Package IdentityServer3 -ProjectName IdentityServer
 ````
 
 ## Configuring IdentityServer - Clients
-IdentityServer needs some information about the clients it is going to support, this can be simply supplied using a `Client` object:
+IdentityServer needs some information about the clients it is going to support, this can be easily achieved by supplying a collection of `Client` objects:
 
 ```csharp
-public static IEnumerable<Client> Get()
+public static class Clients
 {
-    return new[]
+    public static IEnumerable<Client> Get()
     {
-        new Client
+        return new[]
         {
-            Enabled = true,
-            ClientName = "JS Client",
-            ClientId = "js",
-            Flow = Flows.Implicit,
-
-            RedirectUris = new List<string>
+            new Client
             {
-                "http://localhost:56668/popup.html"
-            },
+                Enabled = true,
+                ClientName = "JS Client",
+                ClientId = "js",
+                Flow = Flows.Implicit,
 
-            AllowedCorsOrigins = new List<string>
-            {
-                "http://localhost:56668"
-            },
+                RedirectUris = new List<string>
+                {
+                    "http://localhost:56668/popup.html"
+                },
 
-            AllowAccessToAllScopes = true
-        }
-    };
+                AllowedCorsOrigins = new List<string>
+                {
+                    "http://localhost:56668"
+                },
+
+                AllowAccessToAllScopes = true
+            }
+        };
+    }
 }
 ```
 
