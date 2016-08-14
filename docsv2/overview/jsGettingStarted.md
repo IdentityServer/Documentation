@@ -2,8 +2,8 @@
 layout: docs-default
 ---
 
-This tutorial walks you through the necessary steps to integrate IdentityServer in a JS application.  
-Since all the steps will be done on the client side, we'll use a JS library, [oidc-token-manager](https://github.com/IdentityModel/oidc-token-manager), to help with tasks like getting and validating tokens.
+This tutorial walks you through the necessary steps to integrate IdentityServer in a JS application.
+Since all the steps will be done on the client side, we'll use a JS library, [oidc-client-js](https://github.com/IdentityModel/oidc-client-js), to help with tasks like obtaining and validating tokens.
 
 **TODO: link to final code when in the Samples repo.**
 
@@ -76,7 +76,7 @@ public static IEnumerable<Client> Get()
 }
 ```
 
-A special setting here is the `AllowedCorsOrigins` property. This allows IdentityServer to only accept browser-based requests from registered URLs.  
+A special setting here is the `AllowedCorsOrigins` property. This allows IdentityServer to only accept browser-based requests from registered URLs.
 More on the `popup.html` later on.
 
 **Remark** Right now the client has access to all scopes (via the `AllowAccessToAllScopes` setting). For production applications you would narrow that down to only the scopes it's expected to access with the `AllowedScopes` property.
@@ -320,7 +320,7 @@ Let's go quickly through the settings:
  - `scope` defines the scopes the application asks for
  - `filter_protocol_claims` instructs oidc-token-manager if it has to filter some OIDC protocol claims from the response: `nonce`, `at_hash`, `iat`, `nbf`, `exp`, `aud`, `iss` and `idp`
 
-We also handle clicks on the Login button to open the login page popup. The `openPopupForTokenAsync` returns a `Promise` which is resolved when the identity token has been retrieved and validated.  
+We also handle clicks on the Login button to open the login page popup. The `openPopupForTokenAsync` returns a `Promise` which is resolved when the identity token has been retrieved and validated.
 The whole token is accessible by the `id_token` property on the `OidcTokenManager` class. For practicality, the associated decoded payload is exposed via the `profile` property.
 
 We also have to configure `popup.html`:
@@ -488,7 +488,7 @@ public static class Scopes
 The new scope is a resource scope which means it will end up in the access token. Once again, we don't need to allow the client to request this new scope in this example because of the special setting, but it will be a necessary step in a real scenario.
 
 ## Updating the JS application
-We can now update the JS application settings so it will request the new `api` scope when logging in the user.  
+We can now update the JS application settings so it will request the new `api` scope when logging in the user.
 We had a section to show the identity token contents. Let's add another one where we'll see what the access token contains:
 
 ```html
@@ -702,13 +702,13 @@ public static class Clients
 }
 ```
 
-The access token lifetime, which is 1 hour by default, has been changed to 70 seconds.  
+The access token lifetime, which is 1 hour by default, has been changed to 70 seconds.
 What you'll experience if you login the JS application again is that you'll get the same `401 Unauthorized` error when you call the API 70 seconds after logging in.
 
 ## Renewing tokens
 
-We are going to rely on a feature `oidc-token-manager` gives us to renew the tokens.  
-The idea is that a dynamic `iframe` will be created on our page, which `oidc-token-manager` will use to issue a new authorization request while the user is still logged in. The [`prompt`](../endpoints/authorization.html) setting, set to `none`, is used to prevent the user from having to log in or give his consent while he has a valid session.  
+We are going to rely on a feature `oidc-token-manager` gives us to renew the tokens.
+The idea is that a dynamic `iframe` will be created on our page, which `oidc-token-manager` will use to issue a new authorization request while the user is still logged in. The [`prompt`](../endpoints/authorization.html) setting, set to `none`, is used to prevent the user from having to log in or give his consent while he has a valid session.
 IdentityServer will return a new access token which will replace the one stored in the `OidcTokenManager` instance.
 
 To achieve this, we have several steps to take.
@@ -750,8 +750,8 @@ var settings = {
 };
 ```
 
-The HTML file will be used in a dynamically created `iframe` to renew the token. The URL of that page is passed to the token manager settings to instruct it to automatically renew the token when it expires.  
-The token manager will renew the token 60 seconds before it expires, which explains why we chose to change to access token lifetime to 70 seconds.  
+The HTML file will be used in a dynamically created `iframe` to renew the token. The URL of that page is passed to the token manager settings to instruct it to automatically renew the token when it expires.
+The token manager will renew the token 60 seconds before it expires, which explains why we chose to change to access token lifetime to 70 seconds.
 This means the token will be renewed every 10 seconds.
 
 The second step is to let IdentityServer know that it is OK to redirect the user to it after the authentication is successful:
@@ -790,7 +790,7 @@ public static class Clients
 }
 ```
 
-The third and final step will allow to see the updated access token in the associated panel every time it's renewed.  
+The third and final step will allow to see the updated access token in the associated panel every time it's renewed.
 The `OidcTokenManager` exposes a `addOnTokenObtained` method which takes a callback as a parameter. This callback will be invoked every time an access token is obtained. This includes the first time the user logs in as well as whenever the token is silently renewed.
 
 ```js
@@ -813,11 +813,11 @@ $('.js-login').click(function () {
 });
 ```
 
-You can now see that the content of the access token section updates itself as the access token is renewed every 10 seconds. 
+You can now see that the content of the access token section updates itself as the access token is renewed every 10 seconds.
 
 ## Logging out
 
-Logging out of a JS application has a different meaning than from a server-side application, because if you refresh the main page, you will lose the tokens and will have to login again.  
+Logging out of a JS application has a different meaning than from a server-side application, because if you refresh the main page, you will lose the tokens and will have to login again.
 But when the login popup opens, it could be that you still have a valid session cookie for the IdentityServer web application. It could then be possible that the popup doesn't prompt you for your credentials and close itself. This is similar to when the token manager silently renews the token.
 
 Logging out here means logging out of IdentityServer so that, next time you try to login from an IdentityServer-protected application, you will have to enter your credentials again.
