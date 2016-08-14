@@ -156,7 +156,7 @@ public class Startup
         });
     }
 
-    X509Certificate2 LoadCertificate()
+    private static X509Certificate2 LoadCertificate()
     {
         return new X509Certificate2(
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"bin\Config\idsrv3test.pfx"), "idsrv3test");
