@@ -514,71 +514,20 @@ The new scope is a resource scope which means it will end up in the access token
 
 ## Updating the JS application
 We can now update the JS application settings so it will request the new `api` scope when logging in the user.
-We had a section to show the identity token contents. Let's add another one where we'll see what the access token contains:
 
-```html
-[...]
-<div class="container main-container">
-    <div class="row">
-        <div class="col-xs-12">
-            <ul class="list-inline list-unstyled requests">
-                <li><a href="index.html" class="btn btn-primary">Home</a></li>
-                <li><button type="button" class="btn btn-default js-login">Login</button></li>
-            </ul>
-        </div>
-    </div>
+```js
+var settings = {
+    authority: 'https://localhost:44300',
+    client_id: 'js',
+    popup_redirect_uri: 'http://localhost:56668/popup.html',
 
-    <div class="row">
-        <!-- Make this panel 6-column wide -->
-        <div class="col-xs-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">ID Token Contents</div>
-                <div class="panel-body">
-                    <pre class="js-id-token"></pre>
-                </div>
-            </div>
-        </div>
+    // We add `token` to specify we expect an access token too
+    response_type: 'id_token token',
+    // We add the new `api` scope to the list of requested scopes
+    scope: 'openid profile email api',
 
-        <!-- and create this new one for the access token -->
-        <div class="col-xs-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">Access Token</div>
-                <div class="panel-body">
-                    <pre class="js-access-token"></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-[...]
-<script>
-    var settings = {
-        authority: 'https://localhost:44300',
-        client_id: 'js',
-        popup_redirect_uri: 'http://localhost:56668/popup.html',
-
-        // We add `token` to specify we expect an access token too
-        response_type: 'id_token token',
-        // We add the new `api` scope to the list of requested scopes
-        scope: 'openid profile email api',
-
-        filter_protocol_claims: true
-    };
-
-    var manager = new OidcTokenManager(settings);
-
-    $('.js-login').click(function () {
-        manager.openPopupForTokenAsync()
-            .then(function () {
-                display('.js-id-token', manager.profile);
-
-                // Display the access token and its expiration in the new section
-                display('.js-access-token', { access_token: manager.access_token, expires_in: manager.expires_in });
-            }, function (error) {
-                console.error(error);
-            });
-    });
-</script>
+    filterProtocolClaims: true
+};
 ```
 
 The modifications include:
@@ -587,12 +536,12 @@ The modifications include:
  - an updated `response_type` to specify we want an access token back along with the identity token
  - the new `api` scope to be requested as part of the login request
 
-The access token is exposed via the `access_token` property and its expiration via the `expires_in` property.
-It is worth noting that `oidc-token-manager` takes away a lot of pain by taking care of validating the tokens with the signing certificate, we don't have to write code.
+The access token is exposed via the `access_token` property and its expiration via the `expires_at` property.
+It is worth noting that `oidc-client` takes away a lot of pain by taking care of validating the tokens with the signing certificate, we don't have to write code.
 
 After logging in, here's what we get:
 
-![access token](https://cloud.githubusercontent.com/assets/6102639/12253628/1bc4e550-b935-11e5-95e9-fca21057cd08.png)
+![access-token](https://cloud.githubusercontent.com/assets/6102639/17659923/1ebf7a16-6319-11e6-99f7-33bef104d0e7.PNG)
 
 ## Calling the API
 
