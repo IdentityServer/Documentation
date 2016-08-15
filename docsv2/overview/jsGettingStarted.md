@@ -461,14 +461,16 @@ Let's now add a basic endpoint to our API:
 [Route("values")]
 public class ValuesController : ApiController
 {
+    private static readonly Random _random = new Random();
+
     public IEnumerable<string> Get()
     {
         var random = new Random();
 
         return new[]
         {
-            random.Next(0, 10).ToString(),
-            random.Next(0, 10).ToString()
+            _random.Next(0, 10).ToString(),
+            _random.Next(0, 10).ToString()
         };
     }
 }
