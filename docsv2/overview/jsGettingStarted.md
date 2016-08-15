@@ -660,15 +660,15 @@ public static class Clients
                 },
 
                 AllowAccessToAllScopes = true,
-                AccessTokenLifetime = 70
+                AccessTokenLifetime = 10
             }
         };
     }
 }
 ```
 
-The access token lifetime, which is 1 hour by default, has been changed to 70 seconds.
-What you'll experience if you login the JS application again is that you'll get the same `401 Unauthorized` error when you call the API 70 seconds after logging in.
+The access token lifetime, which is 1 hour by default, has been changed to 10 seconds.
+What you'll experience if you login the JS application again is that you'll get the same `401 Unauthorized` error when you call the API 10 seconds after logging in.
 
 ## Renewing tokens
 
