@@ -357,7 +357,7 @@ You can try and set the `filterProtocolClaims` property to `false` and see the a
 ## JS application - scopes
 
 Remember we configured our user with an `email` claim? It doesn't show up in the identity token because the scopes the client asked for - `openid` and `profile` - don't contain this claim.
-If you want to get the user's email, you'll have to ask for another scope which is called `email` by editing the `scopes` property of the `OidcTokenManager` settings.
+If you want to get the user's email, you'll have to ask for another scope which is called `email` by editing the `scopes` property of the `UserManager` settings.
 
 In our case, the only modification we need to make is to let IdentityServer know that this scope exists in the `Scopes` class:
 
@@ -379,9 +379,9 @@ public static class Scopes
 
 We don't have to change anything in the client configuration because we specified it has access to all the scopes. In a realistic scenario, you want to give a client access to only the scopes it's expected to request, so this would require a change in the client configuration as well.
 
-After this, we can see the `email` claim in the identity token:
+After this, we can see the `email` claim in the user profile:
 
-![login-email](https://cloud.githubusercontent.com/assets/6102639/12251318/25d3ce20-b922-11e5-9867-efc6afb76aea.png)
+![login-email](https://cloud.githubusercontent.com/assets/6102639/17659371/6a822c18-6315-11e6-9311-8bbf80e4bdc0.PNG)
 
 # Part 2 - API call
 In the second part, we'll see how you can call a protected API from the JS application.
