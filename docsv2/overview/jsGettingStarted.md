@@ -276,7 +276,7 @@ We have two HTML files because `oidc-client` can open a popup to show the login 
 
 ## JS Client - authentication
 
-Now that we have everything we need, we can configure our login settings in `index.html` thanks to the `OidcTokenManager` JS class.
+Now that we have everything we need, we can configure our login settings in `index.html` thanks to the `UserManager` JS class.
 
 ```js
 // helper function to show data to the user
@@ -299,49 +299,60 @@ var settings = {
     response_type: 'id_token',
     scope: 'openid profile',
 
-    filter_protocol_claims: true
+    filterProtocolClaims: true
 };
 
-var manager = new OidcTokenManager(settings);
+var manager = new Oidc.UserManager(settings);
+var user;
+
+manager.events.addUserLoaded(function (loadedUser) {
+    user = loadedUser;
+    display('.js-user', user);
+});
 
 $('.js-login').click(function () {
-    manager.openPopupForTokenAsync()
-        .then(function () {
-            display('.js-id-token', manager.profile);
-        }, function (error) {
-            console.error(error);
+    manager
+        .signinPopup()
+        .catch(function (error) {
+            console.error('error while logging in through the popup', error);
         });
 });
 ```
 
 Let's go quickly through the settings:
 
- - `authority` is the base URL of our IdentityServer instance. This will allow `oidc-token-manager` to query the metadata endpoint so it can validate the tokens
+ - `authority` is the base URL of our IdentityServer instance. This will allow `oidc-client` to query the metadata endpoint so it can validate the tokens
  - `client_id` is the id of the client we want to use when hitting the authorization endpoint
- - `popup_redirect_uri` is the redirect URL used when using the `openPopupForTokenAsync` method. If you prefer not having a popup and redirecting the user in the main window, you can use the `redirect_uri` property and the `redirectForTokenAsync` method
+ - `popup_redirect_uri` is the redirect URL used when using the `signinPopup` method. If you prefer not having a popup and redirecting the user in the main window, you can use the `redirect_uri` property and the `signinRedirect` method
  - `response_type` defines in our case that we only expect an identity token back
  - `scope` defines the scopes the application asks for
- - `filter_protocol_claims` instructs oidc-token-manager if it has to filter some OIDC protocol claims from the response: `nonce`, `at_hash`, `iat`, `nbf`, `exp`, `aud`, `iss` and `idp`
+ - `filterProtocolClaims` indicates to oidc-client if it has to filter some OIDC protocol claims from the response: `nonce`, `at_hash`, `iat`, `nbf`, `exp`, `aud`, `iss` and `idp`
 
-We also handle clicks on the Login button to open the login page popup. The `openPopupForTokenAsync` returns a `Promise` which is resolved when the identity token has been retrieved and validated.
-The whole token is accessible by the `id_token` property on the `OidcTokenManager` class. For practicality, the associated decoded payload is exposed via the `profile` property.
+We also handle clicks on the Login button to open the login page popup. The `signinPopup` returns a `Promise` which is resolved when the user data has been retrieved and validated.
+
+This data is accessible via 2 ways:
+
+ - as the resolved value of the underlying Promise
+ - as the data associated with the `userLoaded` event
+
+In our case, we added a handler to the `userLoaded` event by passing a callback function to the `events.addUserLoaded` method.
+The data contains several properties like `id_token`, `scope` and `profile` that all contain different pieces of data.
 
 We also have to configure `popup.html`:
 
 ```js
-var manager = new OidcTokenManager();
-manager.processTokenPopup();
+new Oidc.UserManager().signinPopupCallback();
 ```
 
-Under the hoods, the instance of `OidcTokenManager` in the `index.html` page opens a popup and redirects it to the login page. When IdentityServer redirects the user to the popup page, the information is then passed back to the main page and the popup is automatically closed.
+Under the hoods, the instance of `UserManager` in the `index.html` page opens a popup and redirects it to the login page. When IdentityServer redirects the user to the popup page, the information is then passed back to the main page and the popup is automatically closed.
 
 At this stage, you can login:
 
-![login-popup](https://cloud.githubusercontent.com/assets/6102639/12250630/94dce974-b91c-11e5-8077-dabcf88d80e5.png)
+![login-popup](https://cloud.githubusercontent.com/assets/6102639/17659258/bae8530e-6314-11e6-8b1a-0570a26476cc.PNG)
 
-![login-complete](https://cloud.githubusercontent.com/assets/6102639/12250642/a703c0aa-b91c-11e5-9e3f-2b2b70b10e5b.png)
+![login-complete](https://cloud.githubusercontent.com/assets/6102639/17659287/e05f86f2-6314-11e6-941d-1fffe9b94678.PNG)
 
-You can try and set the `filter_protocol_claims` property to `false` and see the additional claims being stored in the `profile` property.
+You can try and set the `filterProtocolClaims` property to `false` and see the additional claims being stored in the `profile` property.
 
 ## JS application - scopes
 
