@@ -208,7 +208,7 @@ We also create a basic `index.html` file:
 <head>
     <title>JS Application</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
     <style>
         .main-container {
             padding-top: 70px;
@@ -250,9 +250,9 @@ We also create a basic `index.html` file:
         </div>
     </div>
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/oidc-client/dist/oidc-client.js"></script>
 </body>
 </html>
 ```
@@ -267,12 +267,12 @@ and a `popup.html` file:
     <meta charset="utf-8" />
 </head>
 <body>
-    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
+    <script src="node_modules/oidc-client/dist/oidc-client.js"></script>
 </body>
 </html>
 ```
 
-We have two HTML files because `oidc-token-manager` can open a popup to show the login form to the user.
+We have two HTML files because `oidc-client` can open a popup to show the login form to the user.
 
 ## JS Client - authentication
 
