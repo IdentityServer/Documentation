@@ -401,8 +401,17 @@ Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName Api
 Install-Package Microsoft.Owin.Cors -ProjectName Api
 Install-Package Microsoft.AspNet.WebApi.Owin -ProjectName Api
 Install-Package IdentityServer3.AccessTokenValidation -ProjectName Api
+```
 
-Update-Package -ProjectName Api
+**Important** The `IdentityServer3.AccessTokenValidation` package has an indirect dependency on `System.IdentityModel.Tokens.Jwt`.
+At the time of writing, globally updating `Api` project NuGet packages brings down version `5.0.0` of `System.IdentityModel.Tokens.Jwt` which causes an error when starting the `Api` project:
+
+![api-update-microsoft-identity-tokens](https://cloud.githubusercontent.com/assets/6102639/17659609/119a6be0-6317-11e6-9ca1-24889b813463.PNG)
+
+The solution is to bring back an older compatible version of `System.IdentityModel.Tokens.Jwt`
+
+```
+Install-Package System.IdentityModel.Tokens.Jwt -ProjectName Api -Version 4.0.2.206221351
 ```
 
 Let's now create a `Startup` class and build our OWIN/Katana pipeline.
