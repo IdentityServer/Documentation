@@ -562,27 +562,18 @@ Now that we have an access token, we can include the call to the API:
     </div>
 
     <div class="row">
-        <!-- Make the existing sections 4-column wide -->
-        <div class="col-xs-4">
+        <!-- Make the existing sections 6-column wide -->
+        <div class="col-xs-6">
             <div class="panel panel-default">
-                <div class="panel-heading">ID Token Contents</div>
+                <div class="panel-heading">User data</div>
                 <div class="panel-body">
-                    <pre class="js-id-token"></pre>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">Access Token</div>
-                <div class="panel-body">
-                    <pre class="js-access-token"></pre>
+                    <pre class="js-user"></pre>
                 </div>
             </div>
         </div>
 
         <!-- And add a new one for the result of the API call -->
-        <div class="col-xs-4">
+        <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">API call result</div>
                 <div class="panel-body">
@@ -598,8 +589,8 @@ Now that we have an access token, we can include the call to the API:
 [...]
 $('.js-call-api').click(function () {
     var headers = {};
-    if (manager.access_token) {
-        headers['Authorization'] = 'Bearer ' + manager.access_token;
+    if (user && user.access_token) {
+        headers['Authorization'] = 'Bearer ' + user.access_token;
     }
 
     $.ajax({
@@ -609,7 +600,7 @@ $('.js-call-api').click(function () {
         headers: headers
     }).then(function (data) {
         display('.js-api-result', data);
-    }).fail(function (error) {
+    }).catch(function (error) {
         display('.js-api-result', {
             status: error.status,
             statusText: error.statusText,
@@ -624,11 +615,11 @@ Please note that the access token is passed in the `Authorization` header of the
 
 Here's what we see if we call the API prior to login:
 
-![api without access token](https://cloud.githubusercontent.com/assets/6102639/12254749/48aab0c6-b940-11e5-8842-83a526a5e316.png)
+![api-without-access-token](https://cloud.githubusercontent.com/assets/6102639/17660059/2ce58a44-631a-11e6-8f68-c7a4edf85074.PNG)
 
 And after login:
 
-![api with access token](https://cloud.githubusercontent.com/assets/6102639/12278299/6a3fe32a-b9d4-11e5-99b0-31805c502f5b.png)
+![api-with-access-token](https://cloud.githubusercontent.com/assets/6102639/17660060/2e898dfa-631a-11e6-9721-a0b98bd3fdcf.PNG)
 
 In the first case, there was no access token, hence no `Authorization` header in the request, so the access token validation middleware did nothing. The request flowed through the API as unauthenticated, the global `AuthorizeAttribute` rejected it and responded with a `401 Unauthorized` error.
 In the second case, the token validation middleware found the token in the `Authorization` header, passed it along to the introspection endpoint which flagged it as valid, and an identity was created with the claims it contained. The request, this time authenticated, flowed to Web API, the `AuthorizeAttribute` contrainsts were satisfied, and the endpoint was invoked.
