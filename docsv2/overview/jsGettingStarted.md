@@ -310,7 +310,7 @@ manager.events.addUserLoaded(function (loadedUser) {
     display('.js-user', user);
 });
 
-$('.js-login').click(function () {
+$('.js-login').on('click', function () {
     manager
         .signinPopup()
         .catch(function (error) {
@@ -587,7 +587,7 @@ Now that we have an access token, we can include the call to the API:
 
 ```js
 [...]
-$('.js-call-api').click(function () {
+$('.js-call-api').on('click', function () {
     var headers = {};
     if (user && user.access_token) {
         headers['Authorization'] = 'Bearer ' + user.access_token;
