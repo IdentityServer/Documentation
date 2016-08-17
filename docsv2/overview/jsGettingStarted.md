@@ -672,54 +672,63 @@ What you'll experience if you login the JS application again is that you'll get 
 
 ## Renewing tokens
 
-We are going to rely on a feature `oidc-token-manager` gives us to renew the tokens.
-The idea is that a dynamic `iframe` will be created on our page, which `oidc-token-manager` will use to issue a new authorization request while the user is still logged in. The [`prompt`](../endpoints/authorization.html) setting, set to `none`, is used to prevent the user from having to log in or give his consent while he has a valid session.
-IdentityServer will return a new access token which will replace the one stored in the `OidcTokenManager` instance.
+We are going to rely on a feature `oidc-client-js` gives us to renew the tokens.
+Internally, the JS library keeps track of the expiration time of the access token and can request a new one by issuing a new authorization request to IdentityServer.
+This will be invisible to the user as the [`prompt`](../endpoints/authorization.html) setting, which will be set to `none`, prevents the user from having to log in or give his consent while he has a valid session.
+IdentityServer will return a new access token which will replace the one that is about to expire.
 
-To achieve this, we have several steps to take.
+There are several settings related to access token expiration and renewal:
 
-First, we have to create a new file, `silent-renew.html`:
+ - The [`accessTokenExpiring`](https://github.com/IdentityModel/oidc-client-js/wiki#events) event will be fired when the access token is about to expire
+ - The [`accessTokenExpiringNotificationTime`](https://github.com/IdentityModel/oidc-client-js/wiki#configuration) can be used to tweak how far before the token expires the `accessTokenExpiring` event is fired. The default value is `60` seconds
+ - Another setting is named `automaticSilentRenew` which instructs the library to automatically renew the access token when it's about to expire
+ - Finally, the `silent_redirect_uri` setting needs to be configured so the library can specify it as a return URL when trying to get a new token
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
-    <script>
-        var manager = new OidcTokenManager();
-        manager.processTokenCallbackSilent();
-    </script>
-</body>
-</html>
-```
+Here is how `oidc-client-js` handles automatic token renewal.
+When the token is about to expire, a dynamic hidden `iframe` will be created.
+In this `iframe` a new authorization request will be made to IdentityServer. If the request succeeds, identityServer will redirect the `iframe` to the specified silent redirect URL, in which a piece of JS code will update the user information so that the main window gets access to it/
 
-and modify the token manager settings:
+Let's make some modifications in our configuration to take advantage of these capabilities.
 
 ```js
 var settings = {
     authority: 'https://localhost:44300',
     client_id: 'js',
     popup_redirect_uri: 'http://localhost:56668/popup.html',
-
-    // Specify we want to renew tokens silently and the URL of the page that has to be used for that
-    silent_renew: true,
-    silent_redirect_uri: 'http://localhost:56668/silent-renew.html',
+    // Add the slient renew redirect URL
+    silent_redirect_uri: 'http://localhost:56668/silent-renew.html'
 
     response_type: 'id_token token',
     scope: 'openid profile email api',
 
-    filter_protocol_claims: true
+    // Add expiration nofitication time
+    accessTokenExpiringNotificationTime: 4,
+    // Setup to renew token access automatically
+    automaticSilentRenew: true,
+
+    filterProtocolClaims: true
 };
 ```
 
-The HTML file will be used in a dynamically created `iframe` to renew the token. The URL of that page is passed to the token manager settings to instruct it to automatically renew the token when it expires.
-The token manager will renew the token 60 seconds before it expires, which explains why we chose to change to access token lifetime to 70 seconds.
-This means the token will be renewed every 10 seconds.
+Since we specified a new page as the `silent_redirect_uri`, we have to create that page
 
-The second step is to let IdentityServer know that it is OK to redirect the user to it after the authentication is successful:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <script src="node_modules/oidc-client/dist/oidc-client.js"></script>
+    <script>
+        new Oidc.UserManager().signinSilentCallback();
+    </script>
+</body>
+</html>
+```
+
+The second step is to let IdentityServer know that it is OK to redirect the user to that new page after the authentication is successful:
 
 ```csharp
 public static class Clients
@@ -755,30 +764,19 @@ public static class Clients
 }
 ```
 
-The third and final step will allow to see the updated access token in the associated panel every time it's renewed.
-The `OidcTokenManager` exposes a `addOnTokenObtained` method which takes a callback as a parameter. This callback will be invoked every time an access token is obtained. This includes the first time the user logs in as well as whenever the token is silently renewed.
+When the renewal is successful, the `UserManager` will raise a `userLoaded` event.
+Since we already handle this event, the updated data will automatically be captured and displayed on the UI.
+
+When it fails, it will raise a `silentRenewError` event, which we can subscribe to so we know when something went wrong
 
 ```js
-var manager = new OidcTokenManager(settings);
-
-manager.addOnTokenObtained(function () {
-    display('.js-access-token', { access_token: manager.access_token, expires_in: manager.expires_in });
-});
-
-$('.js-login').click(function () {
-    manager.openPopupForTokenAsync()
-        .then(function () {
-            display('.js-id-token', manager.profile);
-
-            // Removed
-            // display('.js-access-token', { access_token: manager.access_token, expires_in: manager.expires_in });
-        }, function (error) {
-            console.error(error);
-        });
+manager.events.addSilentRenewError(function (error) {
+    console.error('error while renewing the access token', error);
 });
 ```
 
-You can now see that the content of the access token section updates itself as the access token is renewed every 10 seconds.
+We updated the access token lifetime to 10 seconds and instructed `oidc-client-js` to renew the token 4 seconds before it expires.
+So now, after logging in, we can see that every 6 seconds we get a fresh access token from IdentityServer.
 
 ## Logging out
 
