@@ -785,7 +785,7 @@ But when the login popup opens, it could be that you still have a valid session 
 
 Logging out here means logging out of IdentityServer so that, next time you try to login from an IdentityServer-protected application, you will have to enter your credentials again.
 
-The process here is simple, we just need a logout button that calls the `redirectForLogout` method of the `OidcTokenManager` instance. We also need to let IdentityServer know that the specified post-logout redirect URL is valid:
+The process here is simple, we just need a logout button that calls the `signoutRedirect` method of the `UserManager` instance. We also need to let IdentityServer know that the specified post-logout redirect URL is valid:
 
 ```csharp
 public static class Clients
@@ -841,34 +841,40 @@ public static class Clients
 ```
 
 ```js
-[...]
 var settings = {
     authority: 'https://localhost:44300',
     client_id: 'js',
     popup_redirect_uri: 'http://localhost:56668/popup.html',
-
-    silent_renew: true,
     silent_redirect_uri: 'http://localhost:56668/silent-renew.html',
+    // Add the post logout redirect URL
+    post_logout_redirect_uri: 'http://localhost:56668/index.html',
 
     response_type: 'id_token token',
     scope: 'openid profile email api',
 
-    // post-logout URL
-    post_logout_redirect_uri: 'http://localhost:56668/index.html',
+    accessTokenExpiringNotificationTime: 4,
+    automaticSilentRenew: true,
 
-    filter_protocol_claims: true
+    filterProtocolClaims: true
 };
 [...]
-$('.js-logout').click(function () {
-    manager.redirectForLogout();
+$('.js-logout').on('click', function () {
+    manager
+        .signoutRedirect()
+        .catch(function (error) {
+            console.error('error while signing out user', error);
+        });
 });
 ```
 
 When clicking the `Logout` button, the user will be redirected to IdentityServer so that the session cookie is cleared.
 
-[logout](https://cloud.githubusercontent.com/assets/6102639/12256384/d9de8df0-b950-11e5-91b2-650a0a749a7f.png)
+![logout](https://cloud.githubusercontent.com/assets/6102639/12256384/d9de8df0-b950-11e5-91b2-650a0a749a7f.png)
 
 _Please note the screenshot above shows a page served by IdentityServer, not the JS application_
+
+While this example shows how to logout the user via the main window, it's worth noting that `oidc-client-js` also provides a way to make this happen in a popup, much like the login was implemented.
+You'll find more information in the [documentation of `oidc-client-js`](https://github.com/IdentityModel/oidc-client-js/wiki#methods).
 
 ## Check session
 
