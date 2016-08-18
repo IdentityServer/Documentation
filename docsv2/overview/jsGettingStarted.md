@@ -294,7 +294,7 @@ var settings = {
     popup_redirect_uri: 'http://localhost:56668/popup.html',
 
     response_type: 'id_token',
-    scope: 'openid profile',
+    scope: 'openid profile email',
 
     filter_protocol_claims: true
 };
@@ -315,7 +315,7 @@ Let's go quickly through the settings:
 
  - `authority` is the base URL of our IdentityServer instance. This will allow `oidc-token-manager` to query the metadata endpoint so it can validate the tokens
  - `client_id` is the id of the client we want to use when hitting the authorization endpoint
- - `popup_redirect_uri` is the redirect URL used when using the `openPopupForTokenAsync` method. If you prefer not having a popup and redirecting the user in the main window, you can use the `redirect_uri` property and the `redirectForTokenAsync` method
+ - `popup_redirect_uri` is the redirect URL used when using the `openPopupForTokenAsync` method. If you prefer not having a popup and redirecting the user in the main window, you can use the `redirect_uri` property and the `redirectForToken` method
  - `response_type` defines in our case that we only expect an identity token back
  - `scope` defines the scopes the application asks for
  - `filter_protocol_claims` instructs oidc-token-manager if it has to filter some OIDC protocol claims from the response: `nonce`, `at_hash`, `iat`, `nbf`, `exp`, `aud`, `iss` and `idp`
