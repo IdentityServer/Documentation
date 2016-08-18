@@ -880,6 +880,7 @@ You'll find more information in the [documentation of `oidc-client-js`](https://
 
 The session in our JS application starts when the identity token we get back from IdentityServer is validated.
 IdentityServer itself supports session management so it returns, in the authorization response, a value named `session_state`.
+You can find the OpenID Connect spec related to that matter [here](http://openid.net/specs/openid-connect-session-1_0.html).
 
 In some cases, we might be interested to know if the user ended their session on IdentityServer, for example by logging out of another application which in turned logged them out of IdentityServer.
 The way to do this this is to compute the `session_state` value. If it's equal to the one IdentityServer sent, this means the session state is unchanged, so the user is still logged in. It it's different, something changed, possibly the user logged out. In this case it's advised to issue a silent authorization request, with `prompt=none`. If it succeeds, we get a new identity token, and it means the session on the IdentityServer side is still valid. If it fails, the user has logged out, and we have to ask them to log in again.
