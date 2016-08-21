@@ -5,7 +5,7 @@ layout: docs-default
 This tutorial walks you through the necessary steps to integrate IdentityServer in a JS application.
 Since all the steps will be done on the client side, we'll use a JS library, [oidc-client-js](https://github.com/IdentityModel/oidc-client-js), to help with tasks like obtaining and validating tokens.
 
-You can find the code associated with this walkthrough [in this repo](https://github.com/mderriey/IdentityServer.JsWalkthrough).
+You can find the code associated with this walkthrough [here](https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/JavaScript%20Walkthrough).
 
 The walkthrough is split in 3 parts:
 
