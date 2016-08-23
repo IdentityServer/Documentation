@@ -100,6 +100,33 @@ static class Clients
     }
 }
 ```
+### Registering Users
+Although there are not humans involved at this point, we need to configure the system to handle users so that our project will build.  Create a new class called Users.cs and add the following code:
+```csharp
+using IdentityServer3.Core.Services.InMemory;
+
+static class Users
+{
+    public static List<InMemoryUser> Get()
+    {
+        return new List<InMemoryUser>
+        {
+            new InMemoryUser
+            {
+                Username = "bob",
+                Password = "secret",
+                Subject = "1"
+            },
+            new InMemoryUser
+            {
+                Username = "alice",
+                Password = "secret",
+                Subject = "2"
+            }
+        };
+    }
+}
+```
 
 ### Configuring IdentityServer
 IdentityServer is implemented as OWIN middleware. It is configured in the `Startup` class using the `UseIdentityServer` extension method.
