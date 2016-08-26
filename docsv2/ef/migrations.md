@@ -64,10 +64,15 @@ You can provide the standard scopes within the DB by using the seed method withi
 ```
   protected override void Seed(IdentityServer3.EntityFramework.ScopeConfigurationDbContext context)
         {
-            //Providing stanard scopes
+            //Providing standard scopes
             foreach (var standardScope in StandardScopes.All)
             {
-                context.Scopes.AddOrUpdate(standardScope.ToEntity());
+                if (!context.Scopes.Any(s => s.Name == standardScope.Name))
+                    context.Scopes.Add(standardScope.ToEntity());
             }
+            if (!context.Scopes.Any(s => s.Name == StandardScopes.Roles.Name))
+                context.Scopes.Add(StandardScopes.Roles.ToEntity());
+            if (!context.Scopes.Any(s => s.Name == StandardScopes.OfflineAccess.Name))
+                context.Scopes.Add(StandardScopes.OfflineAccess.ToEntity());
         }
 ```
