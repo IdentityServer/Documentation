@@ -59,7 +59,7 @@ And then the database can be created, again replace `$ProjectRootNamespace$` wit
 Once your application updates to a new version, then you can use `Add-Migration` and `Update-Database` to update to the new schema. Check the EF [documentation](https://msdn.microsoft.com/en-us/data/jj591621.aspx) for more details.
 
 ## Providing Standard scopes
-You can provide the standard scopes within the DB by using the seed method within the ScopeConfiguration/Configuration.js.
+You can provide the standard scopes within the DB by using the seed method within the ScopeConfiguration/Configuration.cs.
 
 ```
   protected override void Seed(IdentityServer3.EntityFramework.ScopeConfigurationDbContext context)
