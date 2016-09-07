@@ -208,27 +208,38 @@ The `User` property on the controller gives you access to the claims from the ac
 Add the following `Startup` class for both setting up web api and configuring trust with IdentityServer
 
 ```csharp
+using Microsoft.Owin;
+using Owin;
+using System.Web.Http;
 using IdentityServer3.AccessTokenValidation;
 
-public void Configuration(IAppBuilder app)
+[assembly: OwinStartup(typeof(Apis.Startup))]
+
+namespace Apis
 {
-    // accept access tokens from identityserver and require a scope of 'api1'
-    app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+    public class Startup
+    {
+        public void Configuration(IAppBuilder app)
         {
-            Authority = "http://localhost:5000",
-            ValidationMode = ValidationMode.ValidationEndpoint,
+            // accept access tokens from identityserver and require a scope of 'api1'
+            app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+                {
+                    Authority = "http://localhost:5000",
+                    ValidationMode = ValidationMode.ValidationEndpoint,
 
-            RequiredScopes = new[] { "api1" }
-        });
+                    RequiredScopes = new[] { "api1" }
+                });
 
-    // configure web api
-    var config = new HttpConfiguration();
-    config.MapHttpAttributeRoutes();
+            // configure web api
+            var config = new HttpConfiguration();
+            config.MapHttpAttributeRoutes();
+            
+            // require authentication for all controllers
+            config.Filters.Add(new AuthorizeAttribute());
 
-    // require authentication for all controllers
-    config.Filters.Add(new AuthorizeAttribute());
-
-    app.UseWebApi(config);
+            app.UseWebApi(config);
+        }
+    }
 }
 ```
 
