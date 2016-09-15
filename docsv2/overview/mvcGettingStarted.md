@@ -1002,7 +1002,7 @@ public async Task<ActionResult> UserCredentials()
 }
 ```
 
-On the result page, you can now see that the `sub` claim is included, which means that the API is now working on behalf of a user:
+After having signed in you can now see on the result page that the `sub` claim is included, which means that the API is now working on behalf of a user:
 
 ![userdelegation](https://cloud.githubusercontent.com/assets/1454075/5453086/246392fc-8523-11e4-9a3f-8100af390d53.png)
 
