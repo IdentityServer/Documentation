@@ -392,6 +392,8 @@ Create a new empty web application in Visual Studio.
 
 ![create api](https://cloud.githubusercontent.com/assets/6102639/12252754/251cd1f0-b92e-11e5-8f8f-469cfc2a0103.png)
 
+This time the URL that has to be assigned to the project is `http://localhost:60136`.
+
 ## Configuring the API
 For this example, we'll create a very simple API based on ASP.NET Web API.
 To do so, install the following packages:
