@@ -32,6 +32,21 @@ The `LoggingOptions` class has the following settings:
 * `EnableKatanaLogging`
    * If enabled, the Katana log output will be logged (this is often useful to troubleshoot problems with external identity providers)
 
+Set the `LoggingOptions` property of your `IdentityServerOptions` to a new instance of the above class with the desired options. For example:
+
+```csharp
+var options = new IdentityServerOptions
+{
+	// other options here...
+
+	LoggingOptions = new LoggingOptions
+	{
+		EnableKatanaLogging = true
+	}
+};
+
+coreApp.UseIdentityServer( options );
+```
 
 ## Example: Using Serilog to log to System.Diagnostics tracing
 The following example wires up [Serilog](http://serilog.net/) to log to the diagnostics trace (put that e.g. in Startup or in your hosting code). 
