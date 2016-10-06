@@ -99,7 +99,7 @@ factory.Register(new Registration<ICustomLogger, MyCustomDebugLogger>());
 
 ### Custom services without an interface
 
-In the above example the injected type was the `ICustomLogger` and the impelemntation was the `MyCustomDebugLogger`. If your custom services is not designed with an interface to separate the contract from the implementation, then the concrete type itself can be registered to be injected.
+In the above example the injected type was the `ICustomLogger` and the implementation was the `MyCustomDebugLogger`. If your custom services is not designed with an interface to separate the contract from the implementation, then the concrete type itself can be registered to be injected.
 
 For example, if the `MyCustomTokenSigningService`'s constructor did not accept an interface for the logger, as such:
 
