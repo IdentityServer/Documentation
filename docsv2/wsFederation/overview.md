@@ -18,7 +18,7 @@ You first need to install the plugin using Nuget:
  install-package IdentityServer3.WsFederation
  ```
 
- The plugin is wired into IdentityServer by implementing the `PluiginConfiguration` callback in the `IdentityServerOptions` class:
+ The plugin is wired into IdentityServer by implementing the `PluginConfiguration` callback in the `IdentityServerOptions` class:
  
 ```csharp
 public void Configuration(IAppBuilder appBuilder)
