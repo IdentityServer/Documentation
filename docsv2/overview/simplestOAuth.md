@@ -138,8 +138,8 @@ Since we are running in a console, it is very handy to have logging output strai
 Serilog is a nice logging library for that:
 
 ```
-install-package serilog
-install-package serilog.sinks.literate
+install-package serilog -Version 1.5.14
+install-package serilog.sinks.literate -Version 1.2.0
 ```
 
 ### Hosting IdentityServer
