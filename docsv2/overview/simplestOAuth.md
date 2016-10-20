@@ -165,6 +165,11 @@ using (WebApp.Start<Startup>("http://localhost:5000"))
     Console.ReadLine();
 }
 ```
+and 
+```csharp
+using Microsoft.Owin.Hosting;
+using Serilog;
+```
 
 When you run the console app, you should see some diagnostics output and `server running...`.
 
