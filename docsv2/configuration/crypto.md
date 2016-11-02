@@ -37,7 +37,8 @@ A key rollover could work like this:
 2. Set this new certificate as the `SecondarySigningCertificate` on the options. IdentityServer will now publish both 
 certificates in the discovery document and the access token validation middleware will accept tokens signed with both keys
 3. Wait at least 24h to give every consumer a chance to update its configuration
-4. Set the new certificate as the primary `SigningCertificate`. Retire the old certificate
+4. Set the new certificate as the primary `SigningCertificate`. 
+5. Keep the old certificate as a secondary for as long as you need (maybe you have long running tokens out there that use the old certificate and need to be validated)
 
 ## Cookie Protection
 Cookies must be protected as well. IdentityServer uses the Katana data protection infrastructure for that.
