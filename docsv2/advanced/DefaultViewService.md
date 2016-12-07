@@ -80,7 +80,7 @@ Finally, if the `templates` folder on the file system is not desirable, then you
 
 ### Adding custom data to the rendered view
 
-It is possible that custom views need to render custom data. All of the view models used by the  `DefaultViewService` provide a `object` property called `Custom`. This is simply rendered into the client-side view model and is available for use in the AngularJS templates. 
+It is possible that custom views need to render custom data. All of the view models used by the  `DefaultViewService` provide an `object` property called `Custom`. This is simply rendered into the client-side view model and is available for use in the AngularJS templates. 
     
 To provide `Custom` data on the view models, it will be necessary to derive from the `DefaultViewService` and override the appropriate methods for the views where the custom data needs to be rendered. 
 
