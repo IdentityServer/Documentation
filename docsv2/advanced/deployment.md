@@ -39,7 +39,7 @@ the Entity Framework repo (or community contributions like the one for MongoDB).
 ## Operational data
 
 Some features require a shared database for operational data - namely authorization codes, reference tokens and refresh token.
-If you use any of those features you need a persistence layer for them. Again you could use our Entity Framework implemenation.
+If you use any of those features you need a persistence layer for them. Again you could use our Entity Framework implementation.
 
 ## Caching
 
