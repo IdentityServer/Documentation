@@ -39,7 +39,7 @@ The `IUserService` interface defines these methods:
         * `SignInMessage`: The contextual information passed to the authorize endpoint.
         * `AuthenticateResult`: The user service should assign to indicate the authentication outcome (or `null` to indicate an error that there is no user matching the information provided in the `ExternalIdentity`).
 * `PostAuthenticateAsync`
-    * This method is called after the user has successfully authenticated but before they are returned to the client application. It allows a consolidated place to check for custom user workflows after all of the other authentication methods.
+    * This method is called after the user has successfully authenticated but before they are returned to the client application. It allows a consolidated place to check for custom user workflows after all of the other authentication methods. It's designed for UI workflows.
     * Passed a `PostAuthenticationContext` with these properties:
         * `SignInMessage`: The contextual information passed to the authorize endpoint.
         * `AuthenticateResult`: The current `AuthenticateResult`. The user service can re-assign to a non-`null` value to change the authentication outcome.
