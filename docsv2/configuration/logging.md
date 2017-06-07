@@ -20,6 +20,8 @@ Liblog picks up any of the following logging libraries automatically:
 
 There is no IdentityServer3 specific configuration required - you just need to configure one of the above logging frameworks in your host.
 
+*Warning: LibLog will pick the first library in the above order and will discard the others. So if you have a reference to SeriLog for example and you're trying to configure Log4net it will **not** work.*
+
 ## Configuring Diagnostics
 The `LoggingOptions` class has the following settings:
 
