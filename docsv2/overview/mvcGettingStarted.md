@@ -45,6 +45,7 @@ public static class Clients
                 ClientName = "MVC Client",
                 ClientId = "mvc",
                 Flow = Flows.Implicit,
+                RequireConsent = false,
 
                 RedirectUris = new List<string>
                 {
