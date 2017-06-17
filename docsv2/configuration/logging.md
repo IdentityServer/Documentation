@@ -108,3 +108,16 @@ For certain scenarios (e.g. production) you want to make sure that no logging ou
 ```csharp
 LogProvider.SetCurrentLogProvider(new NoopLogProvider());
 ```
+## Unit Testing
+When writing unit tests, you may want to enable logging to help with debugging, as some errors aren't too detailed (such as getting a 500 error back as the Token Response, for example - this could be a number of things).
+Assuming that your unit tests are in a separate project from your Statup class where you register and initialiase your logger, then you will find that logging won't work.
+In order to make logging work you will have to wrap the code which makes requests to IdentityServer in a using statment such as:
+```csharp
+ using (var logger = new LoggerConfiguration()
+              .MinimumLevel.Debug()
+              .WriteTo.File(@"C:\idsLogs.txt")
+          .CreateLogger())
+            {
+                var tokenResponse = tokenClient.RequestClientCredentialsAsync("applicationLogin").Result;
+                }
+                ```
