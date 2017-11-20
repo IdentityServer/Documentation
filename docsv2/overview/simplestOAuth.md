@@ -322,6 +322,32 @@ the `Subject` is the unique identifier for that user that will be embedded into 
 
 In `Startup` replace the empty user list with a call to the `Get` method.
 
+```csharp
+using Owin;
+using IdentityServer3.Core.Configuration;
+
+namespace IdSrv
+{
+    class Startup
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            var options = new IdentityServerOptions
+            {
+                Factory = new IdentityServerServiceFactory()
+                            .UseInMemoryClients(Clients.Get())
+                            .UseInMemoryScopes(Scopes.Get())
+                            .UseInMemoryUsers(Users.Get()),
+
+                RequireSsl = false
+            };
+
+            app.UseIdentityServer(options);
+        }
+    }
+}
+```
+
 ### Adding a Client
 Next we will add a client definition that uses the flow called `resource owner password credential grant`.
 This flow allows a client to send the user's username and password to the token service and get an access token back in return.
