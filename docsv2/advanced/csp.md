@@ -19,3 +19,17 @@ IdentityServer3 allows the hosting application to configure a `CspOptions` on th
 * `FrameSrc` (added in v2.4) : allows for additional `frame-src` values to be added to the default policy.
 
 CSP allows for a reporting endpoint to be configured. IdentityServer provides a CSP report endpoint which is described [here](../endpoints/csp.html).
+
+### Example
+
+This will allow loading scripts, styles, and fonts from MaxCDN and Google's CDN.
+
+```
+CspOptions = new CspOptions
+{
+  Enabled = true,
+  ScriptSrc = "https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com",
+  StyleSrc = "https://maxcdn.bootstrapcdn.com https://fonts.googleapis.com",
+  FontSrc = "https://maxcdn.bootstrapcdn.com https://fonts.googleapis.com  https://fonts.gstatic.com"
+}
+```
